@@ -1,0 +1,19 @@
+# Render Blueprint — https://render.com/docs/blueprint-spec
+# In Render: New > Blueprint > connect this repo. Render reads this file and
+# provisions the service; no manual field entry needed.
+services:
+  - type: web
+    name: jetronix-website
+    runtime: node
+    plan: free
+    region: singapore # closest Render region to India
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    healthCheckPath: /
+    envVars:
+      - key: NODE_ENV
+        value: production
+      # Leave blank to deploy without the AI Advisor. Set it later in the Render
+      # dashboard (Environment tab) and the Advisor page starts working on redeploy.
+      - key: GEMINI_API_KEY
+        sync: false

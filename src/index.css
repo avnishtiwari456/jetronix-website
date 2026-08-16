@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+/* Scrollbar customizations */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #090d16;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
+
+/* Custom dot matrix look for simulated batch code print output */
+.dot-matrix {
+  font-family: 'JetBrains Mono', 'Courier New', Courier, monospace;
+  background-image: radial-gradient(currentColor 20%, transparent 25%);
+  background-size: 4px 4px;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-shadow: 0px 0px 2px rgba(currentColor, 0.4);
+}
+
+/* Technical grid patterns for industrial context */
+.tech-grid {
+  background-size: 30px 30px;
+  background-image: linear-gradient(to right, rgba(37, 99, 235, 0.04) 1px, transparent 1px),
+                    linear-gradient(to bottom, rgba(37, 99, 235, 0.04) 1px, transparent 1px);
+}
+
+/* Glow lines and animations */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; filter: drop-shadow(0 0 5px rgba(37, 99, 235, 0.5)); }
+  50% { opacity: 1; filter: drop-shadow(0 0 15px rgba(37, 99, 235, 0.8)); }
+}
+
+.glow-pulse {
+  animation: pulseGlow 3s infinite ease-in-out;
+}
+
+/* Fluid flow lines for print head */
+@keyframes fluidFlow {
+  0% { transform: translateY(-100%); }
+  100% { transform: translateY(100%); }
+}
+
+.fluid-animate {
+  animation: fluidFlow 2s infinite linear;
+}
+

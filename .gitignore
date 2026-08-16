@@ -1,0 +1,14 @@
+node_modules/
+build/
+dist/
+coverage/
+.DS_Store
+*.log
+.env*
+!.env.example
+
+# Submitted contact / quote enquiries (contains customer personal data)
+data/
+
+# Source export archive — duplicate of this repo's contents
+*.zip
