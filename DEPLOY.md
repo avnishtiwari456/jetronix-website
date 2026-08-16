@@ -27,9 +27,26 @@ git push -u origin main
 
 ## 2. Create the Render service
 
+> **Pick Blueprint or Web Service — not Static Site.** This app runs an Express server
+> for the `/api/*` routes, so a Static Site cannot host it. Choosing Static Site fails
+> with `Publish directory jetronix-website does not exist!`, because static sites only
+> serve pre-built files and never run `npm start`.
+
 1. Sign in at <https://render.com> and connect the GitHub account.
 2. **New → Blueprint**, pick the repository.
 3. Render reads `render.yaml` and fills in build/start commands itself. Click **Apply**.
+
+If the Blueprint option is unavailable, create a **Web Service** manually instead:
+
+| Field         | Value                      |
+| ------------- | -------------------------- |
+| Language      | Node                       |
+| Branch        | `main`                     |
+| Build Command | `npm ci && npm run build`  |
+| Start Command | `npm start`                |
+| Instance Type | Free                       |
+
+and add the environment variable `NODE_ENV=production`.
 
 First build takes roughly 3–5 minutes. The live URL looks like
 `https://jetronix-website.onrender.com`.
