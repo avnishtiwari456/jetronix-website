@@ -17,124 +17,116 @@ interface HomeOverviewProps {
 
 const featuredProducts = [
   {
-    id: "cij_s200plus",
-    name: "Jetronix S200PLUS",
+    id: "cij_s200",
+    name: "Jetronix S200",
     category: "Continuous Inkjet (CIJ)",
     type: "Workhorse Primary Coder",
-    desc: "Sapphire micro-nozzle technology firing contactless droplets continuously onto high-speed canning, beverage bottles, extrusion lines, and packaging.",
-    image: "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=600&q=80",
+    desc: "High-speed continuous inkjet for non-contact coding on fast production lines. Prints clear text, batch codes, dates and barcodes across plastic, metal and glass.",
+    image: "/products/si220.jpg",
+    imageWebp: "/products/si220.webp",
     specs: {
-      speed: "Up to 768 m/min",
-      resolution: "Standard Dot-Matrix",
-      ink: "Certified MEK/Ethanol bases",
-      substrates: "PET, Glass, Metal, PVC, Cables"
+      speed: "Up to 5 lines of print",
+      resolution: "Non-contact dot matrix",
+      ink: "Smart auto-cleaning fluidics",
+      substrates: "Plastic, Metal, Glass, Paper, Film"
     },
     badge: "Bestseller"
   },
   {
-    id: "cij_si220",
-    name: "Jetronix Si220 Series",
+    id: "cij_jx350",
+    name: "Jetronix JX350",
     category: "Continuous Inkjet (CIJ)",
-    type: "Low-Emission Premium Coder",
-    desc: "Equipped with advanced RFID intelligent fluid sensors and integrated eco-solvent condensing loops that reduce solvent consumption by up to 50%.",
-    image: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80",
+    type: "High-Speed Line Coder",
+    desc: "A 36 micron nozzle and 5-to-31 drop font matrix hold code quality on conveyors running past 10 metres per second. Built for beverage, dairy and extrusion lines.",
+    image: "/products/jx350.jpg",
+    imageWebp: "/products/jx350.webp",
     specs: {
-      speed: "Up to 680 m/min",
-      resolution: "Intelligent Dot-Matrix",
-      ink: "RFID Authenticated OEM Fluids",
-      substrates: "Plastic, Extruded PVC, Metal, Glass"
+      speed: "Past 10 m/sec line speed",
+      resolution: "1.5 – 12 mm characters",
+      ink: "36 micron nozzle",
+      substrates: "Plastic, Metal, Glass, Cables"
     },
-    badge: "Eco-Friendly"
+    badge: "High Speed"
   },
   {
-    id: "cij_5500pro",
-    name: "Jetronix Industrial Inkjet Printer 5500 Pro",
-    category: "Continuous Inkjet (CIJ)",
-    type: "IP65 Washdown Coder",
-    desc: "The five-line J5500 platform in a sealed IP65 stainless steel cabinet. Specified for dairy, beverage and cold-fill plants where the coder is hosed down with the line.",
-    image: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=600&q=80",
+    id: "tij_jt240",
+    name: "Jetronix JT240",
+    category: "Thermal Inkjet (TIJ)",
+    type: "Double-Head Cartridge Coder",
+    desc: "HP TIJ 2.5 cartridge coding at up to 600 DPI. The print head is replaced with every cartridge, so there is nothing to clean, flush or service.",
+    image: "/products/tij-inline.jpg",
+    imageWebp: "/products/tij-inline.webp",
     specs: {
-      speed: "Up to 9.8 m/sec",
-      resolution: "60µ / 75µ dual drop size",
-      ink: "MEK and pigmented CIJ fluids",
-      substrates: "PET, Glass, Metal, Dairy packaging"
+      speed: "Up to 120 m/min",
+      resolution: "600 x 600 DPI",
+      ink: "Water, solvent & UV-curable",
+      substrates: "Cartons, Plastics, Metals, Foils"
     },
-    badge: "IP65 Washdown"
+    badge: "Maintenance-Free"
   },
   {
-    id: "laser_cc30f",
-    name: "Metal Laser Marking Machine (CC-30F)",
-    category: "Laser Marking Systems",
-    type: "Metal Engraving Marker",
-    desc: "Permanent inkless engraving to 0.01–0.03 mm depth at 6000 mm/s. Codes cannot be wiped, solvent-cleaned or relabelled — the right pick for parts needing lifetime traceability.",
-    image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80",
+    id: "handheld_jh250",
+    name: "Jetronix JH250",
+    category: "Handheld Printer",
+    type: "Portable MRP & Date Coder",
+    desc: "Battery-powered handheld coding with a 25 mm print band. Codes stacked cartons and sacks wherever they are, with no conveyor required.",
+    image: "/products/handheld-front.jpg",
+    imageWebp: "/products/handheld-front.webp",
     specs: {
-      speed: "6000 mm/s marking speed",
-      resolution: "±0.002 repeat accuracy",
-      ink: "Inkless (zero consumables)",
-      substrates: "Steel, Aluminium, Alloys, Bare Metals"
+      speed: "Rechargeable, 10+ hrs",
+      resolution: "Up to 600 DPI",
+      ink: "Fast-drying cartridge",
+      substrates: "Carton, Metal, Glass, Wood"
     },
-    badge: "Zero Fluids Cost"
+    badge: "Portable"
   },
   {
-    id: "laser_sf30w",
-    name: "Fibre Laser Marking Machine (SF-30W)",
-    category: "Laser Marking Systems",
-    type: "Fibre Precision Marker",
-    desc: "A 30W fibre source marking at 7000 mm/s and up to 1 mm depth, in a 25 kg package light enough to relocate between production cells.",
-    image: "https://images.unsplash.com/photo-1565043666747-69f6646db940?auto=format&fit=crop&w=600&q=80",
+    id: "laser_jlc",
+    name: "Jetronix JLC30 / JLC60",
+    category: "CO2 Laser Coding",
+    type: "Permanent Inkless Marker",
+    desc: "Marks up to 1500 characters per second with no consumables at all. Permanent, high-contrast codes for traceability, anti-counterfeiting and anti-channelisation.",
+    image: "/products/laser-co2.jpg",
+    imageWebp: "/products/laser-co2.webp",
     specs: {
-      speed: "7000 mm/s marking speed",
-      resolution: "Up to 1.0 mm depth",
-      ink: "Inkless (permanent ablation)",
-      substrates: "Metals, Plastics, Coated Materials"
+      speed: "1500 characters/sec",
+      resolution: "Permanent laser etch",
+      ink: "None — zero consumables",
+      substrates: "Film, Plastic, Glass, Leather"
     },
-    badge: "Heavy Industrial"
+    badge: "Zero Consumables"
   },
   {
-    id: "tto_24x30",
-    name: "TTO Printer 24 x 30 mm",
+    id: "tto_linx",
+    name: "Linx TT 750",
     category: "Thermal Transfer (TTO)",
     type: "Flexible Packaging Overprinter",
-    desc: "Thermal transfer overprinting for flow-wrap, VFFS and label webs. Produces the sharpest small-text and 2D codes of any technology in the range.",
-    image: "https://images.unsplash.com/photo-1542435503-956c469947f6?auto=format&fit=crop&w=600&q=80",
+    desc: "Thermal transfer overprinting on film, labels and gloss card without compressed air. Supplied, installed and serviced across India by Jetronix.",
+    image: "/products/tto-linx.jpg",
+    imageWebp: "/products/tto-linx.webp",
     specs: {
-      speed: "~20 m/min",
-      resolution: "300 DPI High-Density",
-      ink: "Wax/Resin Thermal Ribbons",
-      substrates: "Flexible Foil, Pouch Film, BOPP bags"
+      speed: "No compressed air needed",
+      resolution: "Electronic pressure control",
+      ink: "Wax/Resin thermal ribbons",
+      substrates: "Film, Labels, Gloss Card, Laminates"
     },
-    badge: "Packaging Specialist"
+    badge: "Linx Distributed"
   },
   {
-    id: "tij_jt2050",
-    name: "JT2050 Jetronix TIJ Printer",
-    category: "Thermal Inkjet (TIJ)",
-    type: "High-Resolution Cartridge System",
-    desc: "Compact integrated-printhead thermal coder with a 3.5\" LCD. Cartridge-based, so there is no make-up solvent, no filters and no scheduled service window.",
-    image: "https://images.unsplash.com/photo-1532187863486-abf9d39d66e8?auto=format&fit=crop&w=600&q=80",
+    id: "sealing_fxj6050",
+    name: "Jetronix FXJ 6050",
+    category: "Carton Sealing",
+    type: "Semi-Automatic Case Sealer",
+    desc: "Seals 25 to 45 cartons per minute with top and bottom belt drive. Adjustable for carton sizes from 180 x 130 mm up to 500 x 600 mm.",
+    image: "",
+    imageWebp: "",
     specs: {
-      speed: "Instant-start cartridge system",
-      resolution: '1" max print height',
-      ink: "S-Head / H-Head cartridges",
-      substrates: "Coated Cardboard, Blisters, Medicine Packs"
+      speed: "25–45 cartons/min",
+      resolution: "Top & bottom belt drive",
+      ink: "BOPP / PVC tape, 48–76 mm",
+      substrates: "Corrugated Cartons & Shippers"
     },
-    badge: "Pharma Grade"
-  },
-  {
-    id: "tij_jt2400",
-    name: "JT2400 Carton Coding Inkjet Printer",
-    category: "Large Character Coding",
-    type: "Outer Box Carton Coder",
-    desc: "Up to four printheads stacked to a 4-inch print height, run from a 10-inch touchscreen. Prints full graphics and barcode blocks straight onto brown shippers, no labels required.",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80",
-    specs: {
-      speed: "Up to 4 printheads",
-      resolution: '4" maximum print height',
-      ink: "S-, H- & T-Head cartridges",
-      substrates: "Corrugated Shippers, Kraft Boxes"
-    },
-    badge: "Outer Box Graphics"
+    badge: "End of Line"
   }
 ];
 
@@ -645,14 +637,24 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
                   className="bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
                 >
                   {/* Image & Badges Overlay */}
-                  <div className="relative h-48 w-full bg-slate-900 overflow-hidden group">
-                    <img 
-                      src={prod.image} 
-                      alt={prod.name} 
-                      className="w-full h-full object-cover opacity-85 group-hover:scale-105 transition-transform duration-500"
-                      referrerPolicy="no-referrer"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="relative h-48 w-full bg-slate-50 overflow-hidden group">
+                    {prod.image ? (
+                      <picture>
+                        <source srcSet={prod.imageWebp} type="image/webp" />
+                        <img
+                          src={prod.image}
+                          alt={prod.name}
+                          loading="lazy"
+                          className="w-full h-full object-contain p-4 pb-10 group-hover:scale-105 transition-transform duration-500"
+                        />
+                      </picture>
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center text-slate-300">
+                        <Printer className="w-14 h-14" />
+                      </div>
+                    )}
+                    {/* Keeps the white-out product shots readable behind the overlaid label */}
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
                     
                     {/* Top Right: Distinct Badge */}
                     <div className="absolute top-4 right-4 bg-blue-600/90 border border-blue-400 text-white font-mono text-[8px] font-bold px-2 py-1 rounded-md uppercase tracking-wider">

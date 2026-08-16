@@ -143,7 +143,7 @@ export default function ProductSection({ target, onRequestQuote }: ProductSectio
             The Complete Coding &amp; Marking Range
           </h2>
           <p className="text-slate-600 mt-3 text-base font-light leading-relaxed">
-            {products.length} machines across continuous inkjet, thermal inkjet, laser marking, TTO, conveyors and rewinders &mdash; engineered to run 24/7 on bottling, food, pharma, cabling and extrusion lines.
+            {products.length} machines across continuous inkjet, thermal inkjet, handheld coding, TTO, CO2 laser and carton sealing &mdash; engineered to run 24/7 on bottling, food, pharma, cabling and extrusion lines.
           </p>
         </div>
 
@@ -232,10 +232,50 @@ export default function ProductSection({ target, onRequestQuote }: ProductSectio
           >
             {/* Left side visual specs & key highlights */}
             <div className="xl:col-span-5 space-y-8">
+              {/* Product photography */}
+              {selectedProduct.image && (
+                <div className="space-y-3">
+                  <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden flex items-center justify-center p-4">
+                    <picture>
+                      <source srcSet={`/products/${selectedProduct.image}.webp`} type="image/webp" />
+                      <img
+                        src={`/products/${selectedProduct.image}.jpg`}
+                        alt={selectedProduct.name}
+                        loading="lazy"
+                        className="max-h-[320px] w-auto object-contain"
+                      />
+                    </picture>
+                  </div>
+                  {selectedProduct.gallery && selectedProduct.gallery.length > 0 && (
+                    <div className="grid grid-cols-3 gap-2">
+                      {selectedProduct.gallery.map((g) => (
+                        <div key={g} className="bg-white rounded-xl border border-slate-200 p-2 flex items-center justify-center">
+                          <picture>
+                            <source srcSet={`/products/${g}.webp`} type="image/webp" />
+                            <img
+                              src={`/products/${g}.jpg`}
+                              alt={`${selectedProduct.name} — additional view`}
+                              loading="lazy"
+                              className="max-h-[90px] w-auto object-contain"
+                            />
+                          </picture>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+
               <div className="space-y-4">
                 <span className="text-[10px] font-bold uppercase tracking-widest text-blue-700 bg-blue-50 border border-blue-200/50 px-3 py-1.5 rounded-lg inline-block">
                   {selectedProduct.type}
                 </span>
+
+                {selectedProduct.distributedBrand && (
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-amber-800 bg-amber-50 border border-amber-200 px-3 py-1.5 rounded-lg inline-block ml-2">
+                    {selectedProduct.distributedBrand} product — supplied &amp; serviced by Jetronix
+                  </span>
+                )}
                 <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-slate-900">
                   {selectedProduct.name}
                 </h3>
@@ -416,7 +456,7 @@ export default function ProductSection({ target, onRequestQuote }: ProductSectio
               </div>
 
               {/* Line-integration note — only meaningful for the coder families */}
-              {["cij", "tij", "other-inkjet"].includes(selectedProduct.category) && (
+              {["cij", "tij"].includes(selectedProduct.category) && (
                 <div className="bg-blue-50 border border-blue-200/50 p-5 rounded-2xl text-xs text-blue-900 leading-relaxed">
                   <span className="font-bold block text-blue-950 mb-1">⚙️ PLC / Conveyor Integration Matrix:</span>
                   All Jetronix printers feature instant input/output connectivity. Supports photoelectric trigger delay, encoder speed tracking, status beacon stack alarms, and direct MODBUS communication, ensuring seamless synchronization with packaging conveyors or rotary fillers.
@@ -443,7 +483,7 @@ export default function ProductSection({ target, onRequestQuote }: ProductSectio
               <thead>
                 <tr className="bg-slate-900 text-white font-display text-xs uppercase tracking-wider">
                   <th className="p-5 font-bold">Performance Dimension</th>
-                  <th className="p-5 font-bold text-blue-400">Jetronix (Si220 Core)</th>
+                  <th className="p-5 font-bold text-blue-400">Jetronix (JX350 Core)</th>
                   <th className="p-5 font-normal text-slate-400">Hitachi Series</th>
                   <th className="p-5 font-normal text-slate-400">Leibinger Series</th>
                   <th className="p-5 font-normal text-slate-400">Cyklop System</th>

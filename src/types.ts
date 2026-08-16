@@ -26,12 +26,10 @@ export interface MachineSpecs {
 export type ProductCategory =
   | "cij"
   | "tij"
-  | "other-inkjet"
   | "handheld"
-  | "laser"
   | "tto"
-  | "conveyor"
-  | "winder";
+  | "laser"
+  | "sealing";
 
 /** A single label/value row in a product's specification table. */
 export interface SpecRow {
@@ -54,6 +52,12 @@ export interface Product {
   type: string;
   category: ProductCategory;
   imagePlaceholder: string;
+  /** Photo basename in /public/products (without extension). Omit if no photo exists. */
+  image?: string;
+  /** Extra photos shown as a gallery under the main one. */
+  gallery?: string[];
+  /** Set when the unit is another manufacturer's product that we distribute. */
+  distributedBrand?: string;
   features: string[];
   keyHighlights: string[];
   /** Flat spec table — every product has one, shapes vary by category. */

@@ -12,12 +12,12 @@ interface FooterProps {
 
 // Each entry resolves to a real catalogue destination — a product or a category.
 const footerProductLinks: { label: string; productId?: string; category?: string }[] = [
-  { label: "Jetronix S200PLUS CIJ Printer", productId: "s200plus" },
-  { label: "Jetronix Si220 Advanced Coding System", productId: "si220" },
-  { label: "Continuous Inkjet Printers (CIJ)", category: "cij" },
-  { label: "Thermal Inkjet & JT Series", category: "tij" },
-  { label: "Laser Marking Machines", category: "laser" },
-  { label: "Conveyors & Winder Rewinders", category: "conveyor" }
+  { label: "Jetronix S200 CIJ Printer", productId: "s200" },
+  { label: "Jetronix JX350 High-Speed CIJ", productId: "jx350" },
+  { label: "JT Series Thermal Inkjet", category: "tij" },
+  { label: "JH120 / JH250 Handheld Printers", category: "handheld" },
+  { label: "JLC30 / JLC60 CO2 Laser", productId: "jlc30-60" },
+  { label: "TTO Overprinters & Carton Sealers", category: "tto" }
 ];
 
 export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps) {

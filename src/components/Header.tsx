@@ -37,23 +37,19 @@ interface SubCategoryItem {
 const CATEGORY_ICONS: Record<ProductCategory, string> = {
   cij: "Cpu",
   tij: "Zap",
-  "other-inkjet": "Settings",
   handheld: "Sliders",
-  laser: "Sparkles",
   tto: "Printer",
-  conveyor: "Factory",
-  winder: "RefreshCw"
+  laser: "Sparkles",
+  sealing: "Factory"
 };
 
 const CATEGORY_BADGES: Record<ProductCategory, string> = {
   cij: "CIJ",
   tij: "TIJ",
-  "other-inkjet": "JT",
   handheld: "HANDHELD",
-  laser: "LASER",
   tto: "TTO",
-  conveyor: "CONVEYOR",
-  winder: "WINDER"
+  laser: "LASER",
+  sealing: "SEALER"
 };
 
 // Derived from the catalogue so every menu entry links to a product that actually exists.
@@ -68,7 +64,7 @@ const productCategoriesDerived: SubCategoryItem[] = catalogueCategories.map((cat
       id: p.id,
       name: p.name,
       desc: p.tagline,
-      badge: p.type.startsWith("Consumable") ? "RIBBON" : CATEGORY_BADGES[cat.id]
+      badge: p.distributedBrand ? p.distributedBrand.toUpperCase() : CATEGORY_BADGES[cat.id]
     }))
 }));
 
