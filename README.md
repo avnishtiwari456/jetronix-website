@@ -53,8 +53,13 @@ all three.
 | `POST /api/quote`   | B2B quote requests                                  |
 | `POST /api/advisor` | Gemini proxy for the AI Advisor (needs the API key) |
 
-Submissions are appended as JSON lines to `data/inquiries.jsonl`. There is **no email
-notification and no database** — read the file to see enquiries:
+Every submission is emailed to **support@jetronixindia.com** (with the customer's address
+as Reply-To) *and* appended as a JSON line to `data/inquiries.jsonl`, so nothing is lost
+if mail delivery fails.
+
+Email needs SMTP credentials in the environment — see `.env.example` and
+[DEPLOY.md](DEPLOY.md). Without them the forms still work and still record to disk; the
+server logs a warning at startup. There is no database.
 
 ```bash
 cat data/inquiries.jsonl

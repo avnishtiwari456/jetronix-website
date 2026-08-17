@@ -2,7 +2,9 @@ import express, { Request, Response } from "express";
 import path from "path";
 import fs from "fs";
 import dotenv from "dotenv";
+import nodemailer from "nodemailer";
 import { GoogleGenAI } from "@google/genai";
+import { products } from "./src/data";
 
 dotenv.config();
 
@@ -34,6 +36,111 @@ function recordInquiry(kind: "contact" | "quote", payload: Record<string, unknow
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 const digitsOf = (value: string) => value.replace(/\D/g, "");
+
+/* ─────────────────────────  EMAIL NOTIFICATIONS  ───────────────────────── */
+
+const MAIL_TO = process.env.MAIL_TO || "support@jetronixindia.com";
+const SMTP_HOST = process.env.SMTP_HOST;
+const SMTP_USER = process.env.SMTP_USER;
+const SMTP_PASS = process.env.SMTP_PASS;
+const SMTP_PORT = Number(process.env.SMTP_PORT) || 587;
+// Port 465 is implicit TLS; 587 upgrades with STARTTLS.
+const SMTP_SECURE = process.env.SMTP_SECURE ? process.env.SMTP_SECURE === "true" : SMTP_PORT === 465;
+const MAIL_FROM = process.env.MAIL_FROM || (SMTP_USER ? `"Jetronix Website" <${SMTP_USER}>` : "");
+
+const mailer =
+  SMTP_HOST && SMTP_USER && SMTP_PASS
+    ? nodemailer.createTransport({
+        host: SMTP_HOST,
+        port: SMTP_PORT,
+        secure: SMTP_SECURE,
+        auth: { user: SMTP_USER, pass: SMTP_PASS },
+        // Some budget shared hosts serve an expired or mismatched certificate on their
+        // mail server. Only set this if sending fails with a certificate error — it
+        // disables verification of the mail server's identity.
+        tls:
+          process.env.SMTP_TLS_REJECT_UNAUTHORIZED === "false"
+            ? { rejectUnauthorized: false }
+            : undefined,
+      })
+    : null;
+
+if (!mailer) {
+  console.warn(
+    "WARNING: SMTP is not configured (SMTP_HOST / SMTP_USER / SMTP_PASS). " +
+      "Enquiries will still be saved to data/inquiries.jsonl but no email will be sent."
+  );
+} else {
+  console.log(`Email notifications enabled -> ${MAIL_TO} (via ${SMTP_HOST}:${SMTP_PORT})`);
+}
+
+/** Turns the form's product id into the catalogue name so the email reads properly. */
+function productLabel(id: unknown) {
+  const value = String(id ?? "").trim();
+  if (!value) return "";
+  if (value === "both") return "Comparative demonstration (multiple products)";
+  return products.find((p) => p.id === value)?.name || value;
+}
+
+const escapeHtml = (value: string) =>
+  value.replace(/[&<>"']/g, (c) =>
+    ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c] as string)
+  );
+
+/**
+ * Emails a submitted enquiry to the sales inbox. Never throws — a mail failure must
+ * not lose the visitor's submission, which is already on disk by this point.
+ */
+async function emailInquiry(opts: {
+  subject: string;
+  ref: string;
+  replyTo?: string;
+  rows: [string, string][];
+}) {
+  if (!mailer) return false;
+
+  const tableRows = opts.rows
+    .filter(([, v]) => v && v.trim())
+    .map(
+      ([label, value]) =>
+        `<tr><td style="padding:8px 14px;border:1px solid #e2e8f0;background:#f8fafc;font-weight:600;white-space:nowrap">${escapeHtml(
+          label
+        )}</td><td style="padding:8px 14px;border:1px solid #e2e8f0">${escapeHtml(value).replace(
+          /\n/g,
+          "<br>"
+        )}</td></tr>`
+    )
+    .join("");
+
+  const html = `<div style="font-family:Arial,Helvetica,sans-serif;color:#0f172a">
+    <h2 style="margin:0 0 4px">${escapeHtml(opts.subject)}</h2>
+    <p style="margin:0 0 16px;color:#64748b;font-size:13px">Reference <b>${escapeHtml(
+      opts.ref
+    )}</b> &middot; submitted from the Jetronix website</p>
+    <table style="border-collapse:collapse;font-size:14px">${tableRows}</table>
+  </div>`;
+
+  const text = opts.rows
+    .filter(([, v]) => v && v.trim())
+    .map(([label, value]) => `${label}: ${value}`)
+    .join("\n");
+
+  try {
+    await mailer.sendMail({
+      from: MAIL_FROM,
+      to: MAIL_TO,
+      replyTo: opts.replyTo && EMAIL_PATTERN.test(opts.replyTo) ? opts.replyTo : undefined,
+      subject: `${opts.subject} [${opts.ref}]`,
+      text: `Reference: ${opts.ref}\n\n${text}`,
+      html,
+    });
+    console.log(`[mail] ${opts.ref} sent to ${MAIL_TO}`);
+    return true;
+  } catch (error) {
+    console.error(`[mail] FAILED to send ${opts.ref}:`, error);
+    return false;
+  }
+}
 
 // Initialize Gemini Client
 const apiKey = process.env.GEMINI_API_KEY;
@@ -153,7 +260,7 @@ app.post("/api/advisor", async (req: Request, res: Response) => {
 });
 
 // B2B quote inquiries
-app.post("/api/quote", (req: Request, res: Response) => {
+app.post("/api/quote", async (req: Request, res: Response) => {
   const { customerName, companyName, email, phone, selectedProduct, industry, message } = req.body;
   if (!customerName || !companyName || !email || !phone) {
     return res.status(400).json({ error: "Required fields are missing." });
@@ -161,6 +268,21 @@ app.post("/api/quote", (req: Request, res: Response) => {
 
   const inquiryRef = `JT-${Math.floor(100000 + Math.random() * 900000)}`;
   recordInquiry("quote", { customerName, companyName, email, phone, selectedProduct, industry, message }, inquiryRef);
+
+  await emailInquiry({
+    subject: "New quote request",
+    ref: inquiryRef,
+    replyTo: email,
+    rows: [
+      ["Contact Name", customerName],
+      ["Company", companyName],
+      ["Email", email],
+      ["Phone", phone],
+      ["Product", productLabel(selectedProduct)],
+      ["Industry", industry],
+      ["Message", message],
+    ],
+  });
 
   return res.json({
     success: true,
@@ -170,7 +292,7 @@ app.post("/api/quote", (req: Request, res: Response) => {
 });
 
 // Contact Us enquiries
-app.post("/api/contact", (req: Request, res: Response) => {
+app.post("/api/contact", async (req: Request, res: Response) => {
   const name = String(req.body?.name ?? "").trim();
   const company = String(req.body?.company ?? "").trim();
   const phone = String(req.body?.phone ?? "").trim();
@@ -196,6 +318,20 @@ app.post("/api/contact", (req: Request, res: Response) => {
 
   const ticketRef = `JET-TKT-${Math.floor(100000 + Math.random() * 900000)}`;
   const stored = recordInquiry("contact", { name, company, phone, email, location, message }, ticketRef);
+
+  await emailInquiry({
+    subject: "New contact enquiry",
+    ref: ticketRef,
+    replyTo: email,
+    rows: [
+      ["Name", name],
+      ["Company", company],
+      ["Phone", phone],
+      ["Email", email],
+      ["Preferred Hub", location],
+      ["Message", message],
+    ],
+  });
 
   return res.json({
     success: true,

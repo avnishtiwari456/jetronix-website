@@ -51,7 +51,44 @@ and add the environment variable `NODE_ENV=production`.
 First build takes roughly 3–5 minutes. The live URL looks like
 `https://jetronix-website.onrender.com`.
 
-## 3. Optional — enable the AI Advisor
+## 3. Enable email notifications
+
+Contact and quote submissions are emailed to **support@jetronixindia.com**. Until SMTP is
+configured the site still works and still records every enquiry to
+`data/inquiries.jsonl` — it just does not send mail, and logs a warning on startup.
+
+Set these in the Render dashboard (**Environment** tab), or in `.env` on your own server:
+
+| Variable    | Value                                                          |
+| ----------- | -------------------------------------------------------------- |
+| `SMTP_HOST` | Your provider's outgoing server, e.g. `smtp.zoho.in`             |
+| `SMTP_PORT` | `587` for STARTTLS (usual), `465` for SSL                        |
+| `SMTP_USER` | The full mailbox address, e.g. `support@jetronixindia.com`       |
+| `SMTP_PASS` | The mailbox password, or an app-specific password                |
+| `MAIL_TO`   | Optional. Defaults to `support@jetronixindia.com`                |
+| `MAIL_FROM` | Optional. Defaults to `"Jetronix Website" <SMTP_USER>`           |
+
+Where to get the values:
+
+- **Google Workspace** — `smtp.gmail.com`, port `587`. You must create an
+  [App Password](https://myaccount.google.com/apppasswords); the normal account password
+  will be rejected.
+- **Zoho Mail** — `smtp.zoho.in`, port `587`. Generate an app password if 2FA is on.
+- **Your domain's own hosting (cPanel/Hostinger/GoDaddy)** — the mail settings page lists
+  the outgoing server name; the password is the mailbox password.
+
+Most providers refuse to send when `MAIL_FROM` is not the authenticated mailbox, so leave
+`MAIL_FROM` unset unless you know the provider allows it.
+
+**If sending fails with a certificate error**, some budget hosts serve an expired or
+mismatched certificate on their mail server. As a last resort set
+`SMTP_TLS_REJECT_UNAUTHORIZED=false`. This stops the server verifying the mail host's
+identity, so prefer fixing the certificate or switching provider.
+
+Each email arrives with the customer's address in **Reply-To**, so replying from the
+inbox goes straight back to them.
+
+## 4. Optional — enable the AI Advisor
 
 Without a key the site works fully except the Advisor page, which returns a 503.
 
