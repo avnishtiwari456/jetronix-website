@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import Logo from "./Logo";
 import { 
   Menu, X, Phone, Layers, Calculator, ShieldCheck, MessageSquare, 
@@ -36,20 +36,24 @@ interface SubCategoryItem {
 
 const CATEGORY_ICONS: Record<ProductCategory, string> = {
   cij: "Cpu",
+  "other-inkjet": "Settings",
   tij: "Zap",
   handheld: "Sliders",
-  tto: "Printer",
   laser: "Sparkles",
-  sealing: "Factory"
+  tto: "Printer",
+  conveyor: "Factory",
+  winder: "RefreshCw"
 };
 
 const CATEGORY_BADGES: Record<ProductCategory, string> = {
   cij: "CIJ",
+  "other-inkjet": "JT",
   tij: "TIJ",
   handheld: "HANDHELD",
-  tto: "TTO",
   laser: "LASER",
-  sealing: "SEALER"
+  tto: "TTO",
+  conveyor: "CONVEYOR",
+  winder: "WINDER"
 };
 
 // Derived from the catalogue so every menu entry links to a product that actually exists.
@@ -64,7 +68,7 @@ const productCategoriesDerived: SubCategoryItem[] = catalogueCategories.map((cat
       id: p.id,
       name: p.name,
       desc: p.tagline,
-      badge: p.distributedBrand ? p.distributedBrand.toUpperCase() : CATEGORY_BADGES[cat.id]
+      badge: CATEGORY_BADGES[cat.id]
     }))
 }));
 
@@ -175,7 +179,6 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
 
             {/* Ticker Animation */}
             <div className="h-5 flex items-center relative overflow-hidden min-w-[200px] md:min-w-[320px]">
-              <AnimatePresence mode="wait">
                 <motion.span
                   key={tickerIndex}
                   initial={{ opacity: 0, y: 8 }}
@@ -186,7 +189,6 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
                 >
                   {tickerMessages[tickerIndex]}
                 </motion.span>
-              </AnimatePresence>
             </div>
           </div>
 
@@ -262,7 +264,6 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === "products" ? "rotate-180 text-[#2564AF]" : ""}`} />
                 </button>
                 
-                <AnimatePresence>
                   {activeDropdown === "products" && (
                     <motion.div 
                       initial={{ opacity: 0, y: 12, scale: 0.98 }}
@@ -394,7 +395,6 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
                       </div>
                     </motion.div>
                   )}
-                </AnimatePresence>
               </div>
 
               {/* Samples */}
@@ -431,7 +431,6 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === "tools" ? "rotate-180 text-[#2564AF]" : ""}`} />
                 </button>
                 
-                <AnimatePresence>
                   {activeDropdown === "tools" && (
                     <motion.div 
                       initial={{ opacity: 0, y: 12, scale: 0.98 }}
@@ -460,7 +459,6 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
                       })}
                     </motion.div>
                   )}
-                </AnimatePresence>
               </div>
 
               {/* Contact Us */}
@@ -516,7 +514,6 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
         </div>
 
         {/* Mobile Navigation Drawer */}
-        <AnimatePresence>
           {isOpen && (
             <motion.div 
               initial={{ opacity: 0, height: 0 }}
@@ -563,7 +560,6 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
               </div>
             </motion.div>
           )}
-        </AnimatePresence>
       </header>
     </div>
   );

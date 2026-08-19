@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { 
   ChevronLeft, ChevronRight, Play, Cpu, Sparkles, Check, 
   Zap, Settings, HelpCircle, Layers, RefreshCw, Barcode, Flame
@@ -14,7 +14,7 @@ const slideBackgrounds = [
   "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80",
   "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1920&q=80",
   "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1581093196867-9f6c5e57a216?auto=format&fit=crop&w=1920&q=80",
+  "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80",
   "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1920&q=80"
 ];
 
@@ -107,7 +107,6 @@ export default function Hero({ onExploreProducts, onOpenCalculator }: HeroProps)
     >
       {/* Dynamic Full-Bleed Slide Background Image */}
       <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
-        <AnimatePresence mode="wait">
           <motion.div
             key={activeSlide}
             initial={{ opacity: 0, scale: 1.08 }}
@@ -117,7 +116,6 @@ export default function Hero({ onExploreProducts, onOpenCalculator }: HeroProps)
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${slideBackgrounds[activeSlide]})` }}
           />
-        </AnimatePresence>
 
         {/* High-Legibility Dark Scrim Overlay (Ensures text stands out while full background image stays vivid) */}
         <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/75 to-slate-950/40 z-10" />
@@ -172,7 +170,6 @@ export default function Hero({ onExploreProducts, onOpenCalculator }: HeroProps)
 
             {/* Dynamic Title and Description */}
             <div className="space-y-3">
-              <AnimatePresence mode="wait">
                 <motion.div
                   key={activeSlide}
                   initial={{ opacity: 0, y: 15 }}
@@ -195,7 +192,6 @@ export default function Hero({ onExploreProducts, onOpenCalculator }: HeroProps)
                     {currentSlideInfo.desc}
                   </p>
                 </motion.div>
-              </AnimatePresence>
             </div>
 
             {/* Feature Spec Highlights */}
@@ -239,7 +235,6 @@ export default function Hero({ onExploreProducts, onOpenCalculator }: HeroProps)
           <div className="lg:col-span-5 flex justify-center items-center">
             
             <div className="w-full max-w-[420px] aspect-[4/3.2] rounded-2xl relative overflow-hidden bg-slate-900/65 border border-white/20 p-5 shadow-2xl flex flex-col justify-between backdrop-blur-md">
-              <AnimatePresence mode="wait">
                 
                 {/* 1. Continuous Inkjet (CIJ) Interactive Mockup */}
                 {activeSlide === 0 && (
@@ -611,7 +606,6 @@ export default function Hero({ onExploreProducts, onOpenCalculator }: HeroProps)
                   </motion.div>
                 )}
 
-              </AnimatePresence>
             </div>
 
           </div>

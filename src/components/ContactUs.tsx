@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import {
   Phone, Mail, MapPin, MessageSquare, Send, Loader2,
   Building2, Check, AlertTriangle
@@ -107,7 +107,6 @@ export default function ContactUs() {
           
           {/* LEFT SIDE: Clean Contact Form (7 Cols) */}
           <div className="lg:col-span-7 bg-white rounded-3xl border border-slate-200/90 p-6 md:p-8 shadow-xl shadow-slate-200/50">
-            <AnimatePresence mode="wait">
               {submitted ? (
                 <motion.div
                   key="success"
@@ -265,7 +264,6 @@ export default function ContactUs() {
                   </button>
                 </form>
               )}
-            </AnimatePresence>
           </div>
 
           {/* RIGHT SIDE: Firm Addresses & Direct Contacts (5 Cols) */}

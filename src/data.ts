@@ -1,405 +1,589 @@
-import { Product, FirmDetails, CategoryMeta } from "./types";
+import { Product, FirmDetails, CategoryMeta, ProductCategory, SpecRow } from "./types";
 
 export const categories: CategoryMeta[] = [
-  {
-    id: "cij",
-    label: "Continuous Inkjet Printers (CIJ)",
-    shortLabel: "CIJ Printers",
-    description:
-      "Non-contact continuous inkjet coders for high-speed primary packaging — text, batch codes, dates and barcodes on plastic, metal, glass, paper and film."
-  },
-  {
-    id: "tij",
-    label: "Thermal Inkjet Printers (TIJ)",
-    shortLabel: "TIJ Printers",
-    description:
-      "HP TIJ 2.5 cartridge coders at up to 600 DPI. Maintenance-free — the print head is replaced with every cartridge, so there is nothing to clean or flush."
-  },
-  {
-    id: "handheld",
-    label: "Handheld Printers",
-    shortLabel: "Handheld",
-    description:
-      "Battery-powered portable coders for MRP, date and batch marking on cartons, sacks and irregular items away from the production line."
-  },
-  {
-    id: "tto",
-    label: "Thermal Transfer Overprinters (TTO)",
-    shortLabel: "TTO",
-    description:
-      "Ribbon-based overprinters for flexible film, laminates, labels and gloss card on flow-wrap and VFFS machines. Supplied and serviced by Jetronix."
-  },
-  {
-    id: "laser",
-    label: "CO2 Laser Coding Machines",
-    shortLabel: "Laser Coding",
-    description:
-      "Inkless permanent marking with zero consumables. Ideal for traceability, anti-counterfeiting and anti-channelisation on film, plastic, glass and leather."
-  },
-  {
-    id: "sealing",
-    label: "Carton Sealing Machines",
-    shortLabel: "Carton Sealing",
-    description:
-      "End-of-line carton sealers that tape cartons top and bottom in a single pass, ready to integrate with your coding line."
-  }
+  { id: "cij", label: "Jetronix Industrial Inkjet", shortLabel: "CIJ Printers",
+    description: "Continuous non-contact inkjet printers for high-speed production lines." },
+  { id: "other-inkjet", label: "Other Industrial Inkjet", shortLabel: "JT Series",
+    description: "Substrate-specialty coders, from embedded units to four-head carton coders." },
+  { id: "tij", label: "Thermal Inkjet Printers", shortLabel: "Thermal Inkjet",
+    description: "Cartridge-based online TIJ coders with capacitive touch panels." },
+  { id: "handheld", label: "Batch Coding Machines", shortLabel: "Handheld",
+    description: "Portable battery-powered coders for date, MRP and batch marking." },
+  { id: "laser", label: "Laser Marking Machines", shortLabel: "Laser Marking",
+    description: "Permanent inkless marking with zero consumables." },
+  { id: "tto", label: "TTO Printers", shortLabel: "TTO",
+    description: "Thermal transfer overprinters and ribbons for flexible packaging." },
+  { id: "conveyor", label: "Conveyor Systems", shortLabel: "Conveyors",
+    description: "Belt and roller conveyors built to hold registration under the printhead." },
+  { id: "winder", label: "Winder Rewinding Machines", shortLabel: "Winders",
+    description: "Tension-controlled rewinders for label, foil and film rolls." }
 ];
 
-// Shared marketing points that the source brochure lists identically for both CIJ models.
-const CIJ_KEY_FEATURES = [
-  "High-Speed Printing: Prints crisp codes on fast-moving products without slowing your line.",
-  "Non-Contact Technology: Marks flat, curved or uneven surfaces safely.",
-  "Multi-Line Capability: Prints up to five lines of text, logos and barcodes.",
-  "Versatile Substrates: Works on plastic, metal, glass, paper and film.",
-  "Low Maintenance: Built for heavy-duty uptime with smart auto-cleaning features."
-];
+type Row = [string, string];
 
-const TIJ_KEY_FEATURES = [
-  "High-Resolution Output: Up to 600 DPI for machine-readable barcodes and clear text.",
-  "Maintenance-Free Design: The print head is replaced with every cartridge swap — no cleanups.",
-  "Smart Touchscreen Interface: Message creation, editing and job selection on an intuitive display.",
-  "Versatile Substrates: Prints on cartons, plastics, metals, glass and foils.",
-  "Plug And Play: Mounts straight onto an existing conveyor with no compressed air required."
-];
-
-const TIJ_SPECS = [
-  { label: "Print Technology", value: "HP TIJ 2.5" },
-  { label: "Print Resolution", value: "Up to 600 x 600 DPI" },
-  { label: "Print Speed", value: "Up to 120 metres per minute" },
-  { label: "Ink Types", value: "Water-based, solvent and UV-curable options" },
-  { label: "Interfaces", value: "Touchscreen, USB, RS485 / Ethernet" }
-];
-
-/** Builds one entry of the JT print-head family — they differ only in head count and height. */
-function tijModel(
-  id: string,
-  name: string,
-  heads: string,
-  height: string,
-  description: string
+/** Specs are reproduced exactly as published on the manufacturer's datasheet. */
+function make(
+  id: string, name: string, category: ProductCategory, type: string,
+  tagline: string, image: string | undefined, rows: Row[]
 ): Product {
-  return {
-    id,
-    name,
-    tagline: `${heads} — ${height} print height.`,
-    type: "Thermal Inkjet Printer (TIJ)",
-    category: "tij",
-    description,
-    imagePlaceholder: name,
-    image: "tij-inline",
-    gallery: ["tij-kit"],
-    keyHighlights: [
-      `${heads} configuration`,
-      `Print height up to ${height}`,
-      "Up to 600 x 600 DPI resolution",
-      "Print speed up to 120 m/min",
-      "Cartridge system — no cleaning, no flushing"
-    ],
-    features: TIJ_KEY_FEATURES,
-    specs: [
-      { label: "Print Heads", value: heads },
-      { label: "Print Height", value: height },
-      ...TIJ_SPECS
-    ]
-  };
+  const specs: SpecRow[] = rows.map(([label, value]) => ({ label, value }));
+  return { id, name, category, type, tagline, image, specs };
 }
 
 export const products: Product[] = [
-  /* ─────────────────────────  CONTINUOUS INKJET (CIJ)  ───────────────────────── */
-  {
-    id: "s200",
-    name: "Jetronix S200",
-    tagline: "High-speed continuous inkjet for everyday production lines.",
-    type: "Continuous Inkjet Printer (CIJ)",
-    category: "cij",
-    description:
-      "A high-speed Continuous Inkjet printer built for non-contact industrial coding and marking. It prints clear text, batch codes, dates and barcodes on fast production lines across plastic, metal and glass.",
-    imagePlaceholder: "S200",
-    image: "si220",
-    keyHighlights: [
-      "Prints up to five lines of text, logos and barcodes",
-      "Non-contact marking on flat, curved or uneven surfaces",
-      "Works on plastic, metal, glass, paper and film",
-      "Smart auto-cleaning for heavy-duty uptime",
-      "Stainless steel cabinet with RFID fluid identification"
-    ],
-    features: CIJ_KEY_FEATURES,
-    specs: [
-      { label: "Technology", value: "Continuous Inkjet (CIJ)" },
-      { label: "Lines of Print", value: "Up to 5 lines" },
-      { label: "Print Content", value: "Text, batch codes, dates, logos, barcodes" },
-      { label: "Substrates", value: "Plastic, metal, glass, paper, film" },
-      { label: "Marking", value: "Non-contact — safe on curved and uneven surfaces" },
-      { label: "Maintenance", value: "Smart auto-cleaning" }
-    ]
-  },
-  {
-    id: "jx350",
-    name: "Jetronix JX350",
-    tagline: "Five lines at over 10 metres per second.",
-    type: "Continuous Inkjet Printer (CIJ)",
-    category: "cij",
-    description:
-      "The high-output CIJ in the range. A 36 micron nozzle and 5-to-31 drop font matrix hold code quality on conveyors running past 10 metres per second, making it the choice for beverage, dairy and extrusion lines.",
-    imagePlaceholder: "JX350",
-    image: "jx350",
-    keyHighlights: [
-      "5 lines of text, bar codes, logos and serial numbers",
-      "Character height 1.5 to 12 mm",
-      "Font height 5 to 31 drops",
-      "36 micron nozzle",
-      "Runs on lines past 10 metres per second"
-    ],
-    features: CIJ_KEY_FEATURES,
-    specs: [
-      { label: "Technology", value: "Continuous Inkjet (CIJ)" },
-      { label: "Lines of Print", value: "5 lines of text, bar codes, logos and serial numbers" },
-      { label: "Character Height", value: "1.5 to 12 mm" },
-      { label: "Font Height", value: "5 to 31 drops" },
-      { label: "Nozzle Size", value: "36 micron" },
-      { label: "Line Speed", value: "Past 10 metres per second" },
-      { label: "Marking", value: "Non-contact — safe on delicate, curved or uneven surfaces" },
-      { label: "Substrates", value: "Plastic, metal, glass, paper, film" }
-    ]
-  },
+  make("jx5200", "Jetronix Inkjet Printer 5200", "cij", "Continuous Inkjet Printer (CIJ)",
+    "Provides efficient, high-resolution coding solutions for modern industrial packaging needs.",
+    "si220", [
+    ["Lines of Print", "1 to 2"],
+    ["Character Height *", "3 - 12mm"],
+    ["Font Height", "5 to 16 dots"],
+    ["Drop Size", "Macro (75µ)"],
+    ["ciPrecisionPlus", "Yes"],
+    ["Line Speed **", "Up to 6.9m/sec"],
+    ["SD, USB, RS232 and Ethernet", "Yes"],
+    ["Input (photocell / encoder / message select)", "1 / 1 / 0"],
+    ["Outputs (programmable alarms / relay)", "3 / 1"],
+    ["SmartFlush", "Yes"],
+    ["Cabinet", "Powder Coated Steel"],
+    ["IP Rating", "IP55"],
+    ["Weight including printhead", "18.0 kg"]
+  ]),
 
-  /* ─────────────────────────  THERMAL INKJET (JT SERIES)  ───────────────────────── */
-  tijModel(
-    "jt120",
-    "Jetronix JT120",
-    "Single head",
-    "12.7 mm",
-    "The single-head entry point to the JT series. One HP TIJ 2.5 cartridge covers a 12.7 mm coding band at up to 600 DPI — enough for date, batch and a 2D code on most primary packs."
-  ),
-  tijModel(
-    "jt240",
-    "Jetronix JT240",
-    "Double head",
-    "25 mm",
-    "Two stacked print heads double the coding band to 25 mm, for larger declaration blocks on cartons, pouches and sacks without dropping resolution."
-  ),
-  tijModel(
-    "jt360",
-    "Jetronix JT360",
-    "Three head",
-    "36 mm",
-    "Three heads give a 36 mm band — the practical middle of the range for shipper cases that carry both a barcode block and human-readable text."
-  ),
-  tijModel(
-    "jt480",
-    "Jetronix JT480",
-    "Four head",
-    "48 mm",
-    "A 48 mm coding band across four heads, sized for outer cartons and bulk sacks where the code has to be readable from a distance on the warehouse floor."
-  ),
-  tijModel(
-    "jt600",
-    "Jetronix JT600",
-    "Five head",
-    "60 mm",
-    "Five heads printing a 60 mm band, replacing pre-printed labels on large shippers with printed-on-demand address, batch and barcode blocks."
-  ),
-  tijModel(
-    "jt720",
-    "Jetronix JT720",
-    "Six head",
-    "72 mm",
-    "The largest configuration in the JT series: six heads covering a 72 mm band for full-panel carton graphics, at the same 600 DPI as the single-head unit."
-  ),
+  make("jx5150", "Jetronix Inkjet Printer 5150", "cij", "Continuous Inkjet Printer (CIJ)",
+    "Provides efficient, reliable coding performance to meet high-speed production demands with precision.",
+    "si220", [
+    ["Lines of Print", "1 to 3"],
+    ["Character Height (a)", "3 - 12mm"],
+    ["Font Height", "5 to 25 dots"],
+    ["Nozzle Size / Drop Size", "75 um / Macrodrop only"],
+    ["Display", "10.1 inch Capacitive touch screen"],
+    ["ciPrecisionPlus", "Yes"],
+    ["Line Speed (b)", "Up to 6.9m/sec"],
+    ["Cabinet Material", "Powder coated steel"],
+    ["Weight Including Printhead", "18 kg"],
+    ["Cabinet Connections", "Photocell (1), Mains connector (1)"],
+    ["PCB Connections", "Photocell (1), Encoder (1), Programmable alarms (3), USB (1), SD card"],
+    ["IP Rating", "IP 55"],
+    ["Conduit Length", "2.7 meter"],
+    ["Smart Flush", "Yes"],
+    ["Inks", "MEK black and Special black"],
+    ["Filter Type / Filter Expiry", "Capsule / Up to 4000 hours or 12 months depending on environment"]
+  ]),
 
-  /* ─────────────────────────  HANDHELD  ───────────────────────── */
-  {
-    id: "jh120",
-    name: "Jetronix JH120",
-    tagline: "Portable coding with a 12.7 mm print height.",
-    type: "Handheld Inkjet Printer",
-    category: "handheld",
-    description:
-      "A handheld coder that prints crisp text, barcodes, QR codes, MRP and dates on cartons, metal, glass and plastic. Fast-drying ink and a touchscreen make it practical for coding wherever stock is stacked, with no conveyor required.",
-    imagePlaceholder: "JH120",
-    image: "handheld-front",
-    gallery: ["handheld-side"],
-    keyHighlights: [
-      "12.7 mm print height",
-      "Sharp printing up to 600 DPI",
-      "Prints on wood, plastic, metal and carton — porous and non-porous",
-      "Encodes dates, batch numbers, serial numbers, logos and barcodes",
-      "Rechargeable battery for true mobility"
-    ],
-    features: [
-      "High-Resolution Output: Sharp printing up to 600 DPI for flawless readability.",
-      "Multi-Surface Use: Prints smoothly on porous and non-porous materials.",
-      "Smart Coding: Encodes dates, batch numbers, serial numbers, logos and barcodes.",
-      "Portable And Lightweight: Ergonomic design with a long-lasting rechargeable battery.",
-      "Smudge-Free Results: Quick-drying solvent and water-based ink options."
-    ],
-    specs: [
-      { label: "Print Height", value: "12.7 mm" },
-      { label: "Print Resolution", value: "Up to 600 DPI" },
-      { label: "Display", value: "Smart touch screen interface" },
-      { label: "Ink Support", value: "Fast-drying cartridge system" },
-      { label: "Connectivity", value: "USB port for logo and data imports" },
-      { label: "Print Content", value: "Text, barcodes, QR codes, MRP, dates" },
-      { label: "Substrates", value: "Cartons, metal, glass, plastic, wood" }
-    ]
-  },
-  {
-    id: "jh250",
-    name: "Jetronix JH250",
-    tagline: "Portable coding with a 25 mm print height.",
-    type: "Handheld Inkjet Printer",
-    category: "handheld",
-    description:
-      "The wide-band handheld. A 25 mm print height carries larger MRP and date declarations on shippers and sacks, while keeping the same 600 DPI output and battery-powered mobility as the JH120.",
-    imagePlaceholder: "JH250",
-    image: "handheld-side",
-    gallery: ["handheld-front"],
-    keyHighlights: [
-      "25 mm print height — double the JH120 band",
-      "Sharp printing up to 600 DPI",
-      "Prints on wood, plastic, metal and carton — porous and non-porous",
-      "Encodes dates, batch numbers, serial numbers, logos and barcodes",
-      "Rechargeable battery for true mobility"
-    ],
-    features: [
-      "High-Resolution Output: Sharp printing up to 600 DPI for flawless readability.",
-      "Multi-Surface Use: Prints smoothly on porous and non-porous materials.",
-      "Smart Coding: Encodes dates, batch numbers, serial numbers, logos and barcodes.",
-      "Portable And Lightweight: Ergonomic design with a long-lasting rechargeable battery.",
-      "Smudge-Free Results: Quick-drying solvent and water-based ink options."
-    ],
-    specs: [
-      { label: "Print Height", value: "25.4 mm" },
-      { label: "Print Resolution", value: "Up to 600 DPI" },
-      { label: "Display", value: "Smart touch screen interface" },
-      { label: "Ink Support", value: "Fast-drying cartridge system" },
-      { label: "Connectivity", value: "USB port for logo and data imports" },
-      { label: "Print Content", value: "Text, barcodes, QR codes, MRP, dates" },
-      { label: "Substrates", value: "Cartons, metal, glass, plastic, wood" }
-    ]
-  },
+  make("jx5500", "Jetronix Inkjet Printer 5500", "cij", "Continuous Inkjet Printer (CIJ)",
+    "Delivers rapid, high-resolution coding for all your industrial packaging needs, ensuring consistent quality and traceability.",
+    "jx350", [
+    ["Lines of Print", "1 to 5"],
+    ["Character Height *", "1.5 - 12mm"],
+    ["Font Height", "5 to 31 dots"],
+    ["Drop Size", "Normal (60µ) Macro (75µ)"],
+    ["PixelPlus", "Yes"],
+    ["ciPrecisionPlus", "Yes"],
+    ["Line Speed **", "Up to 9.8m/sec"],
+    ["ciLink", "Yes"],
+    ["SD, USB, RS232 and Ethernet", "Yes"],
+    ["Input (photocell / encoder / message select)", "2 / 1 / 8"],
+    ["Outputs (programmable alarms / relay)", "3 / 1"],
+    ["SmartFlush", "Yes"],
+    ["Cabinet", "Stainless Steel"],
+    ["IP Rating", "IP55"],
+    ["Weight including printhead", "18.0 kg"]
+  ]),
 
-  /* ─────────────────────────  TTO (LINX, DISTRIBUTED)  ───────────────────────── */
-  ...(
-    [
-      ["tt550", "Linx TT 550", "32 mm print area, compact cassette"],
-      ["tt750", "Linx TT 750", "53 mm print area, the volume workhorse"],
-      ["tt1000", "Linx TT 1000", "107 mm print area for full-width film"]
-    ] as const
-  ).map(([id, name, tagline]): Product => ({
-    id,
-    name,
-    tagline,
-    type: "Thermal Transfer Overprinter (TTO)",
-    category: "tto",
-    distributedBrand: "Linx",
-    description:
-      "Thermal Transfer Overprinters for flexible packaging — film, plastics, labels, gloss card and other flexible materials. They deliver consistent, error-free best-before dates, batch codes, barcodes, ingredients and logos. Supplied, installed and serviced in India by Jetronix.",
-    imagePlaceholder: name,
-    image: "tto-linx",
-    keyHighlights: [
-      "Operates without compressed air — lower installation and running costs",
-      "Large ribbon range to match the application and line",
-      "Bi-directional stepper motors deliver more prints per ribbon",
-      "Push-button ribbon cassette for quick changes",
-      "Colour touch screen for hassle-free operation"
-    ],
-    features: [
-      "No Compressed Air: Cuts installation and operating cost while holding print quality.",
-      "Optimised Ribbon Usage: Bi-directional stepper motors get more prints from every ribbon.",
-      "Fast Ribbon Changes: Lightweight push-button cassette system minimises errors.",
-      "User Maintainable: A sensible number of parts that are easy to replace on site.",
-      "Electronic Pressure Control: Print quality is easy to set and easy to keep."
-    ],
-    specs: [
-      { label: "Manufacturer", value: "Linx (distributed by Jetronix in India)" },
-      { label: "Technology", value: "Thermal transfer overprinting" },
-      { label: "Compressed Air", value: "Not required" },
-      { label: "Ribbon System", value: "Push-button cassette, bi-directional drive" },
-      { label: "Print Control", value: "Electronic pressure control" },
-      { label: "Interface", value: "Colour touch screen" },
-      { label: "Substrates", value: "Film packaging, plastics, labels, gloss card" }
-    ]
-  })),
+  make("jx5500pro", "Jetronix Industrial Inkjet Printer 5500 Pro", "cij", "Continuous Inkjet Printer (CIJ)",
+    "Combines advanced technology with robust performance for precise, high-speed batch coding.",
+    "jx350", [
+    ["Lines of Print", "1 to 5"],
+    ["Character Height *", "1.5 - 12mm"],
+    ["Font Height", "5 to 31 dots"],
+    ["Drop Size", "Normal (60µ) Macro (75µ)"],
+    ["PixelPlus", "Yes"],
+    ["ciPrecisionPlus", "Yes"],
+    ["Line Speed **", "Up to 9.8m/sec"],
+    ["ciLink", "Yes"],
+    ["SD, USB, RS232 and Ethernet", "Yes"],
+    ["Input (photocell / encoder / message select)", "2 / 1 / 8"],
+    ["Outputs (programmable alarms / relay)", "3 / 1"],
+    ["SmartFlush", "Yes"],
+    ["Cabinet", "Stainless Steel"],
+    ["IP Rating", "IP65"],
+    ["Weight including printhead", "18.73 kg"]
+  ]),
 
-  /* ─────────────────────────  CO2 LASER  ───────────────────────── */
-  {
-    id: "jlc30-60",
-    name: "Jetronix JLC30 / JLC60",
-    tagline: "Permanent, consumable-free coding at 1500 characters per second.",
-    type: "CO2 Laser Coding Machine",
-    category: "laser",
-    description:
-      "A CO2 laser coder built around a new intelligent vector control algorithm, with the source, controller and screen in one compact structure that mounts on a conveyor line or a punch packing machine. Marks are permanent and high contrast, supporting product tracking, anti-counterfeiting and anti-channelisation.",
-    imagePlaceholder: "JLC30/60",
-    image: "laser-co2",
-    gallery: ["laser-inline"],
-    keyHighlights: [
-      "Available in 30 W and 60 W",
-      "Up to 1500 characters per second",
-      "MTBF over 50,000 hours — 24 hour continuous operation",
-      "Non-consumable, permanent identification",
-      "All-in-one compact structure for easy line integration"
-    ],
-    features: [
-      "Patented Technologies: New intelligent vector control algorithm lifts marking speed.",
-      "Low Power Consumption: High frequency output without the power draw.",
-      "Built For Uptime: 24 hour continuous operation, MTBF beyond 50,000 hours.",
-      "Interference Resistant: Anti-electromagnetic interference design for factory floors.",
-      "One-Button Startup: Jumps straight to running mode and reduces daily misoperation."
-    ],
-    specs: [
-      { label: "Model", value: "JLC30 (30 W) / JLC60 (60 W)" },
-      { label: "Technology", value: "CO2 laser, intelligent vector control algorithm" },
-      { label: "Marking Speed", value: "Up to 1500 characters/second" },
-      { label: "Working Life", value: "MTBF more than 50,000 hours" },
-      { label: "Operation", value: "24 hours continuous" },
-      { label: "Consumables", value: "None — permanent identification" },
-      { label: "Substrates", value: "Film, plastic, glass, leather and other materials" },
-      { label: "Installation", value: "Conveyor line or punch packing machine" },
-      { label: "Startup", value: "One-button, auto-jump to running mode" }
-    ]
-  },
+  make("jx-auto-5500", "Jetronix Automatic Batch Coding Machine 5500", "cij", "Automatic Batch Coding Machine",
+    "It streamlines production with automated, consistent coding for optimal traceability.",
+    "jx350", [
+    ["Print Resolution", "Up to 600 dpi"],
+    ["Batch Coding Speed", "Up to 30 m/min"],
+    ["Integration", "Seamless integration with automated production lines"],
+    ["Connectivity", "USB, Ethernet, and serial port options"],
+    ["Control Interface", "Touch screen display with user-friendly controls"],
+    ["Software", "Compatible with industry-standard batch coding software"],
+    ["Operating Temperature", "10°C-40°C"],
+    ["Assumed usage (hours/year)", "3,000 to 8,500"],
+    ["Lines of Print", "1 - 5 lines"],
+    ["Character Height", "1.5mm to 12mm"],
+    ["Font height", "5 to 31 dots"],
+    ["Line speed at 5 drop and 50 dpi", "Up to 11 m/s"],
+    ["Inputs (photocell / shaft encoder / programmable)", "2 / 1 / 8"],
+    ["Cabinet", "Stainless Steel"],
+    ["IP Rating", "IP55"],
+    ["Weight (including printhead)", "18 KG"],
+    ["Warranty", "12 months manufacturer's warranty as standard (local conditions may vary)."]
+  ]),
 
-  /* ─────────────────────────  CARTON SEALING  ───────────────────────── */
-  {
-    id: "fxj6050",
-    name: "Jetronix FXJ 6050",
-    tagline: "Semi-automatic carton sealer, top and bottom drive.",
-    type: "Carton Sealing Machine",
-    category: "sealing",
-    description:
-      "A semi-automatic carton sealing machine with top and bottom belt drive for industrial packaging lines. Height and width adjust for quick size changeovers, and it runs either standalone or integrated into an existing line alongside your coder.",
-    imagePlaceholder: "FXJ 6050",
-    keyHighlights: [
-      "Seals 25–45 cartons per minute at around 20 m/min",
-      "Top and bottom belts driven for straight, consistent sealing",
-      "Handles cartons from 180 × 130 mm up to 500 × 600 mm",
-      "Adjustable table height, 630–780 mm",
-      "Runs standalone or integrated into an existing production line"
-    ],
-    features: [
-      "Wide Application: Household appliances, foodstuffs, medicine and general merchandise.",
-      "Fast Changeovers: Adjustable height and width settings for different carton sizes.",
-      "Flexible Deployment: Works standalone or inline with your coding equipment.",
-      "Tape Options: Runs 48, 60 or 76 mm BOPP, PVC and water-free adhesive tape."
-    ],
-    specs: [
-      { label: "Automation Grade", value: "Semi-automatic" },
-      { label: "Drive Type", value: "Top and bottom belts driven" },
-      { label: "Power Supply", value: "AC 220V/50Hz or 110V/60Hz (varies by region)" },
-      { label: "Power", value: "180 W to 200 W" },
-      { label: "Sealing Speed", value: "Approx. 20 m/min (25–45 cartons/min)" },
-      { label: "Max. Carton Size (W × H)", value: "500 mm × 600 mm" },
-      { label: "Min. Carton Size (W × H)", value: "180 mm × 130 mm" },
-      { label: "Adhesive Tape Width", value: "48 mm, 60 mm or 76 mm (optional)" },
-      { label: "Adhesive Tape Material", value: "BOPP, PVC, water-free adhesive tape" },
-      { label: "Table Height", value: "Adjustable, typically 630–780 mm" },
-      { label: "Machine Dimensions (L × W × H)", value: "Approx. 1755 × 800 × 960–1650 mm" },
-      { label: "Machine Weight", value: "Approx. 150 kg" },
-      { label: "Max. Conveyor Load", value: "30 kg" }
-    ]
-  }
+  make("jx-digital-batch", "Jetronix Digital Batch Coding Inkjet Printer", "cij", "Digital Batch Coding Inkjet Printer",
+    "Delivers digital precision and reliability, ensuring clear and compliant product marking.",
+    "si220", [
+    ["Print Resolution", "Up to 600 dpi"],
+    ["Print Speed", "~25 m/min"],
+    ["Drop Volume", "Adjustable 20-80 picoliters"],
+    ["Connectivity", "USB, Ethernet"],
+    ["Control Interface", "Digital panel with status indicators"],
+    ["Application", "Optimized for digital batch coding on various substrates"],
+    ["Operating Temperature", "10°C-40°C"],
+    ["Assumed usage (hours/year)", "3,000 to 8,500"],
+    ["Lines of Print", "1 - 5 lines"],
+    ["Character Height", "1.5mm to 12mm"],
+    ["Font height", "5 to 31 dots"],
+    ["Line speed at 5 drop and 50 dpi", "Up to 11 m/s"],
+    ["Inputs (photocell / shaft encoder / programmable)", "2 / 1 / 8"],
+    ["Cabinet", "Stainless Steel"],
+    ["IP Rating", "IP55"],
+    ["Weight (including printhead)", "18 KG"],
+    ["Warranty", "12 months manufacturer's warranty as standard (local conditions may vary)."]
+  ]),
+
+  make("jx-industrial", "Jetronix Industrial Inkjet Printer", "cij", "Industrial Inkjet Printer",
+    "Offers durable, industrial-grade performance for consistent and accurate batch coding.",
+    "si220", [
+    ["Print Resolution", "Up to 600 dpi"],
+    ["Print Speed", "25-30 m/min"],
+    ["Build", "Robust construction for continuous industrial use"],
+    ["Connectivity", "USB, Ethernet (with customization options)"],
+    ["Features", "Versatile for various inkjet and batch coding applications"]
+  ]),
+
+  make("inkjet-batch-coder", "Inkjet Batch Coding Machine", "cij", "Inkjet Batch Coding Machine",
+    "Offers fast and reliable coding performance to meet stringent quality standards.",
+    "si220", [
+    ["Print Resolution", "Up to 600 dpi"],
+    ["Print Speed", "25-30 m/min"],
+    ["Build", "Robust construction for continuous industrial use"],
+    ["Connectivity", "USB, Ethernet (with customization options)"],
+    ["Control Interface", "Touchscreen display with user-friendly controls"],
+    ["Features", "Versatile for various inkjet and batch coding applications"],
+    ["Operating Temperature", "10°C-40°C"],
+    ["Assumed usage (hours/year)", "3,000 to 8,500"],
+    ["Lines of Print", "1 - 5 lines"],
+    ["Character Height", "1.5mm to 12mm"],
+    ["Font height", "5 to 31 dots"],
+    ["Line speed at 5 drop and 50 dpi", "Up to 11 m/s"],
+    ["Inputs (photocell / shaft encoder / programmable)", "2 / 1 / 8"],
+    ["Cabinet", "Stainless Steel"],
+    ["IP Rating", "IP55"],
+    ["Weight (including printhead)", "18 KG"],
+    ["Warranty", "12 months manufacturer's warranty as standard (local conditions may vary)."]
+  ]),
+
+  make("jx-inkjet-batch", "Jetronix Inkjet Batch Coding Machine", "cij", "Inkjet Batch Coding Machine",
+    "Provides robust, efficient coding solutions for high-demand production environments.",
+    "jx350", [
+    ["Print Resolution", "Up to 600 dpi"],
+    ["Print Speed", "~30 m/min"],
+    ["Batch Coding Capacity", "Supports multiple data formats"],
+    ["Connectivity", "USB, Ethernet, serial integration"],
+    ["Control Interface", "Touchscreen display with user-friendly controls"],
+    ["Application", "Designed for high-speed batch coding in industrial settings"],
+    ["Operating Temperature", "10°C-40°C"],
+    ["Assumed usage (hours/year)", "3,000 to 8,500"],
+    ["Lines of Print", "1 - 5 lines"],
+    ["Character Height", "1.5mm to 15mm"],
+    ["Font height", "5 to 31 dots"],
+    ["Line speed at 5 drop and 50 dpi", "Up to 11 m/s"],
+    ["Inputs (photocell / shaft encoder / programmable)", "2 / 1 / 8"],
+    ["Cabinet", "Stainless Steel"],
+    ["IP Rating", "IP55"],
+    ["Weight (including printhead)", "18 KG"],
+    ["Warranty", "12 months manufacturer's warranty as standard (local conditions may vary)."]
+  ]),
+
+  make("industrial-inkjet", "Industrial Inkjet Printer", "cij", "Industrial Inkjet Printer",
+    "It is engineered for high-volume production, ensuring precise and durable coding for all packaging applications.",
+    "jx350", [
+    ["Print Resolution", "Up to 600 dpi"],
+    ["Print Speed", "25-30 m/min"],
+    ["Build", "Robust construction for continuous industrial use"],
+    ["Connectivity", "USB, Ethernet (with customization options)"],
+    ["Control Interface", "Touchscreen display with user-friendly controls"],
+    ["Features", "Versatile for various inkjet and batch coding applications"],
+    ["Operating Temperature", "10°C-40°C"],
+    ["Assumed usage (hours/year)", "3,000 to 8,500"],
+    ["Lines of Print", "1 - 5 lines"],
+    ["Character Height", "1.5mm to 12mm"],
+    ["Font height", "5 to 31 dots"],
+    ["Line speed at 5 drop and 50 dpi", "Up to 11 m/s"],
+    ["Inputs (photocell / shaft encoder / programmable)", "2 / 1 / 8"],
+    ["Cabinet", "Stainless Steel"],
+    ["IP Rating", "IP55"],
+    ["Weight (including printhead)", "18 KG"],
+    ["Warranty", "12 months manufacturer's warranty as standard (local conditions may vary)."]
+  ]),
+
+  make("jt2030", "JT2030 Jetronix TIJ Printer", "other-inkjet", "Thermal Inkjet Printer (TIJ)",
+    "Delivers rapid, high-resolution coding for all your industrial packaging needs, ensuring consistent quality and traceability.",
+    "tij-inline", [
+    ["Display", "-"],
+    ["Keyboard", "-"],
+    ["Browser Access", "*"],
+    ["Bracketry", "Bracketry included"],
+    ["Dimensions (L x W x H)", "120.6 x 86.1 x 90 mm"],
+    ["Printhead", "Integrated"],
+    ["Printhead Type", "S-Head / H-Head"],
+    ["Maximum Print Height", "1″"],
+    ["Photocell", "1x inbuilt, 1x external"],
+    ["Alarm Beacon Outputs", "3"],
+    ["Spare digital I/O", "1 input, 1 output"],
+    ["TCP/IP", "*"],
+    ["USB Ports", "2"],
+    ["RS232 / RS485 Ports", "RS485"],
+    ["Pro Upgrade Available*", "*"],
+    ["Power Supply", "100-240VAC"]
+  ]),
+
+  make("jt2050", "JT2050 Jetronix TIJ Printer", "other-inkjet", "Thermal Inkjet Printer (TIJ)",
+    "Delivers rapid, high-resolution coding for all your industrial packaging needs, ensuring consistent quality and traceability.",
+    "tij-inline", [
+    ["Display", "3.5″ LCD Display"],
+    ["Keyboard", "-"],
+    ["Browser Access", "*"],
+    ["Bracketry", "Bracketry included"],
+    ["Dimensions (L x W x H)", "120.6 x 86.1 x 90 mm"],
+    ["Printhead", "Integrated"],
+    ["Printhead Type", "S-Head / H-Head"],
+    ["Maximum Print Height", "1″"],
+    ["Photocell", "1x inbuilt, 1x external"],
+    ["Alarm Beacon Outputs", "3"],
+    ["Spare digital I/O", "1 input, 1 output"],
+    ["TCP/IP", "*"],
+    ["USB Ports", "2"],
+    ["RS232 / RS485 Ports", "RS485"],
+    ["Pro Upgrade Available*", "*"],
+    ["Power Supply", "100-240VAC"]
+  ]),
+
+  make("jt2200", "JT2200 Box Coder Inkjet Printer", "other-inkjet", "Box Coder / Thermal Inkjet Printer",
+    "Delivers rapid, high-resolution coding for all your industrial packaging needs, ensuring consistent quality and traceability.",
+    "tij-inline", [
+    ["Display", "7″ capacitive touchscreen"],
+    ["Keyboard", "-"],
+    ["Browser Access", "*"],
+    ["Bracketry", "Bracketry purchased separately"],
+    ["Dimensions (L x W x H)", "242 x 158 x 58 mm"],
+    ["Printhead", "Up to 2 printheads"],
+    ["Printhead Type", "S-, H- & T-Heads available separately"],
+    ["Maximum Print Height", "2″"],
+    ["Photocell", "1x external"],
+    ["Alarm Beacon Outputs", "3"],
+    ["Spare digital I/O", "1 input, 1 output"],
+    ["TCP/IP", "*"],
+    ["USB Ports", "2"],
+    ["RS232 / RS485 Ports", "RS232"],
+    ["Pro Upgrade Available*", "*"],
+    ["Power Supply", "100-240VAC"]
+  ]),
+
+  make("jt2400", "JT2400 Carton Coding Inkjet Printer", "other-inkjet", "Carton Coder / Thermal Inkjet Printer",
+    "Delivers rapid, high-resolution coding for all your industrial packaging needs, ensuring consistent quality and traceability.",
+    "tij-kit", [
+    ["Display", "10″ capacitive touchscreen"],
+    ["Keyboard", "-"],
+    ["Browser Access", "*"],
+    ["Bracketry", "Bracketry purchased separately"],
+    ["Dimensions (L x W x H)", "320 x 208 x 56 mm"],
+    ["Printhead", "Up to 4 printheads"],
+    ["Printhead Type", "S-, H- & T-Heads available separately"],
+    ["Maximum Print Height", "4″"],
+    ["Photocell", "1x external"],
+    ["Alarm Beacon Outputs", "3"],
+    ["Spare digital I/O", "1 input, 1 output"],
+    ["TCP/IP", "*"],
+    ["USB Ports", "2"],
+    ["RS232 / RS485 Ports", "RS232"],
+    ["Pro Upgrade Available*", "*"],
+    ["Power Supply", "100-240VAC"]
+  ]),
+
+  make("tij-7in-127", "Thermal Inkjet Printer 7 Inch Display 12.7mm", "tij", "Thermal Inkjet Printer (TIJ)",
+    "Provides a user-friendly interface and precise coding for streamlined production efficiency.",
+    "tij-kit", [
+    ["Control Panel", "7-inch display for intuitive operation"],
+    ["Coding Area Height", "12.7 mm"],
+    ["Print Resolution", "Up to 600 dpi"],
+    ["Connectivity", "USB, Ethernet"],
+    ["Application", "User-friendly interface with real-time status display"],
+    ["Number of Lines", "1-4 rows"],
+    ["Font Selection", "Simplified, traditional, numeral, chinese character, graphics (logo), barcode, QR code etc"],
+    ["Information Length", "1-200 characters"],
+    ["Ink", "Use ink cartridge"],
+    ["Printing Material", "Metal, glass, wood, carton, pouches etc"],
+    ["Speed", "40m/min"],
+    ["Maintain", "Maintenance free"],
+    ["Nozzle Size", "86*110*60mm"],
+    ["Warranty", "6 Months"]
+  ]),
+
+  make("tij-5in-127", "Online Thermal Inkjet Printer 5 Inch 12.7mm", "tij", "Online Thermal Inkjet Printer",
+    "Delivers robust, high-resolution coding performance for diverse industrial applications.",
+    "tij-inline", [
+    ["Print Width", "5 inches"],
+    ["Coding Area Height", "12.7 mm"],
+    ["Print Resolution", "Up to 600 dpi"],
+    ["Connectivity", "USB, Ethernet"],
+    ["Application", "Suitable for high-speed production with compact coding needs"],
+    ["Screen Size", "5 inch capacitive screen"],
+    ["Machine Material", "Aluminium body"],
+    ["Information Storage", "3GB free space"],
+    ["Product Nozzle", "TIJ Thermal foaming nozzle"],
+    ["Count No", "1 to 50 digits"],
+    ["Print Speed", "60m/min"],
+    ["Operating System", "Linux 3.4"],
+    ["Cartridge Capacity", "42ml"],
+    ["Warranty", "6 Months"]
+  ]),
+
+  make("tij-7in-25", "Online Thermal Inkjet Printer 7 Inch 25mm", "tij", "Online Thermal Inkjet Printer",
+    "Offers precise and consistent thermal coding solutions to meet varied production demands.",
+    "tij-kit", [
+    ["Print Width", "7 inches"],
+    ["Coding Area Height", "25 mm"],
+    ["Print Resolution", "Up to 600 dpi"],
+    ["Connectivity", "USB, Ethernet"],
+    ["Application", "Designed for larger coding areas on packaging"],
+    ["Screen Size", "7 inch capacitive screen"],
+    ["Machine Material", "Aluminium body"],
+    ["Information Storage", "3GB free space"],
+    ["Product Nozzle", "TIJ Thermal foaming nozzle"],
+    ["Count No", "1 to 50 digits"],
+    ["Print Speed", "60m/min"],
+    ["Operating System", "Linux 3.4"],
+    ["Cartridge Capacity", "42ml"],
+    ["Warranty", "6 Months"]
+  ]),
+
+  make("handy-mrp-25", "Date MRP Handy Inkjet Printer 25mm", "handheld", "Handheld Batch Coding Machine",
+    "Delivers clear, compliant date and MRP printing for seamless production operations.",
+    "handheld-front", [
+    ["Print Resolution", "Up to 600 dpi"],
+    ["Print Speed", "~20 m/min"],
+    ["Coding Area", "25 mm (optimized for date and MRP printing)"],
+    ["Application", "Tailored for packaging lines requiring date and price coding"],
+    ["Connectivity", "USB, Ethernet"],
+    ["Product Type", "Hand Printer"],
+    ["Material", "Metal Body"],
+    ["Automation Grade", "Semi-Automatic"],
+    ["Voltage", "Rechargable Battery"],
+    ["Battery Life", "More then 10 hours"],
+    ["Ink Color", "Black ink cartridge with machine"],
+    ["Screen", "4.3 inches"],
+    ["Language", "English, Chinese, Arabic"],
+    ["Print Distance", "2-5MM From nozzles to objects"],
+    ["Print Content", "Text, Time, Serial No, Logo, QR Code (Variable), Barcode, DM code"],
+    ["Warranty", "6 Months"]
+  ]),
+
+  make("handy-127", "Handy Printer - Batch Code Machine 12.7mm", "handheld", "Handheld Batch Coding Machine",
+    "Ensures fast, precise coding to support efficient batch processing and traceability.",
+    "handheld-side", [
+    ["Print Resolution", "Up to 600 dpi"],
+    ["Print Speed", "~20 m/min"],
+    ["Coding Area", "12.7 mm"],
+    ["Design", "Compact and easy to install"],
+    ["Connectivity", "USB"],
+    ["Product Type", "Hand Printer"],
+    ["Material", "Metal Body"],
+    ["Automation Grade", "Semi-Automatic"],
+    ["Voltage", "Rechargable Battery"],
+    ["Battery Life", "More then 10 hours"],
+    ["Ink Color", "Black ink cartridge with machine"],
+    ["Screen", "4.3 inches"],
+    ["Language", "English, Chinese, Arabic"],
+    ["Print Distance", "2-5MM From nozzles to objects"],
+    ["Print Content", "Text, Time, Serial No, Logo, QR Code (Variable), Barcode, DM code"],
+    ["Warranty", "6 Months"]
+  ]),
+
+  make("handy-metal-127", "Metal Body Handy Inkjet Printer 12.7mm", "handheld", "Handheld Batch Coding Machine",
+    "Provides compact, high-precision coding ideal for on-the-go batch marking.",
+    "handheld-side", [
+    ["Print Resolution", "Up to 600 dpi"],
+    ["Print Speed", "~40 m/min"],
+    ["Coding Area", "12.7 mm"],
+    ["Model", "BE250 (Metal Body)"],
+    ["Connectivity", "USB"],
+    ["Product Type", "Hand Printer"],
+    ["Material", "Metal Body"],
+    ["Automation Grade", "Semi-Automatic"],
+    ["Voltage", "Rechargable Battery"],
+    ["Battery Life", "More then 10 hours"],
+    ["Ink Color", "Black ink cartridge with machine"],
+    ["Screen", "4.3 inches"],
+    ["Language", "English, Chinese, Arabic"],
+    ["Print Distance", "2-5MM From nozzles to objects"],
+    ["Print Content", "Text, Time, Serial No, Logo, QR Code (Variable), Barcode, DM code"],
+    ["Warranty", "6 Months"]
+  ]),
+
+  make("handy-metal-25", "Metal Body Handy Inkjet Printer 25mm", "handheld", "Handheld Batch Coding Machine",
+    "Offers reliable, accurate coding solutions tailored for diverse packaging requirements.",
+    "handheld-front", [
+    ["Print Resolution", "Up to 600 dpi"],
+    ["Print Speed", "~20 m/min"],
+    ["Coding Area", "25 mm"],
+    ["Construction", "Rugged metal design for industrial use"],
+    ["Connectivity", "USB"],
+    ["Product Type", "Hand Printer"],
+    ["Material", "Metal Body"],
+    ["Automation Grade", "Semi-Automatic"],
+    ["Voltage", "Rechargable Battery"],
+    ["Battery Life", "More then 10 hours"],
+    ["Ink Color", "Black ink cartridge with machine"],
+    ["Screen", "4.3 inches"],
+    ["Language", "English, Chinese, Arabic"],
+    ["Print Distance", "2-5MM From nozzles to objects"],
+    ["Print Content", "Text, Time, Serial No, Logo, QR Code (Variable), Barcode, DM code"],
+    ["Warranty", "6 Months"]
+  ]),
+
+  make("laser-cc30f", "Metal Laser Marking Machine", "laser", "Laser Marking Machine",
+    "Offers high-precision marking for metal surfaces with durable, clear, and permanent engraving.",
+    "laser-co2", [
+    ["Model", "CC-30F"],
+    ["Laser Frequency", "20~80KHz"],
+    ["Marking Speed", "6000 mm/s"],
+    ["Marking Depth", "0.01~0.03mm"],
+    ["Usage / Application", "Metal industry"],
+    ["Marking Range", "100*100mm"],
+    ["Automation Grade", "Semi-Automatic"],
+    ["Operating System", "Linux or Windows"],
+    ["Control Interface", "SD / USB2.0 / Communication"],
+    ["Repeat Accuracy", "±0.002"],
+    ["Working Life", "20,000 hours"],
+    ["Total Weight", "About 75Kg"]
+  ]),
+
+  make("laser-sf30w", "Fibre Laser Marking Machine", "laser", "Fibre Laser Marking Machine",
+    "Offers laser technology for fast, high-quality marking on metals, plastics, and industrial materials.",
+    "laser-inline", [
+    ["Model", "SF-30W"],
+    ["Laser Frequency", "30~60KHz"],
+    ["Marking Speed", "7000 mm/s"],
+    ["Marking Depth", "≤1.0mm"],
+    ["Usage / Application", "Industry"],
+    ["Marking Range", "100*100mm"],
+    ["Laser Device Type", "Fiber Laser source"],
+    ["Operating System", "Windows"],
+    ["Control Interface", "Standard USB"],
+    ["Repeat Accuracy", "±0.002"],
+    ["Working Life", "10,000 hours"],
+    ["Total Weight", "25Kg"]
+  ]),
+
+  make("tto-24x30", "TTO Printer 24 x 30 mm", "tto", "Thermal Transfer Overprinter (TTO)",
+    "Offers high-resolution thermal transfer printing for durable, precise labeling across various packaging needs.",
+    "tto-linx", [
+    ["Print Resolution", "Up to 300 dpi"],
+    ["Print Speed", "~20 m/min"],
+    ["Print Area", "24x30 mm"],
+    ["Connectivity", "USB, Ethernet"],
+    ["Compatibility", "Supports various thermal transfer ribbons"]
+  ]),
+
+  make("tto-ribbon-33x500", "TTO Ribbon for TTO Printer 33 x 500 mm", "tto", "Consumable - Thermal Transfer Ribbon",
+    "Offers consistent, high-quality prints with reliable performance for flawless coding.",
+    undefined, [
+    ["Ribbon Size", "33x500 mm"],
+    ["Material", "High-durability thermal transfer ribbon"],
+    ["Application", "Engineered for optimal performance with TTO printers"],
+    ["Features", "Consistent color and print quality under high-volume conditions"]
+  ]),
+
+  make("conveyor-hd-ms", "Heavy Duty MS Powder Coated Conveyor System", "conveyor", "Conveyor System",
+    "It is engineered for robust, efficient material handling and seamless integration with coding operations.",
+    undefined, [
+    ["Construction", "Mild Steel with powder coating"],
+    ["Load Capacity", "High load-bearing design for industrial applications"],
+    ["Dimensions", "Customizable (length and width based on requirements)"],
+    ["Features", "Anti-slip surface, corrosion resistant"]
+  ]),
+
+  make("conveyor-batch", "Batch Coding Conveyor Systems", "conveyor", "Conveyor System",
+    "Provides synchronized movement and precision alignment to optimize high-speed coding processes.",
+    undefined, [
+    ["Design", "Engineered to integrate seamlessly with batch coding machines"],
+    ["Construction", "Sturdy steel frame"],
+    ["Load Capacity", "Optimized for light to medium loads"],
+    ["Features", "Modular design for easy installation and maintenance"],
+    ["Application / Usage", "Industries"],
+    ["Conveyor Type", "Belt"],
+    ["Material", "Stainless Steel"],
+    ["Speed", "60m/min"],
+    ["Type of Belt Conveyor", "Flat belt conveyor"],
+    ["Country of Origin", "Made in India"]
+  ]),
+
+  make("conveyor-simple", "Simple Conveyor Systems for Batch Coding", "conveyor", "Conveyor System",
+    "Offer straightforward, reliable solutions that enhance production efficiency.",
+    undefined, [
+    ["Construction", "Durable steel build"],
+    ["Dimensions", "Customizable to meet production needs"],
+    ["Features", "Designed for ease of integration with batch coding operations"],
+    ["Application", "Suitable for light to medium production lines"],
+    ["Conveyor Type", "Belt"],
+    ["Material", "Stainless Steel"],
+    ["Speed", "60m/min"],
+    ["Type of Belt Conveyor", "Flat belt conveyor"],
+    ["Country of Origin", "Made in India"]
+  ]),
+
+  make("conveyor-roller", "Roller Conveyor Systems", "conveyor", "Conveyor System",
+    "Delivers smooth, durable material transport, ensuring efficient operation in batch coding applications.",
+    undefined, [
+    ["Design", "Roller-based mechanism"],
+    ["Construction", "Steel rollers with a robust frame"],
+    ["Load Capacity", "Ideal for small to medium packages"],
+    ["Features", "Low maintenance and high durability"],
+    ["Belt Thickness", "10mm"],
+    ["Length", "8 feet"],
+    ["Capacity", "200 ton"],
+    ["Roller Material", "Stainless Steel"],
+    ["Roller Diameter", "2 inch"]
+  ]),
+
+  make("winder-hd-auto", "Heavy Duty Automatic Rewinding Machine", "winder", "Winder / Rewinding Machine",
+    "Offers consistent, high-quality prints with reliable performance for flawless coding.",
+    undefined, [
+    ["Rewinding Speed", "High-speed, fully automatic operation"],
+    ["Load Capacity", "Designed for heavy-duty industrial rolls"],
+    ["Control Interface", "Digital control panel with preset functions"],
+    ["Features", "Tension control, integrated safety sensors"],
+    ["Dimensions", "Varies based on model and roll size"],
+    ["Motor power", "3HP"],
+    ["Voltage", "380V"],
+    ["Material", "Mild Steel"],
+    ["Automated Grade", "Automatic"],
+    ["Frequency", "50Hz"],
+    ["Rewind Diameter", "50mm"]
+  ]),
+
+  make("winder-medium", "Medium Central Rewinding Machine", "winder", "Winder / Rewinding Machine",
+    "Offers consistent, high-quality prints with reliable performance for flawless coding.",
+    undefined, [
+    ["Rewinding Speed", "10-50 m/min"],
+    ["Load Capacity", "10 KG - 10 KG, Suitable for medium-duty applications"],
+    ["Control Interface", "Regulator"],
+    ["Features", "Central Revinder Machine"]
+  ])
 ];
 
 export const jointVentures: FirmDetails[] = [
@@ -427,7 +611,7 @@ export const substrates = [
   { id: "fmcg_plastic", name: "FMCG Plastic (PET/HDPE/PP)", defaultText: "MFG: 24/05/2026\nEXP: 23/05/2028\nB.NO: AB12345", recommendedInk: "Fast-dry Dye-Based Black", SvgBackground: "bottle" },
   { id: "beverage_can", name: "Aluminum / Metal Can", defaultText: "EXP: 11/04/2026\nBATCH: AB123\nNET: 500ML", recommendedInk: "Adhesive Dye-Based Blue/Black", SvgBackground: "can" },
   { id: "pharma_blister", name: "Pharma Blister Foil", defaultText: "M.R.P. 250.00\nMFG: 12/04/2026\nEXP: 11/04/2028", recommendedInk: "Pharma-Grade Fast-Dry Black/Red", SvgBackground: "blister" },
-  { id: "cable_wire", name: "Dark PVC Cable / Wire", defaultText: "JETRONIX JX350   24/05/2026   0562 METERS", recommendedInk: "High-Contrast Opaque Pigment White/Yellow", SvgBackground: "cable" },
+  { id: "cable_wire", name: "Dark PVC Cable / Wire", defaultText: "JETRONIX 5500   24/05/2026   0562 METERS", recommendedInk: "High-Contrast Opaque Pigment White/Yellow", SvgBackground: "cable" },
   { id: "carton_box", name: "Corrugated Cardboard", defaultText: "LOT NO: A1B2C3\nMFG: 2026/05/24\nQTY: 48 PCS", recommendedInk: "Standard Dye-Based Dark Black", SvgBackground: "box" }
 ];
 

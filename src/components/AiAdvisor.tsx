@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { MessageSquare, Send, Cpu, ShieldAlert, Sparkles, AlertCircle, Trash2 } from "lucide-react";
 import { ChatMessage } from "../types";
 
@@ -178,7 +178,6 @@ export default function AiAdvisor() {
 
             {/* Chat Bubble Area scroll container */}
             <div className="flex-1 overflow-y-auto p-6 space-y-4 relative z-10" id="chat-bubbles-scrollable font-sans">
-              <AnimatePresence initial={false}>
                 {messages.map((m) => {
                   const isUser = m.sender === "user";
                   return (
@@ -238,7 +237,6 @@ export default function AiAdvisor() {
                     </div>
                   </motion.div>
                 )}
-              </AnimatePresence>
               <div ref={messagesEndRef} />
             </div>
 

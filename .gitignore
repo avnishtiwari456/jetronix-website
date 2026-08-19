@@ -12,3 +12,4 @@ data/
 
 # Source export archive — duplicate of this repo's contents
 *.zip
+*.rar

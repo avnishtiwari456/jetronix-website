@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { 
   Award, ShieldCheck, Zap, ArrowRight, Building, Clock, 
   RefreshCw, FileText, Settings, Sparkles, Cpu, 
@@ -17,116 +17,100 @@ interface HomeOverviewProps {
 
 const featuredProducts = [
   {
-    id: "cij_s200",
-    name: "Jetronix S200",
+    id: "cij_5500",
+    name: "Jetronix Inkjet Printer 5500",
     category: "Continuous Inkjet (CIJ)",
-    type: "Workhorse Primary Coder",
-    desc: "High-speed continuous inkjet for non-contact coding on fast production lines. Prints clear text, batch codes, dates and barcodes across plastic, metal and glass.",
-    image: "/products/si220.jpg",
-    imageWebp: "/products/si220.webp",
+    type: "Five-Line Production Coder",
+    desc: "Delivers rapid, high-resolution coding for all your industrial packaging needs, ensuring consistent quality and traceability.",
+    image: "/products/jx350.jpg",
+    imageWebp: "/products/jx350.webp",
     specs: {
-      speed: "Up to 5 lines of print",
-      resolution: "Non-contact dot matrix",
-      ink: "Smart auto-cleaning fluidics",
-      substrates: "Plastic, Metal, Glass, Paper, Film"
+      speed: "Up to 9.8 m/sec",
+      resolution: "1.5 - 12mm characters",
+      ink: "Normal 60µ / Macro 75µ drop",
+      substrates: "Stainless Steel, IP55"
     },
     badge: "Bestseller"
   },
   {
-    id: "cij_jx350",
-    name: "Jetronix JX350",
+    id: "cij_5200",
+    name: "Jetronix Inkjet Printer 5200",
     category: "Continuous Inkjet (CIJ)",
-    type: "High-Speed Line Coder",
-    desc: "A 36 micron nozzle and 5-to-31 drop font matrix hold code quality on conveyors running past 10 metres per second. Built for beverage, dairy and extrusion lines.",
-    image: "/products/jx350.jpg",
-    imageWebp: "/products/jx350.webp",
+    type: "Two-Line Line Coder",
+    desc: "Provides efficient, high-resolution coding solutions for modern industrial packaging needs.",
+    image: "/products/si220.jpg",
+    imageWebp: "/products/si220.webp",
     specs: {
-      speed: "Past 10 m/sec line speed",
-      resolution: "1.5 – 12 mm characters",
-      ink: "36 micron nozzle",
-      substrates: "Plastic, Metal, Glass, Cables"
+      speed: "Up to 6.9 m/sec",
+      resolution: "3 - 12mm characters",
+      ink: "Macro 75µ drop size",
+      substrates: "Powder Coated Steel, IP55"
     },
-    badge: "High Speed"
+    badge: "Entry Range"
   },
   {
-    id: "tij_jt240",
-    name: "Jetronix JT240",
-    category: "Thermal Inkjet (TIJ)",
-    type: "Double-Head Cartridge Coder",
-    desc: "HP TIJ 2.5 cartridge coding at up to 600 DPI. The print head is replaced with every cartridge, so there is nothing to clean, flush or service.",
-    image: "/products/tij-inline.jpg",
-    imageWebp: "/products/tij-inline.webp",
+    id: "jt2400",
+    name: "JT2400 Carton Coding Printer",
+    category: "Other Industrial Inkjet",
+    type: "Four-Head Carton Coder",
+    desc: "Delivers rapid, high-resolution coding for all your industrial packaging needs, ensuring consistent quality and traceability.",
+    image: "/products/tij-kit.jpg",
+    imageWebp: "/products/tij-kit.webp",
     specs: {
-      speed: "Up to 120 m/min",
-      resolution: "600 x 600 DPI",
-      ink: "Water, solvent & UV-curable",
-      substrates: "Cartons, Plastics, Metals, Foils"
+      speed: "Up to 4 printheads",
+      resolution: "4 inch print height",
+      ink: "S-, H- & T-Heads",
+      substrates: "Cartons & Outer Shippers"
     },
-    badge: "Maintenance-Free"
+    badge: "Large Format"
   },
   {
-    id: "handheld_jh250",
-    name: "Jetronix JH250",
-    category: "Handheld Printer",
-    type: "Portable MRP & Date Coder",
-    desc: "Battery-powered handheld coding with a 25 mm print band. Codes stacked cartons and sacks wherever they are, with no conveyor required.",
+    id: "handy_be250",
+    name: "Metal Body Handy Printer 12.7mm",
+    category: "Batch Coding Machines",
+    type: "Portable BE250 Coder",
+    desc: "Provides compact, high-precision coding ideal for on-the-go batch marking.",
     image: "/products/handheld-front.jpg",
     imageWebp: "/products/handheld-front.webp",
     specs: {
-      speed: "Rechargeable, 10+ hrs",
-      resolution: "Up to 600 DPI",
-      ink: "Fast-drying cartridge",
+      speed: "~40 m/min",
+      resolution: "Up to 600 dpi",
+      ink: "Black ink cartridge",
       substrates: "Carton, Metal, Glass, Wood"
     },
     badge: "Portable"
   },
   {
-    id: "laser_jlc",
-    name: "Jetronix JLC30 / JLC60",
-    category: "CO2 Laser Coding",
-    type: "Permanent Inkless Marker",
-    desc: "Marks up to 1500 characters per second with no consumables at all. Permanent, high-contrast codes for traceability, anti-counterfeiting and anti-channelisation.",
-    image: "/products/laser-co2.jpg",
-    imageWebp: "/products/laser-co2.webp",
+    id: "laser_sf30w",
+    name: "Fibre Laser Marking Machine",
+    category: "Laser Marking",
+    type: "SF-30W Permanent Marker",
+    desc: "Offers laser technology for fast, high-quality marking on metals, plastics, and industrial materials.",
+    image: "/products/laser-inline.jpg",
+    imageWebp: "/products/laser-inline.webp",
     specs: {
-      speed: "1500 characters/sec",
-      resolution: "Permanent laser etch",
-      ink: "None — zero consumables",
-      substrates: "Film, Plastic, Glass, Leather"
+      speed: "7000 mm/s",
+      resolution: "Repeat accuracy ±0.002",
+      ink: "None - zero consumables",
+      substrates: "Metals, Plastics, Industrial"
     },
     badge: "Zero Consumables"
   },
   {
-    id: "tto_linx",
-    name: "Linx TT 750",
+    id: "tto_24x30",
+    name: "TTO Printer 24 x 30 mm",
     category: "Thermal Transfer (TTO)",
     type: "Flexible Packaging Overprinter",
-    desc: "Thermal transfer overprinting on film, labels and gloss card without compressed air. Supplied, installed and serviced across India by Jetronix.",
+    desc: "Offers high-resolution thermal transfer printing for durable, precise labeling across various packaging needs.",
     image: "/products/tto-linx.jpg",
     imageWebp: "/products/tto-linx.webp",
     specs: {
-      speed: "No compressed air needed",
-      resolution: "Electronic pressure control",
-      ink: "Wax/Resin thermal ribbons",
-      substrates: "Film, Labels, Gloss Card, Laminates"
+      speed: "~20 m/min",
+      resolution: "Up to 300 dpi",
+      ink: "Thermal transfer ribbons",
+      substrates: "Film, Labels, Gloss Card"
     },
-    badge: "Linx Distributed"
-  },
-  {
-    id: "sealing_fxj6050",
-    name: "Jetronix FXJ 6050",
-    category: "Carton Sealing",
-    type: "Semi-Automatic Case Sealer",
-    desc: "Seals 25 to 45 cartons per minute with top and bottom belt drive. Adjustable for carton sizes from 180 x 130 mm up to 500 x 600 mm.",
-    image: "",
-    imageWebp: "",
-    specs: {
-      speed: "25–45 cartons/min",
-      resolution: "Top & bottom belt drive",
-      ink: "BOPP / PVC tape, 48–76 mm",
-      substrates: "Corrugated Cartons & Shippers"
-    },
-    badge: "End of Line"
+    badge: "Flexible Film"
   }
 ];
 
@@ -309,7 +293,7 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
     {
       id: "b3",
       category: "News",
-      title: "Domino India celebrates 30 years of excellence with landmark employee summit in Jaipur",
+      title: "Runicha and Best Code hold joint engineering summit in Jaipur",
       desc: "Announcing key engineering milestones under our joint venture with Runicha Enterprises. Central India and Rajasthan workshops merge capacities to guarantee a 4-hour field response SLA.",
       img: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=80",
       date: "April 10, 2026"
@@ -319,7 +303,7 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
       category: "Case Studies",
       title: "Pharma Giant slashes downtime by 40% using automated TIJ Cartridge Systems",
       desc: "A major pharmaceutical bottling line in Indore Manesar successfully deployed 12 thermal inkjet heads with vision inspect cameras to guarantee zero misprints on blister paths.",
-      img: "https://images.unsplash.com/photo-1532187863486-abf9d39d66e8?auto=format&fit=crop&w=600&q=80",
+      img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80",
       date: "March 29, 2026"
     },
     {
@@ -501,7 +485,6 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
         </div>
 
         {/* Dynamic Blue-Print Spec panel */}
-        <AnimatePresence>
           {selectedTech && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -568,7 +551,6 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
               })()}
             </motion.div>
           )}
-        </AnimatePresence>
       </section>
 
       {/* FEATURED SECTION: Jetronix Product Portfolio (Competitor-Inspired Layout) */}
@@ -891,7 +873,6 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
         </div>
 
         {/* Dynamic Industry filter report dashboard */}
-        <AnimatePresence>
           {selectedIndustry && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -949,7 +930,6 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
               })()}
             </motion.div>
           )}
-        </AnimatePresence>
       </section>
 
       {/* SECTION 5: Industrial Printers, Coders and Markers (Premium Corporate block) */}
@@ -972,7 +952,7 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
               </div>
 
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Jetronix India LLP is the India division of Domino Printing Sciences & BestCode - a global expert in industrial printers. Specialising in digital printing and traceability solutions (such as industrial coders) for sectors as diverse as food, beverage, life sciences, packaging, cleaning, personal care, building and construction.
+                Jetronix Printech India LLP is an industrial coding and marking specialist, built on the joint venture of Runicha Enterprises (Indore) and Best Code Technology India (Jaipur). Specialising in digital printing and traceability solutions (such as industrial coders) for sectors as diverse as food, beverage, life sciences, packaging, cleaning, personal care, building and construction.
               </p>
 
               {/* Sub features list */}
@@ -1019,7 +999,6 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
               </div>
 
               {/* Accordion list */}
-              <AnimatePresence>
                 {isCorporateReadMore && (
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
@@ -1043,7 +1022,6 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
                     </div>
                   </motion.div>
                 )}
-              </AnimatePresence>
             </div>
 
             <button
@@ -1218,7 +1196,6 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
       </section>
 
       {/* Elegant Article/Paper Modal Dialog (avoiding iframe-breaking window.alerts) */}
-      <AnimatePresence>
         {activeArticleModal && (
           <div className="fixed inset-0 bg-slate-950/70 backdrop-blur-md z-50 flex items-center justify-center p-4">
             <motion.div 
@@ -1276,7 +1253,6 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
             </motion.div>
           </div>
         )}
-      </AnimatePresence>
 
     </div>
   );

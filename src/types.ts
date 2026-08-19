@@ -1,35 +1,12 @@
-export interface TechnicalSpecs {
-  printHead: string;
-  printHeight: string;
-  nozzle: string;
-  printingLines: string;
-  printSpeed: string;
-  characterHeight: string;
-  counter: string;
-  inkColor: string;
-  inkType: string;
-  font: string;
-  barcode: string;
-  input: string;
-}
-
-export interface MachineSpecs {
-  operatingSystem: string;
-  displayScreen: string;
-  interface: string;
-  protectionLevel: string;
-  powerSupply: string;
-  ratedPower: string;
-  machineMaterial: string;
-}
-
 export type ProductCategory =
   | "cij"
+  | "other-inkjet"
   | "tij"
   | "handheld"
-  | "tto"
   | "laser"
-  | "sealing";
+  | "tto"
+  | "conveyor"
+  | "winder";
 
 /** A single label/value row in a product's specification table. */
 export interface SpecRow {
@@ -48,23 +25,12 @@ export interface Product {
   id: string;
   name: string;
   tagline: string;
-  description: string;
   type: string;
   category: ProductCategory;
-  imagePlaceholder: string;
   /** Photo basename in /public/products (without extension). Omit if no photo exists. */
   image?: string;
-  /** Extra photos shown as a gallery under the main one. */
-  gallery?: string[];
-  /** Set when the unit is another manufacturer's product that we distribute. */
-  distributedBrand?: string;
-  features: string[];
-  keyHighlights: string[];
-  /** Flat spec table — every product has one, shapes vary by category. */
+  /** The manufacturer's specification table, reproduced as published. */
   specs: SpecRow[];
-  /** Detailed CIJ parameter cards. Only the flagship printers carry these. */
-  techSpecs?: TechnicalSpecs;
-  machineSpecs?: MachineSpecs;
 }
 
 export interface FirmDetails {
@@ -84,7 +50,7 @@ export interface QuoteRequest {
   email: string;
   phone: string;
   selectedProduct: string;
-  estimatedVolume: string; // e.g., <10k, 10k-50k, 50k-200k, 200k+
+  estimatedVolume: string;
   industry: string;
   message: string;
   createdAt: string;

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import HomeOverview from "./components/HomeOverview";
@@ -93,7 +93,6 @@ export default function App() {
 
       {/* 2. Main Page Render Stage (With Mount/Unmount Fade Transitions) */}
       <main className="flex-grow">
-        <AnimatePresence mode="wait">
           {currentPage === "home" && (
             <motion.div
               key="home-page"
@@ -191,7 +190,6 @@ export default function App() {
               <ContactUs />
             </motion.div>
           )}
-        </AnimatePresence>
       </main>
 
       {/* 3. Global Redesigned Interactive B2B Footer */}

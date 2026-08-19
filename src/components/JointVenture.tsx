@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import { jointVentures, products, categories } from "../data";
 import { Phone, Mail, MapPin, ClipboardList, Send, FileText, CheckCircle2, ShieldCheck, Truck, Users, AlertTriangle } from "lucide-react";
 
@@ -250,7 +250,6 @@ export default function JointVenture({ prefilledSampleDetails, quoteTarget, onQu
 
             {/* Right Column: Active Form or Result Card */}
             <div className="lg:col-span-7 bg-slate-50 p-6 sm:p-8 rounded-2xl border border-slate-200 relative">
-              <AnimatePresence mode="wait">
                 {!submitResult ? (
                   <motion.form
                     key="quote-form"
@@ -419,7 +418,6 @@ export default function JointVenture({ prefilledSampleDetails, quoteTarget, onQu
                     </button>
                   </motion.div>
                 )}
-              </AnimatePresence>
             </div>
 
           </div>
