@@ -17,100 +17,100 @@ interface HomeOverviewProps {
 
 const featuredProducts = [
   {
-    id: "cij_5500",
-    name: "Jetronix Inkjet Printer 5500",
+    id: "s200",
+    name: "Jetronix S200",
     category: "Continuous Inkjet (CIJ)",
-    type: "Five-Line Production Coder",
-    desc: "Delivers rapid, high-resolution coding for all your industrial packaging needs, ensuring consistent quality and traceability.",
-    image: "/products/jx350.jpg",
-    imageWebp: "/products/jx350.webp",
+    type: "Workhorse Primary Coder",
+    desc: "High-speed continuous inkjet for non-contact coding on fast production lines. Prints text, batch codes, dates and barcodes on plastic, metal and glass.",
+    image: "/products/si220.jpg",
+    imageWebp: "/products/si220.webp",
     specs: {
-      speed: "Up to 9.8 m/sec",
-      resolution: "1.5 - 12mm characters",
-      ink: "Normal 60µ / Macro 75µ drop",
-      substrates: "Stainless Steel, IP55"
+      speed: "Up to 5 lines of print",
+      resolution: "Non-contact dot matrix",
+      ink: "Smart auto-cleaning",
+      substrates: "Plastic, Metal, Glass, Paper, Film"
     },
     badge: "Bestseller"
   },
   {
-    id: "cij_5200",
-    name: "Jetronix Inkjet Printer 5200",
+    id: "jx350",
+    name: "Jetronix JX350",
     category: "Continuous Inkjet (CIJ)",
-    type: "Two-Line Line Coder",
-    desc: "Provides efficient, high-resolution coding solutions for modern industrial packaging needs.",
-    image: "/products/si220.jpg",
-    imageWebp: "/products/si220.webp",
+    type: "High-Speed Line Coder",
+    desc: "A 36 micron nozzle and 5-to-31 drop font matrix hold code quality on conveyors running past 10 metres per second.",
+    image: "/products/jx350.jpg",
+    imageWebp: "/products/jx350.webp",
     specs: {
-      speed: "Up to 6.9 m/sec",
-      resolution: "3 - 12mm characters",
-      ink: "Macro 75µ drop size",
-      substrates: "Powder Coated Steel, IP55"
+      speed: "Past 10 m/sec",
+      resolution: "1.5 - 12 mm characters",
+      ink: "36 micron nozzle",
+      substrates: "Plastic, Metal, Glass, Cables"
     },
-    badge: "Entry Range"
+    badge: "High Speed"
   },
   {
-    id: "jt2400",
-    name: "JT2400 Carton Coding Printer",
-    category: "Other Industrial Inkjet",
-    type: "Four-Head Carton Coder",
-    desc: "Delivers rapid, high-resolution coding for all your industrial packaging needs, ensuring consistent quality and traceability.",
-    image: "/products/tij-kit.jpg",
-    imageWebp: "/products/tij-kit.webp",
+    id: "jt240",
+    name: "Jetronix JT240",
+    category: "Thermal Inkjet (TIJ)",
+    type: "Double-Head Cartridge Coder",
+    desc: "HP TIJ 2.5 cartridge coding at up to 600 DPI. The print head is replaced with every cartridge, so there is nothing to clean or flush.",
+    image: "/products/tij-inline.jpg",
+    imageWebp: "/products/tij-inline.webp",
     specs: {
-      speed: "Up to 4 printheads",
-      resolution: "4 inch print height",
-      ink: "S-, H- & T-Heads",
-      substrates: "Cartons & Outer Shippers"
+      speed: "Up to 120 m/min",
+      resolution: "600 x 600 DPI",
+      ink: "Water, solvent & UV-curable",
+      substrates: "Cartons, Plastics, Metals, Foils"
     },
-    badge: "Large Format"
+    badge: "Maintenance-Free"
   },
   {
-    id: "handy_be250",
-    name: "Metal Body Handy Printer 12.7mm",
-    category: "Batch Coding Machines",
-    type: "Portable BE250 Coder",
-    desc: "Provides compact, high-precision coding ideal for on-the-go batch marking.",
+    id: "jh250",
+    name: "Jetronix JH250",
+    category: "Handheld Printer",
+    type: "Portable MRP & Date Coder",
+    desc: "Battery-powered handheld coding with a 25 mm print band. Codes stacked cartons and sacks wherever they are, with no conveyor required.",
     image: "/products/handheld-front.jpg",
     imageWebp: "/products/handheld-front.webp",
     specs: {
-      speed: "~40 m/min",
-      resolution: "Up to 600 dpi",
-      ink: "Black ink cartridge",
+      speed: "Rechargeable, all shift",
+      resolution: "Up to 600 DPI",
+      ink: "Fast-drying cartridge",
       substrates: "Carton, Metal, Glass, Wood"
     },
     badge: "Portable"
   },
   {
-    id: "laser_sf30w",
-    name: "Fibre Laser Marking Machine",
-    category: "Laser Marking",
-    type: "SF-30W Permanent Marker",
-    desc: "Offers laser technology for fast, high-quality marking on metals, plastics, and industrial materials.",
-    image: "/products/laser-inline.jpg",
-    imageWebp: "/products/laser-inline.webp",
+    id: "jlc",
+    name: "Jetronix JLC30 / JLC60",
+    category: "CO2 Laser Coding",
+    type: "Permanent Inkless Marker",
+    desc: "Marks up to 1500 characters per second with no consumables at all. Permanent, high-contrast codes for traceability and anti-counterfeiting.",
+    image: "/products/laser-co2.jpg",
+    imageWebp: "/products/laser-co2.webp",
     specs: {
-      speed: "7000 mm/s",
-      resolution: "Repeat accuracy ±0.002",
+      speed: "1500 characters/sec",
+      resolution: "Permanent laser etch",
       ink: "None - zero consumables",
-      substrates: "Metals, Plastics, Industrial"
+      substrates: "Film, Plastic, Glass, Leather"
     },
     badge: "Zero Consumables"
   },
   {
-    id: "tto_24x30",
-    name: "TTO Printer 24 x 30 mm",
+    id: "tt750",
+    name: "Linx TT 750",
     category: "Thermal Transfer (TTO)",
     type: "Flexible Packaging Overprinter",
-    desc: "Offers high-resolution thermal transfer printing for durable, precise labeling across various packaging needs.",
+    desc: "Thermal transfer overprinting on film, labels and gloss card without compressed air. Supplied, installed and serviced across India by Jetronix.",
     image: "/products/tto-linx.jpg",
     imageWebp: "/products/tto-linx.webp",
     specs: {
-      speed: "~20 m/min",
-      resolution: "Up to 300 dpi",
-      ink: "Thermal transfer ribbons",
+      speed: "No compressed air",
+      resolution: "Electronic pressure control",
+      ink: "Wax/Resin thermal ribbons",
       substrates: "Film, Labels, Gloss Card"
     },
-    badge: "Flexible Film"
+    badge: "Linx Distributed"
   }
 ];
 

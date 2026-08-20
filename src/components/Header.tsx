@@ -41,6 +41,7 @@ const CATEGORY_ICONS: Record<ProductCategory, string> = {
   handheld: "Sliders",
   laser: "Sparkles",
   tto: "Printer",
+  sealing: "Layers",
   conveyor: "Factory",
   winder: "RefreshCw"
 };
@@ -52,6 +53,7 @@ const CATEGORY_BADGES: Record<ProductCategory, string> = {
   handheld: "HANDHELD",
   laser: "LASER",
   tto: "TTO",
+  sealing: "SEALER",
   conveyor: "CONVEYOR",
   winder: "WINDER"
 };

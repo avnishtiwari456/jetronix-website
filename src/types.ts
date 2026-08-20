@@ -5,6 +5,7 @@ export type ProductCategory =
   | "handheld"
   | "laser"
   | "tto"
+  | "sealing"
   | "conveyor"
   | "winder";
 

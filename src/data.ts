@@ -13,6 +13,8 @@ export const categories: CategoryMeta[] = [
     description: "Permanent inkless marking with zero consumables." },
   { id: "tto", label: "TTO Printers", shortLabel: "TTO",
     description: "Thermal transfer overprinters and ribbons for flexible packaging." },
+  { id: "sealing", label: "Carton Sealing Machines", shortLabel: "Carton Sealing",
+    description: "End-of-line carton sealers that tape cartons top and bottom in a single pass." },
   { id: "conveyor", label: "Conveyor Systems", shortLabel: "Conveyors",
     description: "Belt and roller conveyors built to hold registration under the printhead." },
   { id: "winder", label: "Winder Rewinding Machines", shortLabel: "Winders",
@@ -31,6 +33,198 @@ function make(
 }
 
 export const products: Product[] = [
+  /* ═══════════  JETRONIX OWN RANGE (from the Jetronix product brochure)  ═══════════ */
+
+  make("s200", "Jetronix S200", "cij", "Continuous Inkjet Printer (CIJ)",
+    "High-speed continuous inkjet for non-contact coding on fast production lines.",
+    "si220", [
+    ["Technology", "Continuous Inkjet (CIJ)"],
+    ["Lines of Print", "Up to 5 lines"],
+    ["Print Content", "Text, batch codes, dates, logos, barcodes"],
+    ["Substrates", "Plastic, metal, glass, paper, film"],
+    ["Marking", "Non-contact - safe on curved and uneven surfaces"],
+    ["Maintenance", "Smart auto-cleaning"]
+  ]),
+
+  make("jx350", "Jetronix JX350", "cij", "Continuous Inkjet Printer (CIJ)",
+    "Five lines of print on conveyors running past 10 metres per second.",
+    "jx350", [
+    ["Technology", "Continuous Inkjet (CIJ)"],
+    ["Lines of Print", "5 lines of text, bar codes, logos and serial numbers"],
+    ["Character Height", "1.5 to 12 mm"],
+    ["Font Height", "5 to 31 drops"],
+    ["Nozzle Size", "36 micron"],
+    ["Line Speed", "Past 10 metres per second"],
+    ["Marking", "Non-contact - safe on delicate, curved or uneven surfaces"],
+    ["Substrates", "Plastic, metal, glass, paper, film"]
+  ]),
+
+  make("jt120", "Jetronix JT120", "tij", "Thermal Inkjet Printer (TIJ)",
+    "Single head, 12.7 mm print height.",
+    "tij-inline", [
+    ["Print Heads", "Single head"],
+    ["Print Height", "12.7 mm"],
+    ["Print Technology", "HP TIJ 2.5"],
+    ["Print Resolution", "Up to 600 x 600 DPI"],
+    ["Print Speed", "Up to 120 metres per minute"],
+    ["Ink Types", "Water-based, solvent and UV-curable options"],
+    ["Interfaces", "Touchscreen, USB, RS485 / Ethernet"]
+  ]),
+
+  make("jt240", "Jetronix JT240", "tij", "Thermal Inkjet Printer (TIJ)",
+    "Double head, 25 mm print height.",
+    "tij-inline", [
+    ["Print Heads", "Double head"],
+    ["Print Height", "25 mm"],
+    ["Print Technology", "HP TIJ 2.5"],
+    ["Print Resolution", "Up to 600 x 600 DPI"],
+    ["Print Speed", "Up to 120 metres per minute"],
+    ["Ink Types", "Water-based, solvent and UV-curable options"],
+    ["Interfaces", "Touchscreen, USB, RS485 / Ethernet"]
+  ]),
+
+  make("jt360", "Jetronix JT360", "tij", "Thermal Inkjet Printer (TIJ)",
+    "Three head, 36 mm print height.",
+    "tij-inline", [
+    ["Print Heads", "Three head"],
+    ["Print Height", "36 mm"],
+    ["Print Technology", "HP TIJ 2.5"],
+    ["Print Resolution", "Up to 600 x 600 DPI"],
+    ["Print Speed", "Up to 120 metres per minute"],
+    ["Ink Types", "Water-based, solvent and UV-curable options"],
+    ["Interfaces", "Touchscreen, USB, RS485 / Ethernet"]
+  ]),
+
+  make("jt480", "Jetronix JT480", "tij", "Thermal Inkjet Printer (TIJ)",
+    "Four head, 48 mm print height.",
+    "tij-kit", [
+    ["Print Heads", "Four head"],
+    ["Print Height", "48 mm"],
+    ["Print Technology", "HP TIJ 2.5"],
+    ["Print Resolution", "Up to 600 x 600 DPI"],
+    ["Print Speed", "Up to 120 metres per minute"],
+    ["Ink Types", "Water-based, solvent and UV-curable options"],
+    ["Interfaces", "Touchscreen, USB, RS485 / Ethernet"]
+  ]),
+
+  make("jt600", "Jetronix JT600", "tij", "Thermal Inkjet Printer (TIJ)",
+    "Five head, 60 mm print height.",
+    "tij-kit", [
+    ["Print Heads", "Five head"],
+    ["Print Height", "60 mm"],
+    ["Print Technology", "HP TIJ 2.5"],
+    ["Print Resolution", "Up to 600 x 600 DPI"],
+    ["Print Speed", "Up to 120 metres per minute"],
+    ["Ink Types", "Water-based, solvent and UV-curable options"],
+    ["Interfaces", "Touchscreen, USB, RS485 / Ethernet"]
+  ]),
+
+  make("jt720", "Jetronix JT720", "tij", "Thermal Inkjet Printer (TIJ)",
+    "Six head, 72 mm print height.",
+    "tij-kit", [
+    ["Print Heads", "Six head"],
+    ["Print Height", "72 mm"],
+    ["Print Technology", "HP TIJ 2.5"],
+    ["Print Resolution", "Up to 600 x 600 DPI"],
+    ["Print Speed", "Up to 120 metres per minute"],
+    ["Ink Types", "Water-based, solvent and UV-curable options"],
+    ["Interfaces", "Touchscreen, USB, RS485 / Ethernet"]
+  ]),
+
+  make("jh120", "Jetronix JH120", "handheld", "Handheld Inkjet Printer",
+    "Portable coding with a 12.7 mm print height.",
+    "handheld-front", [
+    ["Print Height", "12.7 mm"],
+    ["Print Resolution", "Up to 600 DPI"],
+    ["Display", "Smart touch screen interface"],
+    ["Ink Support", "Fast-drying cartridge system"],
+    ["Connectivity", "USB port for logo and data imports"],
+    ["Print Content", "Text, barcodes, QR codes, MRP, dates"],
+    ["Substrates", "Cartons, metal, glass, plastic, wood"]
+  ]),
+
+  make("jh250", "Jetronix JH250", "handheld", "Handheld Inkjet Printer",
+    "Portable coding with a 25 mm print height.",
+    "handheld-side", [
+    ["Print Height", "25.4 mm"],
+    ["Print Resolution", "Up to 600 DPI"],
+    ["Display", "Smart touch screen interface"],
+    ["Ink Support", "Fast-drying cartridge system"],
+    ["Connectivity", "USB port for logo and data imports"],
+    ["Print Content", "Text, barcodes, QR codes, MRP, dates"],
+    ["Substrates", "Cartons, metal, glass, plastic, wood"]
+  ]),
+
+  make("tt550", "Linx TT 550", "tto", "Thermal Transfer Overprinter (TTO)",
+    "Compact cassette overprinter for flexible film packaging.",
+    "tto-linx", [
+    ["Manufacturer", "Linx (distributed and serviced by Jetronix in India)"],
+    ["Technology", "Thermal transfer overprinting"],
+    ["Compressed Air", "Not required"],
+    ["Ribbon System", "Push-button cassette, bi-directional drive"],
+    ["Print Control", "Electronic pressure control"],
+    ["Interface", "Colour touch screen"],
+    ["Substrates", "Film packaging, plastics, labels, gloss card"]
+  ]),
+
+  make("tt750", "Linx TT 750", "tto", "Thermal Transfer Overprinter (TTO)",
+    "The volume workhorse of the TTO range.",
+    "tto-linx", [
+    ["Manufacturer", "Linx (distributed and serviced by Jetronix in India)"],
+    ["Technology", "Thermal transfer overprinting"],
+    ["Compressed Air", "Not required"],
+    ["Ribbon System", "Push-button cassette, bi-directional drive"],
+    ["Print Control", "Electronic pressure control"],
+    ["Interface", "Colour touch screen"],
+    ["Substrates", "Film packaging, plastics, labels, gloss card"]
+  ]),
+
+  make("tt1000", "Linx TT 1000", "tto", "Thermal Transfer Overprinter (TTO)",
+    "Wide-format overprinter for full-width film.",
+    "tto-linx", [
+    ["Manufacturer", "Linx (distributed and serviced by Jetronix in India)"],
+    ["Technology", "Thermal transfer overprinting"],
+    ["Compressed Air", "Not required"],
+    ["Ribbon System", "Push-button cassette, bi-directional drive"],
+    ["Print Control", "Electronic pressure control"],
+    ["Interface", "Colour touch screen"],
+    ["Substrates", "Film packaging, plastics, labels, gloss card"]
+  ]),
+
+  make("jlc30-60", "Jetronix JLC30 / JLC60", "laser", "CO2 Laser Coding Machine",
+    "Permanent, consumable-free coding at 1500 characters per second.",
+    "laser-co2", [
+    ["Model", "JLC30 (30 W) / JLC60 (60 W)"],
+    ["Technology", "CO2 laser, intelligent vector control algorithm"],
+    ["Marking Speed", "Up to 1500 characters/second"],
+    ["Working Life", "MTBF more than 50,000 hours"],
+    ["Operation", "24 hours continuous"],
+    ["Consumables", "None - permanent identification"],
+    ["Substrates", "Film, plastic, glass, leather and other materials"],
+    ["Installation", "Conveyor line or punch packing machine"],
+    ["Startup", "One-button, auto-jump to running mode"]
+  ]),
+
+  make("fxj6050", "Jetronix FXJ 6050", "sealing", "Carton Sealing Machine",
+    "Semi-automatic carton sealer with top and bottom belt drive.",
+    undefined, [
+    ["Automation Grade", "Semi-automatic"],
+    ["Drive Type", "Top and bottom belts driven"],
+    ["Power Supply", "AC 220V/50Hz or 110V/60Hz (varies by region)"],
+    ["Power", "180 W to 200 W"],
+    ["Sealing Speed", "Approx. 20 m/min (25-45 cartons/min)"],
+    ["Max. Carton Size (W x H)", "500 mm x 600 mm"],
+    ["Min. Carton Size (W x H)", "180 mm x 130 mm"],
+    ["Adhesive Tape Width", "48 mm, 60 mm or 76 mm (optional)"],
+    ["Adhesive Tape Material", "BOPP, PVC, water-free adhesive tape"],
+    ["Table Height", "Adjustable, typically 630-780 mm"],
+    ["Machine Dimensions (L x W x H)", "Approx. 1755 x 800 x 960-1650 mm"],
+    ["Machine Weight", "Approx. 150 kg"],
+    ["Max. Conveyor Load", "30 kg"]
+  ]),
+
+  /* ═══════════  DISTRIBUTED RANGE (manufacturer datasheets)  ═══════════ */
+
   make("jx5200", "Jetronix Inkjet Printer 5200", "cij", "Continuous Inkjet Printer (CIJ)",
     "Provides efficient, high-resolution coding solutions for modern industrial packaging needs.",
     "si220", [
