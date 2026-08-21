@@ -323,237 +323,7 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
   return (
     <div className="space-y-24 pb-24 bg-[#f8fafc]" id="home-overview-container">
       
-      {/* SECTION 1: Joint Venture Overview (Partners) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12" id="jv-overview">
-        <div className="bg-gradient-to-br from-[#122540] to-slate-900 rounded-3xl p-8 sm:p-14 text-white relative overflow-hidden shadow-2xl border border-blue-900/30">
-          
-          {/* Cyber accents & layout grids */}
-          <div className="absolute inset-0 tech-grid opacity-10 pointer-events-none" />
-          <div className="absolute -bottom-48 -right-48 w-96 h-96 bg-[#2564AF]/20 rounded-full blur-3xl pointer-events-none" />
-          <div className="absolute top-10 left-10 w-72 h-72 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
-            
-            {/* Left Info Column */}
-            <div className="lg:col-span-7 space-y-6">
-              <span className="text-[#3b82f6] font-mono text-[10px] font-extrabold uppercase tracking-widest bg-slate-950/60 border border-blue-500/20 px-4 py-2 rounded-full inline-flex items-center gap-2">
-                <Sparkles className="w-4 h-4 animate-pulse text-sky-400" /> INDO-GERMAN JOINT VENTURE ALLIANCE
-              </span>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-black tracking-tight leading-none text-white">
-                Runicha Enterprises & <br />
-                <span className="text-[#3b82f6] bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">
-                  Best Code Technology India
-                </span>
-              </h2>
-              <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-                Jetronix is built on a rock-solid partnership between <strong>Runicha Enterprises</strong> (Central India's leading coding specialist based in Indore) and <strong>Best Code Technology India</strong> (North India's premier high-accuracy fluidics team based in Jaipur). Together, we deliver robust Continuous Inkjet hardware integrated with world-class ink chemistries and unmatched local service networks.
-              </p>
-
-              {/* Service Commitments Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-                <div className="bg-slate-950/60 border border-slate-800/85 p-5 rounded-2xl hover:border-blue-500/30 transition-all duration-300">
-                  <Clock className="w-6 h-6 text-blue-400 mb-3" />
-                  <span className="font-extrabold text-xs block text-slate-100 uppercase tracking-wider font-mono">4-Hour On-Site SLA</span>
-                  <span className="text-[11px] text-slate-400 mt-1.5 block leading-relaxed font-light">Rapid field dispatch in MP & Rajasthan</span>
-                </div>
-                <div className="bg-slate-950/60 border border-slate-800/85 p-5 rounded-2xl hover:border-blue-500/30 transition-all duration-300">
-                  <RefreshCw className="w-6 h-6 text-sky-400 mb-3 animate-spin" style={{ animationDuration: "15s" }} />
-                  <span className="font-extrabold text-xs block text-slate-100 uppercase tracking-wider font-mono">100% Spares Ready</span>
-                  <span className="text-[11px] text-slate-400 mt-1.5 block leading-relaxed font-light">Nozzles, electronics, filters fully stocked</span>
-                </div>
-                <div className="bg-slate-950/60 border border-slate-800/85 p-5 rounded-2xl hover:border-blue-500/30 transition-all duration-300">
-                  <ShieldCheck className="w-6 h-6 text-indigo-400 mb-3" />
-                  <span className="font-extrabold text-xs block text-slate-100 uppercase tracking-wider font-mono">GST Input Claim</span>
-                  <span className="text-[11px] text-slate-400 mt-1.5 block leading-relaxed font-light">Full tax compliance under CGST/SGST/IGST</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Right node statistics/visual cards */}
-            <div className="lg:col-span-5 space-y-4">
-              
-              {/* Indore Node Card */}
-              <div className="bg-slate-950/80 border border-blue-900/20 p-6 rounded-2xl flex items-start gap-4 hover:border-blue-500/20 transition-all group">
-                <div className="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-all">
-                  <Building className="w-6 h-6 text-blue-400" />
-                </div>
-                <div>
-                  <span className="text-[9px] text-[#3b82f6] font-mono uppercase font-bold tracking-widest block">Indore Node Workshop</span>
-                  <span className="font-extrabold text-sm block mt-1 text-slate-100">Runicha Enterprises, MP</span>
-                  <span className="text-xs text-slate-400 leading-relaxed block mt-1 font-light">Specialized ink blending lab & hydraulic calibration rigs.</span>
-                </div>
-              </div>
-
-              {/* Jaipur Node Card */}
-              <div className="bg-slate-950/80 border border-blue-900/20 p-6 rounded-2xl flex items-start gap-4 hover:border-blue-500/20 transition-all group">
-                <div className="w-12 h-12 rounded-xl bg-sky-600/10 border border-sky-500/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-all">
-                  <Building className="w-6 h-6 text-sky-400" />
-                </div>
-                <div>
-                  <span className="text-[9px] text-sky-400 font-mono uppercase font-bold tracking-widest block">Jaipur Node Workshop</span>
-                  <span className="font-extrabold text-sm block mt-1 text-slate-100">Best Code Technology, Rajasthan</span>
-                  <span className="text-xs text-slate-400 leading-relaxed block mt-1 font-light">Advanced controller testing & automated conduit assembly.</span>
-                </div>
-              </div>
-
-              {/* Special fluid recommendation block */}
-              <div className="bg-[#2564AF]/10 border border-[#2564AF]/30 p-5 rounded-2xl text-center backdrop-blur-sm">
-                <span className="text-xs text-sky-300 font-semibold leading-relaxed font-sans block">
-                  Need a customized ink chemistry formulation?
-                </span>
-                <button
-                  onClick={() => onNavigate("partners")}
-                  className="text-xs text-[#3b82f6] font-extrabold hover:underline inline-flex items-center gap-1.5 mt-2.5 cursor-pointer font-mono uppercase tracking-wider"
-                >
-                  Configure Custom Chemistries &raquo;
-                </button>
-              </div>
-
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* SECTION 2: Technologies Section (Redesigned & Premium) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4" id="home-technologies">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="text-[#2564AF] font-mono text-[10px] font-black uppercase tracking-widest bg-blue-50 border border-blue-200/50 px-4 py-2 rounded-full inline-block">
-            ⚡ INDUSTRIAL HARDWARE MATRIX
-          </span>
-          <h2 className="text-3xl md:text-5xl font-black text-[#122540] mt-4 tracking-tight font-sans leading-none">
-            Technologies
-          </h2>
-          <div className="w-24 h-1 bg-gradient-to-r from-[#2564AF] to-sky-400 mx-auto mt-4 mb-4 rounded-full" />
-          <p className="text-xs md:text-sm text-slate-500 max-w-xl mx-auto leading-relaxed">
-            Talk to us to find the right solution for your industry's printing and marking requirements. Click a tech circle to inspect technical blueprints.
-          </p>
-        </div>
-
-        {/* Premium Cybernetic Circular Grid (Fully Responsive) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 justify-center max-w-6xl mx-auto">
-          {technologies.map((tech, idx) => {
-            const IconComp = tech.icon;
-            const isSelected = selectedTech === tech.name;
-            return (
-              <motion.div 
-                key={idx} 
-                className="flex flex-col items-center group"
-                whileHover={{ y: -3 }}
-                transition={{ duration: 0.2 }}
-              >
-                <button
-                  onClick={() => setSelectedTech(isSelected ? null : tech.name)}
-                  className={`w-24 h-24 sm:w-28 sm:h-28 rounded-full border flex items-center justify-center cursor-pointer transition-all duration-300 relative ${
-                    isSelected 
-                      ? "bg-[#122540] border-[#2564AF] shadow-2xl shadow-blue-900/30 ring-4 ring-[#2564AF]/20" 
-                      : "bg-white border-slate-200/80 hover:border-[#2564AF] hover:shadow-xl shadow-md shadow-slate-100"
-                  }`}
-                  id={`tech-btn-${idx}`}
-                >
-                  {/* Glowing halo indicator */}
-                  <span className={`absolute -inset-1 rounded-full bg-gradient-to-r from-blue-500 to-sky-400 opacity-0 blur transition-opacity duration-300 group-hover:opacity-10 ${isSelected ? "opacity-20" : ""}`} />
-
-                  {/* Outer delicate dashed ring */}
-                  <div className={`absolute inset-2 rounded-full border border-dashed transition-all ${
-                    isSelected 
-                      ? "border-sky-400/30 animate-spin" 
-                      : "border-slate-100 group-hover:border-blue-200"
-                  }`} style={{ animationDuration: "30s" }} />
-
-                  {/* Inner ring circle */}
-                  <div className={`absolute inset-4 rounded-full border transition-all ${
-                    isSelected ? "border-sky-400/20 bg-slate-900/40" : "border-slate-50 bg-slate-50/50 group-hover:bg-blue-50/20"
-                  }`} />
-
-                  {/* Icon Component */}
-                  <IconComp className={`w-8 h-8 relative z-10 transition-transform duration-300 group-hover:scale-110 ${
-                    isSelected ? "text-sky-400" : "text-slate-600 group-hover:text-[#2564AF]"
-                  }`} />
-                </button>
-                
-                <button
-                  onClick={() => setSelectedTech(isSelected ? null : tech.name)}
-                  className={`text-[10px] md:text-xs font-black mt-4 hover:text-[#2564AF] transition-colors text-center max-w-[150px] leading-snug uppercase tracking-widest ${
-                    isSelected ? "text-[#2564AF]" : "text-[#122540]"
-                  }`}
-                >
-                  {tech.name}
-                </button>
-              </motion.div>
-            );
-          })}
-        </div>
-
-        {/* Dynamic Blue-Print Spec panel */}
-          {selectedTech && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: 10 }}
-              transition={{ duration: 0.3 }}
-              className="mt-14 bg-gradient-to-br from-[#0c1626] to-slate-950 border border-blue-900/30 rounded-3xl p-6 sm:p-10 text-white relative overflow-hidden shadow-2xl"
-              id="tech-blueprint-panel"
-            >
-              {/* Technical CAD Grid Overlays */}
-              <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
-              <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
-              
-              {(() => {
-                const techObj = technologies.find(t => t.name === selectedTech);
-                if (!techObj) return null;
-                return (
-                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-                    
-                    {/* Left blueprint info block */}
-                    <div className="lg:col-span-8 space-y-4">
-                      <div className="flex flex-wrap items-center gap-3">
-                        <span className="p-2 bg-blue-600/20 border border-blue-500/30 rounded-xl text-sky-400 shrink-0">
-                          <Cpu className="w-5 h-5 text-sky-400" />
-                        </span>
-                        <div>
-                          <span className="text-[9px] text-sky-400 font-mono uppercase font-black tracking-widest block">ENGINEERING BLUEPRINT ACTIVE</span>
-                          <h4 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-none mt-0.5">{techObj.name} Blueprint</h4>
-                        </div>
-                      </div>
-                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">{techObj.desc}</p>
-                      
-                      <div className="bg-slate-900/80 p-4 rounded-xl border border-blue-950/80 text-xs text-sky-300 font-mono flex items-start sm:items-center gap-2">
-                        <span className="text-slate-500 shrink-0 select-none">⚙️ [SPEC_ENG]:</span> 
-                        <span className="font-semibold">{techObj.specs}</span>
-                      </div>
-                    </div>
-
-                    {/* Right hardware metrics block */}
-                    <div className="lg:col-span-4 bg-slate-900/90 border border-blue-950 p-6 rounded-2xl flex flex-col justify-between h-full space-y-4 shadow-xl">
-                      <div className="space-y-4">
-                        <div>
-                          <span className="text-[9px] text-slate-500 font-bold uppercase block tracking-widest font-mono">Max Line Velocity</span>
-                          <div className="flex items-center gap-2 mt-1">
-                            <Gauge className="w-4 h-4 text-emerald-400" />
-                            <span className="text-sm sm:text-base font-black text-slate-100">{techObj.speed}</span>
-                          </div>
-                        </div>
-                        <div className="border-t border-blue-950/80 pt-3">
-                          <span className="text-[9px] text-slate-500 font-bold uppercase block tracking-widest font-mono">Compatible Fluid System</span>
-                          <span className="text-xs text-sky-400 font-black mt-1 block">{techObj.ink}</span>
-                        </div>
-                      </div>
-                      <button 
-                        onClick={() => onNavigate("products")}
-                        className="w-full bg-[#2564AF] hover:bg-blue-600 text-white text-xs font-black py-3 rounded-xl text-center mt-2 uppercase tracking-widest cursor-pointer shadow-md shadow-blue-500/10 transition-all"
-                      >
-                        Browse Models
-                      </button>
-                    </div>
-
-                  </div>
-                );
-              })()}
-            </motion.div>
-          )}
-      </section>
-
-      {/* FEATURED SECTION: Jetronix Product Portfolio (Competitor-Inspired Layout) */}
+      {/* SECTION 1: Jetronix Product Portfolio */}
       <section className="bg-slate-50 border-y border-slate-200/60 py-16 px-4 md:px-8" id="jetronix-product-portfolio">
         <div className="max-w-7xl mx-auto space-y-12">
           
@@ -717,7 +487,237 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
         </div>
       </section>
 
-      {/* SECTION 3: Knowledge, Blog & News grid (Redesigned & Premium Editorial) */}
+      {/* SECTION 2: Joint Venture Overview (Partners) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12" id="jv-overview">
+        <div className="bg-gradient-to-br from-[#122540] to-slate-900 rounded-3xl p-8 sm:p-14 text-white relative overflow-hidden shadow-2xl border border-blue-900/30">
+          
+          {/* Cyber accents & layout grids */}
+          <div className="absolute inset-0 tech-grid opacity-10 pointer-events-none" />
+          <div className="absolute -bottom-48 -right-48 w-96 h-96 bg-[#2564AF]/20 rounded-full blur-3xl pointer-events-none" />
+          <div className="absolute top-10 left-10 w-72 h-72 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+            
+            {/* Left Info Column */}
+            <div className="lg:col-span-7 space-y-6">
+              <span className="text-[#3b82f6] font-mono text-[10px] font-extrabold uppercase tracking-widest bg-slate-950/60 border border-blue-500/20 px-4 py-2 rounded-full inline-flex items-center gap-2">
+                <Sparkles className="w-4 h-4 animate-pulse text-sky-400" /> INDO-GERMAN JOINT VENTURE ALLIANCE
+              </span>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-black tracking-tight leading-none text-white">
+                Runicha Enterprises & <br />
+                <span className="text-[#3b82f6] bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">
+                  Best Code Technology India
+                </span>
+              </h2>
+              <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
+                Jetronix is built on a rock-solid partnership between <strong>Runicha Enterprises</strong> (Central India's leading coding specialist based in Indore) and <strong>Best Code Technology India</strong> (North India's premier high-accuracy fluidics team based in Jaipur). Together, we deliver robust Continuous Inkjet hardware integrated with world-class ink chemistries and unmatched local service networks.
+              </p>
+
+              {/* Service Commitments Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
+                <div className="bg-slate-950/60 border border-slate-800/85 p-5 rounded-2xl hover:border-blue-500/30 transition-all duration-300">
+                  <Clock className="w-6 h-6 text-blue-400 mb-3" />
+                  <span className="font-extrabold text-xs block text-slate-100 uppercase tracking-wider font-mono">4-Hour On-Site SLA</span>
+                  <span className="text-[11px] text-slate-400 mt-1.5 block leading-relaxed font-light">Rapid field dispatch in MP & Rajasthan</span>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/85 p-5 rounded-2xl hover:border-blue-500/30 transition-all duration-300">
+                  <RefreshCw className="w-6 h-6 text-sky-400 mb-3 animate-spin" style={{ animationDuration: "15s" }} />
+                  <span className="font-extrabold text-xs block text-slate-100 uppercase tracking-wider font-mono">100% Spares Ready</span>
+                  <span className="text-[11px] text-slate-400 mt-1.5 block leading-relaxed font-light">Nozzles, electronics, filters fully stocked</span>
+                </div>
+                <div className="bg-slate-950/60 border border-slate-800/85 p-5 rounded-2xl hover:border-blue-500/30 transition-all duration-300">
+                  <ShieldCheck className="w-6 h-6 text-indigo-400 mb-3" />
+                  <span className="font-extrabold text-xs block text-slate-100 uppercase tracking-wider font-mono">GST Input Claim</span>
+                  <span className="text-[11px] text-slate-400 mt-1.5 block leading-relaxed font-light">Full tax compliance under CGST/SGST/IGST</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Right node statistics/visual cards */}
+            <div className="lg:col-span-5 space-y-4">
+              
+              {/* Indore Node Card */}
+              <div className="bg-slate-950/80 border border-blue-900/20 p-6 rounded-2xl flex items-start gap-4 hover:border-blue-500/20 transition-all group">
+                <div className="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-all">
+                  <Building className="w-6 h-6 text-blue-400" />
+                </div>
+                <div>
+                  <span className="text-[9px] text-[#3b82f6] font-mono uppercase font-bold tracking-widest block">Indore Node Workshop</span>
+                  <span className="font-extrabold text-sm block mt-1 text-slate-100">Runicha Enterprises, MP</span>
+                  <span className="text-xs text-slate-400 leading-relaxed block mt-1 font-light">Specialized ink blending lab & hydraulic calibration rigs.</span>
+                </div>
+              </div>
+
+              {/* Jaipur Node Card */}
+              <div className="bg-slate-950/80 border border-blue-900/20 p-6 rounded-2xl flex items-start gap-4 hover:border-blue-500/20 transition-all group">
+                <div className="w-12 h-12 rounded-xl bg-sky-600/10 border border-sky-500/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-all">
+                  <Building className="w-6 h-6 text-sky-400" />
+                </div>
+                <div>
+                  <span className="text-[9px] text-sky-400 font-mono uppercase font-bold tracking-widest block">Jaipur Node Workshop</span>
+                  <span className="font-extrabold text-sm block mt-1 text-slate-100">Best Code Technology, Rajasthan</span>
+                  <span className="text-xs text-slate-400 leading-relaxed block mt-1 font-light">Advanced controller testing & automated conduit assembly.</span>
+                </div>
+              </div>
+
+              {/* Special fluid recommendation block */}
+              <div className="bg-[#2564AF]/10 border border-[#2564AF]/30 p-5 rounded-2xl text-center backdrop-blur-sm">
+                <span className="text-xs text-sky-300 font-semibold leading-relaxed font-sans block">
+                  Need a customized ink chemistry formulation?
+                </span>
+                <button
+                  onClick={() => onNavigate("partners")}
+                  className="text-xs text-[#3b82f6] font-extrabold hover:underline inline-flex items-center gap-1.5 mt-2.5 cursor-pointer font-mono uppercase tracking-wider"
+                >
+                  Configure Custom Chemistries &raquo;
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* SECTION 3: Technologies Section (Redesigned & Premium) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4" id="home-technologies">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-[#2564AF] font-mono text-[10px] font-black uppercase tracking-widest bg-blue-50 border border-blue-200/50 px-4 py-2 rounded-full inline-block">
+            ⚡ INDUSTRIAL HARDWARE MATRIX
+          </span>
+          <h2 className="text-3xl md:text-5xl font-black text-[#122540] mt-4 tracking-tight font-sans leading-none">
+            Technologies
+          </h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-[#2564AF] to-sky-400 mx-auto mt-4 mb-4 rounded-full" />
+          <p className="text-xs md:text-sm text-slate-500 max-w-xl mx-auto leading-relaxed">
+            Talk to us to find the right solution for your industry's printing and marking requirements. Click a tech circle to inspect technical blueprints.
+          </p>
+        </div>
+
+        {/* Premium Cybernetic Circular Grid (Fully Responsive) */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 justify-center max-w-6xl mx-auto">
+          {technologies.map((tech, idx) => {
+            const IconComp = tech.icon;
+            const isSelected = selectedTech === tech.name;
+            return (
+              <motion.div 
+                key={idx} 
+                className="flex flex-col items-center group"
+                whileHover={{ y: -3 }}
+                transition={{ duration: 0.2 }}
+              >
+                <button
+                  onClick={() => setSelectedTech(isSelected ? null : tech.name)}
+                  className={`w-24 h-24 sm:w-28 sm:h-28 rounded-full border flex items-center justify-center cursor-pointer transition-all duration-300 relative ${
+                    isSelected 
+                      ? "bg-[#122540] border-[#2564AF] shadow-2xl shadow-blue-900/30 ring-4 ring-[#2564AF]/20" 
+                      : "bg-white border-slate-200/80 hover:border-[#2564AF] hover:shadow-xl shadow-md shadow-slate-100"
+                  }`}
+                  id={`tech-btn-${idx}`}
+                >
+                  {/* Glowing halo indicator */}
+                  <span className={`absolute -inset-1 rounded-full bg-gradient-to-r from-blue-500 to-sky-400 opacity-0 blur transition-opacity duration-300 group-hover:opacity-10 ${isSelected ? "opacity-20" : ""}`} />
+
+                  {/* Outer delicate dashed ring */}
+                  <div className={`absolute inset-2 rounded-full border border-dashed transition-all ${
+                    isSelected 
+                      ? "border-sky-400/30 animate-spin" 
+                      : "border-slate-100 group-hover:border-blue-200"
+                  }`} style={{ animationDuration: "30s" }} />
+
+                  {/* Inner ring circle */}
+                  <div className={`absolute inset-4 rounded-full border transition-all ${
+                    isSelected ? "border-sky-400/20 bg-slate-900/40" : "border-slate-50 bg-slate-50/50 group-hover:bg-blue-50/20"
+                  }`} />
+
+                  {/* Icon Component */}
+                  <IconComp className={`w-8 h-8 relative z-10 transition-transform duration-300 group-hover:scale-110 ${
+                    isSelected ? "text-sky-400" : "text-slate-600 group-hover:text-[#2564AF]"
+                  }`} />
+                </button>
+                
+                <button
+                  onClick={() => setSelectedTech(isSelected ? null : tech.name)}
+                  className={`text-[10px] md:text-xs font-black mt-4 hover:text-[#2564AF] transition-colors text-center max-w-[150px] leading-snug uppercase tracking-widest ${
+                    isSelected ? "text-[#2564AF]" : "text-[#122540]"
+                  }`}
+                >
+                  {tech.name}
+                </button>
+              </motion.div>
+            );
+          })}
+        </div>
+
+        {/* Dynamic Blue-Print Spec panel */}
+          {selectedTech && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: 10 }}
+              transition={{ duration: 0.3 }}
+              className="mt-14 bg-gradient-to-br from-[#0c1626] to-slate-950 border border-blue-900/30 rounded-3xl p-6 sm:p-10 text-white relative overflow-hidden shadow-2xl"
+              id="tech-blueprint-panel"
+            >
+              {/* Technical CAD Grid Overlays */}
+              <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff03_1px,transparent_1px),linear-gradient(to_bottom,#ffffff03_1px,transparent_1px)] bg-[size:20px_20px] pointer-events-none" />
+              <div className="absolute -top-24 -right-24 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
+              
+              {(() => {
+                const techObj = technologies.find(t => t.name === selectedTech);
+                if (!techObj) return null;
+                return (
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+                    
+                    {/* Left blueprint info block */}
+                    <div className="lg:col-span-8 space-y-4">
+                      <div className="flex flex-wrap items-center gap-3">
+                        <span className="p-2 bg-blue-600/20 border border-blue-500/30 rounded-xl text-sky-400 shrink-0">
+                          <Cpu className="w-5 h-5 text-sky-400" />
+                        </span>
+                        <div>
+                          <span className="text-[9px] text-sky-400 font-mono uppercase font-black tracking-widest block">ENGINEERING BLUEPRINT ACTIVE</span>
+                          <h4 className="text-xl sm:text-2xl font-black text-white tracking-tight leading-none mt-0.5">{techObj.name} Blueprint</h4>
+                        </div>
+                      </div>
+                      <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-light">{techObj.desc}</p>
+                      
+                      <div className="bg-slate-900/80 p-4 rounded-xl border border-blue-950/80 text-xs text-sky-300 font-mono flex items-start sm:items-center gap-2">
+                        <span className="text-slate-500 shrink-0 select-none">⚙️ [SPEC_ENG]:</span> 
+                        <span className="font-semibold">{techObj.specs}</span>
+                      </div>
+                    </div>
+
+                    {/* Right hardware metrics block */}
+                    <div className="lg:col-span-4 bg-slate-900/90 border border-blue-950 p-6 rounded-2xl flex flex-col justify-between h-full space-y-4 shadow-xl">
+                      <div className="space-y-4">
+                        <div>
+                          <span className="text-[9px] text-slate-500 font-bold uppercase block tracking-widest font-mono">Max Line Velocity</span>
+                          <div className="flex items-center gap-2 mt-1">
+                            <Gauge className="w-4 h-4 text-emerald-400" />
+                            <span className="text-sm sm:text-base font-black text-slate-100">{techObj.speed}</span>
+                          </div>
+                        </div>
+                        <div className="border-t border-blue-950/80 pt-3">
+                          <span className="text-[9px] text-slate-500 font-bold uppercase block tracking-widest font-mono">Compatible Fluid System</span>
+                          <span className="text-xs text-sky-400 font-black mt-1 block">{techObj.ink}</span>
+                        </div>
+                      </div>
+                      <button 
+                        onClick={() => onNavigate("products")}
+                        className="w-full bg-[#2564AF] hover:bg-blue-600 text-white text-xs font-black py-3 rounded-xl text-center mt-2 uppercase tracking-widest cursor-pointer shadow-md shadow-blue-500/10 transition-all"
+                      >
+                        Browse Models
+                      </button>
+                    </div>
+
+                  </div>
+                );
+              })()}
+            </motion.div>
+          )}
+      </section>
+
+      {/* SECTION 4: Knowledge, Blog & News grid (Redesigned & Premium Editorial) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4" id="knowledge-blog">
         <div className="flex flex-col md:flex-row justify-between items-center border-b border-slate-200 pb-6 mb-12 gap-6">
           <div className="text-center md:text-left">
@@ -814,7 +814,7 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
         </div>
       </section>
 
-      {/* SECTION 4: Industries Section (Bento-Style Cards & Interactive Gauges) */}
+      {/* SECTION 5: Industries Section (Bento-Style Cards & Interactive Gauges) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4" id="home-industries">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-[#2564AF] font-mono text-[10px] font-black uppercase tracking-widest bg-blue-50 border border-blue-200/50 px-4 py-2 rounded-full inline-block">
@@ -932,7 +932,7 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
           )}
       </section>
 
-      {/* SECTION 5: Industrial Printers, Coders and Markers (Premium Corporate block) */}
+      {/* SECTION 6: Industrial Printers, Coders and Markers (Premium Corporate block) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4" id="corporate-text-block">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
           
@@ -1104,7 +1104,7 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
         </div>
       </section>
 
-      {/* SECTION 6: Get In Touch (Asymmetric Quick Hotline & Callback Dashboard) */}
+      {/* SECTION 7: Get In Touch (Asymmetric Quick Hotline & Callback Dashboard) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4" id="get-in-touch-section">
         <div className="bg-gradient-to-br from-slate-950 via-[#122540] to-slate-950 text-white rounded-3xl p-6 sm:p-12 relative overflow-hidden shadow-2xl border border-blue-900/30">
           
