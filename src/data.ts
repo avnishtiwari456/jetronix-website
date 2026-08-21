@@ -199,40 +199,6 @@ export const products: Product[] = [
 
   /* ═══════════  DISTRIBUTED RANGE (manufacturer datasheets)  ═══════════ */
 
-  make("laser-cc30f", "Metal Laser Marking Machine", "laser", "Laser Marking Machine",
-    "Offers high-precision marking for metal surfaces with durable, clear, and permanent engraving.",
-    "laser-co2", [
-    ["Model", "CC-30F"],
-    ["Laser Frequency", "20~80KHz"],
-    ["Marking Speed", "6000 mm/s"],
-    ["Marking Depth", "0.01~0.03mm"],
-    ["Usage / Application", "Metal industry"],
-    ["Marking Range", "100*100mm"],
-    ["Automation Grade", "Semi-Automatic"],
-    ["Operating System", "Linux or Windows"],
-    ["Control Interface", "SD / USB2.0 / Communication"],
-    ["Repeat Accuracy", "±0.002"],
-    ["Working Life", "20,000 hours"],
-    ["Total Weight", "About 75Kg"]
-  ]),
-
-  make("laser-sf30w", "Fibre Laser Marking Machine", "laser", "Fibre Laser Marking Machine",
-    "Offers laser technology for fast, high-quality marking on metals, plastics, and industrial materials.",
-    "laser-inline", [
-    ["Model", "SF-30W"],
-    ["Laser Frequency", "30~60KHz"],
-    ["Marking Speed", "7000 mm/s"],
-    ["Marking Depth", "≤1.0mm"],
-    ["Usage / Application", "Industry"],
-    ["Marking Range", "100*100mm"],
-    ["Laser Device Type", "Fiber Laser source"],
-    ["Operating System", "Windows"],
-    ["Control Interface", "Standard USB"],
-    ["Repeat Accuracy", "±0.002"],
-    ["Working Life", "10,000 hours"],
-    ["Total Weight", "25Kg"]
-  ])
-
 ];
 
 export const jointVentures: FirmDetails[] = [
