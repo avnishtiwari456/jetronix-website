@@ -36,7 +36,6 @@ interface SubCategoryItem {
 
 const CATEGORY_ICONS: Record<ProductCategory, string> = {
   cij: "Cpu",
-  "other-inkjet": "Settings",
   tij: "Zap",
   handheld: "Sliders",
   laser: "Sparkles",
@@ -45,7 +44,6 @@ const CATEGORY_ICONS: Record<ProductCategory, string> = {
 
 const CATEGORY_BADGES: Record<ProductCategory, string> = {
   cij: "CIJ",
-  "other-inkjet": "JT",
   tij: "TIJ",
   handheld: "HANDHELD",
   laser: "LASER",

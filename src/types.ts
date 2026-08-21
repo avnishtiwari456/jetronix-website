@@ -1,6 +1,5 @@
 export type ProductCategory =
   | "cij"
-  | "other-inkjet"
   | "tij"
   | "handheld"
   | "laser"
