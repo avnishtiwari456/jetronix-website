@@ -183,10 +183,26 @@ export const products: Product[] = [
     ["Substrates", "Film packaging, plastics, labels, gloss card"]
   ]),
 
-  make("jlc30-60", "Jetronix JLC30 / JLC60", "laser", "CO2 Laser Coding Machine",
-    "Permanent, consumable-free coding at 1500 characters per second.",
+  make("jlc30", "Jetronix JLC30", "laser", "CO2 Laser Coding Machine",
+    "30 W CO2 laser for permanent, consumable-free coding.",
     "laser-co2", [
-    ["Model", "JLC30 (30 W) / JLC60 (60 W)"],
+    ["Model", "JLC30"],
+    ["Laser Power", "30 W"],
+    ["Technology", "CO2 laser, intelligent vector control algorithm"],
+    ["Marking Speed", "Up to 1500 characters/second"],
+    ["Working Life", "MTBF more than 50,000 hours"],
+    ["Operation", "24 hours continuous"],
+    ["Consumables", "None - permanent identification"],
+    ["Substrates", "Film, plastic, glass, leather and other materials"],
+    ["Installation", "Conveyor line or punch packing machine"],
+    ["Startup", "One-button, auto-jump to running mode"]
+  ]),
+
+  make("jlc60", "Jetronix JLC60", "laser", "CO2 Laser Coding Machine",
+    "60 W CO2 laser for deeper marks and tougher substrates.",
+    "laser-inline", [
+    ["Model", "JLC60"],
+    ["Laser Power", "60 W"],
     ["Technology", "CO2 laser, intelligent vector control algorithm"],
     ["Marking Speed", "Up to 1500 characters/second"],
     ["Working Life", "MTBF more than 50,000 hours"],

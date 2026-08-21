@@ -16,7 +16,7 @@ const footerProductLinks: { label: string; productId?: string; category?: string
   { label: "Jetronix JX350 High-Speed CIJ", productId: "jx350" },
   { label: "JT Series Thermal Inkjet", category: "tij" },
   { label: "JH120 / JH250 Handheld", category: "handheld" },
-  { label: "JLC30 / JLC60 CO2 Laser", productId: "jlc30-60" },
+  { label: "JLC30 / JLC60 CO2 Lasers", category: "laser" },
   { label: "TTO Overprinters", category: "tto" }
 ];
 

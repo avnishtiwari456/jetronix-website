@@ -81,10 +81,10 @@ const featuredProducts = [
     badge: "Portable"
   },
   {
-    id: "jlc",
-    name: "Jetronix JLC30 / JLC60",
+    id: "jlc60",
+    name: "Jetronix JLC60",
     category: "CO2 Laser Coding",
-    type: "Permanent Inkless Marker",
+    type: "60 W Permanent Inkless Marker",
     desc: "Marks up to 1500 characters per second with no consumables at all. Permanent, high-contrast codes for traceability and anti-counterfeiting.",
     image: "/products/laser-co2.jpg",
     imageWebp: "/products/laser-co2.webp",
