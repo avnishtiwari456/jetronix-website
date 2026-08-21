@@ -9,7 +9,7 @@ import {
   Settings, ChevronRight
 } from "lucide-react";
 
-import { products as catalogue, categories as catalogueCategories } from "../data";
+import { products as catalogue, categories as catalogueCategories, jointVentures } from "../data";
 import { ProductCategory } from "../types";
 
 interface HeaderProps {
@@ -186,12 +186,22 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
             </div>
           </div>
 
-          {/* Contact and SLA Details */}
-          <div className="flex items-center gap-4 shrink-0 text-[10px] md:text-xs font-semibold text-slate-300">
-            <a href="tel:+919522299975" className="hover:text-sky-400 transition-colors flex items-center gap-1">
-              <Phone className="w-3 h-3 text-sky-400" />
-              <span>SLA Desk: +91 95222 99975</span>
-            </a>
+          {/* Contact and SLA Details — one desk number per regional hub */}
+          <div className="flex items-center gap-3 md:gap-4 shrink-0 text-[10px] md:text-xs font-semibold text-slate-300">
+            {jointVentures.map((hub, idx) => (
+              <React.Fragment key={hub.city}>
+                {idx > 0 && <span className="text-slate-600 hidden sm:inline">|</span>}
+                <a
+                  href={`tel:${hub.phone.replace(/[^0-9+]/g, "")}`}
+                  className="hover:text-sky-400 transition-colors flex items-center gap-1"
+                  title={`${hub.name} — ${hub.city}`}
+                >
+                  <Phone className="w-3 h-3 text-sky-400 shrink-0" />
+                  <span className="hidden sm:inline">{hub.city}:</span>
+                  <span>{hub.phone}</span>
+                </a>
+              </React.Fragment>
+            ))}
             <span className="text-slate-600">|</span>
             <a href="https://wa.me/919828106099" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors flex items-center gap-1">
               <MessageSquare className="w-3 h-3 text-emerald-400" />
