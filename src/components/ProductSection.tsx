@@ -62,8 +62,8 @@ export default function ProductSection({ target, onRequestQuote }: ProductSectio
             Industrial Coding &amp; Marking Range
           </h2>
           <p className="text-slate-600 mt-3 text-base font-light leading-relaxed">
-            {products.length} machines across continuous inkjet, thermal inkjet, handheld coding,
-            laser marking, TTO, conveyors and rewinders.
+            {products.length} machines across continuous inkjet, thermal inkjet, handheld
+            coding, laser marking and thermal transfer overprinting.
           </p>
         </div>
 

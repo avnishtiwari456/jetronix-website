@@ -13,7 +13,6 @@ interface HeroProps {
 const slideBackgrounds = [
   "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=1920&q=80",
   "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1920&q=80",
-  "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=1920&q=80",
   "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80",
   "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1920&q=80"
 ];
@@ -21,7 +20,7 @@ const slideBackgrounds = [
 const slideTitles = [
   {
     category: "Continuous Inkjet (CIJ)",
-    badge: "01 / 05",
+    badge: "01 / 04",
     title: "High-Performance Industrial Inkjet Printers",
     subtitle: "Flagship Continuous Inkjet Systems for Heavy Production",
     desc: "Explore our range of industrial continuous inkjet printers (CIJ) engineered specifically for non-clogging batch coding, expiry date marking, MRP, and dynamic QR/GS1-128 barcode printing. Built for 24/7 non-stop plant runtimes.",
@@ -30,7 +29,7 @@ const slideTitles = [
   },
   {
     category: "Thermal Inkjet (TIJ)",
-    badge: "02 / 05",
+    badge: "02 / 04",
     title: "Reliable Thermal Inkjet Printers",
     subtitle: "High-Resolution Cartridge Systems for Fast Integration",
     desc: "Explore our range of Thermal Inkjet Printers (TIJ) for crisp and efficient print quality. Featuring cartridge-swapping ease with zero printhead maintenance—ideal for pharmaceutical, food package cartoning, and flexible foil lines.",
@@ -38,17 +37,8 @@ const slideTitles = [
     spec2: "Cartridge swapping under 10 seconds"
   },
   {
-    category: "Winder Rewinding Equipment",
-    badge: "03 / 05",
-    title: "Efficient Winder Rewinding Machines",
-    subtitle: "Smooth, Synchronized Roll to Roll Web Feeding",
-    desc: "Explore our range of heavy-duty Rewinding machines and winders designed for smooth, continuous roll handling. Built with synchronized speed encoders to match print triggers seamlessly without webbing rips.",
-    spec1: "Encoder synchronized tension feedback",
-    spec2: "Auto reel-diameter torque adjusting"
-  },
-  {
     category: "Substrates Print Showroom",
-    badge: "04 / 05",
+    badge: "03 / 04",
     title: "Printing Samples Showcase",
     subtitle: "Certified Micro-Precision Print Results on Metal, Glass & Board",
     desc: "See the uncompromised, high-contrast prints achieved with our advanced marking machines. Witness real physical samples from our satisfied clients across pharmaceuticals, beverages, and heavy wire extrusion plants.",
@@ -57,7 +47,7 @@ const slideTitles = [
   },
   {
     category: "Premium Fluids & Solvents",
-    badge: "05 / 05",
+    badge: "04 / 04",
     title: "Premium Inks for Every Application",
     subtitle: "1-Second Fast Dry MEK Fluids & Genuine OEM Replacements",
     desc: "Experience superior ink adhesion and lightning-fast dry-times on diverse, glossy, or oily substrates. Stocked locally in our Indore and Jaipur hubs for immediate SLA dispatch.",
@@ -72,9 +62,6 @@ export default function Hero({ onExploreProducts, onOpenCalculator }: HeroProps)
   
   // Slide 2 interactive state: Custom print text simulation
   const [customPrintText, setCustomPrintText] = useState<string>("BATCH # 415");
-  
-  // Slide 3 interactive state: Winder speed level (1 to 3)
-  const [winderSpeed, setWinderSpeed] = useState<number>(2);
 
   // Slide 4 interactive state: Active substrate sample
   const [activeSubstrate, setActiveSubstrate] = useState<string>("carton");
@@ -216,7 +203,7 @@ export default function Hero({ onExploreProducts, onOpenCalculator }: HeroProps)
                 onClick={onExploreProducts}
                 className="inline-flex items-center justify-center gap-2 bg-[#2564AF] hover:bg-blue-600 text-white font-black px-7 py-3 rounded-xl shadow-xl transition-all duration-200 cursor-pointer text-xs uppercase tracking-wider border border-blue-400/30 hover:shadow-blue-500/25 active:scale-98"
               >
-                <span>{activeSlide === 3 ? "View All Samples" : "Explore All Products"}</span>
+                <span>{activeSlide === 2 ? "View All Samples" : "Explore All Products"}</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
               
@@ -365,92 +352,8 @@ export default function Hero({ onExploreProducts, onOpenCalculator }: HeroProps)
                   </motion.div>
                 )}
 
-                {/* 3. Winder Rewinding Machine Model */}
-                {activeSlide === 2 && (
-                  <motion.div
-                    key="winder-model"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full h-full flex flex-col justify-between"
-                  >
-                    <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-2">
-                      <span className="text-[10px] font-mono font-bold text-amber-400 uppercase tracking-widest flex items-center gap-1.5">
-                        <Settings className="w-4 h-4 text-amber-400 animate-spin" style={{ animationDuration: '4s' }} /> Winder Roller Physics
-                      </span>
-                      <span className="bg-amber-500/20 border border-amber-500/40 text-amber-400 text-[8px] font-mono font-bold px-2 py-0.5 rounded-full uppercase">
-                        {winderSpeed === 1 ? "SLOW" : winderSpeed === 2 ? "MEDIUM" : "MAX SPEED"}
-                      </span>
-                    </div>
-
-                    <div className="flex-grow flex flex-col items-center justify-center py-2">
-                      <div className="flex items-center gap-8 relative">
-                        <div className="flex flex-col items-center">
-                          <motion.div 
-                            animate={{ rotate: 360 }}
-                            transition={{ 
-                              repeat: Infinity, 
-                              duration: winderSpeed === 1 ? 5 : winderSpeed === 2 ? 2.5 : 1.2, 
-                              ease: "linear" 
-                            }}
-                            className="w-20 h-20 rounded-full border-4 border-dashed border-slate-300 flex items-center justify-center bg-slate-800 shadow-xl"
-                          >
-                            <div className="w-14 h-14 rounded-full bg-slate-700 flex items-center justify-center border-2 border-slate-500">
-                              <div className="w-4 h-4 rounded-full bg-slate-600 border border-slate-500" />
-                            </div>
-                          </motion.div>
-                          <span className="text-[9px] font-mono text-slate-300 mt-2">REEL A (FEED)</span>
-                        </div>
-
-                        <div className="w-12 h-0.5 bg-gradient-to-r from-sky-400 to-amber-400 relative overflow-hidden">
-                          <div className="absolute inset-y-0 left-0 w-2 bg-white/60 fluid-animate" />
-                        </div>
-
-                        <div className="flex flex-col items-center">
-                          <motion.div 
-                            animate={{ rotate: 360 }}
-                            transition={{ 
-                              repeat: Infinity, 
-                              duration: winderSpeed === 1 ? 4.5 : winderSpeed === 2 ? 2.2 : 1.0, 
-                              ease: "linear" 
-                            }}
-                            className="w-24 h-24 rounded-full border-4 border-dashed border-slate-200 flex items-center justify-center bg-slate-800 shadow-xl"
-                          >
-                            <div className="w-18 h-18 rounded-full bg-slate-700 flex items-center justify-center border-2 border-slate-500">
-                              <div className="w-6 h-6 rounded-full bg-slate-600 border border-slate-500" />
-                            </div>
-                          </motion.div>
-                          <span className="text-[9px] font-mono text-slate-300 mt-2">REEL B (TAKE-UP)</span>
-                        </div>
-                      </div>
-
-                      <div className="flex gap-2 mt-4 bg-slate-950/80 p-1 rounded-xl border border-white/10">
-                        {[1, 2, 3].map((spd) => (
-                          <button
-                            key={spd}
-                            onClick={() => setWinderSpeed(spd)}
-                            className={`px-3 py-1 text-[8px] font-mono font-bold rounded-lg transition-all cursor-pointer ${
-                              winderSpeed === spd 
-                                ? "bg-amber-500 text-slate-950 shadow-md" 
-                                : "text-slate-400 hover:text-white"
-                            }`}
-                          >
-                            LVL {spd}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="border-t border-white/10 pt-2 text-[9px] font-mono text-slate-300 flex justify-between items-center">
-                      <span>CONVEYOR SYNC STATUS:</span>
-                      <span className="text-emerald-400 font-bold">SYNCHRONIZED</span>
-                    </div>
-                  </motion.div>
-                )}
-
                 {/* 4. Printing Samples Showcase Interactive Mockup */}
-                {activeSlide === 3 && (
+                {activeSlide === 2 && (
                   <motion.div
                     key="samples-model"
                     initial={{ opacity: 0, scale: 0.95 }}
@@ -540,7 +443,7 @@ export default function Hero({ onExploreProducts, onOpenCalculator }: HeroProps)
                 )}
 
                 {/* 5. Premium Inks lineup Interactive Mockup */}
-                {activeSlide === 4 && (
+                {activeSlide === 3 && (
                   <motion.div
                     key="inks-model"
                     initial={{ opacity: 0, scale: 0.95 }}

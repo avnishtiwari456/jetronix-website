@@ -4,10 +4,7 @@ export type ProductCategory =
   | "tij"
   | "handheld"
   | "laser"
-  | "tto"
-  | "sealing"
-  | "conveyor"
-  | "winder";
+  | "tto";
 
 /** A single label/value row in a product's specification table. */
 export interface SpecRow {
