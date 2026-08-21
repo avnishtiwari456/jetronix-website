@@ -12,7 +12,7 @@ export const categories: CategoryMeta[] = [
   { id: "laser", label: "Laser Marking Machines", shortLabel: "Laser Marking",
     description: "Permanent inkless marking with zero consumables." },
   { id: "tto", label: "TTO Printers", shortLabel: "TTO",
-    description: "Thermal transfer overprinters and ribbons for flexible packaging." }
+    description: "Thermal transfer overprinters for film, labels and flexible packaging." }
 ];
 
 type Row = [string, string];
@@ -342,90 +342,6 @@ export const products: Product[] = [
     ["Warranty", "6 Months"]
   ]),
 
-  make("handy-mrp-25", "Date MRP Handy Inkjet Printer 25mm", "handheld", "Handheld Batch Coding Machine",
-    "Delivers clear, compliant date and MRP printing for seamless production operations.",
-    "handheld-front", [
-    ["Print Resolution", "Up to 600 dpi"],
-    ["Print Speed", "~20 m/min"],
-    ["Coding Area", "25 mm (optimized for date and MRP printing)"],
-    ["Application", "Tailored for packaging lines requiring date and price coding"],
-    ["Connectivity", "USB, Ethernet"],
-    ["Product Type", "Hand Printer"],
-    ["Material", "Metal Body"],
-    ["Automation Grade", "Semi-Automatic"],
-    ["Voltage", "Rechargable Battery"],
-    ["Battery Life", "More then 10 hours"],
-    ["Ink Color", "Black ink cartridge with machine"],
-    ["Screen", "4.3 inches"],
-    ["Language", "English, Chinese, Arabic"],
-    ["Print Distance", "2-5MM From nozzles to objects"],
-    ["Print Content", "Text, Time, Serial No, Logo, QR Code (Variable), Barcode, DM code"],
-    ["Warranty", "6 Months"]
-  ]),
-
-  make("handy-127", "Handy Printer - Batch Code Machine 12.7mm", "handheld", "Handheld Batch Coding Machine",
-    "Ensures fast, precise coding to support efficient batch processing and traceability.",
-    "handheld-side", [
-    ["Print Resolution", "Up to 600 dpi"],
-    ["Print Speed", "~20 m/min"],
-    ["Coding Area", "12.7 mm"],
-    ["Design", "Compact and easy to install"],
-    ["Connectivity", "USB"],
-    ["Product Type", "Hand Printer"],
-    ["Material", "Metal Body"],
-    ["Automation Grade", "Semi-Automatic"],
-    ["Voltage", "Rechargable Battery"],
-    ["Battery Life", "More then 10 hours"],
-    ["Ink Color", "Black ink cartridge with machine"],
-    ["Screen", "4.3 inches"],
-    ["Language", "English, Chinese, Arabic"],
-    ["Print Distance", "2-5MM From nozzles to objects"],
-    ["Print Content", "Text, Time, Serial No, Logo, QR Code (Variable), Barcode, DM code"],
-    ["Warranty", "6 Months"]
-  ]),
-
-  make("handy-metal-127", "Metal Body Handy Inkjet Printer 12.7mm", "handheld", "Handheld Batch Coding Machine",
-    "Provides compact, high-precision coding ideal for on-the-go batch marking.",
-    "handheld-side", [
-    ["Print Resolution", "Up to 600 dpi"],
-    ["Print Speed", "~40 m/min"],
-    ["Coding Area", "12.7 mm"],
-    ["Model", "BE250 (Metal Body)"],
-    ["Connectivity", "USB"],
-    ["Product Type", "Hand Printer"],
-    ["Material", "Metal Body"],
-    ["Automation Grade", "Semi-Automatic"],
-    ["Voltage", "Rechargable Battery"],
-    ["Battery Life", "More then 10 hours"],
-    ["Ink Color", "Black ink cartridge with machine"],
-    ["Screen", "4.3 inches"],
-    ["Language", "English, Chinese, Arabic"],
-    ["Print Distance", "2-5MM From nozzles to objects"],
-    ["Print Content", "Text, Time, Serial No, Logo, QR Code (Variable), Barcode, DM code"],
-    ["Warranty", "6 Months"]
-  ]),
-
-  make("handy-metal-25", "Metal Body Handy Inkjet Printer 25mm", "handheld", "Handheld Batch Coding Machine",
-    "Offers reliable, accurate coding solutions tailored for diverse packaging requirements.",
-    "handheld-front", [
-    ["Print Resolution", "Up to 600 dpi"],
-    ["Print Speed", "~20 m/min"],
-    ["Coding Area", "25 mm"],
-    ["Construction", "Rugged metal design for industrial use"],
-    ["Connectivity", "USB"],
-    ["Product Type", "Hand Printer"],
-    ["Material", "Metal Body"],
-    ["Automation Grade", "Semi-Automatic"],
-    ["Voltage", "Rechargable Battery"],
-    ["Battery Life", "More then 10 hours"],
-    ["Ink Color", "Black ink cartridge with machine"],
-    ["Screen", "4.3 inches"],
-    ["Language", "English, Chinese, Arabic"],
-    ["Print Distance", "2-5MM From nozzles to objects"],
-    ["Print Content", "Text, Time, Serial No, Logo, QR Code (Variable), Barcode, DM code"],
-    ["Warranty", "6 Months"]
-  ]),
-
   make("laser-cc30f", "Metal Laser Marking Machine", "laser", "Laser Marking Machine",
     "Offers high-precision marking for metal surfaces with durable, clear, and permanent engraving.",
     "laser-co2", [
@@ -458,25 +374,6 @@ export const products: Product[] = [
     ["Repeat Accuracy", "±0.002"],
     ["Working Life", "10,000 hours"],
     ["Total Weight", "25Kg"]
-  ]),
-
-  make("tto-24x30", "TTO Printer 24 x 30 mm", "tto", "Thermal Transfer Overprinter (TTO)",
-    "Offers high-resolution thermal transfer printing for durable, precise labeling across various packaging needs.",
-    "tto-linx", [
-    ["Print Resolution", "Up to 300 dpi"],
-    ["Print Speed", "~20 m/min"],
-    ["Print Area", "24x30 mm"],
-    ["Connectivity", "USB, Ethernet"],
-    ["Compatibility", "Supports various thermal transfer ribbons"]
-  ]),
-
-  make("tto-ribbon-33x500", "TTO Ribbon for TTO Printer 33 x 500 mm", "tto", "Consumable - Thermal Transfer Ribbon",
-    "Offers consistent, high-quality prints with reliable performance for flawless coding.",
-    undefined, [
-    ["Ribbon Size", "33x500 mm"],
-    ["Material", "High-durability thermal transfer ribbon"],
-    ["Application", "Engineered for optimal performance with TTO printers"],
-    ["Features", "Consistent color and print quality under high-volume conditions"]
   ])
 
 ];
