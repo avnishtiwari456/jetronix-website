@@ -12,19 +12,19 @@ export default function SampleGenerator({ onRequestPhysicalSample }: SampleGener
   const activeSubstrate = substrates.find((s) => s.id === selectedSubstrateId) || substrates[0];
 
   const [printText, setPrintText] = useState<string>(activeSubstrate.defaultText);
-  const [fontSize, setFontSize] = useState<number>(14);
+  const [fontSize, setFontSize] = useState<number>(11); // bottle is the first substrate shown
   const [lineSpacing, setLineSpacing] = useState<number>(1.2);
 
   const colors = [
     { name: "Industrial Jet Black", class: "text-slate-950", hex: "#020617" },
-    { name: "High-Contrast Opaque White", class: "text-slate-100 drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]", hex: "#f1f5f9" },
+    { name: "High-Contrast Opaque White", class: "text-white [text-shadow:0_0_3px_rgba(15,23,42,0.9)]", hex: "#ffffff" },
     { name: "High-Visibility Pigmented Yellow", class: "text-yellow-400 drop-shadow-[0_1px_1px_rgba(0,0,0,0.8)]", hex: "#eab308" },
     { name: "Aqueous Royal Blue", class: "text-blue-600", hex: "#2563eb" },
     { name: "Heat-Resistant Crimson Red", class: "text-red-600", hex: "#dc2626" },
     { name: "Invisible UV Ink (Cyan Glow)", class: "text-cyan-400 animate-pulse drop-shadow-[0_0_2px_rgba(34,211,238,0.8)]", hex: "#22d3ee" }
   ];
 
-  const [activeColor, setActiveColor] = useState(colors[2]); // Yellow default high contrast
+  const [activeColor, setActiveColor] = useState(colors[0]); // Bottle opens first and is light, so black
 
   const handleSubstrateChange = (id: string) => {
     setSelectedSubstrateId(id);
@@ -36,11 +36,11 @@ export default function SampleGenerator({ onRequestPhysicalSample }: SampleGener
         setActiveColor(colors[1]); // White for dark wire
         setFontSize(15);
       } else if (id === "beverage_can") {
-        setActiveColor(colors[2]); // Yellow for bottom of can
+        setActiveColor(colors[0]); // Black reads best on the silver can base
         setFontSize(12);
       } else {
         setActiveColor(colors[0]); // Black standard for box, pharma, bottle
-        setFontSize(14);
+        setFontSize(id === "fmcg_plastic" ? 11 : 14);
       }
     }
   };
@@ -217,92 +217,78 @@ export default function SampleGenerator({ onRequestPhysicalSample }: SampleGener
               </div>
 
               {/* Substrate specific packaging sketches */}
-              <div className="flex justify-center items-center h-[300px] sm:h-[350px] relative" id="substrate-canvas-stage">
+              <div className="flex justify-center items-center h-[340px] sm:h-[420px] relative" id="substrate-canvas-stage">
                 
-                {/* 1. PET Plastic Bottle SVG representation */}
+                {/* 1. PET plastic bottle — light translucent plastic so it reads on the dark stage */}
                 {selectedSubstrateId === "fmcg_plastic" && (
                   <div className="relative flex flex-col justify-center items-center" id="svg-substrate-bottle">
-                    <svg className="w-32 h-auto text-slate-700/50" viewBox="0 0 100 220" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      {/* Bottle Outline */}
-                      <path d="M40 20 H60 V40 H30 Q15 65 20 90 L25 200 Q25 210 35 210 H65 Q75 210 75 200 L80 90 Q85 65 70 40 H40" stroke="currentColor" strokeWidth="2.5" fill="#1e293b" fillOpacity="0.3" />
-                      {/* Fluid line level */}
-                      <path d="M22 100 Q50 104 78 100 L75 200 H25 L22 100" fill="#38bdf8" fillOpacity="0.15" />
-                      {/* Bottle ridges */}
-                      <line x1="23" y1="120" x2="77" y2="120" stroke="currentColor" strokeWidth="1.5" />
-                      <line x1="24" y1="150" x2="76" y2="150" stroke="currentColor" strokeWidth="1.5" />
-                      {/* Bottle Cap */}
-                      <rect x="38" y="10" width="24" height="10" rx="1.5" fill="#3b82f6" />
+                    <svg className="w-40 sm:w-44 h-auto text-slate-300" viewBox="0 0 100 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M40 20 H60 V40 H30 Q15 65 20 90 L25 200 Q25 210 35 210 H65 Q75 210 75 200 L80 90 Q85 65 70 40 H40" stroke="currentColor" strokeWidth="2.5" fill="#e2e8f0" fillOpacity="0.92" />
+                      <path d="M22 100 Q50 104 78 100 L75 200 H25 L22 100" fill="#7dd3fc" fillOpacity="0.55" />
+                      <line x1="23" y1="120" x2="77" y2="120" stroke="#94a3b8" strokeWidth="1.5" />
+                      <line x1="24" y1="150" x2="76" y2="150" stroke="#94a3b8" strokeWidth="1.5" />
+                      <rect x="38" y="10" width="24" height="10" rx="1.5" fill="#2563eb" />
                     </svg>
-                    
-                    {/* Floating print projection sheet */}
-                    <div className="absolute top-[52%] max-w-[130px] text-center" id="bottle-print-area">
-                      <div className={`dot-matrix select-none font-bold whitespace-pre-wrap ${activeColor.class}`} style={{ fontSize: `${fontSize}px`, lineHeight: lineSpacing }}>
+
+                    {/* Print sits inside the bottle body, never wider than the label panel */}
+                    <div className="absolute top-[54%] w-[92px] sm:w-[112px] px-1 text-center overflow-hidden" id="bottle-print-area">
+                      <div className={`dot-matrix select-none font-bold whitespace-pre-wrap break-words ${activeColor.class}`} style={{ fontSize: `${fontSize}px`, lineHeight: lineSpacing }}>
                         {printText || "NO TEXT"}
                       </div>
                     </div>
                   </div>
                 )}
 
-                {/* 2. Metal Can Bottom representation */}
+                {/* 2. Aluminium can base — brushed silver */}
                 {selectedSubstrateId === "beverage_can" && (
                   <div className="relative flex flex-col justify-center items-center" id="svg-substrate-can">
-                    <div className="w-56 h-56 rounded-full bg-gradient-to-b from-slate-800 to-slate-950 border-4 border-slate-700 shadow-2xl flex items-center justify-center relative overflow-hidden">
-                      {/* Concave bottom rim rings (standard aluminum can bottom) */}
-                      <div className="w-44 h-44 rounded-full border-[6px] border-slate-700/70 bg-gradient-to-tr from-slate-900 to-slate-950 shadow-inner flex items-center justify-center">
-                        <div className="w-32 h-32 rounded-full border-4 border-slate-850 bg-slate-950 flex items-center justify-center">
-                          {/* Inner dome stamp */}
-                          <div className="text-center p-3">
-                            <div className={`dot-matrix select-none font-bold whitespace-pre-wrap leading-tight text-center ${activeColor.class}`} style={{ fontSize: `${fontSize - 1}px`, lineHeight: lineSpacing }}>
+                    <div className="w-56 h-56 rounded-full bg-gradient-to-b from-slate-200 to-slate-400 border-4 border-slate-300 shadow-2xl flex items-center justify-center relative overflow-hidden">
+                      <div className="w-44 h-44 rounded-full border-[6px] border-slate-400/70 bg-gradient-to-tr from-slate-100 to-slate-300 shadow-inner flex items-center justify-center">
+                        <div className="w-32 h-32 rounded-full border-4 border-slate-400 bg-slate-200 flex items-center justify-center overflow-hidden">
+                          <div className="text-center px-2 w-full">
+                            <div className={`dot-matrix select-none font-bold whitespace-pre-wrap break-words leading-tight text-center ${activeColor.class}`} style={{ fontSize: `${fontSize - 1}px`, lineHeight: lineSpacing }}>
                               {printText || "NO TEXT"}
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div className="absolute top-2 left-2 text-[8px] text-slate-500 font-mono font-bold uppercase tracking-wider">Concave Can Dome</div>
+                      <div className="absolute bottom-3 inset-x-0 text-center text-[8px] text-slate-600 font-mono font-bold uppercase tracking-wider">Concave Can Dome</div>
                     </div>
                   </div>
                 )}
 
-                {/* 3. Blister Pack Foil representation */}
+                {/* 3. Pharma blister — silver foil backing */}
                 {selectedSubstrateId === "pharma_blister" && (
                   <div className="relative flex flex-col justify-center items-center" id="svg-substrate-blister">
-                    <div className="w-64 h-52 bg-slate-800/60 rounded-2xl border-2 border-slate-700 p-4 relative flex flex-col justify-between shadow-lg">
-                      {/* Silver foil textured background rings */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-transparent to-slate-900/40 pointer-events-none" />
-                      {/* Pill slots visualizer */}
-                      <div className="grid grid-cols-4 gap-3 relative z-10 opacity-30">
+                    <div className="w-64 h-52 bg-gradient-to-br from-slate-200 to-slate-400 rounded-2xl border-2 border-slate-300 p-4 relative flex flex-col justify-between shadow-lg overflow-hidden">
+                      <div className="grid grid-cols-4 gap-3 relative z-10">
                         {Array.from({ length: 8 }).map((_, i) => (
-                          <div key={i} className="h-8 rounded-full bg-slate-950 border border-slate-700 shadow-inner" />
+                          <div key={i} className="h-8 rounded-full bg-slate-100 border border-slate-400 shadow-inner" />
                         ))}
                       </div>
-
-                      {/* Printed expiration on foil seal side */}
-                      <div className="text-left mt-4 pl-2 relative z-20">
-                        <div className={`dot-matrix select-none font-bold whitespace-pre-wrap ${activeColor.class}`} style={{ fontSize: `${fontSize}px`, lineHeight: lineSpacing }}>
+                      <div className="text-left mt-4 pl-2 pr-2 relative z-20 overflow-hidden">
+                        <div className={`dot-matrix select-none font-bold whitespace-pre-wrap break-words ${activeColor.class}`} style={{ fontSize: `${fontSize}px`, lineHeight: lineSpacing }}>
                           {printText || "NO TEXT"}
                         </div>
                       </div>
-                      <div className="absolute top-2 right-2 text-[8px] text-slate-500 font-mono font-bold uppercase tracking-wider">Foil seal backing</div>
+                      <div className="absolute top-2 right-3 text-[8px] text-slate-600 font-mono font-bold uppercase tracking-wider">Foil seal backing</div>
                     </div>
                   </div>
                 )}
 
-                {/* 4. PVC Cable representation */}
+                {/* 4. Dark PVC cable — stays dark on purpose, that is why it needs white pigment ink */}
                 {selectedSubstrateId === "cable_wire" && (
                   <div className="relative flex flex-col justify-center items-center w-full" id="svg-substrate-cable">
-                    {/* Thick black industrial cable wrapping across stage */}
-                    <div className="w-full h-20 bg-slate-950 border-y-4 border-slate-800 relative shadow-2xl flex items-center px-6 overflow-hidden">
-                      {/* Coaxial metal wire stripe reflection effect */}
-                      <div className="absolute top-1/4 left-0 w-full h-2 bg-white/5 pointer-events-none" />
-                      {/* Repeated meter ticks */}
-                      <div className="absolute bottom-1 left-4 w-full flex justify-between px-6 text-[8px] text-slate-600 font-mono">
+                    <div className="w-full h-24 bg-gradient-to-b from-slate-700 via-slate-800 to-slate-900 border-y-4 border-slate-600 relative shadow-2xl flex items-center px-6 overflow-hidden">
+                      <div className="absolute top-3 left-0 w-full h-2.5 bg-white/20 pointer-events-none" />
+                      <div className="absolute bottom-4 left-0 w-full h-1.5 bg-black/40 pointer-events-none" />
+                      <div className="absolute bottom-1 left-4 w-full flex justify-between px-6 text-[8px] text-slate-400 font-mono">
                         <span>| | 124 M</span>
                         <span>| | 125 M</span>
                         <span>| | 126 M</span>
                       </div>
-
-                      <div className="relative z-10 w-full text-center">
-                        <div className={`dot-matrix select-none font-bold whitespace-pre-wrap tracking-wider ${activeColor.class}`} style={{ fontSize: `${fontSize + 1}px`, lineHeight: lineSpacing }}>
+                      <div className="relative z-10 w-full text-center overflow-hidden">
+                        <div className={`dot-matrix select-none font-bold whitespace-pre-wrap break-words tracking-wider ${activeColor.class}`} style={{ fontSize: `${fontSize + 1}px`, lineHeight: lineSpacing }}>
                           {printText || "NO TEXT"}
                         </div>
                       </div>
@@ -310,26 +296,21 @@ export default function SampleGenerator({ onRequestPhysicalSample }: SampleGener
                   </div>
                 )}
 
-                {/* 5. Corrugated Box representation */}
+                {/* 5. Corrugated carton — opaque kraft board */}
                 {selectedSubstrateId === "carton_box" && (
                   <div className="relative flex flex-col justify-center items-center" id="svg-substrate-box">
-                    <div className="w-64 h-52 bg-[#92623a]/15 rounded-2xl border-2 border-[#92623a]/30 p-5 relative shadow-inner overflow-hidden flex flex-col justify-between">
-                      {/* Cardboard sealing tape */}
-                      <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-8 bg-[#7a4e28]/10 border-x border-[#7a4e28]/20" />
-                      
-                      {/* Package barcode vector print mock */}
-                      <div className="flex items-center gap-2 opacity-25">
-                        <div className="h-8 w-24 bg-slate-400 flex gap-1 px-1 py-0.5 items-stretch">
+                    <div className="w-64 h-52 bg-[#c89a63] rounded-2xl border-2 border-[#8a5f34] p-5 relative shadow-lg overflow-hidden flex flex-col justify-between">
+                      <div className="absolute top-0 bottom-0 left-1/2 -translate-x-1/2 w-8 bg-[#b0854f] border-x border-[#8a5f34]" />
+                      <div className="flex items-center gap-2 relative z-10">
+                        <div className="h-8 w-24 bg-white flex gap-1 px-1 py-0.5 items-stretch border border-slate-400">
                           {Array.from({ length: 12 }).map((_, i) => (
-                            <div key={i} className="bg-slate-950" style={{ width: i % 3 === 0 ? "3px" : "1px" }} />
+                            <div key={i} className="bg-slate-900" style={{ width: i % 3 === 0 ? "3px" : "1px" }} />
                           ))}
                         </div>
-                        <div className="w-10 h-10 border border-slate-400 rounded-sm" />
+                        <div className="w-10 h-10 border-2 border-slate-700 rounded-sm bg-white/60" />
                       </div>
-
-                      {/* Printed shipping block text */}
-                      <div className="text-left relative z-10">
-                        <div className={`dot-matrix select-none font-bold whitespace-pre-wrap ${activeColor.class}`} style={{ fontSize: `${fontSize - 1}px`, lineHeight: lineSpacing }}>
+                      <div className="text-left relative z-10 overflow-hidden">
+                        <div className={`dot-matrix select-none font-bold whitespace-pre-wrap break-words ${activeColor.class}`} style={{ fontSize: `${fontSize - 1}px`, lineHeight: lineSpacing }}>
                           {printText || "NO TEXT"}
                         </div>
                       </div>
@@ -349,7 +330,7 @@ export default function SampleGenerator({ onRequestPhysicalSample }: SampleGener
               <div className="text-right">
                 <span className="font-bold text-slate-300 block uppercase tracking-wider text-[10px] font-mono">Auto-configured Model:</span>
                 <span className="text-blue-400 mt-1 block font-mono font-semibold">
-                  {selectedSubstrateId === "cable_wire" ? "Jetronix S200PLUS (Pigment Heavy)" : "Jetronix Si220 (Standard Core)"}
+                  {selectedSubstrateId === "cable_wire" ? "Jetronix JX350 (Pigment Heavy)" : "Jetronix S200 (Standard Core)"}
                 </span>
               </div>
             </div>
