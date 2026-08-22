@@ -389,7 +389,7 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
                   className="bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
                 >
                   {/* Image & Badges Overlay */}
-                  <div className="relative h-48 w-full bg-slate-50 overflow-hidden group">
+                  <div className="relative h-64 w-full bg-slate-50 overflow-hidden group">
                     {prod.image ? (
                       <picture>
                         <source srcSet={prod.imageWebp} type="image/webp" />
@@ -397,7 +397,7 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
                           src={prod.image}
                           alt={prod.name}
                           loading="lazy"
-                          className="w-full h-full object-contain p-4 pb-10 group-hover:scale-105 transition-transform duration-500"
+                          className="w-full h-full object-contain px-6 pt-6 pb-16 group-hover:scale-105 transition-transform duration-500"
                         />
                       </picture>
                     ) : (
@@ -406,17 +406,21 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
                       </div>
                     )}
                     {/* Keeps the white-out product shots readable behind the overlaid label */}
-                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black via-black/75 to-transparent" />
                     
                     {/* Top Right: Distinct Badge */}
                     <div className="absolute top-4 right-4 bg-blue-600/90 border border-blue-400 text-white font-mono text-[8px] font-bold px-2 py-1 rounded-md uppercase tracking-wider">
                       {prod.badge}
                     </div>
 
-                    {/* Bottom Left Overlay info */}
-                    <div className="absolute bottom-4 left-4 text-left">
-                      <span className="text-sky-400 font-mono text-[9px] font-bold uppercase tracking-widest">{prod.category}</span>
-                      <h4 className="text-white text-lg font-black tracking-tight leading-tight uppercase">{prod.name}</h4>
+                    {/* Caption band: centred, so names of different lengths line up across the grid */}
+                    <div className="absolute inset-x-0 bottom-0 px-5 pb-5 pt-3 text-center">
+                      <span className="block text-sky-300 font-mono text-[9px] font-bold uppercase tracking-widest mb-1.5 drop-shadow">
+                        {prod.category}
+                      </span>
+                      <h4 className="text-white text-lg font-black tracking-tight leading-snug uppercase text-balance">
+                        {prod.name}
+                      </h4>
                     </div>
                   </div>
 
