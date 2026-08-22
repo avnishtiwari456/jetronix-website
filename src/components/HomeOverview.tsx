@@ -444,11 +444,11 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
                       </div>
                       <div className="flex justify-between border-b border-slate-200/60 pb-1.5">
                         <span className="text-slate-400 uppercase font-bold">Ink Base:</span>
-                        <span className="text-slate-800 font-bold truncate max-w-[150px]">{prod.specs.ink}</span>
+                        <span className="text-slate-800 font-bold text-right max-w-[60%] leading-snug">{prod.specs.ink}</span>
                       </div>
                       <div className="flex justify-between pt-0.5">
                         <span className="text-slate-400 uppercase font-bold">Substrates:</span>
-                        <span className="text-slate-800 font-bold truncate max-w-[150px]">{prod.specs.substrates}</span>
+                        <span className="text-slate-800 font-bold text-right max-w-[60%] leading-snug">{prod.specs.substrates}</span>
                       </div>
                     </div>
 

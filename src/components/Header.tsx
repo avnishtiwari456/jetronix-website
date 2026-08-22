@@ -158,21 +158,21 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
       
       {/* 1. Slim Top Bar (Micro-Header) for Distributor Authority & SLA Status */}
       <div className="w-full bg-[#12223c] text-white py-1.5 text-[10px] md:text-xs font-sans tracking-wider font-medium border-b border-blue-950/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-2 h-auto sm:h-9">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col xl:flex-row items-center justify-between gap-2 h-auto xl:h-9">
           
           {/* Active Live Ticker */}
-          <div className="flex items-center gap-2 overflow-hidden shrink min-w-0">
+          <div className="flex items-center gap-2 overflow-hidden flex-1 min-w-0">
             <span className="flex h-2 w-2 relative shrink-0">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
             </span>
             
-            <div className="flex items-center gap-1.5 bg-blue-950/50 text-sky-400 px-1.5 py-0.5 rounded text-[8px] font-semibold tracking-widest uppercase shrink-0 border border-blue-800/20">
+            <div className="hidden sm:flex items-center gap-1.5 bg-blue-950/50 text-sky-400 px-1.5 py-0.5 rounded text-[8px] font-semibold tracking-widest uppercase shrink-0 border border-blue-800/20">
               <span>LIVE DESK</span>
             </div>
 
             {/* Ticker Animation */}
-            <div className="h-5 flex items-center relative overflow-hidden min-w-[200px] md:min-w-[320px]">
+            <div className="h-5 flex items-center relative overflow-hidden flex-1 min-w-0">
                 <motion.span
                   key={tickerIndex}
                   initial={{ opacity: 0, y: 8 }}

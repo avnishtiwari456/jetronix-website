@@ -541,7 +541,7 @@ export default function Hero({ onExploreProducts, onOpenCalculator }: HeroProps)
                   {isActive && <Sparkles className="w-3 h-3 text-sky-300 animate-pulse hidden sm:block" />}
                 </div>
 
-                <div className="text-[9px] md:text-[11px] font-extrabold uppercase tracking-wide truncate mt-1">
+                <div className="text-[9px] md:text-[11px] font-extrabold uppercase tracking-wide mt-1 leading-tight break-words">
                   {slide.category.split(" ")[0]} {slide.category.split(" ")[1] || ""}
                 </div>
 
