@@ -12,7 +12,7 @@ export default function SampleGenerator({ onRequestPhysicalSample }: SampleGener
   const activeSubstrate = substrates.find((s) => s.id === selectedSubstrateId) || substrates[0];
 
   const [printText, setPrintText] = useState<string>(activeSubstrate.defaultText);
-  const [fontSize, setFontSize] = useState<number>(11); // bottle is the first substrate shown
+  const [fontSize, setFontSize] = useState<number>(10); // bottle is the first substrate shown
   const [lineSpacing, setLineSpacing] = useState<number>(1.2);
 
   const colors = [
@@ -40,7 +40,7 @@ export default function SampleGenerator({ onRequestPhysicalSample }: SampleGener
         setFontSize(12);
       } else {
         setActiveColor(colors[0]); // Black standard for box, pharma, bottle
-        setFontSize(id === "fmcg_plastic" ? 11 : 14);
+        setFontSize(id === "fmcg_plastic" ? 10 : 14);
       }
     }
   };
@@ -217,21 +217,21 @@ export default function SampleGenerator({ onRequestPhysicalSample }: SampleGener
               </div>
 
               {/* Substrate specific packaging sketches */}
-              <div className="flex justify-center items-center h-[340px] sm:h-[420px] relative" id="substrate-canvas-stage">
+              <div className="flex justify-center items-center h-[360px] sm:h-[480px] relative" id="substrate-canvas-stage">
                 
                 {/* 1. PET plastic bottle — light translucent plastic so it reads on the dark stage */}
                 {selectedSubstrateId === "fmcg_plastic" && (
                   <div className="relative flex flex-col justify-center items-center" id="svg-substrate-bottle">
-                    <svg className="w-40 sm:w-44 h-auto text-slate-300" viewBox="0 0 100 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg className="w-40 sm:w-52 h-auto text-slate-300" viewBox="0 0 100 220" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M40 20 H60 V40 H30 Q15 65 20 90 L25 200 Q25 210 35 210 H65 Q75 210 75 200 L80 90 Q85 65 70 40 H40" stroke="currentColor" strokeWidth="2.5" fill="#e2e8f0" fillOpacity="0.92" />
                       <path d="M22 100 Q50 104 78 100 L75 200 H25 L22 100" fill="#7dd3fc" fillOpacity="0.55" />
-                      <line x1="23" y1="120" x2="77" y2="120" stroke="#94a3b8" strokeWidth="1.5" />
-                      <line x1="24" y1="150" x2="76" y2="150" stroke="#94a3b8" strokeWidth="1.5" />
+                      <line x1="23" y1="110" x2="77" y2="110" stroke="#94a3b8" strokeWidth="1.5" />
+                      <line x1="26" y1="195" x2="74" y2="195" stroke="#94a3b8" strokeWidth="1.5" />
                       <rect x="38" y="10" width="24" height="10" rx="1.5" fill="#2563eb" />
                     </svg>
 
                     {/* Print sits inside the bottle body, never wider than the label panel */}
-                    <div className="absolute top-[54%] w-[92px] sm:w-[112px] px-1 text-center overflow-hidden" id="bottle-print-area">
+                    <div className="absolute top-[68%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80px] sm:w-[100px] px-1 text-center overflow-hidden" id="bottle-print-area">
                       <div className={`dot-matrix select-none font-bold whitespace-pre-wrap break-words ${activeColor.class}`} style={{ fontSize: `${fontSize}px`, lineHeight: lineSpacing }}>
                         {printText || "NO TEXT"}
                       </div>
