@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
+import { categories } from "../data";
 import { 
   Award, ShieldCheck, Zap, ArrowRight, Building, Clock, 
   RefreshCw, FileText, Settings, Sparkles, Cpu, 
@@ -18,6 +19,7 @@ interface HomeOverviewProps {
 const featuredProducts = [
   {
     id: "s200",
+    categoryId: "cij",
     name: "Jetronix S200",
     category: "Continuous Inkjet (CIJ)",
     type: "Workhorse Primary Coder",
@@ -34,6 +36,7 @@ const featuredProducts = [
   },
   {
     id: "jx350",
+    categoryId: "cij",
     name: "Jetronix JX350",
     category: "Continuous Inkjet (CIJ)",
     type: "High-Speed Line Coder",
@@ -50,6 +53,7 @@ const featuredProducts = [
   },
   {
     id: "jt240",
+    categoryId: "tij",
     name: "Jetronix JT240",
     category: "Thermal Inkjet (TIJ)",
     type: "Double-Head Cartridge Coder",
@@ -66,6 +70,7 @@ const featuredProducts = [
   },
   {
     id: "jh250",
+    categoryId: "handheld",
     name: "Jetronix JH250",
     category: "Handheld Printer",
     type: "Portable MRP & Date Coder",
@@ -82,6 +87,7 @@ const featuredProducts = [
   },
   {
     id: "jlc60",
+    categoryId: "laser",
     name: "Jetronix JLC60",
     category: "CO2 Laser Coding",
     type: "60 W Permanent Inkless Marker",
@@ -98,6 +104,7 @@ const featuredProducts = [
   },
   {
     id: "tt750",
+    categoryId: "tto",
     name: "Linx TT 750",
     category: "Thermal Transfer (TTO)",
     type: "Flexible Packaging Overprinter",
@@ -345,9 +352,7 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
             <div className="bg-white p-1 rounded-2xl border border-slate-200 shadow-sm flex flex-wrap gap-1 text-xs font-bold justify-center" id="product-pills-bar">
               {[
                 { label: "All Products", filter: "All" },
-                { label: "Inkjet Range (CIJ/TIJ)", filter: "Inkjet" },
-                { label: "Lasers Range", filter: "Laser" },
-                { label: "Thermal & DOD Box", filter: "Packaging" }
+                ...categories.map((c) => ({ label: c.shortLabel, filter: c.id })),
               ].map((pill) => {
                 const isActive = activeProductFilter === pill.filter;
                 return (
@@ -372,11 +377,7 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
             {(() => {
               const displayProducts = activeProductFilter === "All"
                 ? featuredProducts
-                : activeProductFilter === "Inkjet"
-                ? featuredProducts.filter(p => p.category.includes("Inkjet") || p.category.includes("CIJ") || p.category.includes("TIJ"))
-                : activeProductFilter === "Laser"
-                ? featuredProducts.filter(p => p.category.includes("Laser"))
-                : featuredProducts.filter(p => p.category.includes("Thermal Transfer") || p.category.includes("Large Character") || p.category.includes("TTO") || p.category.includes("LCM"));
+                : featuredProducts.filter((p) => p.categoryId === activeProductFilter);
 
               return displayProducts.map((prod) => (
                 <motion.div
