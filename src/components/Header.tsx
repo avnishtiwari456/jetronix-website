@@ -139,7 +139,7 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
   ];
 
   const products = [
-    { name: "PRODUCT PRINTING", desc: "S200PLUS & Si220 Continuous Inkjet", target: "products", anchor: "product-catalogue", icon: Cpu, badge: "CIJ" },
+    { name: "PRODUCT PRINTING", desc: "S200 & JX350 Continuous Inkjet", target: "products", anchor: "product-catalogue", icon: Cpu, badge: "CIJ" },
     { name: "CASE PRINTING & LABELLING", desc: "Outer box character markers & DOD", target: "products", anchor: "product-catalogue", icon: Printer, badge: "Large Char" },
     { name: "PALLET LABELLING", desc: "Print & apply automated pallet taggers", target: "products", anchor: "product-catalogue", icon: Layers, badge: "GS1-128" },
     { name: "CODE VERIFICATION", desc: "Vision inspect & camera rejection loops", target: "lab", icon: ShieldCheck, badge: "VISION" },

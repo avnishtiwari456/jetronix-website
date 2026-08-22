@@ -19,25 +19,25 @@ export default function Matchmaker() {
   const getRecommendation = () => {
     const { material, color, speed, environment } = answers;
 
-    let printer = "Jetronix Si220 Series";
+    let printer = "Jetronix S200";
     let nozzle = "60µm (Standard Character)";
     let inkBase = "MEK (Methyl Ethyl Ketone) - Ultra Fast Dry";
     let inkColor = "Black (Dye-Based)";
-    let recoveryRecommended = "Yes, Essential (Si220 Eco-solvent active condenser will save up to 50% solvent)";
+    let recoveryRecommended = "Yes, essential - an active solvent condenser cuts make-up consumption by up to 50%";
     let contrastRatio = "99.8% (Sharp black dot grids)";
     let uptimeRating = "99.98% (High Stability)";
 
     // Rule 1: High Contrast on Dark materials
     if (color === "dark") {
       inkColor = "White or Yellow (High Opacity Pigment)";
-      nozzle = "75µm (Specialized Pigment Nozzle)";
+      nozzle = "Pigment nozzle configuration";
       contrastRatio = "100% (High contrast pigmented opaque)";
     }
 
     // Rule 2: Cable PVC or Wire lines are usually fast and dark
     if (material === "cable") {
-      printer = "Jetronix S200PLUS Series";
-      nozzle = "75µm (Pigmented Nozzle)";
+      printer = "Jetronix JX350";
+      nozzle = "Pigment nozzle configuration";
       inkColor = "White or Yellow Pigment";
       contrastRatio = "100% (Armored cabling contrast)";
     }
@@ -52,13 +52,13 @@ export default function Matchmaker() {
 
     // Rule 4: Extreme High Speed lines
     if (speed === "ultra") {
-      printer = "Jetronix S200PLUS Series";
+      printer = "Jetronix JX350";
       uptimeRating = "99.99% (Reinforced ultra-high-speed sync)";
     }
 
     // Rule 5: Heavy Dusty Cement / Construction environments
     if (environment === "dusty") {
-      printer = "Jetronix S200PLUS Series (Reinforced IP55 Isolated Electronics)";
+      printer = "Jetronix S200 (dust-sealed cabinet build)";
       uptimeRating = "99.92% (Heavy-dust seal filtration)";
       if (material === "cardboard") {
         nozzle = "85µm (High volume dust-tolerant nozzle)";

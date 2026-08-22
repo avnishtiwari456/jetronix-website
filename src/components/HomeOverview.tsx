@@ -168,7 +168,7 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
     { 
       name: "Continuous Inkjet Printing", 
       icon: Cpu,
-      desc: "Industrial workhorse models like Jetronix S200PLUS firing fine droplets continuously onto any curved, uneven or high-speed substrates.",
+      desc: "Industrial workhorse models like the Jetronix S200 firing fine droplets continuously onto any curved, uneven or high-speed substrates.",
       speed: "Up to 768 m/min",
       ink: "Certified MEK/Ethanol bases",
       specs: "Nozzle size: 60µm & 70µm options."
@@ -225,7 +225,7 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
       accentColor: "#0284c7",
       desc: "FMCG aluminum cans, PET bottling lines, glass beer bottles & tetrapaks with fast-dry high-contrast inks.",
       speed: "120,000 cans/hour",
-      bestTech: "Continuous Inkjet (S200PLUS) & CO2 Lasers"
+      bestTech: "Continuous Inkjet (S200) & CO2 Lasers"
     },
     { 
       name: "Food", 
@@ -1017,7 +1017,7 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
                       <div className="space-y-2">
                         <span className="font-extrabold text-[#122540] uppercase block tracking-wider font-mono text-[9px] text-[#2564AF]">Solvent Condenser & Eco Standards</span>
                         <p className="leading-relaxed">
-                          By engineering a state-of-the-art solvent condenser loop integrated into our flagship Si220 printers, we have successfully assisted dozens of primary distilleries and cable extruders in Rajasthan and Madhya Pradesh to slash standard organic compound vapor emissions by up to 48%, achieving significant raw fluid purchase budget savings while remaining strictly compliant with national eco protection standards.
+                          By engineering a state-of-the-art solvent condenser loop integrated into our flagship continuous inkjet printers, we have successfully assisted dozens of primary distilleries and cable extruders in Rajasthan and Madhya Pradesh to slash standard organic compound vapor emissions by up to 48%, achieving significant raw fluid purchase budget savings while remaining strictly compliant with national eco protection standards.
                         </p>
                       </div>
                     </div>

@@ -30,7 +30,7 @@ export default function AiAdvisor() {
   const sampleQuestions = [
     "We print on dark PVC cables. Which white ink printer and nozzle is best?",
     "We run a wet dairy bottling line with cold condensation. What configuration do you suggest?",
-    "Compare the Si220 RFID cartridge system vs the S200PLUS rugged IP55 cabinet.",
+    "Compare the Jetronix S200 against the JX350 for a high-speed bottling line.",
     "Which solvent formula matches fast-dry high speed PET packaging?"
   ];
 

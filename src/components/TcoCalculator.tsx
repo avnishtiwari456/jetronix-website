@@ -15,7 +15,7 @@ export default function TcoCalculator() {
   const [applyMsmeSubsidy, setApplyMsmeSubsidy] = useState<boolean>(true); // 15% CLCSS MSME capital subsidy in India
 
   // Standard CIJ uses ~6ml of makeup solvent per hour of active operation
-  // Jetronix Si220 equipped with eco-recovery uses only ~3.1ml per hour (48.3% saving)
+  // A Jetronix CIJ with eco-recovery uses only ~3.1ml per hour (48.3% saving)
   const standardConsumptionPerHour = 0.006; // Liters
   const jetronixConsumptionPerHour = 0.0031; // Liters
   const savingsPerHourPerLine = standardConsumptionPerHour - jetronixConsumptionPerHour; // 0.0029 Liters
