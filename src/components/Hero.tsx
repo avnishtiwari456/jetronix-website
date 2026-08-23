@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import {
-  ChevronLeft, ChevronRight, Sparkles, Check, Zap, Flame
+  ChevronLeft, ChevronRight, Sparkles, Check, Zap
 } from "lucide-react";
 
 interface HeroProps {
@@ -17,11 +17,11 @@ const slideBackgrounds = [
   "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1920&q=80"
 ];
 
-/** The first three slides show the actual machine; slide four keeps its fluids mockup. */
-const slideProductShots: Record<number, {
+/** The machine each hero slide is about, opened in the catalogue when clicked. */
+const slideProductShots: {
   productId: string; category: string; image: string; imageWebp: string; productName: string; productType: string; imageFit: "contain" | "cover";
-}> = {
-  0: {
+}[] = [
+  {
     productId: "jx350",
     category: "cij",
     image: "/products/jx350.jpg",
@@ -30,7 +30,7 @@ const slideProductShots: Record<number, {
     productType: "Continuous Inkjet Printer (CIJ)",
     imageFit: "contain"
   },
-  1: {
+  {
     productId: "jt240",
     category: "tij",
     image: "/products/tij-inline.jpg",
@@ -39,7 +39,7 @@ const slideProductShots: Record<number, {
     productType: "Thermal Inkjet Printer (TIJ)",
     imageFit: "contain"
   },
-  2: {
+  {
     productId: "jlc60",
     category: "laser",
     image: "/products/laser-inline.jpg",
@@ -47,8 +47,17 @@ const slideProductShots: Record<number, {
     productName: "Jetronix JLC60",
     productType: "Coding a live bottling line",
     imageFit: "cover"
+  },
+  {
+    productId: "jh250",
+    category: "handheld",
+    image: "/products/handheld-side.jpg",
+    imageWebp: "/products/handheld-side.webp",
+    productName: "Jetronix JH250",
+    productType: "Handheld Inkjet Printer",
+    imageFit: "contain"
   }
-};
+];
 
 const slideTitles = [
   {
@@ -79,13 +88,13 @@ const slideTitles = [
     spec2: "Zero consumables - MTBF over 50,000 hours"
   },
   {
-    category: "Premium Fluids & Solvents",
+    category: "Handheld Printer",
     badge: "04 / 04",
-    title: "Premium Inks for Every Application",
-    subtitle: "1-Second Fast Dry MEK Fluids & Genuine OEM Replacements",
-    desc: "Experience superior ink adhesion and lightning-fast dry-times on diverse, glossy, or oily substrates. Stocked locally in our Indore and Jaipur hubs for immediate SLA dispatch.",
-    spec1: "MEK / Alcohol Base certified fast-dry",
-    spec2: "Zero sediment formulation filters"
+    title: "Handheld Batch Coding Printers",
+    subtitle: "Portable 25 mm Coding Wherever the Product Sits",
+    desc: "The JH250 puts a 600 DPI coder in one hand - text, barcodes, QR codes, MRP and dates straight onto cartons, metal, glass, plastic and wood. A smart touch screen sets the message and a USB port loads your logo, with no line integration to arrange.",
+    spec1: "25.4 mm print height at up to 600 DPI",
+    spec2: "Fast-drying cartridge, USB logo import"
   }
 ];
 
@@ -246,127 +255,59 @@ export default function Hero({ onExploreProducts, onOpenCalculator, onNavigateTo
 
           </div>
 
-          {/* Right Column: Floating Frosted Interactive Device / Preview Card */}
+          {/* Right Column: Product Shot for the Slide on Screen */}
           <div className="lg:col-span-5 flex justify-center items-center">
             
-            {productShot ? (
-              <div
-                role="link"
-                tabIndex={0}
-                onClick={() => onNavigateToProduct(productShot.productId, productShot.category)}
-                onKeyDown={(e) => {
-                  if (e.key === "Enter" || e.key === " ") {
-                    e.preventDefault();
-                    onNavigateToProduct(productShot.productId, productShot.category);
-                  }
-                }}
-                aria-label={`View ${productShot.productName} specifications`}
-                className="w-full max-w-[420px] aspect-[4/3.2] rounded-2xl relative overflow-hidden bg-gradient-to-b from-white via-white to-slate-100 border border-white/25 shadow-2xl ring-1 ring-black/5 cursor-pointer transition-transform duration-200 hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+            <div
+              role="link"
+              tabIndex={0}
+              onClick={() => onNavigateToProduct(productShot.productId, productShot.category)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  onNavigateToProduct(productShot.productId, productShot.category);
+                }
+              }}
+              aria-label={`View ${productShot.productName} specifications`}
+              className="w-full max-w-[420px] aspect-[4/3.2] rounded-2xl relative overflow-hidden bg-gradient-to-b from-white via-white to-slate-100 border border-white/25 shadow-2xl ring-1 ring-black/5 cursor-pointer transition-transform duration-200 hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+            >
+
+              {/* Product shot for the slide on screen */}
+              <motion.div
+                key={activeSlide}
+                initial={{ opacity: 0, scale: 0.96 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.96 }}
+                transition={{ duration: 0.4, ease: "easeOut" }}
+                className="absolute inset-0"
               >
+                <picture>
+                  <source srcSet={productShot.imageWebp} type="image/webp" />
+                  <img
+                    src={productShot.image}
+                    alt={productShot.productName}
+                    className={`w-full h-full ${productShot.imageFit === "cover" ? "object-cover" : "object-contain p-5 pb-16"}`}
+                  />
+                </picture>
+              </motion.div>
 
-                {/* Product shot for the slide on screen */}
-                <motion.div
-                  key={activeSlide}
-                  initial={{ opacity: 0, scale: 0.96 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.96 }}
-                  transition={{ duration: 0.4, ease: "easeOut" }}
-                  className="absolute inset-0"
-                >
-                  <picture>
-                    <source srcSet={productShot.imageWebp} type="image/webp" />
-                    <img
-                      src={productShot.image}
-                      alt={productShot.productName}
-                      className={`w-full h-full ${productShot.imageFit === "cover" ? "object-cover" : "object-contain p-5 pb-16"}`}
-                    />
-                  </picture>
-                </motion.div>
+              {/* Keeps the caption readable over both the white-out shots and the in-plant one */}
+              <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-950/95 via-slate-950/70 to-transparent pointer-events-none" />
 
-                {/* Keeps the caption readable over both the white-out shots and the in-plant one */}
-                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-950/95 via-slate-950/70 to-transparent pointer-events-none" />
-
-                <div className="absolute top-4 right-4 bg-blue-600/90 border border-blue-400/60 text-white font-mono text-[8px] font-bold px-2 py-1 rounded-md uppercase tracking-wider shadow-lg">
-                  {currentSlideInfo.badge}
-                </div>
-
-                <div className="absolute inset-x-0 bottom-0 p-4 text-left">
-                  <span className="text-sky-400 font-mono text-[9px] font-bold uppercase tracking-widest block">
-                    {productShot.productType}
-                  </span>
-                  <h4 className="text-white text-base sm:text-lg font-black tracking-tight leading-tight uppercase">
-                    {productShot.productName}
-                  </h4>
-                </div>
-
-              </div>
-            ) : (
-
-              /* The premium fluids slide keeps its original solvent-bottle mockup */
-              <div className="w-full max-w-[420px] aspect-[4/3.2] rounded-2xl relative overflow-hidden bg-slate-900/65 border border-white/20 p-5 shadow-2xl flex flex-col justify-between backdrop-blur-md">
-                  {/* 5. Premium Inks lineup Interactive Mockup */}
-                    <motion.div
-                      key="inks-model"
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.95 }}
-                      transition={{ duration: 0.3 }}
-                      className="w-full h-full flex flex-col justify-between"
-                    >
-                      <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-2">
-                        <span className="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-widest flex items-center gap-1.5">
-                          <Flame className="w-4 h-4 text-sky-400" /> Premium Certified Solvents
-                        </span>
-                        <span className="bg-sky-500/20 border border-sky-500/40 text-sky-400 text-[8px] font-mono font-bold px-2 py-0.5 rounded-full uppercase">
-                          100% OEM
-                        </span>
-                      </div>
-                      <div className="flex-grow flex items-center justify-center gap-6 py-2">
-                        <div className="flex flex-col items-center">
-                          <div className="w-10 h-24 bg-slate-900 border-2 border-slate-700 rounded-t-lg rounded-b-xl relative shadow-xl flex flex-col items-center justify-between p-1">
-                            <div className="w-5 h-4 bg-yellow-500 rounded-sm border-b border-slate-800" />
-                            <div className="w-full bg-yellow-500 text-[6px] font-sans font-extrabold text-slate-900 text-center py-2.5 rounded-sm select-none">
-                              MEK-60
-                            </div>
-                            <div className="w-full h-8 bg-slate-950 rounded-b-lg border-t border-slate-800 flex items-center justify-center">
-                              <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
-                            </div>
-                          </div>
-                          <span className="text-[8px] font-mono text-slate-300 mt-1.5">BLACK INK</span>
-                        </div>
-                        <div className="flex flex-col items-center">
-                          <div className="w-10 h-24 bg-slate-100 border-2 border-slate-300 rounded-t-lg rounded-b-xl relative shadow-xl flex flex-col items-center justify-between p-1">
-                            <div className="w-5 h-4 bg-slate-400 rounded-sm border-b border-slate-200" />
-                            <div className="w-full bg-slate-800 text-[6px] font-sans font-extrabold text-white text-center py-2.5 rounded-sm select-none">
-                              MC-320
-                            </div>
-                            <div className="w-full h-10 bg-sky-100/30 rounded-b-lg border-t border-slate-200 flex items-center justify-center">
-                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                            </div>
-                          </div>
-                          <span className="text-[8px] font-mono text-slate-300 mt-1.5">SOLVENT</span>
-                        </div>
-                        <div className="flex flex-col items-center">
-                          <div className="w-10 h-24 bg-slate-900 border-2 border-slate-700 rounded-t-lg rounded-b-xl relative shadow-xl flex flex-col items-center justify-between p-1">
-                            <div className="w-5 h-4 bg-yellow-500 rounded-sm border-b border-slate-800" />
-                            <div className="w-full bg-yellow-500 text-[6px] font-sans font-extrabold text-slate-900 text-center py-2.5 rounded-sm select-none">
-                              YL-100
-                            </div>
-                            <div className="w-full h-8 bg-yellow-600 rounded-b-lg border-t border-slate-800 flex items-center justify-center">
-                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-                            </div>
-                          </div>
-                          <span className="text-[8px] font-mono text-slate-300 mt-1.5">YELLOW INK</span>
-                        </div>
-                      </div>
-                      <div className="border-t border-white/10 pt-2 text-[9px] font-mono text-slate-300 flex justify-between items-center">
-                        <span>DRYING TIME RATINGS:</span>
-                        <span className="text-emerald-400 font-bold">1 SECOND (ULTRA-FAST)</span>
-                      </div>
-                    </motion.div>
+              <div className="absolute top-4 right-4 bg-blue-600/90 border border-blue-400/60 text-white font-mono text-[8px] font-bold px-2 py-1 rounded-md uppercase tracking-wider shadow-lg">
+                {currentSlideInfo.badge}
               </div>
 
-            )}
+              <div className="absolute inset-x-0 bottom-0 p-4 text-left">
+                <span className="text-sky-400 font-mono text-[9px] font-bold uppercase tracking-widest block">
+                  {productShot.productType}
+                </span>
+                <h4 className="text-white text-base sm:text-lg font-black tracking-tight leading-tight uppercase">
+                  {productShot.productName}
+                </h4>
+              </div>
+
+            </div>
 
           </div>
 
