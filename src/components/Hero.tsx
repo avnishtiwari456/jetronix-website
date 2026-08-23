@@ -19,14 +19,13 @@ const slideBackgrounds = [
 
 /** The machine each hero slide is about, opened in the catalogue when clicked. */
 const slideProductShots: {
-  productId?: string; category: string; image: string; imageWebp?: string; productName: string; productType: string; imageFit: "contain" | "cover";
+  productId?: string; category: string; image: string; imageWebp?: string; productName: string; productType: string;
 }[] = [
   {
     category: "cij",
     image: "/products/cij-range.jpg",
     productName: "Jetronix S200 & JX350",
-    productType: "Continuous Inkjet Printers (CIJ)",
-    imageFit: "contain"
+    productType: "Continuous Inkjet Printers (CIJ)"
   },
   {
     productId: "jt240",
@@ -34,8 +33,7 @@ const slideProductShots: {
     image: "/products/tij-inline.jpg",
     imageWebp: "/products/tij-inline.webp",
     productName: "Jetronix JT240",
-    productType: "Thermal Inkjet Printer (TIJ)",
-    imageFit: "contain"
+    productType: "Thermal Inkjet Printer (TIJ)"
   },
   {
     productId: "jlc60",
@@ -43,8 +41,7 @@ const slideProductShots: {
     image: "/products/laser-inline.jpg",
     imageWebp: "/products/laser-inline.webp",
     productName: "Jetronix JLC60",
-    productType: "Coding a live bottling line",
-    imageFit: "cover"
+    productType: "CO2 Laser Coding Machine"
   },
   {
     productId: "jh250",
@@ -52,8 +49,7 @@ const slideProductShots: {
     image: "/products/handheld-side.jpg",
     imageWebp: "/products/handheld-side.webp",
     productName: "Jetronix JH250",
-    productType: "Handheld Inkjet Printer",
-    imageFit: "contain"
+    productType: "Handheld Inkjet Printer"
   }
 ];
 
@@ -286,7 +282,7 @@ export default function Hero({ onExploreProducts, onOpenCalculator, onNavigateTo
                   <img
                     src={productShot.image}
                     alt={productShot.productName}
-                    className={`w-full h-full ${productShot.imageFit === "cover" ? "object-cover" : "object-contain p-5 pb-16"}`}
+                    className="w-full h-full object-contain object-center p-5 pb-16"
                   />
                 </picture>
               </motion.div>
