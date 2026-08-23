@@ -70,13 +70,13 @@ const slideTitles = [
     spec2: "Cartridge swapping under 10 seconds"
   },
   {
-    category: "Substrates Print Showroom",
+    category: "CO2 Laser Marking",
     badge: "03 / 04",
-    title: "Printing Samples Showcase",
-    subtitle: "Certified Micro-Precision Print Results on Metal, Glass & Board",
-    desc: "See the uncompromised, high-contrast prints achieved with our advanced marking machines. Witness real physical samples from our satisfied clients across pharmaceuticals, beverages, and heavy wire extrusion plants.",
-    spec1: "Tested on 12 manufacturing substrates",
-    spec2: "100% readable GS1 DataMatrix check"
+    title: "CO2 Laser Coding Machines",
+    subtitle: "60 W Permanent Marking With Nothing to Refill",
+    desc: "The JLC60 burns the code straight into film, plastic, glass and leather at up to 1500 characters a second. Intelligent vector control holds the mark clean through 24-hour running, with no ink, no solvent and no cartridge to change.",
+    spec1: "Up to 1500 characters per second",
+    spec2: "Zero consumables - MTBF over 50,000 hours"
   },
   {
     category: "Premium Fluids & Solvents",
@@ -231,7 +231,7 @@ export default function Hero({ onExploreProducts, onOpenCalculator, onNavigateTo
                 onClick={onExploreProducts}
                 className="inline-flex items-center justify-center gap-2 bg-[#2564AF] hover:bg-blue-600 text-white font-black px-7 py-3 rounded-xl shadow-xl transition-all duration-200 cursor-pointer text-xs uppercase tracking-wider border border-blue-400/30 hover:shadow-blue-500/25 active:scale-98"
               >
-                <span>{activeSlide === 2 ? "View All Samples" : "Explore All Products"}</span>
+                <span>Explore All Products</span>
                 <ChevronRight className="w-4 h-4" />
               </button>
               
