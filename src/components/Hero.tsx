@@ -19,15 +19,13 @@ const slideBackgrounds = [
 
 /** The machine each hero slide is about, opened in the catalogue when clicked. */
 const slideProductShots: {
-  productId: string; category: string; image: string; imageWebp: string; productName: string; productType: string; imageFit: "contain" | "cover";
+  productId?: string; category: string; image: string; imageWebp?: string; productName: string; productType: string; imageFit: "contain" | "cover";
 }[] = [
   {
-    productId: "jx350",
     category: "cij",
-    image: "/products/jx350.jpg",
-    imageWebp: "/products/jx350.webp",
-    productName: "Jetronix JX350",
-    productType: "Continuous Inkjet Printer (CIJ)",
+    image: "/products/cij-range.jpg",
+    productName: "Jetronix S200 & JX350",
+    productType: "Continuous Inkjet Printers (CIJ)",
     imageFit: "contain"
   },
   {
@@ -282,7 +280,9 @@ export default function Hero({ onExploreProducts, onOpenCalculator, onNavigateTo
                 className="absolute inset-0"
               >
                 <picture>
-                  <source srcSet={productShot.imageWebp} type="image/webp" />
+                  {productShot.imageWebp && (
+                    <source srcSet={productShot.imageWebp} type="image/webp" />
+                  )}
                   <img
                     src={productShot.image}
                     alt={productShot.productName}
