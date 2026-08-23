@@ -1,11 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
-import { 
-  ChevronLeft, ChevronRight, Play, Cpu, Sparkles, Check, 
-  Zap, Settings, HelpCircle, Layers, RefreshCw, Barcode, Flame
+import {
+  ChevronLeft, ChevronRight, Sparkles, Check, Zap, Flame
 } from "lucide-react";
 
 interface HeroProps {
+  onNavigateToProduct: (productId?: string, category?: string) => void;
   onExploreProducts: () => void;
   onOpenCalculator: () => void;
 }
@@ -16,6 +16,39 @@ const slideBackgrounds = [
   "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1920&q=80",
   "https://images.unsplash.com/photo-1616401784845-180882ba9ba8?auto=format&fit=crop&w=1920&q=80"
 ];
+
+/** The first three slides show the actual machine; slide four keeps its fluids mockup. */
+const slideProductShots: Record<number, {
+  productId: string; category: string; image: string; imageWebp: string; productName: string; productType: string; imageFit: "contain" | "cover";
+}> = {
+  0: {
+    productId: "jx350",
+    category: "cij",
+    image: "/products/jx350.jpg",
+    imageWebp: "/products/jx350.webp",
+    productName: "Jetronix JX350",
+    productType: "Continuous Inkjet Printer (CIJ)",
+    imageFit: "contain"
+  },
+  1: {
+    productId: "jt240",
+    category: "tij",
+    image: "/products/tij-inline.jpg",
+    imageWebp: "/products/tij-inline.webp",
+    productName: "Jetronix JT240",
+    productType: "Thermal Inkjet Printer (TIJ)",
+    imageFit: "contain"
+  },
+  2: {
+    productId: "jlc60",
+    category: "laser",
+    image: "/products/laser-inline.jpg",
+    imageWebp: "/products/laser-inline.webp",
+    productName: "Jetronix JLC60",
+    productType: "Coding a live bottling line",
+    imageFit: "cover"
+  }
+};
 
 const slideTitles = [
   {
@@ -56,17 +89,11 @@ const slideTitles = [
   }
 ];
 
-export default function Hero({ onExploreProducts, onOpenCalculator }: HeroProps) {
+export default function Hero({ onExploreProducts, onOpenCalculator, onNavigateToProduct }: HeroProps) {
   const [activeSlide, setActiveSlide] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
-  
-  // Slide 2 interactive state: Custom print text simulation
-  const [customPrintText, setCustomPrintText] = useState<string>("BATCH # 415");
 
-  // Slide 4 interactive state: Active substrate sample
-  const [activeSubstrate, setActiveSubstrate] = useState<string>("carton");
-
-  const slidesCount = 5;
+  const slidesCount = slideTitles.length;
 
   const nextSlide = () => {
     setActiveSlide((prev) => (prev + 1) % slidesCount);
@@ -86,6 +113,7 @@ export default function Hero({ onExploreProducts, onOpenCalculator }: HeroProps)
   }, [isPlaying]);
 
   const currentSlideInfo = slideTitles[activeSlide];
+  const productShot = slideProductShots[activeSlide];
 
   return (
     <section 
@@ -221,295 +249,124 @@ export default function Hero({ onExploreProducts, onOpenCalculator }: HeroProps)
           {/* Right Column: Floating Frosted Interactive Device / Preview Card */}
           <div className="lg:col-span-5 flex justify-center items-center">
             
-            <div className="w-full max-w-[420px] aspect-[4/3.2] rounded-2xl relative overflow-hidden bg-slate-900/65 border border-white/20 p-5 shadow-2xl flex flex-col justify-between backdrop-blur-md">
-                
-                {/* 1. Continuous Inkjet (CIJ) Interactive Mockup */}
-                {activeSlide === 0 && (
-                  <motion.div
-                    key="cij-model"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full h-full flex flex-col justify-between"
-                  >
-                    <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-2">
-                      <span className="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-widest flex items-center gap-1.5">
-                        <Cpu className="w-4 h-4 animate-spin text-sky-400" style={{ animationDuration: '6s' }} /> Active CIJ Diagnostic
-                      </span>
-                      <span className="bg-emerald-500/20 border border-emerald-500/40 text-emerald-400 text-[8px] font-mono font-bold px-2 py-0.5 rounded-full uppercase">
-                        ONLINE
-                      </span>
-                    </div>
+            {productShot ? (
+              <div
+                role="link"
+                tabIndex={0}
+                onClick={() => onNavigateToProduct(productShot.productId, productShot.category)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    onNavigateToProduct(productShot.productId, productShot.category);
+                  }
+                }}
+                aria-label={`View ${productShot.productName} specifications`}
+                className="w-full max-w-[420px] aspect-[4/3.2] rounded-2xl relative overflow-hidden bg-gradient-to-b from-white via-white to-slate-100 border border-white/25 shadow-2xl ring-1 ring-black/5 cursor-pointer transition-transform duration-200 hover:scale-[1.02] focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-400"
+              >
 
-                    <div className="flex-grow flex items-center justify-center py-2 relative">
-                      <div className="w-36 h-48 bg-gradient-to-b from-slate-300 via-slate-400 to-slate-500 rounded-xl relative border border-slate-200 shadow-xl flex flex-col items-center p-3">
-                        <div className="w-full h-20 bg-slate-900 rounded-lg border-2 border-slate-600 p-1.5 flex flex-col justify-between">
-                          <div className="flex justify-between items-center text-[7px] font-mono text-slate-400">
-                            <span>S200-PLUS</span>
-                            <span className="text-emerald-400 font-bold animate-pulse">READY</span>
-                          </div>
-                          <div className="text-[9px] font-mono text-sky-400 tracking-wider text-center bg-slate-950 rounded py-1 border border-slate-800/80">
-                            <span className="animate-pulse">MFG: 05/07/26</span>
-                            <br />
-                            <span className="text-amber-400">EXP: 04/07/29</span>
-                          </div>
-                        </div>
+                {/* Product shot for the slide on screen */}
+                <motion.div
+                  key={activeSlide}
+                  initial={{ opacity: 0, scale: 0.96 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.96 }}
+                  transition={{ duration: 0.4, ease: "easeOut" }}
+                  className="absolute inset-0"
+                >
+                  <picture>
+                    <source srcSet={productShot.imageWebp} type="image/webp" />
+                    <img
+                      src={productShot.image}
+                      alt={productShot.productName}
+                      className={`w-full h-full ${productShot.imageFit === "cover" ? "object-cover" : "object-contain p-5 pb-16"}`}
+                    />
+                  </picture>
+                </motion.div>
 
-                        <div className="absolute top-[-8px] left-6 w-5 h-2 bg-yellow-500 rounded-t border-t border-slate-300" />
-                        <div className="absolute top-[-8px] right-6 w-5 h-2 bg-slate-800 rounded-t border-t border-slate-300" />
+                {/* Keeps the caption readable over both the white-out shots and the in-plant one */}
+                <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-950/95 via-slate-950/70 to-transparent pointer-events-none" />
 
-                        <div className="mt-4 bg-red-600 px-3 py-0.5 rounded text-[7px] font-bold tracking-widest text-white shadow">
-                          JETRONIX
-                        </div>
+                <div className="absolute top-4 right-4 bg-blue-600/90 border border-blue-400/60 text-white font-mono text-[8px] font-bold px-2 py-1 rounded-md uppercase tracking-wider shadow-lg">
+                  {currentSlideInfo.badge}
+                </div>
 
-                        <div className="flex gap-2 mt-auto">
-                          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-md shadow-emerald-500/40 animate-pulse" />
-                          <div className="w-2.5 h-2.5 rounded-full bg-slate-700" />
-                          <div className="w-2.5 h-2.5 rounded-full bg-slate-700" />
-                        </div>
+                <div className="absolute inset-x-0 bottom-0 p-4 text-left">
+                  <span className="text-sky-400 font-mono text-[9px] font-bold uppercase tracking-widest block">
+                    {productShot.productType}
+                  </span>
+                  <h4 className="text-white text-base sm:text-lg font-black tracking-tight leading-tight uppercase">
+                    {productShot.productName}
+                  </h4>
+                </div>
+
+              </div>
+            ) : (
+
+              /* The premium fluids slide keeps its original solvent-bottle mockup */
+              <div className="w-full max-w-[420px] aspect-[4/3.2] rounded-2xl relative overflow-hidden bg-slate-900/65 border border-white/20 p-5 shadow-2xl flex flex-col justify-between backdrop-blur-md">
+                  {/* 5. Premium Inks lineup Interactive Mockup */}
+                    <motion.div
+                      key="inks-model"
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.3 }}
+                      className="w-full h-full flex flex-col justify-between"
+                    >
+                      <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-2">
+                        <span className="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-widest flex items-center gap-1.5">
+                          <Flame className="w-4 h-4 text-sky-400" /> Premium Certified Solvents
+                        </span>
+                        <span className="bg-sky-500/20 border border-sky-500/40 text-sky-400 text-[8px] font-mono font-bold px-2 py-0.5 rounded-full uppercase">
+                          100% OEM
+                        </span>
                       </div>
-
-                      <div className="absolute right-10 bottom-10 flex flex-col items-center">
-                        <div className="w-2 h-14 bg-gradient-to-r from-slate-800 to-slate-950 rounded-full border border-slate-700/50" />
-                        <div className="w-6 h-8 bg-slate-800 border-2 border-slate-500 rounded flex items-center justify-center shadow-lg">
-                          <div className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-ping" />
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="grid grid-cols-3 gap-2 border-t border-white/10 pt-2 text-[9px] font-mono text-slate-300">
-                      <div>
-                        <span className="text-slate-400 block">PRESSURE</span>
-                        <span className="font-bold text-sky-400">4.2 BAR</span>
-                      </div>
-                      <div>
-                        <span className="text-slate-400 block">VISCOSITY</span>
-                        <span className="font-bold text-emerald-400">5.8 mPa·s</span>
-                      </div>
-                      <div>
-                        <span className="text-slate-400 block">INK TEMP</span>
-                        <span className="font-bold text-amber-400">22.4 °C</span>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* 2. Thermal Inkjet (TIJ) Interactive Mockup */}
-                {activeSlide === 1 && (
-                  <motion.div
-                    key="tij-model"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full h-full flex flex-col justify-between"
-                  >
-                    <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-2">
-                      <span className="text-[10px] font-mono font-bold text-emerald-400 uppercase tracking-widest flex items-center gap-1.5">
-                        <Barcode className="w-4 h-4 text-emerald-400" /> TIJ Real-time Print Simulation
-                      </span>
-                      <span className="bg-sky-500/20 border border-sky-500/40 text-sky-400 text-[8px] font-mono font-bold px-2 py-0.5 rounded-full uppercase">
-                        600 DPI
-                      </span>
-                    </div>
-
-                    <div className="flex-grow flex flex-col items-center justify-center gap-3">
-                      <div className="w-full max-w-[280px] bg-white rounded-lg p-3.5 shadow-xl flex flex-col gap-1.5">
-                        <div className="flex justify-between items-center text-[7px] text-slate-500 font-mono">
-                          <span>CARTON_SUBSTRATE_1A</span>
-                          <span className="text-[#2564AF] font-bold">INKJET MARKED</span>
-                        </div>
-                        <div className="bg-slate-50 rounded border border-slate-100 p-2.5 min-h-[50px] flex flex-col justify-center items-center text-slate-900 relative overflow-hidden">
-                          <div className="text-center font-mono font-extrabold text-[12px] md:text-[14px] text-slate-800 tracking-wider dot-matrix uppercase select-none">
-                            {customPrintText || "BATCH # 415"}
-                          </div>
-                          <div className="text-[8px] font-mono text-slate-500 mt-1">
-                            MFG: 05/07/2026 | EXP: 04/07/2029
-                          </div>
-                          <div className="absolute inset-y-0 left-0 w-0.5 bg-red-500 opacity-60 fluid-animate" />
-                        </div>
-                      </div>
-
-                      <div className="w-full max-w-[280px] space-y-1.5">
-                        <label className="text-[9px] font-mono text-slate-300 block uppercase tracking-wider">
-                          Type Custom Batch Code to Preview:
-                        </label>
-                        <input
-                          type="text"
-                          value={customPrintText}
-                          onChange={(e) => setCustomPrintText(e.target.value.slice(0, 18))}
-                          placeholder="e.g. BATCH # 415"
-                          className="w-full bg-slate-950/80 border border-white/20 rounded-xl px-3 py-1.5 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-[#2564AF] focus:ring-1 focus:ring-[#2564AF]/40 font-mono"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="border-t border-white/10 pt-2 text-[9px] font-mono text-slate-300 flex justify-between items-center">
-                      <span>CARTRIDGE FLUID STATUS:</span>
-                      <span className="font-extrabold text-emerald-400">89% (MEK SOLVENT)</span>
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* 4. Printing Samples Showcase Interactive Mockup */}
-                {activeSlide === 2 && (
-                  <motion.div
-                    key="samples-model"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full h-full flex flex-col justify-between"
-                  >
-                    <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-2">
-                      <span className="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-widest flex items-center gap-1.5">
-                        <Layers className="w-4 h-4 text-sky-400" /> Interactive Substrate Lab
-                      </span>
-                      <span className="bg-sky-500/20 border border-sky-500/40 text-sky-400 text-[8px] font-mono font-bold px-2 py-0.5 rounded-full uppercase">
-                        SAMPLES
-                      </span>
-                    </div>
-
-                    <div className="flex-grow flex flex-col items-center justify-center gap-3">
-                      <div className="w-52 aspect-[4/2.8] rounded-xl relative overflow-hidden flex flex-col items-center justify-center p-3 shadow-xl border border-white/20">
-                        {activeSubstrate === "carton" && (
-                          <div className="absolute inset-0 bg-[#e2d5c3] flex flex-col justify-between p-3 text-slate-800">
-                            <div className="text-[7px] font-mono text-slate-600 font-extrabold uppercase">BROWN CORRUGATED CARDBOARD</div>
-                            <div className="text-center bg-white/30 p-2.5 rounded border border-black/10 font-mono">
-                              <div className="text-xs font-black tracking-wide text-black dot-matrix">
-                                BATCH: {customPrintText || "JX-415"}
-                              </div>
-                              <div className="text-[7px] font-bold text-slate-800 mt-0.5">
-                                MFG: 05/07/2026 | EXP: 04/07/2029
-                              </div>
+                      <div className="flex-grow flex items-center justify-center gap-6 py-2">
+                        <div className="flex flex-col items-center">
+                          <div className="w-10 h-24 bg-slate-900 border-2 border-slate-700 rounded-t-lg rounded-b-xl relative shadow-xl flex flex-col items-center justify-between p-1">
+                            <div className="w-5 h-4 bg-yellow-500 rounded-sm border-b border-slate-800" />
+                            <div className="w-full bg-yellow-500 text-[6px] font-sans font-extrabold text-slate-900 text-center py-2.5 rounded-sm select-none">
+                              MEK-60
                             </div>
-                            <div className="text-[7px] font-mono text-slate-600 text-right leading-none">HIGH ABSORBENCY OK</div>
-                          </div>
-                        )}
-
-                        {activeSubstrate === "can" && (
-                          <div className="absolute inset-0 bg-gradient-to-br from-slate-400 via-slate-200 to-slate-500 flex flex-col justify-between p-3 text-slate-900">
-                            <div className="text-[7px] font-mono text-slate-700 font-extrabold uppercase">ALUMINUM CAN BOTTOM</div>
-                            <div className="text-center p-2 font-mono">
-                              <div className="text-[11px] font-black tracking-widest text-blue-900 select-none scale-y-110">
-                                {customPrintText || "BATCH # 415"}
-                              </div>
-                              <div className="text-[6.5px] font-bold text-slate-800 tracking-wider">
-                                05/07/2026-07:40
-                              </div>
+                            <div className="w-full h-8 bg-slate-950 rounded-b-lg border-t border-slate-800 flex items-center justify-center">
+                              <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
                             </div>
-                            <div className="text-[7px] font-mono text-slate-700 text-right leading-none">NON-POROUS QUICKDRY OK</div>
                           </div>
-                        )}
-
-                        {activeSubstrate === "cable" && (
-                          <div className="absolute inset-0 bg-slate-900 flex flex-col justify-center items-center p-4">
-                            <div className="text-[7px] font-mono text-slate-400 font-extrabold uppercase absolute top-2 left-3">EXTRUDED BLACK CABLE</div>
-                            <div className="w-full h-8 bg-black rounded-lg border-y border-slate-700 flex items-center px-4 relative shadow-inner">
-                              <span className="text-[9px] font-mono font-bold text-yellow-400 tracking-widest leading-none block select-none">
-                                ... JETRONIX CIJ {customPrintText || "BATCH # 415"} 05/07/2026 ...
-                              </span>
+                          <span className="text-[8px] font-mono text-slate-300 mt-1.5">BLACK INK</span>
+                        </div>
+                        <div className="flex flex-col items-center">
+                          <div className="w-10 h-24 bg-slate-100 border-2 border-slate-300 rounded-t-lg rounded-b-xl relative shadow-xl flex flex-col items-center justify-between p-1">
+                            <div className="w-5 h-4 bg-slate-400 rounded-sm border-b border-slate-200" />
+                            <div className="w-full bg-slate-800 text-[6px] font-sans font-extrabold text-white text-center py-2.5 rounded-sm select-none">
+                              MC-320
                             </div>
-                            <div className="text-[7px] font-mono text-slate-400 absolute bottom-2 right-3">IP66 DUST RESISTANT</div>
+                            <div className="w-full h-10 bg-sky-100/30 rounded-b-lg border-t border-slate-200 flex items-center justify-center">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                            </div>
                           </div>
-                        )}
-                      </div>
-
-                      <div className="flex gap-2 bg-slate-950/80 p-1 rounded-xl border border-white/10">
-                        {["carton", "can", "cable"].map((sub) => (
-                          <button
-                            key={sub}
-                            onClick={() => setActiveSubstrate(sub)}
-                            className={`px-3 py-1 text-[8px] font-mono font-bold rounded-lg transition-all uppercase tracking-wider cursor-pointer ${
-                              activeSubstrate === sub 
-                                ? "bg-sky-500 text-slate-950 shadow-md" 
-                                : "text-slate-400 hover:text-white"
-                            }`}
-                          >
-                            {sub}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-
-                    <div className="border-t border-white/10 pt-2 text-[9px] font-mono text-slate-300 flex justify-between items-center">
-                      <span>INK FORMULATION USED:</span>
-                      <span className="text-emerald-400 font-bold uppercase">
-                        {activeSubstrate === "carton" ? "Water-Based Black" : activeSubstrate === "can" ? "MEK Blue Solvent" : "Pigmented Yellow"}
-                      </span>
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* 5. Premium Inks lineup Interactive Mockup */}
-                {activeSlide === 3 && (
-                  <motion.div
-                    key="inks-model"
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.3 }}
-                    className="w-full h-full flex flex-col justify-between"
-                  >
-                    <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-2">
-                      <span className="text-[10px] font-mono font-bold text-sky-400 uppercase tracking-widest flex items-center gap-1.5">
-                        <Flame className="w-4 h-4 text-sky-400" /> Premium Certified Solvents
-                      </span>
-                      <span className="bg-sky-500/20 border border-sky-500/40 text-sky-400 text-[8px] font-mono font-bold px-2 py-0.5 rounded-full uppercase">
-                        100% OEM
-                      </span>
-                    </div>
-
-                    <div className="flex-grow flex items-center justify-center gap-6 py-2">
-                      <div className="flex flex-col items-center">
-                        <div className="w-10 h-24 bg-slate-900 border-2 border-slate-700 rounded-t-lg rounded-b-xl relative shadow-xl flex flex-col items-center justify-between p-1">
-                          <div className="w-5 h-4 bg-yellow-500 rounded-sm border-b border-slate-800" />
-                          <div className="w-full bg-yellow-500 text-[6px] font-sans font-extrabold text-slate-900 text-center py-2.5 rounded-sm select-none">
-                            MEK-60
-                          </div>
-                          <div className="w-full h-8 bg-slate-950 rounded-b-lg border-t border-slate-800 flex items-center justify-center">
-                            <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse" />
-                          </div>
+                          <span className="text-[8px] font-mono text-slate-300 mt-1.5">SOLVENT</span>
                         </div>
-                        <span className="text-[8px] font-mono text-slate-300 mt-1.5">BLACK INK</span>
-                      </div>
-
-                      <div className="flex flex-col items-center">
-                        <div className="w-10 h-24 bg-slate-100 border-2 border-slate-300 rounded-t-lg rounded-b-xl relative shadow-xl flex flex-col items-center justify-between p-1">
-                          <div className="w-5 h-4 bg-slate-400 rounded-sm border-b border-slate-200" />
-                          <div className="w-full bg-slate-800 text-[6px] font-sans font-extrabold text-white text-center py-2.5 rounded-sm select-none">
-                            MC-320
+                        <div className="flex flex-col items-center">
+                          <div className="w-10 h-24 bg-slate-900 border-2 border-slate-700 rounded-t-lg rounded-b-xl relative shadow-xl flex flex-col items-center justify-between p-1">
+                            <div className="w-5 h-4 bg-yellow-500 rounded-sm border-b border-slate-800" />
+                            <div className="w-full bg-yellow-500 text-[6px] font-sans font-extrabold text-slate-900 text-center py-2.5 rounded-sm select-none">
+                              YL-100
+                            </div>
+                            <div className="w-full h-8 bg-yellow-600 rounded-b-lg border-t border-slate-800 flex items-center justify-center">
+                              <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
+                            </div>
                           </div>
-                          <div className="w-full h-10 bg-sky-100/30 rounded-b-lg border-t border-slate-200 flex items-center justify-center">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                          </div>
+                          <span className="text-[8px] font-mono text-slate-300 mt-1.5">YELLOW INK</span>
                         </div>
-                        <span className="text-[8px] font-mono text-slate-300 mt-1.5">SOLVENT</span>
                       </div>
-
-                      <div className="flex flex-col items-center">
-                        <div className="w-10 h-24 bg-slate-900 border-2 border-slate-700 rounded-t-lg rounded-b-xl relative shadow-xl flex flex-col items-center justify-between p-1">
-                          <div className="w-5 h-4 bg-yellow-500 rounded-sm border-b border-slate-800" />
-                          <div className="w-full bg-yellow-500 text-[6px] font-sans font-extrabold text-slate-900 text-center py-2.5 rounded-sm select-none">
-                            YL-100
-                          </div>
-                          <div className="w-full h-8 bg-yellow-600 rounded-b-lg border-t border-slate-800 flex items-center justify-center">
-                            <span className="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse" />
-                          </div>
-                        </div>
-                        <span className="text-[8px] font-mono text-slate-300 mt-1.5">YELLOW INK</span>
+                      <div className="border-t border-white/10 pt-2 text-[9px] font-mono text-slate-300 flex justify-between items-center">
+                        <span>DRYING TIME RATINGS:</span>
+                        <span className="text-emerald-400 font-bold">1 SECOND (ULTRA-FAST)</span>
                       </div>
-                    </div>
+                    </motion.div>
+              </div>
 
-                    <div className="border-t border-white/10 pt-2 text-[9px] font-mono text-slate-300 flex justify-between items-center">
-                      <span>DRYING TIME RATINGS:</span>
-                      <span className="text-emerald-400 font-bold">1 SECOND (ULTRA-FAST)</span>
-                    </div>
-                  </motion.div>
-                )}
-
-            </div>
+            )}
 
           </div>
 
@@ -518,7 +375,7 @@ export default function Hero({ onExploreProducts, onOpenCalculator }: HeroProps)
 
       {/* Bottom Category Tab Navigator Bar */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20 pt-4">
-        <div className="grid grid-cols-5 gap-2 bg-slate-950/70 p-2 rounded-2xl border border-white/10 backdrop-blur-md shadow-2xl">
+        <div className="grid grid-cols-4 gap-2 bg-slate-950/70 p-2 rounded-2xl border border-white/10 backdrop-blur-md shadow-2xl">
           {slideTitles.map((slide, idx) => {
             const isActive = activeSlide === idx;
             return (

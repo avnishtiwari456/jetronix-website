@@ -12,6 +12,7 @@ import {
 
 interface HomeOverviewProps {
   onNavigate: (page: string) => void;
+  onNavigateToProduct: (productId?: string, category?: string) => void;
   onExploreProducts: () => void;
   onOpenCalculator: () => void;
 }
@@ -121,7 +122,7 @@ const featuredProducts = [
   }
 ];
 
-export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalculator }: HomeOverviewProps) {
+export default function HomeOverview({ onNavigate, onNavigateToProduct, onExploreProducts, onOpenCalculator }: HomeOverviewProps) {
   
   // Interactive States
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
@@ -389,8 +390,20 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
                   transition={{ duration: 0.3 }}
                   className="bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
                 >
-                  {/* Image & Badges Overlay */}
-                  <div className="relative h-48 w-full bg-slate-50 overflow-hidden group">
+                  {/* Image & Badges Overlay - the whole shot opens that product in the catalogue */}
+                  <div
+                    role="link"
+                    tabIndex={0}
+                    onClick={() => onNavigateToProduct(prod.id, prod.categoryId)}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        onNavigateToProduct(prod.id, prod.categoryId);
+                      }
+                    }}
+                    aria-label={`View ${prod.name} specifications`}
+                    className="relative h-48 w-full bg-slate-50 overflow-hidden group cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2564AF]"
+                  >
                     {prod.image ? (
                       <picture>
                         <source srcSet={prod.imageWebp} type="image/webp" />
@@ -455,15 +468,7 @@ export default function HomeOverview({ onNavigate, onExploreProducts, onOpenCalc
                     {/* Call to Actions */}
                     <div className="grid grid-cols-2 gap-2 pt-2">
                       <button
-                        onClick={() => {
-                          onNavigate("products");
-                          setTimeout(() => {
-                            const element = document.getElementById("product-catalogue");
-                            if (element) {
-                              element.scrollIntoView({ behavior: "smooth", block: "start" });
-                            }
-                          }, 150);
-                        }}
+                        onClick={() => onNavigateToProduct(prod.id, prod.categoryId)}
                         className="bg-slate-100 hover:bg-slate-200 text-slate-800 text-[10px] font-extrabold uppercase py-3 rounded-xl transition-all cursor-pointer text-center"
                       >
                         Specs & Blueprints

@@ -102,11 +102,13 @@ export default function App() {
               transition={{ duration: 0.35, ease: "easeOut" }}
             >
               <Hero 
+                onNavigateToProduct={handleNavigateToProduct}
                 onExploreProducts={() => handleNavigate("products")}
                 onOpenCalculator={() => handleNavigate("calculator")}
               />
               <HomeOverview 
                 onNavigate={handleNavigate}
+                onNavigateToProduct={handleNavigateToProduct}
                 onExploreProducts={() => handleNavigate("products")}
                 onOpenCalculator={() => handleNavigate("calculator")}
               />
