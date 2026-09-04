@@ -1,77 +1,60 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React from "react";
 import { motion } from "motion/react";
 import { products, categories } from "../data";
 import { ProductCategory } from "../types";
-import { FileText, ArrowRight, Phone, ListFilter } from "lucide-react";
+import { FileText, ArrowRight, ChevronRight, Printer } from "lucide-react";
 
 interface ProductSectionProps {
-  /** Deep-link target set by the header/footer menus. */
-  target?: { category?: string; productId?: string } | null;
-  /** Jump to the B2B quote sheet with this product preselected. */
-  onRequestQuote?: (productId: string) => void;
+  /** Category id from the URL (#products/cij). Empty string means the full catalogue. */
+  category?: string;
+  /** Open a product page, or a category listing when only a category is given. */
+  onNavigateToProduct: (productId?: string, category?: string) => void;
 }
 
-export default function ProductSection({ target, onRequestQuote }: ProductSectionProps) {
-  const [activeCategory, setActiveCategory] = useState<ProductCategory | "all">("all");
-  const [activeTab, setActiveTab] = useState<string>(products[0].id);
-
-  // Apply an incoming deep-link: select the requested product, and the category holding it.
-  useEffect(() => {
-    if (!target) return;
-    const targeted = target.productId ? products.find((p) => p.id === target.productId) : undefined;
-    if (targeted) {
-      setActiveCategory(targeted.category);
-      setActiveTab(targeted.id);
-      return;
-    }
-    if (target.category) {
-      const cat = target.category as ProductCategory;
-      const first = products.find((p) => p.category === cat);
-      if (first) {
-        setActiveCategory(cat);
-        setActiveTab(first.id);
-      }
-    }
-  }, [target]);
-
-  const visibleProducts = useMemo(
-    () => (activeCategory === "all" ? products : products.filter((p) => p.category === activeCategory)),
-    [activeCategory]
-  );
-
-  const selectedProduct =
-    visibleProducts.find((p) => p.id === activeTab) || visibleProducts[0] || products[0];
-
-  const handleCategoryChange = (cat: ProductCategory | "all") => {
-    setActiveCategory(cat);
-    const first = cat === "all" ? products[0] : products.find((p) => p.category === cat);
-    if (first) setActiveTab(first.id);
-  };
-
-  const activeCategoryMeta = categories.find((c) => c.id === activeCategory);
+export default function ProductSection({ category, onNavigateToProduct }: ProductSectionProps) {
+  const activeCategory = categories.find((c) => c.id === category);
+  const visibleProducts = activeCategory
+    ? products.filter((p) => p.category === (activeCategory.id as ProductCategory))
+    : products;
 
   return (
     <section id="products" className="py-16 bg-slate-50 border-t border-slate-200" style={{ scrollMarginTop: "80px" }}>
       <div id="product-catalogue" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
+        {/* Breadcrumb - only once we are inside a range */}
+        {activeCategory && (
+          <nav className="flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-6">
+            <button
+              onClick={() => onNavigateToProduct()}
+              className="hover:text-blue-600 transition-colors cursor-pointer"
+            >
+              Products
+            </button>
+            <ChevronRight className="w-3 h-3" />
+            <span className="text-slate-700">{activeCategory.shortLabel}</span>
+          </nav>
+        )}
+
         <div className="text-center max-w-3xl mx-auto mb-10">
           <span className="text-blue-600 text-xs font-bold uppercase tracking-widest bg-blue-50 border border-blue-200/50 px-4 py-2 rounded-full">
-            Our Products
+            {activeCategory ? activeCategory.shortLabel : "Our Products"}
           </span>
           <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 mt-4 leading-tight">
-            Industrial Coding &amp; Marking Range
+            {activeCategory ? activeCategory.label : "Industrial Coding & Marking Range"}
           </h2>
           <p className="text-slate-600 mt-3 text-base font-light leading-relaxed">
-            {products.length} machines across continuous inkjet, thermal inkjet, handheld
-            coding, laser marking and thermal transfer overprinting.
+            {activeCategory
+              ? activeCategory.description
+              : `${products.length} machines across continuous inkjet, thermal inkjet, handheld coding, laser marking and thermal transfer overprinting.`}
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-2 mb-6" id="product-categories">
+        {/* Range selector - every entry is a page of its own */}
+        <div className="flex flex-wrap justify-center gap-2 mb-10" id="product-categories">
           <button
-            onClick={() => handleCategoryChange("all")}
+            onClick={() => onNavigateToProduct()}
             className={`px-5 py-2.5 rounded-xl font-bold text-[11px] uppercase tracking-wider transition-all cursor-pointer border ${
-              activeCategory === "all"
+              !activeCategory
                 ? "bg-slate-900 text-white border-slate-900 shadow-md shadow-slate-900/10"
                 : "bg-white text-slate-600 border-slate-200 hover:border-slate-400 hover:text-slate-900"
             }`}
@@ -84,9 +67,9 @@ export default function ProductSection({ target, onRequestQuote }: ProductSectio
               <button
                 key={cat.id}
                 id={`cat-btn-${cat.id}`}
-                onClick={() => handleCategoryChange(cat.id)}
+                onClick={() => onNavigateToProduct(undefined, cat.id)}
                 className={`px-5 py-2.5 rounded-xl font-bold text-[11px] uppercase tracking-wider transition-all cursor-pointer border ${
-                  activeCategory === cat.id
+                  activeCategory?.id === cat.id
                     ? "bg-slate-900 text-white border-slate-900 shadow-md shadow-slate-900/10"
                     : "bg-white text-slate-600 border-slate-200 hover:border-slate-400 hover:text-slate-900"
                 }`}
@@ -97,127 +80,69 @@ export default function ProductSection({ target, onRequestQuote }: ProductSectio
           })}
         </div>
 
-        {activeCategoryMeta && (
-          <p className="text-center text-sm text-slate-500 font-light max-w-2xl mx-auto mb-8">
-            {activeCategoryMeta.description}
-          </p>
+        {/* Machine grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="product-grid">
+          {visibleProducts.map((p, idx) => (
+            <motion.div
+              key={p.id}
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: Math.min(idx, 8) * 0.04 }}
+            >
+              <button
+                id={`product-card-${p.id}`}
+                onClick={() => onNavigateToProduct(p.id)}
+                aria-label={`View ${p.name} specifications`}
+                className="w-full h-full text-left bg-white rounded-3xl border border-slate-200/80 overflow-hidden shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col cursor-pointer group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2564AF]"
+              >
+                <div className="relative h-44 w-full bg-slate-50 overflow-hidden">
+                  {p.image ? (
+                    <picture>
+                      <source srcSet={`/products/${p.image}.webp`} type="image/webp" />
+                      <img
+                        src={`/products/${p.image}.jpg`}
+                        alt={p.name}
+                        loading="lazy"
+                        className="w-full h-full object-contain p-4 group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </picture>
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center text-slate-300">
+                      <Printer className="w-12 h-12" />
+                    </div>
+                  )}
+                </div>
+
+                <div className="p-5 flex-grow flex flex-col justify-between gap-3 border-t border-slate-100">
+                  <div className="space-y-2">
+                    <span className="text-[9px] font-bold uppercase tracking-widest text-blue-700 bg-blue-50 border border-blue-200/50 px-2.5 py-1 rounded-md inline-block">
+                      {p.type}
+                    </span>
+                    <h3 className="text-lg font-display font-extrabold text-slate-900 leading-tight">
+                      {p.name}
+                    </h3>
+                    <p className="text-slate-600 text-xs leading-relaxed font-light">
+                      {p.tagline}
+                    </p>
+                  </div>
+
+                  <span className="inline-flex items-center gap-1.5 text-[10px] font-extrabold uppercase tracking-wider text-[#2564AF] group-hover:gap-2.5 transition-all">
+                    View Specifications
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </div>
+              </button>
+            </motion.div>
+          ))}
+        </div>
+
+        {visibleProducts.length === 0 && (
+          <div className="text-center py-16 text-slate-400">
+            <FileText className="w-10 h-10 mx-auto mb-3" />
+            <p className="text-sm">No machines listed in this range yet.</p>
+          </div>
         )}
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-
-          <div className="lg:col-span-3" id="product-rail">
-            <div className="flex items-center gap-2 text-slate-400 mb-3 px-1">
-              <ListFilter className="w-4 h-4" />
-              <h4 className="text-[10px] font-bold uppercase tracking-widest font-mono">
-                {visibleProducts.length} Machines
-              </h4>
-            </div>
-            <div className="space-y-2 lg:max-h-[640px] lg:overflow-y-auto lg:pr-2">
-              {visibleProducts.map((p) => (
-                <button
-                  key={p.id}
-                  id={`tab-btn-${p.id}`}
-                  onClick={() => setActiveTab(p.id)}
-                  className={`w-full text-left px-4 py-3 rounded-xl border transition-all cursor-pointer ${
-                    selectedProduct.id === p.id
-                      ? "bg-slate-900 text-white border-slate-900 shadow-md shadow-slate-900/10"
-                      : "bg-white text-slate-700 border-slate-200 hover:border-blue-400 hover:bg-blue-50/40"
-                  }`}
-                >
-                  <span className="block font-bold text-xs leading-snug">{p.name}</span>
-                  <span
-                    className={`block text-[10px] mt-1 uppercase tracking-wider font-mono ${
-                      selectedProduct.id === p.id ? "text-blue-300" : "text-slate-400"
-                    }`}
-                  >
-                    {p.type}
-                  </span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          <div className="lg:col-span-9">
-              <motion.div
-                key={activeTab}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -10 }}
-                transition={{ duration: 0.25 }}
-                className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-lg shadow-slate-200/40"
-                id={`product-content-${selectedProduct.id}`}
-              >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-                  <div className="flex items-start justify-center">
-                    {selectedProduct.image ? (
-                      <picture>
-                        <source srcSet={`/products/${selectedProduct.image}.webp`} type="image/webp" />
-                        <img
-                          src={`/products/${selectedProduct.image}.jpg`}
-                          alt={selectedProduct.name}
-                          loading="lazy"
-                          className="max-h-[340px] w-auto object-contain"
-                        />
-                      </picture>
-                    ) : (
-                      <div className="w-full h-48 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-300">
-                        <FileText className="w-12 h-12" />
-                      </div>
-                    )}
-                  </div>
-
-                  <div className="space-y-4">
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-blue-700 bg-blue-50 border border-blue-200/50 px-3 py-1.5 rounded-lg inline-block">
-                      {selectedProduct.type}
-                    </span>
-                    <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-slate-900 leading-tight">
-                      {selectedProduct.name}
-                    </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed font-light">
-                      {selectedProduct.tagline}
-                    </p>
-
-                    <div className="flex flex-wrap items-center gap-3 pt-1">
-                      <button
-                        id={`quote-btn-${selectedProduct.id}`}
-                        onClick={() => onRequestQuote?.(selectedProduct.id)}
-                        className="bg-slate-900 hover:bg-blue-600 text-white font-bold uppercase tracking-widest text-[11px] py-3 px-6 rounded-xl flex items-center gap-2 cursor-pointer transition-all shadow-md shadow-slate-900/10 active:scale-95"
-                      >
-                        <FileText className="w-4 h-4" />
-                        <span>Get a Quote</span>
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </button>
-                      <a
-                        href="tel:+919522299975"
-                        className="text-slate-600 hover:text-blue-600 font-bold uppercase tracking-widest text-[11px] py-3 px-5 rounded-xl border border-slate-200 hover:border-blue-400 flex items-center gap-2 transition-all"
-                      >
-                        <Phone className="w-3.5 h-3.5" />
-                        <span>Call Us</span>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mt-8 pt-6 border-t border-slate-200">
-                  <h4 className="font-display font-bold text-sm uppercase tracking-wider text-slate-900 mb-4">
-                    Product Specifications
-                  </h4>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8" id="spec-sheet-table">
-                    {selectedProduct.specs.map((row, idx) => (
-                      <div
-                        key={idx}
-                        className="flex justify-between gap-6 py-2.5 border-b border-slate-100 text-xs"
-                      >
-                        <span className="font-semibold text-slate-500">{row.label}</span>
-                        <span className="font-bold text-slate-900 text-right">{row.value}</span>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-          </div>
-        </div>
       </div>
     </section>
   );

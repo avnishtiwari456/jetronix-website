@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import HomeOverview from "./components/HomeOverview";
 import ProductSection from "./components/ProductSection";
+import ProductDetail from "./components/ProductDetail";
 import TcoCalculator from "./components/TcoCalculator";
 import SampleGenerator from "./components/SampleGenerator";
 import Matchmaker from "./components/Matchmaker";
@@ -13,13 +14,14 @@ import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
 import { ChevronUp, Activity, CheckCircle2 } from "lucide-react";
+import { products } from "./data";
 
 export default function App() {
   const [currentPage, setCurrentPage] = useState<string>("home");
   const [prefilledSample, setPrefilledSample] = useState<string>("");
   const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
   const [activeQuoteRef, setActiveQuoteRef] = useState<string | null>(null);
-  const [productTarget, setProductTarget] = useState<{ category?: string; productId?: string } | null>(null);
+  const [routeSegment, setRouteSegment] = useState<string>("");
   const [quoteTarget, setQuoteTarget] = useState<{ productId: string } | null>(null);
 
   // Monitor scroll height to show Back to Top button
@@ -35,14 +37,12 @@ export default function App() {
   // Hash-based client router
   useEffect(() => {
     const handleHashChange = () => {
-      const hash = window.location.hash.replace("#", "");
+      const raw = window.location.hash.replace("#", "");
+      const [pageId, segment = ""] = raw.split("/");
       const validPages = ["home", "about", "products", "calculator", "lab", "advisor", "partners", "contact"];
-      
-      if (validPages.includes(hash)) {
-        setCurrentPage(hash);
-      } else {
-        setCurrentPage("home");
-      }
+
+      setCurrentPage(validPages.includes(pageId) ? pageId : "home");
+      setRouteSegment(segment);
       
       // Auto-scroll back to top smoothly on page transition
       window.scrollTo({ top: 0, behavior: "smooth" });
@@ -57,10 +57,10 @@ export default function App() {
     window.location.hash = pageId;
   };
 
-  // Deep-link from the header/footer menus straight to a product or category in the catalogue.
+  // Every machine and every range has its own address: #products, #products/cij, #products/jx350.
   const handleNavigateToProduct = (productId?: string, category?: string) => {
-    setProductTarget({ productId, category });
-    handleNavigate("products");
+    const target = productId || category;
+    handleNavigate(target ? `products/${target}` : "products");
   };
 
   // "Request Quote" on a product card jumps to the B2B quote sheet with that product preselected.
@@ -116,17 +116,32 @@ export default function App() {
             </motion.div>
           )}
 
-          {currentPage === "products" && (
-            <motion.div
-              key="products-page"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.35 }}
-            >
-              <ProductSection target={productTarget} onRequestQuote={handleRequestQuote} />
-            </motion.div>
-          )}
+          {currentPage === "products" && (() => {
+            // A segment is either one machine or one range; anything else is the full catalogue.
+            const product = products.find((p) => p.id === routeSegment);
+            return (
+              <motion.div
+                key={`products-${routeSegment || "all"}`}
+                initial={{ opacity: 0, y: 15 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -15 }}
+                transition={{ duration: 0.35 }}
+              >
+                {product ? (
+                  <ProductDetail
+                    product={product}
+                    onRequestQuote={handleRequestQuote}
+                    onNavigateToProduct={handleNavigateToProduct}
+                  />
+                ) : (
+                  <ProductSection
+                    category={routeSegment}
+                    onNavigateToProduct={handleNavigateToProduct}
+                  />
+                )}
+              </motion.div>
+            );
+          })()}
 
           {currentPage === "calculator" && (
             <motion.div
