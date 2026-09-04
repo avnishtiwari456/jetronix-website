@@ -9,6 +9,7 @@ import SampleGenerator from "./components/SampleGenerator";
 import Matchmaker from "./components/Matchmaker";
 import JointVenture from "./components/JointVenture";
 import AiAdvisor from "./components/AiAdvisor";
+import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
 import { ChevronUp, Activity, CheckCircle2 } from "lucide-react";
@@ -35,7 +36,7 @@ export default function App() {
   useEffect(() => {
     const handleHashChange = () => {
       const hash = window.location.hash.replace("#", "");
-      const validPages = ["home", "products", "calculator", "lab", "advisor", "partners", "contact"];
+      const validPages = ["home", "about", "products", "calculator", "lab", "advisor", "partners", "contact"];
       
       if (validPages.includes(hash)) {
         setCurrentPage(hash);
@@ -178,6 +179,18 @@ export default function App() {
                 quoteTarget={quoteTarget}
                 onQuoteSubmitted={handleQuoteSubmitted}
               />
+            </motion.div>
+          )}
+
+          {currentPage === "about" && (
+            <motion.div
+              key="about-page"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -15 }}
+              transition={{ duration: 0.35 }}
+            >
+              <AboutUs onNavigate={handleNavigate} />
             </motion.div>
           )}
 

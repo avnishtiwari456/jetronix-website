@@ -244,10 +244,19 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
 
               {/* About Us */}
               <button
-                onClick={() => handleNavClick("home", "jv-overview")}
-                className="px-4 py-2 text-[11px] md:text-xs font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer rounded-xl text-[#12223c] hover:text-[#2564AF] hover:bg-slate-50"
+                onClick={() => handleNavClick("about")}
+                className={`px-4 py-2 text-[11px] md:text-xs font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer rounded-xl relative group ${
+                  currentPage === "about" ? "text-[#2564AF] bg-blue-50/50" : "text-[#12223c] hover:text-[#2564AF] hover:bg-slate-50"
+                }`}
               >
                 <span>About Us</span>
+                {currentPage === "about" && (
+                  <motion.div
+                    layoutId="activeNavIndicator"
+                    className="absolute bottom-1 left-4 right-4 h-0.5 bg-[#2564AF] rounded-full"
+                    transition={{ type: "spring", stiffness: 380, damping: 30 }}
+                  />
+                )}
               </button>
 
               {/* Products (Dropdown hover) */}
@@ -531,7 +540,7 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
                   <button onClick={() => handleNavClick("home")} className="text-left font-bold text-xs uppercase tracking-wider py-2 border-b border-slate-50 text-[#12223c]">
                     Home
                   </button>
-                  <button onClick={() => handleNavClick("home", "jv-overview")} className="text-left font-bold text-xs uppercase tracking-wider py-2 border-b border-slate-50 text-[#12223c]">
+                  <button onClick={() => handleNavClick("about")} className="text-left font-bold text-xs uppercase tracking-wider py-2 border-b border-slate-50 text-[#12223c]">
                     About Us
                   </button>
                   <button onClick={() => handleNavClick("products")} className="text-left font-bold text-xs uppercase tracking-wider py-2 border-b border-slate-50 text-[#12223c]">
