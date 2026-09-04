@@ -59,3 +59,9 @@ export interface ChatMessage {
   text: string;
   timestamp: string;
 }
+
+/** A regional channel partner and the territory it covers. */
+export interface ChannelPartner {
+  name: string;
+  region: string;
+}

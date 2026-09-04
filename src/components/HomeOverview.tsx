@@ -958,7 +958,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
               </div>
 
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Jetronix Printech India LLP is an industrial coding and marking specialist, built on the joint venture of Runicha Enterprises (Indore) and Best Code Technology India (Jaipur). Specialising in digital printing and traceability solutions (such as industrial coders) for sectors as diverse as food, beverage, life sciences, packaging, cleaning, personal care, building and construction.
+                Jetronix Technology India LLP is an industrial coding and marking specialist, built on the joint venture of Runicha Enterprises (Indore) and Best Code Technology India (Jaipur). Specialising in digital printing and traceability solutions (such as industrial coders) for sectors as diverse as food, beverage, life sciences, packaging, cleaning, personal care, building and construction.
               </p>
 
               {/* Sub features list */}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { jointVentures, products, categories } from "../data";
-import { Phone, Mail, MapPin, ClipboardList, Send, FileText, CheckCircle2, ShieldCheck, Truck, Users, AlertTriangle } from "lucide-react";
+import { jointVentures, products, categories, channelPartners } from "../data";
+import { Phone, Mail, MapPin, ClipboardList, Send, FileText, CheckCircle2, ShieldCheck, Truck, Users, AlertTriangle, MapPinned } from "lucide-react";
 
 interface JointVentureProps {
   prefilledSampleDetails?: string;
@@ -191,6 +191,44 @@ export default function JointVenture({ prefilledSampleDetails, quoteTarget, onQu
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Channel Partner Network */}
+        <div className="mb-16" id="channel-partners">
+          <div className="text-center max-w-3xl mx-auto mb-8">
+            <span className="text-blue-600 text-xs font-bold uppercase tracking-widest bg-blue-50 border border-blue-200/50 px-4 py-2 rounded-full inline-flex items-center gap-1.5 font-mono">
+              <Users className="w-4 h-4 text-blue-600" /> Channel Network
+            </span>
+            <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-slate-900 mt-4 leading-tight">
+              Our Channel Partners
+            </h3>
+            <p className="text-slate-600 mt-3 text-sm font-light leading-relaxed">
+              Regional partners carrying the Jetronix range, so machines, spares and service reach your plant from close by.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {channelPartners.map((partner, idx) => (
+              <div
+                key={partner.name}
+                className="bg-white rounded-2xl border border-slate-200 p-5 shadow-sm hover:shadow-lg hover:-translate-y-0.5 transition-all duration-300 relative overflow-hidden"
+              >
+                <div className="absolute top-0 left-0 w-1.5 h-full bg-blue-600" />
+                <div className="pl-2 space-y-2.5">
+                  <span className="w-7 h-7 rounded-full bg-slate-900 text-white text-[11px] font-black flex items-center justify-center">
+                    {idx + 1}
+                  </span>
+                  <h4 className="font-display font-extrabold text-slate-900 text-sm leading-snug">
+                    {partner.name}
+                  </h4>
+                  <p className="flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-wider text-blue-700">
+                    <MapPinned className="w-3.5 h-3.5 shrink-0" />
+                    {partner.region}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* SLA & Logistics Commitments Row */}

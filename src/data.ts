@@ -1,4 +1,4 @@
-import { Product, FirmDetails, CategoryMeta, ProductCategory, SpecRow } from "./types";
+import { Product, FirmDetails, CategoryMeta, ProductCategory, SpecRow, ChannelPartner } from "./types";
 
 export const categories: CategoryMeta[] = [
   { id: "cij", label: "Jetronix Industrial Inkjet", shortLabel: "CIJ Printers",
@@ -284,4 +284,12 @@ export const matchmakerQuestions = [
       { value: "wet", label: "Condensation / Wet / Cold Dairy / Beverage Bottling" }
     ]
   }
+];
+
+/** Regional channel partners, as supplied by the company. */
+export const channelPartners: ChannelPartner[] = [
+  { name: "Best Code Technology India", region: "Delhi & UP" },
+  { name: "Runicha Enterprises", region: "Central India" },
+  { name: "Sky Tronics Corp", region: "Rajasthan & Gujarat" },
+  { name: "Jet Printing", region: "Himachal & Uttarakhand" }
 ];

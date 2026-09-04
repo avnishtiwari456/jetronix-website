@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
+import { channelPartners } from "../data";
 import {
   Phone, Mail, MapPin, MessageSquare, Send, Loader2,
-  Building2, Check, AlertTriangle
+  Building2, Check, AlertTriangle, Users, MapPinned
 } from "lucide-react";
 
 const EMPTY_FORM = {
@@ -90,7 +91,7 @@ export default function ContactUs() {
 
         <div className="max-w-5xl mx-auto text-center relative z-10 space-y-3.5">
           <span className="inline-flex items-center gap-2 bg-[#2564AF]/20 border border-[#2564AF]/40 text-sky-300 px-4 py-1.5 rounded-full text-[10px] font-sans font-bold uppercase tracking-widest">
-            Jetronix Printech India LLP
+            Jetronix Technology India LLP
           </span>
           <h1 className="text-3xl md:text-5xl font-sans font-black tracking-tight leading-none text-white">
             Contact Us
@@ -316,6 +317,55 @@ export default function ContactUs() {
                 </div>
               </div>
             ))}
+
+            {/* Primary contact line */}
+            <div className="bg-[#122540] rounded-3xl p-5 text-white shadow-lg shadow-slate-200/60 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="p-1 bg-white/10 text-sky-400 rounded-lg shrink-0">
+                  <Phone className="w-4 h-4" />
+                </span>
+                <span className="font-bold text-xs uppercase tracking-wider text-slate-200">Contact Us</span>
+              </div>
+              <a
+                href="tel:+919828106099"
+                className="flex items-center justify-center gap-2 p-3 rounded-2xl bg-[#2564AF] hover:bg-blue-600 text-white font-mono text-sm font-black tracking-wider transition-all cursor-pointer"
+              >
+                <Phone className="w-4 h-4" />
+                <span>+91 98281 06099</span>
+              </a>
+            </div>
+
+            {/* Channel partner network */}
+            <div className="bg-white rounded-3xl border border-slate-200/90 p-5 shadow-lg shadow-slate-100 space-y-4">
+              <div className="flex items-center gap-2">
+                <span className="p-1 bg-blue-50 text-[#2564AF] rounded-lg shrink-0 border border-blue-100">
+                  <Users className="w-4 h-4" />
+                </span>
+                <span className="font-bold text-xs text-[#122540] uppercase tracking-wider">Our Channel Partners</span>
+              </div>
+
+              <ol className="space-y-2">
+                {channelPartners.map((partner, idx) => (
+                  <li
+                    key={partner.name}
+                    className="flex items-start gap-3 bg-slate-50 border border-slate-100 rounded-2xl px-3.5 py-3"
+                  >
+                    <span className="w-5 h-5 rounded-full bg-[#2564AF] text-white text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5">
+                      {idx + 1}
+                    </span>
+                    <span className="min-w-0">
+                      <span className="block font-extrabold text-xs text-[#122540] leading-snug">
+                        {partner.name}
+                      </span>
+                      <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-slate-500 mt-1">
+                        <MapPinned className="w-3 h-3 shrink-0" />
+                        {partner.region}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
 
             {/* Quick WhatsApp Support Callout */}
             <div className="bg-emerald-950/5 border border-emerald-900/10 rounded-3xl p-5 space-y-3.5">
