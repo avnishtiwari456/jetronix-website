@@ -184,10 +184,12 @@ export default function Hero({ onNavigateToProduct }: HeroProps) {
                     {currentSlideInfo.title}
                   </h1>
                   
-                  {/* Product on this slide */}
-                  <h3 className="text-xs sm:text-sm md:text-base font-extrabold text-white tracking-wide font-sans mt-2.5 drop-shadow">
-                    {productShot.productName}
-                  </h3>
+                  {/* The machine, unless the title already names it */}
+                  {!currentSlideInfo.title.toLowerCase().includes("jetronix") && (
+                    <h3 className="text-xs sm:text-sm md:text-base font-extrabold text-white tracking-wide font-sans mt-2.5 drop-shadow">
+                      {productShot.productName}
+                    </h3>
+                  )}
                   
                   {/* Description */}
                   <p className="text-white text-xs sm:text-sm leading-relaxed font-sans font-normal mt-3 max-w-xl drop-shadow-sm">
