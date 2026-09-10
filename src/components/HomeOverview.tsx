@@ -915,10 +915,12 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                 </div>
                 <div className="flex flex-wrap gap-2">
                   <a 
-                    href="tel:+919522299975"
+                    href="https://wa.me/919522299975"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-[#2764B0] hover:bg-slate-800 text-white font-mono text-[10px] font-bold transition-all shadow-sm border border-blue-900/30 cursor-pointer"
                   >
-                    <span>📞 +91 95222 99975</span>
+                    <span>💬 +91 95222 99975</span>
                   </a>
                   <a 
                     href="mailto:indore.support@jetronixindia.com"
@@ -937,10 +939,12 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                 </div>
                 <div className="flex flex-wrap gap-2">
                   <a 
-                    href="tel:+919828106099"
+                    href="https://wa.me/919828106099"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-[#2764B0] hover:bg-slate-800 text-white font-mono text-[10px] font-bold transition-all shadow-sm border border-blue-900/30 cursor-pointer"
                   >
-                    <span>📞 +91 98281 06099</span>
+                    <span>💬 +91 98281 06099</span>
                   </a>
                   <a 
                     href="https://wa.me/919828106099"

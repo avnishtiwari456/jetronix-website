@@ -2,7 +2,7 @@ import React from "react";
 import { motion } from "motion/react";
 import { products, categories } from "../data";
 import { Product } from "../types";
-import { FileText, ArrowRight, Phone, ChevronRight, Printer } from "lucide-react";
+import { FileText, ArrowRight, MessageSquare, ChevronRight, Printer } from "lucide-react";
 
 interface ProductDetailProps {
   product: Product;
@@ -94,11 +94,13 @@ export default function ProductDetail({ product, onRequestQuote, onNavigateToPro
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
                 <a
-                  href="tel:+919522299975"
+                  href="https://wa.me/919522299975"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-slate-600 hover:text-blue-600 font-bold uppercase tracking-widest text-[11px] py-3 px-5 rounded-xl border border-slate-200 hover:border-blue-400 flex items-center gap-2 transition-all"
                 >
-                  <Phone className="w-3.5 h-3.5" />
-                  <span>Call Us</span>
+                  <MessageSquare className="w-3.5 h-3.5" />
+                  <span>WhatsApp Us</span>
                 </a>
               </div>
             </div>

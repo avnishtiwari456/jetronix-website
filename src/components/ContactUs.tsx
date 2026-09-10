@@ -300,7 +300,9 @@ export default function ContactUs() {
                 {/* Fast Transmission Buttons */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
                   <a 
-                    href={`tel:${node.phone.replace(/[^0-9+]/g, "")}`}
+                    href={`https://wa.me/${node.phone.replace(/[^0-9]/g, "")}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-[#2764B0] hover:bg-slate-800 text-white font-mono text-[11px] font-bold transition-all shadow-sm cursor-pointer"
                   >
                     <Phone className="w-3.5 h-3.5 text-sky-400" />
@@ -327,7 +329,9 @@ export default function ContactUs() {
                 <span className="font-bold text-xs uppercase tracking-wider text-slate-200">Contact Us</span>
               </div>
               <a
-                href="tel:+919828106099"
+                href="https://wa.me/919828106099"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 p-3 rounded-2xl bg-[#2564AF] hover:bg-blue-600 text-white font-mono text-sm font-black tracking-wider transition-all cursor-pointer"
               >
                 <Phone className="w-4 h-4" />
