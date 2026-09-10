@@ -63,7 +63,7 @@ const slideTitles = [
   {
     category: "Thermal Inkjet (TIJ)",
     badge: "02 / 04",
-    title: "Reliable Thermal Inkjet Printers",
+    title: "Jetronix JT240",
     desc: "Explore our range of Thermal Inkjet Printers (TIJ) for crisp and efficient print quality. Featuring cartridge-swapping ease with zero printhead maintenance—ideal for pharmaceutical, food package cartoning, and flexible foil lines.",
     spec1: "600 DPI sharp dynamic barcoding",
     spec2: "Cartridge swapping under 10 seconds"
@@ -71,7 +71,7 @@ const slideTitles = [
   {
     category: "CO2 Laser Marking",
     badge: "03 / 04",
-    title: "CO2 Laser Coding Machines",
+    title: "Jetronix JLC60",
     desc: "The JLC60 burns the code straight into film, plastic, glass and leather at up to 1500 characters a second. Intelligent vector control holds the mark clean through 24-hour running, with no ink, no solvent and no cartridge to change.",
     spec1: "Up to 1500 characters per second",
     spec2: "Zero consumables - MTBF over 50,000 hours"
@@ -79,7 +79,7 @@ const slideTitles = [
   {
     category: "Handheld Printer",
     badge: "04 / 04",
-    title: "Handheld Batch Coding Printers",
+    title: "Jetronix JH250",
     desc: "The JH250 puts a 600 DPI coder in one hand - text, barcodes, QR codes, MRP and dates straight onto cartons, metal, glass, plastic and wood. A smart touch screen sets the message and a USB port loads your logo, with no line integration to arrange.",
     spec1: "25.4 mm print height at up to 600 DPI",
     spec2: "Fast-drying cartridge, USB logo import"
@@ -184,12 +184,6 @@ export default function Hero({ onNavigateToProduct }: HeroProps) {
                     {currentSlideInfo.title}
                   </h1>
                   
-                  {/* The machine, unless the title already names it */}
-                  {!currentSlideInfo.title.toLowerCase().includes("jetronix") && (
-                    <h3 className="text-xs sm:text-sm md:text-base font-extrabold text-white tracking-wide font-sans mt-2.5 drop-shadow">
-                      {productShot.productName}
-                    </h3>
-                  )}
                   
                   {/* Description */}
                   <p className="text-white text-xs sm:text-sm leading-relaxed font-sans font-normal mt-3 max-w-xl drop-shadow-sm">
