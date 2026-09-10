@@ -120,6 +120,23 @@ const featuredProducts = [
       substrates: "Film, Labels, Gloss Card"
     },
     badge: "Linx Distributed"
+  },
+  {
+    id: "jcv200",
+    categoryId: "conveyor",
+    name: "Jetronix Coding Conveyor",
+    category: "Coding Conveyors",
+    type: "Stainless Line Conveyor",
+    desc: "Carries the product past the printhead at a steady speed. Adjustable head mount and side guides, with a stainless collection tray at the outfeed.",
+    image: "/products/conveyor.jpg",
+    imageWebp: "/products/conveyor.webp",
+    specs: {
+      speed: "Steady line feed",
+      resolution: "Adjustable head mount",
+      ink: "None - carries the coder",
+      substrates: "Cartons, Pouches, Bottles, Packs"
+    },
+    badge: "Line Ready"
   }
 ];
 
