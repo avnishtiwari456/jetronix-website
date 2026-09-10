@@ -22,7 +22,7 @@ const slideProductShots: {
   {
     category: "cij",
     image: "/products/cij-range.jpg",
-    productName: "Jetronix S200 & JX350",
+    productName: "Jetronix S200 / JX350",
     productType: "Continuous Inkjet Printers (CIJ)"
   },
   {
@@ -55,7 +55,7 @@ const slideTitles = [
   {
     category: "Continuous Inkjet (CIJ)",
     badge: "01 / 04",
-    title: "Jetronix S200/S350",
+    title: "Jetronix S200 / JX350",
     desc: "Explore our range of industrial continuous inkjet printers (CIJ) engineered specifically for non-clogging batch coding, expiry date marking, MRP, and dynamic QR/GS1-128 barcode printing. Built for 24/7 non-stop plant runtimes.",
     spec1: "Sapphire nozzle: non-clogging core",
     spec2: "IP55 dust & water robust enclosure"
