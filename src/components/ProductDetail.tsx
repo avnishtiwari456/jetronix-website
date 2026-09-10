@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "motion/react";
 import WhatsAppIcon from "./WhatsAppIcon";
-import { products, categories } from "../data";
+import { products, categories, companyPhone } from "../data";
 import { Product } from "../types";
 import { FileText, ArrowRight, ChevronRight, Printer } from "lucide-react";
 
@@ -95,7 +95,7 @@ export default function ProductDetail({ product, onRequestQuote, onNavigateToPro
                   <ArrowRight className="w-3.5 h-3.5" />
                 </button>
                 <a
-                  href="https://wa.me/919522299975"
+                  href={`https://wa.me/91${companyPhone}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-slate-600 hover:text-blue-600 font-bold uppercase tracking-widest text-[11px] py-3 px-5 rounded-xl border border-slate-200 hover:border-blue-400 flex items-center gap-2 transition-all"

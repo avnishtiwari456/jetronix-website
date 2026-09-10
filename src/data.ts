@@ -306,6 +306,9 @@ export const channelPartners: ChannelPartner[] = [
   { name: "Jet Printing", region: "Himachal & Uttarakhand", phone: "8949210310" }
 ];
 
+/** The company's own WhatsApp number, not a partner's. */
+export const companyPhone = "7726806099";
+
 /** Registered office, as supplied by the company. */
 export const companyAddress =
   "G24-26, Ground Floor, Arg North Avenue, Road No. 9, VKI Area, Jaipur - 302013";
