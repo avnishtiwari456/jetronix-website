@@ -1,8 +1,10 @@
 import React from "react";
 import { motion } from "motion/react";
+import WhatsAppIcon from "./WhatsAppIcon";
+import { companyPhone } from "../data";
 import {
   Award, Users, Layers, Wrench, ShieldCheck, Handshake,
-  ArrowRight, Phone
+  ArrowRight
 } from "lucide-react";
 
 interface AboutUsProps {
@@ -174,13 +176,15 @@ export default function AboutUs({ onNavigate }: AboutUsProps) {
               <span>Explore Our Range</span>
               <ArrowRight className="w-4 h-4" />
             </button>
-            <button
-              onClick={() => onNavigate("contact")}
+            <a
+              href={`https://wa.me/91${companyPhone}`}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-800 font-bold px-6 py-3 rounded-xl transition-all duration-200 cursor-pointer text-xs uppercase tracking-wider"
             >
-              <Phone className="w-3.5 h-3.5" />
+              <WhatsAppIcon className="w-3.5 h-3.5" />
               <span>Talk to Our Team</span>
-            </button>
+            </a>
           </div>
         </div>
       </div>
