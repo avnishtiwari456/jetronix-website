@@ -63,4 +63,6 @@ export interface ChatMessage {
 export interface ChannelPartner {
   name: string;
   region: string;
+  /** Ten-digit Indian number, WhatsApp. Omit where the partner has not given one. */
+  phone?: string;
 }

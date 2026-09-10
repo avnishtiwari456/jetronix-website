@@ -286,8 +286,8 @@ export const matchmakerQuestions = [
 
 /** Regional channel partners, as supplied by the company. */
 export const channelPartners: ChannelPartner[] = [
-  { name: "Jetronix Technology India LLP", region: "Delhi & UP" },
+  { name: "Jetronix Technology India LLP", region: "Delhi & UP", phone: "7726806099" },
   { name: "Runicha Enterprises", region: "Central India" },
-  { name: "Sky Tronics Corp", region: "Rajasthan & Gujarat" },
-  { name: "Jet Printing", region: "Himachal & Uttarakhand" }
+  { name: "Sky Tronics Corp", region: "Rajasthan & Gujarat", phone: "9828106099" },
+  { name: "Jet Printing", region: "Himachal & Uttarakhand", phone: "8949210310" }
 ];

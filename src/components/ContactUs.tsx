@@ -263,25 +263,51 @@ export default function ContactUs() {
               </div>
 
               <ol className="space-y-2">
-                {channelPartners.map((partner, idx) => (
-                  <li
-                    key={partner.name}
-                    className="flex items-start gap-3 bg-slate-50 border border-slate-100 rounded-2xl px-3.5 py-3"
-                  >
-                    <span className="w-5 h-5 rounded-full bg-[#2564AF] text-white text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5">
-                      {idx + 1}
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block font-extrabold text-xs text-[#122540] leading-snug">
-                        {partner.name}
+                {channelPartners.map((partner, idx) => {
+                  // A partner with a number opens WhatsApp; the rest stay plain text.
+                  const row = (
+                    <>
+                      <span className="w-5 h-5 rounded-full bg-[#2564AF] text-white text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5">
+                        {idx + 1}
                       </span>
-                      <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-slate-500 mt-1">
-                        <MapPinned className="w-3 h-3 shrink-0" />
-                        {partner.region}
+                      <span className="min-w-0">
+                        <span className="block font-extrabold text-xs text-[#122540] leading-snug">
+                          {partner.name}
+                        </span>
+                        <span className="flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-slate-500 mt-1">
+                          <MapPinned className="w-3 h-3 shrink-0" />
+                          {partner.region}
+                        </span>
+                        {partner.phone && (
+                          <span className="flex items-center gap-1.5 text-[11px] font-bold text-emerald-700 mt-1.5">
+                            <WhatsAppIcon className="w-3.5 h-3.5" />
+                            +91 {partner.phone}
+                          </span>
+                        )}
                       </span>
-                    </span>
-                  </li>
-                ))}
+                    </>
+                  );
+
+                  return (
+                    <li key={partner.name}>
+                      {partner.phone ? (
+                        <a
+                          href={`https://wa.me/91${partner.phone}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`WhatsApp ${partner.name}`}
+                          className="flex items-start gap-3 bg-slate-50 border border-slate-100 rounded-2xl px-3.5 py-3 hover:bg-emerald-50 hover:border-emerald-200 transition-colors cursor-pointer"
+                        >
+                          {row}
+                        </a>
+                      ) : (
+                        <div className="flex items-start gap-3 bg-slate-50 border border-slate-100 rounded-2xl px-3.5 py-3">
+                          {row}
+                        </div>
+                      )}
+                    </li>
+                  );
+                })}
               </ol>
             </div>
 
