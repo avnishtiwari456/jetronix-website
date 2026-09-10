@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { motion } from "motion/react";
 import { channelPartners } from "../data";
 import {
-  Phone, Mail, MapPin, MessageSquare, Send, Loader2,
-  Building2, Check, AlertTriangle, Users, MapPinned
+  Phone, MapPin, MessageSquare, Send, Loader2,
+  Check, AlertTriangle, Users, MapPinned
 } from "lucide-react";
 
 const EMPTY_FORM = {
@@ -23,24 +23,6 @@ export default function ContactUs() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formError, setFormError] = useState("");
 
-  const nodes = [
-    {
-      name: "Jetronix Indore",
-      role: "Central India Regional Hub",
-      city: "Indore",
-      address: "Jagdish Niwas Shubham Place, Scheme No 54, Indore, Madhya Pradesh - 452010",
-      phone: "+91 95222 99975",
-      email: "indore.support@jetronixindia.com",
-    },
-    {
-      name: "Jetronix Jaipur",
-      role: "North India Regional Hub",
-      city: "Jaipur",
-      address: "Tirupati Vihar-A, Macheda, Jaipur, Rajasthan - 302013",
-      phone: "+91 98281 06099",
-      email: "jaipur.support@jetronixindia.com",
-    }
-  ];
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -97,7 +79,7 @@ export default function ContactUs() {
             Contact Us
           </h1>
           <p className="text-xs md:text-sm text-white/90 max-w-xl mx-auto font-light leading-relaxed">
-            Reach out to our dedicated support teams. Feel free to submit the contact form below or call/WhatsApp our official regional offices directly.
+            Reach out to our support team. Submit the form below, or message us on WhatsApp for an immediate reply.
           </p>
         </div>
       </div>
@@ -270,75 +252,6 @@ export default function ContactUs() {
           {/* RIGHT SIDE: Firm Addresses & Direct Contacts (5 Cols) */}
           <div className="lg:col-span-5 space-y-6">
             
-            <div className="text-xs uppercase tracking-widest font-black text-slate-400 px-1">
-              Registered Corporate Hubs
-            </div>
-
-            {/* Loop Office Addresses */}
-            {nodes.map((node, idx) => (
-              <div 
-                key={idx}
-                className="bg-white rounded-3xl border border-slate-200/90 p-5 shadow-lg shadow-slate-100 space-y-4"
-              >
-                {/* Header Info */}
-                <div className="flex items-start gap-3">
-                  <div className="p-2.5 bg-blue-50 text-[#2564AF] rounded-xl border border-blue-100 shrink-0">
-                    <Building2 className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <h4 className="font-extrabold text-[#122540] text-sm tracking-wide leading-tight">{node.name}</h4>
-                    <p className="text-[9px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">{node.role} • {node.city}</p>
-                  </div>
-                </div>
-
-                {/* Address block */}
-                <div className="flex items-start gap-2.5 text-xs text-slate-600 leading-relaxed bg-slate-50 p-3.5 rounded-2xl border border-slate-100">
-                  <MapPin className="w-4 h-4 text-slate-400 shrink-0 mt-0.5" />
-                  <span className="font-medium select-all">{node.address}</span>
-                </div>
-
-                {/* Fast Transmission Buttons */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
-                  <a 
-                    href={`https://wa.me/${node.phone.replace(/[^0-9]/g, "")}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-[#2764B0] hover:bg-slate-800 text-white font-mono text-[11px] font-bold transition-all shadow-sm cursor-pointer"
-                  >
-                    <Phone className="w-3.5 h-3.5 text-sky-400" />
-                    <span>{node.phone}</span>
-                  </a>
-
-                  <a 
-                    href={`mailto:${node.email}`}
-                    className="flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-white border border-slate-200 hover:bg-slate-50 text-[#122540] font-mono text-[11px] font-semibold transition-all cursor-pointer"
-                  >
-                    <Mail className="w-3.5 h-3.5 text-slate-400" />
-                    <span>Email Support</span>
-                  </a>
-                </div>
-              </div>
-            ))}
-
-            {/* Primary contact line */}
-            <div className="bg-[#2764B0] rounded-3xl p-5 text-white shadow-lg shadow-slate-200/60 space-y-3">
-              <div className="flex items-center gap-2">
-                <span className="p-1 bg-white/10 text-sky-400 rounded-lg shrink-0">
-                  <Phone className="w-4 h-4" />
-                </span>
-                <span className="font-bold text-xs uppercase tracking-wider text-slate-200">Contact Us</span>
-              </div>
-              <a
-                href="https://wa.me/919828106099"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center gap-2 p-3 rounded-2xl bg-[#2564AF] hover:bg-blue-600 text-white font-mono text-sm font-black tracking-wider transition-all cursor-pointer"
-              >
-                <Phone className="w-4 h-4" />
-                <span>+91 98281 06099</span>
-              </a>
-            </div>
-
             {/* Channel partner network */}
             <div className="bg-white rounded-3xl border border-slate-200/90 p-5 shadow-lg shadow-slate-100 space-y-4">
               <div className="flex items-center gap-2">
@@ -369,6 +282,25 @@ export default function ContactUs() {
                   </li>
                 ))}
               </ol>
+            </div>
+
+            {/* Primary contact line */}
+            <div className="bg-[#2764B0] rounded-3xl p-5 text-white shadow-lg shadow-slate-200/60 space-y-3">
+              <div className="flex items-center gap-2">
+                <span className="p-1 bg-white/10 text-sky-400 rounded-lg shrink-0">
+                  <Phone className="w-4 h-4" />
+                </span>
+                <span className="font-bold text-xs uppercase tracking-wider text-slate-200">Contact Us</span>
+              </div>
+              <a
+                href="https://wa.me/919828106099"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center gap-2 p-3 rounded-2xl bg-[#2564AF] hover:bg-blue-600 text-white font-mono text-sm font-black tracking-wider transition-all cursor-pointer"
+              >
+                <Phone className="w-4 h-4" />
+                <span>+91 98281 06099</span>
+              </a>
             </div>
 
             {/* Quick WhatsApp Support Callout */}
