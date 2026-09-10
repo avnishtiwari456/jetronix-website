@@ -55,7 +55,7 @@ const slideTitles = [
   {
     category: "Continuous Inkjet (CIJ)",
     badge: "01 / 04",
-    title: "High-Performance Industrial Inkjet Printers",
+    title: "Jetronix S200/S350",
     desc: "Explore our range of industrial continuous inkjet printers (CIJ) engineered specifically for non-clogging batch coding, expiry date marking, MRP, and dynamic QR/GS1-128 barcode printing. Built for 24/7 non-stop plant runtimes.",
     spec1: "Sapphire nozzle: non-clogging core",
     spec2: "IP55 dust & water robust enclosure"
