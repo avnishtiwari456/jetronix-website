@@ -1,8 +1,9 @@
 import React from "react";
 import { motion } from "motion/react";
+import WhatsAppIcon from "./WhatsAppIcon";
 import { products, categories } from "../data";
 import { Product } from "../types";
-import { FileText, ArrowRight, MessageSquare, ChevronRight, Printer } from "lucide-react";
+import { FileText, ArrowRight, ChevronRight, Printer } from "lucide-react";
 
 interface ProductDetailProps {
   product: Product;
@@ -99,7 +100,7 @@ export default function ProductDetail({ product, onRequestQuote, onNavigateToPro
                   rel="noopener noreferrer"
                   className="text-slate-600 hover:text-blue-600 font-bold uppercase tracking-widest text-[11px] py-3 px-5 rounded-xl border border-slate-200 hover:border-blue-400 flex items-center gap-2 transition-all"
                 >
-                  <MessageSquare className="w-3.5 h-3.5" />
+                  <WhatsAppIcon className="w-3.5 h-3.5" />
                   <span>WhatsApp Us</span>
                 </a>
               </div>

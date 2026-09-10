@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
+import WhatsAppIcon from "./WhatsAppIcon";
 import { channelPartners } from "../data";
 import {
-  Phone, MapPin, MessageSquare, Send, Loader2,
+  MapPin, Send, Loader2,
   Check, AlertTriangle, Users, MapPinned
 } from "lucide-react";
 
@@ -288,7 +289,7 @@ export default function ContactUs() {
             <div className="bg-[#2764B0] rounded-3xl p-5 text-white shadow-lg shadow-slate-200/60 space-y-3">
               <div className="flex items-center gap-2">
                 <span className="p-1 bg-white/10 text-sky-400 rounded-lg shrink-0">
-                  <Phone className="w-4 h-4" />
+                  <WhatsAppIcon className="w-4 h-4" />
                 </span>
                 <span className="font-bold text-xs uppercase tracking-wider text-slate-200">Contact Us</span>
               </div>
@@ -298,7 +299,7 @@ export default function ContactUs() {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 p-3 rounded-2xl bg-[#2564AF] hover:bg-blue-600 text-white font-mono text-sm font-black tracking-wider transition-all cursor-pointer"
               >
-                <Phone className="w-4 h-4" />
+                <WhatsAppIcon className="w-4 h-4" />
                 <span>+91 98281 06099</span>
               </a>
             </div>
@@ -307,7 +308,7 @@ export default function ContactUs() {
             <div className="bg-emerald-950/5 border border-emerald-900/10 rounded-3xl p-5 space-y-3.5">
               <div className="flex items-center gap-2">
                 <span className="p-1 bg-emerald-50 text-emerald-600 rounded-lg shrink-0">
-                  <MessageSquare className="w-4 h-4" />
+                  <WhatsAppIcon className="w-4 h-4" />
                 </span>
                 <span className="font-bold text-xs text-emerald-800 uppercase tracking-wider">WhatsApp Live Desk</span>
               </div>
@@ -321,7 +322,7 @@ export default function ContactUs() {
                 className="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-xl text-xs font-mono font-bold transition-all shadow-sm cursor-pointer"
               >
                 <span>Chat with Specialist</span>
-                <MessageSquare className="w-3.5 h-3.5" />
+                <WhatsAppIcon className="w-3.5 h-3.5" />
               </a>
             </div>
 

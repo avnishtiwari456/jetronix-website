@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
+import WhatsAppIcon from "./WhatsAppIcon";
 import { categories } from "../data";
 import { 
   Award, ShieldCheck, Zap, ArrowRight, Building, Clock, 
@@ -914,7 +915,8 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                     rel="noopener noreferrer"
                     className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-[#2764B0] hover:bg-slate-800 text-white font-mono text-[10px] font-bold transition-all shadow-sm border border-blue-900/30 cursor-pointer"
                   >
-                    <span>💬 +91 95222 99975</span>
+                    <WhatsAppIcon className="w-3.5 h-3.5" />
+                    <span>+91 95222 99975</span>
                   </a>
                   <a 
                     href="mailto:indore.support@jetronixindia.com"
@@ -938,7 +940,8 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                     rel="noopener noreferrer"
                     className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-[#2764B0] hover:bg-slate-800 text-white font-mono text-[10px] font-bold transition-all shadow-sm border border-blue-900/30 cursor-pointer"
                   >
-                    <span>💬 +91 98281 06099</span>
+                    <WhatsAppIcon className="w-3.5 h-3.5" />
+                    <span>+91 98281 06099</span>
                   </a>
                   <a 
                     href="https://wa.me/919828106099"
@@ -946,7 +949,8 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                     rel="noopener noreferrer"
                     className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-mono text-[10px] font-bold transition-all shadow-sm cursor-pointer"
                   >
-                    <span>💬 WhatsApp Live Desk</span>
+                    <WhatsAppIcon className="w-3.5 h-3.5" />
+                    <span>WhatsApp Live Desk</span>
                   </a>
                 </div>
               </div>
