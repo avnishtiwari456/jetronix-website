@@ -74,7 +74,7 @@ export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps)
           </div>
 
           {/* Column 2: Industrial Systems */}
-          <div className="space-y-4">
+          <div className="space-y-4 w-fit md:mx-auto">
             <h4 className="font-sans font-black text-xs text-white uppercase tracking-widest font-mono border-b border-slate-900 pb-2.5">
               Industrial Products
             </h4>
