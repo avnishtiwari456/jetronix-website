@@ -813,23 +813,23 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
               {/* Dynamic Number metrics */}
               <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-1 bg-slate-950/40 border border-slate-800/80 p-4 rounded-2xl">
-                  <span className="text-2xl sm:text-3xl font-black text-white font-mono block">10,000+</span>
-                  <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Active Print Engines</span>
+                  <span className="text-2xl sm:text-3xl font-black text-white font-mono block">12+ Yrs</span>
+                  <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Industry Experience</span>
                 </div>
                 
                 <div className="space-y-1 bg-slate-950/40 border border-slate-800/80 p-4 rounded-2xl">
-                  <span className="text-2xl sm:text-3xl font-black text-white font-mono block">30+ Yrs</span>
-                  <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Industrial Heritage</span>
+                  <span className="text-2xl sm:text-3xl font-black text-white font-mono block">850+</span>
+                  <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Customers Across India</span>
                 </div>
 
                 <div className="space-y-1 bg-slate-950/40 border border-slate-800/80 p-4 rounded-2xl">
-                  <span className="text-2xl sm:text-3xl font-black text-emerald-400 font-mono block">4 Hours</span>
-                  <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">On-Site Service SLA</span>
+                  <span className="text-2xl sm:text-3xl font-black text-emerald-400 font-mono block">4</span>
+                  <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Printing Technologies</span>
                 </div>
 
                 <div className="space-y-1 bg-slate-950/40 border border-slate-800/80 p-4 rounded-2xl">
-                  <span className="text-2xl sm:text-3xl font-black text-sky-400 font-mono block">100%</span>
-                  <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Original Fluids Stock</span>
+                  <span className="text-2xl sm:text-3xl font-black text-sky-400 font-mono block">2</span>
+                  <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Regional Service Hubs</span>
                 </div>
               </div>
 
