@@ -602,7 +602,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
           </p>
         </div>
 
-        {/* Industry tiles: the printed sample and nothing else */}
+        {/* Industry tiles: what the printed code looks like on that packaging */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {industries.map((ind, idx) => {
             const IconComp = ind.icon;
@@ -615,18 +615,30 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                 transition={{ duration: 0.2 }}
                 id={`industry-btn-${idx}`}
                 aria-pressed={isSelected}
-                aria-label={ind.name}
-                className={`relative aspect-square rounded-3xl overflow-hidden border transition-all duration-300 cursor-pointer ${
+                className={`text-left bg-white rounded-3xl overflow-hidden border transition-all duration-300 cursor-pointer group ${
                   isSelected
                     ? "border-[#2564AF] ring-2 ring-[#2564AF]/20 shadow-xl shadow-slate-200"
                     : "border-slate-200/80 shadow-md shadow-slate-100 hover:shadow-xl hover:border-blue-300"
                 }`}
               >
-                <IndustrySample kind={ind.sample} />
-                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/75 to-transparent" />
-                <div className="absolute bottom-3 left-4 flex items-center gap-2 text-white">
-                  <IconComp className="w-4 h-4" />
-                  <span className="font-black text-sm uppercase tracking-wide">{ind.name}</span>
+                <div className="relative h-40 w-full overflow-hidden">
+                  <IndustrySample kind={ind.sample} />
+                  <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/75 to-transparent" />
+                  <div className="absolute bottom-3 left-4 flex items-center gap-2 text-white">
+                    <IconComp className="w-4 h-4" />
+                    <span className="font-black text-sm uppercase tracking-wide">{ind.name}</span>
+                  </div>
+                </div>
+
+                <div className="p-4">
+                  <p className="text-[11px] text-slate-500 leading-relaxed font-light line-clamp-2">
+                    {ind.desc}
+                  </p>
+                  <span className={`inline-block mt-3 text-[10px] font-extrabold uppercase tracking-wider ${
+                    isSelected ? "text-[#2564AF]" : "text-slate-400 group-hover:text-[#2564AF]"
+                  }`}>
+                    {isSelected ? "Hide details" : "See coding setup"}
+                  </span>
                 </div>
               </motion.button>
             );

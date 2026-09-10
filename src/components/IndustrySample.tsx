@@ -66,16 +66,16 @@ export default function IndustrySample({ kind }: { kind: SampleKind }) {
     // Pharma blister foil: small print plus the 2D code the rules ask for
     return (
       <div className="w-full h-full bg-slate-100 flex items-center justify-center p-4">
-        <div className="w-full max-w-[170px] bg-gradient-to-br from-slate-50 to-slate-200 border border-slate-300 rounded-md px-3 py-2.5 space-y-2">
-          <div className="grid grid-cols-5 gap-1">
-            {Array.from({ length: 10 }).map((_, i) => (
-              <span key={i} className="aspect-square rounded-full bg-slate-300/80 border border-slate-400/50" />
+        <div className="w-full max-w-[190px] bg-gradient-to-br from-slate-50 to-slate-200 border border-slate-300 rounded-md px-3 py-2.5 flex items-center gap-2.5">
+          <div className="grid grid-cols-4 gap-1 shrink-0">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <span key={i} className="w-3 h-3 rounded-full bg-slate-300/80 border border-slate-400/50" />
             ))}
           </div>
-          <div className="flex items-end justify-between gap-2 pt-1 border-t border-slate-300/70">
+          <div className="min-w-0">
             <Code className="text-[6.5px] text-slate-700" lines={["M.R.P. 250.00", "MFG 12/04/26", "EXP 11/04/28"]} />
-            <DataMatrix className="w-6 h-6 text-slate-800" />
           </div>
+          <DataMatrix className="w-7 h-7 text-slate-800" />
         </div>
       </div>
     );
