@@ -482,19 +482,6 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                 </div>
               </div>
 
-              {/* Special fluid recommendation block */}
-              <div className="bg-[#2564AF]/10 border border-[#2564AF]/30 p-5 rounded-2xl text-center backdrop-blur-sm">
-                <span className="text-xs text-sky-300 font-semibold leading-relaxed font-sans block">
-                  Need a customized ink chemistry formulation?
-                </span>
-                <button
-                  onClick={() => onNavigate("partners")}
-                  className="text-xs text-[#3b82f6] font-extrabold hover:underline inline-flex items-center gap-1.5 mt-2.5 cursor-pointer font-mono uppercase tracking-wider"
-                >
-                  Configure Custom Chemistries &raquo;
-                </button>
-              </div>
-
             </div>
           </div>
         </div>
