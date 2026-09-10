@@ -342,7 +342,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                 Jetronix Industrial Portfolio
               </span>
               <h3 className="text-3xl font-black text-[#122540] uppercase tracking-tight mt-2">
-                Our Core Coding Range
+                Our Products
               </h3>
               <p className="text-slate-500 text-xs md:text-sm font-medium max-w-2xl leading-relaxed">
                 Explore the complete Jetronix lineup of professional primary packaging printers, inkless laser engravers, and large-character carton coders.
