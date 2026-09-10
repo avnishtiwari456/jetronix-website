@@ -510,9 +510,9 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                 <Sparkles className="w-4 h-4 animate-pulse text-sky-400" /> INDO-GERMAN JOINT VENTURE ALLIANCE
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-black tracking-tight leading-none text-white">
-                Runicha Enterprises & <br />
+                Jetronix <br />
                 <span className="text-[#3b82f6] bg-clip-text text-transparent bg-gradient-to-r from-sky-400 to-blue-500">
-                  Best Code Technology India
+                  Technology India LLP
                 </span>
               </h2>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
