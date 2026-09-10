@@ -8,8 +8,9 @@ import {
   GlassWater, UtensilsCrossed, Dna, Cigarette, Factory, Sparkles, Printer, Cpu, RefreshCw,
   Settings, ChevronRight
 } from "lucide-react";
+import WhatsAppIcon from "./WhatsAppIcon";
 
-import { products as catalogue, categories as catalogueCategories } from "../data";
+import { products as catalogue, categories as catalogueCategories, companyPhone } from "../data";
 import { ProductCategory } from "../types";
 
 interface HeaderProps {
@@ -322,7 +323,7 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
                               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-sky-400" />
                             </span>
                             <span className="text-[8px] md:text-[9px] text-slate-300 font-medium font-sans uppercase tracking-wider">
-                              SLA Support Desk: <b className="text-white">+91 95222 99975</b>
+                              SLA Support Desk: <b className="text-white">+91 7726806099</b>
                             </span>
                           </div>
                           <button
@@ -437,7 +438,15 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
 
                 <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
                   <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">SLA Support Desk</div>
-                  <div className="text-xs font-bold text-[#12223c]">+91 95222 99975</div>
+                  <a
+                    href={`https://wa.me/91${companyPhone}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-xs font-bold text-[#12223c] hover:text-[#2564AF] inline-flex items-center gap-1.5 transition-colors"
+                  >
+                    <WhatsAppIcon className="w-3.5 h-3.5 text-emerald-600" />
+                    +91 7726806099
+                  </a>
                   <button 
                     onClick={() => handleNavClick("contact")}
                     className="w-full bg-[#2564AF] text-white py-3 rounded-xl font-bold uppercase text-xs tracking-wider transition-all text-center"
