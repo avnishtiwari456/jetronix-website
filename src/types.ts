@@ -34,7 +34,6 @@ export interface FirmDetails {
   name: string;
   address: string;
   contactPerson: string;
-  gstNo: string;
   phone: string;
   email: string;
   city: string;

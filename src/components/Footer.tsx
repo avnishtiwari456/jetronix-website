@@ -231,18 +231,13 @@ export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps)
 
         </div>
 
-        {/* BOTTOM SUB-FOOTER: Copyrights, GSTIN registries & Partnership acknowledgements */}
+        {/* BOTTOM SUB-FOOTER: Copyright and trademark notice */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-500 font-mono gap-4">
           <div className="space-y-1 text-center md:text-left">
             <span>&copy; {new Date().getFullYear()} JETRONIX TECHNOLOGY INDIA LLP. All rights reserved.</span>
             <p className="text-[9px] text-slate-600 font-light block leading-normal max-w-2xl">
               All industrial trademarks, hardware licenses, and registered brand names are properties of their respective owners.
             </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 items-center sm:items-end md:items-center text-[9px] sm:text-[10px]">
-            <span className="text-slate-600 bg-[#08101b] border border-slate-900 px-3 py-1.5 rounded-lg text-center">
-              GSTIN: 23ANKPC2385F1ZA (Indore Node) &bull; 08AXEPSS1147H1ZE (Jaipur Node)
-            </span>
           </div>
         </div>
 

@@ -222,7 +222,6 @@ export const jointVentures: FirmDetails[] = [
     name: "RUNICHA ENTERPRISES",
     address: "119, Jagdish Niwas Shubham place near sch. No.51, Indore, Madhya Pradesh - 452006",
     contactPerson: "Tarun Chouhan",
-    gstNo: "23ANKPC2385F1ZA",
     phone: "+91 95222 99975",
     email: "Tarun.chouhan@runichaenterprises.com",
     city: "Indore"
@@ -231,7 +230,6 @@ export const jointVentures: FirmDetails[] = [
     name: "BEST CODE TECHNOLOGY INDIA",
     address: "Plot No.111 Tirupati Vihar-A, Macheda, Jaipur, Rajasthan - 302013",
     contactPerson: "Akash Singh Rathore",
-    gstNo: "08AXEPSS1147H1ZE",
     phone: "+91 98281 06099",
     email: "sales.bestcode@gmail.com",
     city: "Jaipur"

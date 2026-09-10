@@ -519,24 +519,6 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                 Jetronix Technology India LLP supplies and supports industrial coding and marking across India, backed by 12+ years in the sector and more than 850 customers. CIJ, TIJ, TTO and laser systems, the spares and consumables that keep them running, and an experienced technical team behind all of it.
               </p>
 
-              {/* Service Commitments Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-4">
-                <div className="bg-slate-950/60 border border-slate-800/85 p-5 rounded-2xl hover:border-blue-500/30 transition-all duration-300">
-                  <Clock className="w-6 h-6 text-blue-400 mb-3" />
-                  <span className="font-extrabold text-xs block text-slate-100 uppercase tracking-wider font-mono">4-Hour On-Site SLA</span>
-                  <span className="text-[11px] text-slate-400 mt-1.5 block leading-relaxed font-light">Rapid field dispatch in MP & Rajasthan</span>
-                </div>
-                <div className="bg-slate-950/60 border border-slate-800/85 p-5 rounded-2xl hover:border-blue-500/30 transition-all duration-300">
-                  <RefreshCw className="w-6 h-6 text-sky-400 mb-3 animate-spin" style={{ animationDuration: "15s" }} />
-                  <span className="font-extrabold text-xs block text-slate-100 uppercase tracking-wider font-mono">100% Spares Ready</span>
-                  <span className="text-[11px] text-slate-400 mt-1.5 block leading-relaxed font-light">Nozzles, electronics, filters fully stocked</span>
-                </div>
-                <div className="bg-slate-950/60 border border-slate-800/85 p-5 rounded-2xl hover:border-blue-500/30 transition-all duration-300">
-                  <ShieldCheck className="w-6 h-6 text-indigo-400 mb-3" />
-                  <span className="font-extrabold text-xs block text-slate-100 uppercase tracking-wider font-mono">GST Input Claim</span>
-                  <span className="text-[11px] text-slate-400 mt-1.5 block leading-relaxed font-light">Full tax compliance under CGST/SGST/IGST</span>
-                </div>
-              </div>
             </div>
 
             {/* Right node statistics/visual cards */}
