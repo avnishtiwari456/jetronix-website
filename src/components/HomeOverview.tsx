@@ -77,8 +77,8 @@ const featuredProducts = [
     category: "Handheld Printer",
     type: "Portable MRP & Date Coder",
     desc: "Battery-powered handheld coding with a 25 mm print band. Codes stacked cartons and sacks wherever they are, with no conveyor required.",
-    image: "/products/handheld-front.jpg",
-    imageWebp: "/products/handheld-front.webp",
+    image: "/products/handheld-inuse.jpg",
+    imageWebp: "/products/handheld-inuse.webp",
     specs: {
       speed: "Rechargeable, all shift",
       resolution: "Up to 600 DPI",

@@ -44,8 +44,8 @@ const slideProductShots: {
   {
     productId: "jh250",
     category: "handheld",
-    image: "/products/handheld-side.jpg",
-    imageWebp: "/products/handheld-side.webp",
+    image: "/products/handheld-inuse.jpg",
+    imageWebp: "/products/handheld-inuse.webp",
     productName: "Jetronix JH250",
     productType: "Handheld Inkjet Printer"
   }

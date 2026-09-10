@@ -137,7 +137,7 @@ export const products: Product[] = [
 
   make("jh250", "Jetronix JH250", "handheld", "Handheld Inkjet Printer",
     "Portable coding with a 25 mm print height.",
-    "handheld-side", [
+    "handheld-inuse", [
     ["Print Height", "25.4 mm"],
     ["Print Resolution", "Up to 600 DPI"],
     ["Display", "Smart touch screen interface"],
