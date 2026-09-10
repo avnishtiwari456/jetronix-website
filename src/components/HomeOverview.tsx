@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import WhatsAppIcon from "./WhatsAppIcon";
+import IndustrySample from "./IndustrySample";
 import { categories } from "../data";
 import { 
   Award, ShieldCheck, Zap, ArrowRight, Building, Clock, 
@@ -137,6 +138,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
   const industries = [
     { 
       name: "Beverage", 
+      sample: "can" as const,
       icon: GlassWater,
       color: "from-sky-500/10 to-blue-500/5 text-sky-600 border-sky-100 hover:border-sky-300 hover:shadow-sky-500/10",
       activeBg: "bg-sky-50/70 border-sky-500 text-sky-700 shadow-sky-500/10",
@@ -147,6 +149,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
     },
     { 
       name: "Food", 
+      sample: "carton" as const,
       icon: UtensilsCrossed,
       color: "from-amber-500/10 to-orange-500/5 text-amber-600 border-amber-100 hover:border-amber-300 hover:shadow-amber-500/10",
       activeBg: "bg-amber-50/70 border-amber-500 text-amber-700 shadow-amber-500/10",
@@ -157,6 +160,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
     },
     { 
       name: "Life Sciences", 
+      sample: "blister" as const,
       icon: Dna,
       color: "from-emerald-500/10 to-teal-500/5 text-emerald-600 border-emerald-100 hover:border-emerald-300 hover:shadow-emerald-500/10",
       activeBg: "bg-emerald-50/70 border-emerald-500 text-emerald-700 shadow-emerald-500/10",
@@ -167,6 +171,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
     },
     { 
       name: "Tobacco", 
+      sample: "pack" as const,
       icon: Cigarette,
       color: "from-red-500/10 to-rose-500/5 text-rose-600 border-rose-100 hover:border-rose-300 hover:shadow-rose-500/10",
       activeBg: "bg-rose-50/70 border-rose-500 text-rose-700 shadow-rose-500/10",
@@ -177,6 +182,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
     },
     { 
       name: "Industrial", 
+      sample: "cable" as const,
       icon: Factory,
       color: "from-blue-600/10 to-indigo-600/5 text-blue-600 border-blue-100 hover:border-blue-300 hover:shadow-blue-500/10",
       activeBg: "bg-blue-50/70 border-blue-600 text-blue-700 shadow-blue-600/10",
@@ -187,6 +193,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
     },
     { 
       name: "Beauty & Grooming", 
+      sample: "tube" as const,
       icon: Scissors,
       color: "from-purple-500/10 to-violet-500/5 text-purple-600 border-purple-100 hover:border-purple-300 hover:shadow-purple-500/10",
       activeBg: "bg-purple-50/70 border-purple-500 text-purple-700 shadow-purple-500/10",
@@ -595,45 +602,45 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
           </p>
         </div>
 
-        {/* Premium Bento-Style Industry Selection Grid */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-6 max-w-6xl mx-auto">
+        {/* Industry tiles: what the printed code looks like on that packaging */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {industries.map((ind, idx) => {
             const IconComp = ind.icon;
             const isSelected = selectedIndustry === ind.name;
             return (
-              <motion.div 
-                key={idx} 
-                className="flex flex-col items-center group"
+              <motion.button
+                key={idx}
+                onClick={() => setSelectedIndustry(isSelected ? null : ind.name)}
                 whileHover={{ y: -3 }}
                 transition={{ duration: 0.2 }}
+                id={`industry-btn-${idx}`}
+                aria-pressed={isSelected}
+                className={`text-left bg-white rounded-3xl overflow-hidden border transition-all duration-300 cursor-pointer group ${
+                  isSelected
+                    ? "border-[#2564AF] ring-2 ring-[#2564AF]/20 shadow-xl shadow-slate-200"
+                    : "border-slate-200/80 shadow-md shadow-slate-100 hover:shadow-xl hover:border-blue-300"
+                }`}
               >
-                <button
-                  onClick={() => setSelectedIndustry(isSelected ? null : ind.name)}
-                  className={`w-24 h-24 sm:w-28 sm:h-28 rounded-3xl border flex items-center justify-center cursor-pointer transition-all duration-300 relative bg-gradient-to-br ${
-                    isSelected 
-                      ? ind.activeBg + " border-2 scale-105 shadow-xl shadow-slate-200" 
-                      : ind.color + " bg-white hover:scale-105 hover:shadow-xl shadow-md shadow-slate-100"
-                  }`}
-                  id={`industry-btn-${idx}`}
-                >
-                  {/* Orbit active outline */}
-                  <div className={`absolute inset-2 rounded-2xl border border-dashed transition-all opacity-40 ${
-                    isSelected ? "border-current animate-spin" : "border-slate-100 group-hover:border-current"
-                  }`} style={{ animationDuration: "35s" }} />
+                <div className="relative h-40 w-full overflow-hidden">
+                  <IndustrySample kind={ind.sample} />
+                  <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-black/75 to-transparent" />
+                  <div className="absolute bottom-3 left-4 flex items-center gap-2 text-white">
+                    <IconComp className="w-4 h-4" />
+                    <span className="font-black text-sm uppercase tracking-wide">{ind.name}</span>
+                  </div>
+                </div>
 
-                  {/* Clean lucide industrial icon */}
-                  <IconComp className="w-8 h-8 relative z-10 transition-transform group-hover:scale-110 duration-300" />
-                </button>
-                
-                <button
-                  onClick={() => setSelectedIndustry(isSelected ? null : ind.name)}
-                  className={`text-[10px] md:text-xs font-black mt-4 hover:text-[#2564AF] transition-colors text-center max-w-[130px] leading-snug uppercase tracking-widest ${
-                    isSelected ? "text-[#2564AF]" : "text-[#122540]"
-                  }`}
-                >
-                  {ind.name}
-                </button>
-              </motion.div>
+                <div className="p-4">
+                  <p className="text-[11px] text-slate-500 leading-relaxed font-light line-clamp-2">
+                    {ind.desc}
+                  </p>
+                  <span className={`inline-block mt-3 text-[10px] font-extrabold uppercase tracking-wider ${
+                    isSelected ? "text-[#2564AF]" : "text-slate-400 group-hover:text-[#2564AF]"
+                  }`}>
+                    {isSelected ? "Hide details" : "See coding setup"}
+                  </span>
+                </div>
+              </motion.button>
             );
           })}
         </div>
