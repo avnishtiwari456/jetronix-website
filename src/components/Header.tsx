@@ -134,11 +134,6 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
     { name: "CONSUMABLES", desc: "Certified high-contrast fast-dry inks", target: "partners", icon: RefreshCw, badge: "FLUIDS" },
   ];
 
-  const tools = [
-    { name: "ROI & GST Calculator", desc: "Analyze solvent savings", target: "calculator", icon: Calculator, badge: "ROI" },
-    { name: "AI Tech Advisor", desc: "Gemini-powered specifications", target: "advisor", icon: MessageSquare, badge: "AI CO-PILOT" },
-    { name: "Virtual Matchmaker Lab", desc: "Test inks on substrates", target: "lab", icon: ShieldCheck, badge: "LAB" },
-  ];
 
   return (
     <div className="w-full flex flex-col relative z-50 bg-white" id="global-header-wrapper">
@@ -358,53 +353,6 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
                 )}
               </button>
 
-              {/* Interactive Tools Dropdown */}
-              <div 
-                className="relative" 
-                onMouseEnter={() => setActiveDropdown("tools")}
-                onMouseLeave={() => setActiveDropdown(null)}
-              >
-                <button
-                  className={`flex items-center gap-1 px-4 py-2 text-[11px] md:text-xs font-bold uppercase tracking-widest transition-all duration-200 cursor-pointer rounded-xl ${
-                    ["calculator", "advisor"].includes(currentPage) || activeDropdown === "tools"
-                      ? "text-[#2564AF] bg-blue-50/50" 
-                      : "text-[#12223c] hover:text-[#2564AF] hover:bg-slate-50"
-                  }`}
-                >
-                  <span>B2B Tools</span>
-                  <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${activeDropdown === "tools" ? "rotate-180 text-[#2564AF]" : ""}`} />
-                </button>
-                
-                  {activeDropdown === "tools" && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: 12, scale: 0.98 }}
-                      animate={{ opacity: 1, y: 0, scale: 1 }}
-                      exit={{ opacity: 0, y: 8, scale: 0.98 }}
-                      transition={{ duration: 0.15, ease: "easeOut" }}
-                      className="absolute right-0 mt-2 w-[280px] bg-white border border-slate-200/60 rounded-xl shadow-[0_15px_40px_rgba(18,34,58,0.1)] p-3 z-50 flex flex-col gap-1"
-                    >
-                      {tools.map((t, idx) => {
-                        const Icon = t.icon;
-                        return (
-                          <div
-                            key={idx}
-                            onClick={() => handleNavClick(t.target)}
-                            className="flex items-center gap-2.5 p-2.5 hover:bg-slate-50 rounded-lg cursor-pointer transition-colors group"
-                          >
-                            <div className="p-1.5 bg-blue-50 text-[#2564AF] rounded-md group-hover:bg-[#2564AF] group-hover:text-white transition-colors">
-                              <Icon className="w-3.5 h-3.5" />
-                            </div>
-                            <div className="flex-1 min-w-0">
-                              <div className="text-[10px] font-bold text-[#12223c] group-hover:text-[#2564AF] transition-colors">{t.name}</div>
-                              <p className="text-[9px] text-slate-400 font-light truncate">{t.desc}</p>
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </motion.div>
-                  )}
-              </div>
-
               {/* Contact Us */}
               <button
                 onClick={() => handleNavClick("contact")}
@@ -480,19 +428,13 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
                   <button onClick={() => handleNavClick("lab")} className="text-left font-bold text-xs uppercase tracking-wider py-2 border-b border-slate-50 text-[#12223c]">
                     Samples
                   </button>
-                  <button onClick={() => handleNavClick("calculator")} className="text-left font-bold text-xs uppercase tracking-wider py-2 border-b border-slate-50 text-[#12223c]">
-                    ROI Calculator
-                  </button>
-                  <button onClick={() => handleNavClick("advisor")} className="text-left font-bold text-xs uppercase tracking-wider py-2 border-b border-slate-50 text-[#12223c]">
-                    AI Tech Advisor
-                  </button>
                   <button onClick={() => handleNavClick("contact")} className="text-left font-bold text-xs uppercase tracking-wider py-2 text-[#12223c]">
                     Contact Us
                   </button>
                 </div>
 
                 <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
-                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">B2B SLA Support Desk</div>
+                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">SLA Support Desk</div>
                   <div className="text-xs font-bold text-[#12223c]">+91 95222 99975</div>
                   <button 
                     onClick={() => handleNavClick("contact")}

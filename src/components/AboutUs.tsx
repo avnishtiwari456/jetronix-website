@@ -14,7 +14,7 @@ const credentials = [
   { icon: Award, value: "12+", label: "Years of industry experience" },
   { icon: Users, value: "850+", label: "Customers across India" },
   { icon: Layers, value: "4", label: "Printing technologies supplied" },
-  { icon: Wrench, value: "2", label: "Regional service hubs" },
+  { icon: Wrench, value: "8", label: "Regional service hubs" },
 ];
 
 const capabilities = [

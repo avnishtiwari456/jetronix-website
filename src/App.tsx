@@ -5,11 +5,8 @@ import Hero from "./components/Hero";
 import HomeOverview from "./components/HomeOverview";
 import ProductSection from "./components/ProductSection";
 import ProductDetail from "./components/ProductDetail";
-import TcoCalculator from "./components/TcoCalculator";
 import SampleGenerator from "./components/SampleGenerator";
-import Matchmaker from "./components/Matchmaker";
 import JointVenture from "./components/JointVenture";
-import AiAdvisor from "./components/AiAdvisor";
 import AboutUs from "./components/AboutUs";
 import ContactUs from "./components/ContactUs";
 import Footer from "./components/Footer";
@@ -39,7 +36,7 @@ export default function App() {
     const handleHashChange = () => {
       const raw = window.location.hash.replace("#", "");
       const [pageId, segment = ""] = raw.split("/");
-      const validPages = ["home", "about", "products", "calculator", "lab", "advisor", "partners", "contact"];
+      const validPages = ["home", "about", "products", "lab", "partners", "contact"];
 
       setCurrentPage(validPages.includes(pageId) ? pageId : "home");
       setRouteSegment(segment);
@@ -109,7 +106,7 @@ export default function App() {
                 onNavigate={handleNavigate}
                 onNavigateToProduct={handleNavigateToProduct}
                 onExploreProducts={() => handleNavigate("products")}
-                onOpenCalculator={() => handleNavigate("calculator")}
+                onOpenCalculator={() => handleNavigate("products")}
               />
             </motion.div>
           )}
@@ -141,18 +138,6 @@ export default function App() {
             );
           })()}
 
-          {currentPage === "calculator" && (
-            <motion.div
-              key="calculator-page"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.35 }}
-            >
-              <TcoCalculator />
-            </motion.div>
-          )}
-
           {currentPage === "lab" && (
             <motion.div
               key="lab-page"
@@ -163,19 +148,6 @@ export default function App() {
               className="space-y-6"
             >
               <SampleGenerator onRequestPhysicalSample={handleRequestPhysicalSample} />
-              <Matchmaker />
-            </motion.div>
-          )}
-
-          {currentPage === "advisor" && (
-            <motion.div
-              key="advisor-page"
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -15 }}
-              transition={{ duration: 0.35 }}
-            >
-              <AiAdvisor />
             </motion.div>
           )}
 

@@ -686,7 +686,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                         onClick={() => onNavigate("lab")}
                         className="w-full bg-[#2564AF] hover:bg-blue-600 text-white text-xs font-black py-3 rounded-xl text-center mt-2 uppercase tracking-widest cursor-pointer shadow-md shadow-blue-500/10 transition-all"
                       >
-                        Launch Matching Lab
+                        View Print Samples
                       </button>
                     </div>
 
@@ -828,7 +828,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                 </div>
 
                 <div className="space-y-1 bg-slate-950/40 border border-slate-800/80 p-4 rounded-2xl">
-                  <span className="text-2xl sm:text-3xl font-black text-sky-400 font-mono block">2</span>
+                  <span className="text-2xl sm:text-3xl font-black text-sky-400 font-mono block">8</span>
                   <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Regional Service Hubs</span>
                 </div>
               </div>
@@ -851,12 +851,6 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
             </div>
 
             <div className="mt-6 border-t border-blue-950 pt-4 relative z-10 flex flex-col sm:flex-row gap-3">
-              <button
-                onClick={() => onNavigate("calculator")}
-                className="flex-1 bg-[#2564AF] hover:bg-blue-600 text-white font-black text-xs uppercase py-3 rounded-xl tracking-widest text-center transition-all cursor-pointer shadow-md"
-              >
-                Cost Calculator
-              </button>
               <button
                 onClick={() => onNavigate("lab")}
                 className="flex-1 bg-slate-950 hover:bg-slate-800 border border-slate-800 text-slate-300 font-semibold text-xs uppercase py-3 rounded-xl text-center transition-all cursor-pointer"
