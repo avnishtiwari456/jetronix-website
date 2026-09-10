@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "./Logo";
 import { 
-  ShieldCheck, Award, Phone, Mail, MapPin, CheckCircle2, 
+  CheckCircle2, 
   ChevronRight, Facebook, Twitter, Linkedin, Instagram, Youtube, Globe
 } from "lucide-react";
 
@@ -65,19 +65,10 @@ export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps)
               </div>
             </div>
 
-            {/* Quality Badges */}
-            <div className="flex flex-wrap gap-2 text-[9px] font-mono font-bold pt-1">
-              <span className="flex items-center gap-1.5 bg-[#08101b] border border-slate-800 px-2.5 py-1.5 rounded-lg text-slate-400">
-                <ShieldCheck className="w-3.5 h-3.5 text-[#2564AF]" /> ISO 9001:2015 CERTIFIED
-              </span>
-              <span className="flex items-center gap-1.5 bg-[#08101b] border border-slate-800 px-2.5 py-1.5 rounded-lg text-slate-400">
-                <Award className="w-3.5 h-3.5 text-amber-500" /> CE COMPLIANT CHASSIS
-              </span>
-            </div>
           </div>
 
           {/* Column 2: Industrial Systems (col-span-3) */}
-          <div className="lg:col-span-3 space-y-4">
+          <div className="lg:col-span-4 space-y-4">
             <h4 className="font-sans font-black text-xs text-white uppercase tracking-widest font-mono border-b border-slate-900 pb-2.5">
               Industrial Products
             </h4>
@@ -96,71 +87,9 @@ export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps)
             </ul>
           </div>
 
-          {/* Column 3: Interactive Portals (col-span-3) */}
-          <div className="lg:col-span-3 space-y-4">
-            <h4 className="font-sans font-black text-xs text-white uppercase tracking-widest font-mono border-b border-slate-900 pb-2.5">
-              Interactive Tools
-            </h4>
-            <ul className="space-y-3 text-xs font-medium">
-              <li>
-                <button 
-                  onClick={() => onNavigate("calculator")} 
-                  className="text-slate-400 hover:text-white transition-all text-left flex items-center gap-1.5 group cursor-pointer"
-                >
-                  <ChevronRight className="w-3.5 h-3.5 text-[#2564AF] group-hover:translate-x-0.5 transition-transform" />
-                  <span>ROI & Solvent Savings Estimator</span>
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => onNavigate("lab")} 
-                  className="text-slate-400 hover:text-white transition-all text-left flex items-center gap-1.5 group cursor-pointer"
-                >
-                  <ChevronRight className="w-3.5 h-3.5 text-[#2564AF] group-hover:translate-x-0.5 transition-transform" />
-                  <span>Substrate Virtual Print Lab</span>
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => onNavigate("advisor")} 
-                  className="text-slate-400 hover:text-white transition-all text-left flex items-center gap-1.5 group cursor-pointer"
-                >
-                  <ChevronRight className="w-3.5 h-3.5 text-[#2564AF] group-hover:translate-x-0.5 transition-transform" />
-                  <span>AI B2B Technical Advisor</span>
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => onNavigate("partners")} 
-                  className="text-slate-400 hover:text-white transition-all text-left flex items-center gap-1.5 group cursor-pointer"
-                >
-                  <ChevronRight className="w-3.5 h-3.5 text-[#2564AF] group-hover:translate-x-0.5 transition-transform" />
-                  <span>B2B Partners Portal & SLAs</span>
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => onNavigate("home")} 
-                  className="text-slate-400 hover:text-white transition-all text-left flex items-center gap-1.5 group cursor-pointer"
-                >
-                  <ChevronRight className="w-3.5 h-3.5 text-[#2564AF] group-hover:translate-x-0.5 transition-transform" />
-                  <span>Quality &amp; Compliance</span>
-                </button>
-              </li>
-              <li>
-                <button 
-                  onClick={() => onNavigate("contact")} 
-                  className="text-emerald-400 hover:text-white font-extrabold transition-all text-left flex items-center gap-1.5 group cursor-pointer"
-                >
-                  <ChevronRight className="w-3.5 h-3.5 text-emerald-400 group-hover:translate-x-0.5 transition-transform" />
-                  <span>Contact Us (Indore & Jaipur Nodes)</span>
-                </button>
-              </li>
-            </ul>
-          </div>
 
           {/* Column 4: Quality & Quick Actions (col-span-2) */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-4 space-y-4">
             <h4 className="font-sans font-black text-xs text-white uppercase tracking-widest font-mono border-b border-slate-900 pb-2.5">
               Standards
             </h4>
@@ -184,62 +113,7 @@ export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps)
 
         </div>
 
-        {/* MID FOOTER: Support Hub Contact Details (city hubs) */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 py-10 border-b border-slate-900">
-          
-          {/* Card 1: Indore Node */}
-          <div className="bg-[#091220]/40 p-5 rounded-2xl border border-slate-900 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:border-slate-800 hover:shadow-lg transition-all group">
-            <div className="space-y-1.5">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#2564AF]" />
-                <span className="font-extrabold text-slate-200 text-xs tracking-wide uppercase">Indore — Central Node Hub</span>
-              </div>
-              <span className="text-[10px] text-slate-400 block leading-relaxed font-sans font-light flex items-start gap-1">
-                <MapPin className="w-3.5 h-3.5 text-slate-500 shrink-0 mt-0.5" />
-                <span>Jagdish Niwas Shubham Place, Scheme No 54, Indore, Madhya Pradesh - 452010</span>
-              </span>
-            </div>
-            <a 
-              href="tel:+919522299975" 
-              className="bg-[#050b14] border border-slate-800 hover:border-[#2564AF] hover:bg-[#2564AF] text-slate-300 hover:text-white px-4 py-2.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1.5 shrink-0 hover:shadow-md"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#2564AF] group-hover:text-white" /> 
-              <span>+91 95222 99975</span>
-            </a>
-          </div>
 
-          {/* Card 2: Jaipur Node */}
-          <div className="bg-[#091220]/40 p-5 rounded-2xl border border-slate-900 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 hover:border-slate-800 hover:shadow-lg transition-all group">
-            <div className="space-y-1.5">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#2564AF]" />
-                <span className="font-extrabold text-slate-200 text-xs tracking-wide uppercase">Jaipur — North Node Hub</span>
-              </div>
-              <span className="text-[10px] text-slate-400 block leading-relaxed font-sans font-light flex items-start gap-1">
-                <MapPin className="w-3.5 h-3.5 text-slate-500 shrink-0 mt-0.5" />
-                <span>Tirupati Vihar-A, Macheda, Jaipur, Rajasthan - 302013</span>
-              </span>
-            </div>
-            <a 
-              href="tel:+919828106099" 
-              className="bg-[#050b14] border border-slate-800 hover:border-[#2564AF] hover:bg-[#2564AF] text-slate-300 hover:text-white px-4 py-2.5 rounded-xl text-xs font-mono font-bold transition-all flex items-center gap-1.5 shrink-0 hover:shadow-md"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#2564AF] group-hover:text-white" /> 
-              <span>+91 98281 06099</span>
-            </a>
-          </div>
-
-        </div>
-
-        {/* BOTTOM SUB-FOOTER: Copyright and trademark notice */}
-        <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-500 font-mono gap-4">
-          <div className="space-y-1 text-center md:text-left">
-            <span>&copy; {new Date().getFullYear()} JETRONIX TECHNOLOGY INDIA LLP. All rights reserved.</span>
-            <p className="text-[9px] text-slate-600 font-light block leading-normal max-w-2xl">
-              All industrial trademarks, hardware licenses, and registered brand names are properties of their respective owners.
-            </p>
-          </div>
-        </div>
 
       </div>
     </footer>
