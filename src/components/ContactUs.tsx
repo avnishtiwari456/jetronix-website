@@ -84,19 +84,19 @@ export default function ContactUs() {
     <div className="min-h-screen bg-[#f8fafc] text-slate-900 pb-20" id="contact-us-page">
       
       {/* Banner Header Section */}
-      <div className="relative bg-gradient-to-br from-[#0c1a30] via-[#122540] to-[#1c3960] text-white py-16 px-4 overflow-hidden border-b border-blue-950">
+      <div className="relative bg-gradient-to-br from-[#2764B0] via-[#2764B0] to-[#3D82D6] text-white py-16 px-4 overflow-hidden border-b border-white/20">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:32px_32px] opacity-35" />
         <div className="absolute -bottom-12 right-12 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -top-12 left-12 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-5xl mx-auto text-center relative z-10 space-y-3.5">
-          <span className="inline-flex items-center gap-2 bg-[#2564AF]/20 border border-[#2564AF]/40 text-sky-300 px-4 py-1.5 rounded-full text-[10px] font-sans font-bold uppercase tracking-widest">
+          <span className="inline-flex items-center gap-2 bg-white/15 border border-white/30 text-white px-4 py-1.5 rounded-full text-[10px] font-sans font-bold uppercase tracking-widest">
             Jetronix Technology India LLP
           </span>
           <h1 className="text-3xl md:text-5xl font-sans font-black tracking-tight leading-none text-white">
             Contact Us
           </h1>
-          <p className="text-xs md:text-sm text-slate-300 max-w-xl mx-auto font-light leading-relaxed">
+          <p className="text-xs md:text-sm text-white/90 max-w-xl mx-auto font-light leading-relaxed">
             Reach out to our dedicated support teams. Feel free to submit the contact form below or call/WhatsApp our official regional offices directly.
           </p>
         </div>
@@ -249,7 +249,7 @@ export default function ContactUs() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full bg-[#2564AF] hover:bg-[#122540] disabled:bg-slate-400 disabled:cursor-not-allowed text-white font-black text-xs tracking-widest uppercase py-4 rounded-xl shadow-md transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
+                    className="w-full bg-[#2564AF] hover:bg-[#2764B0] disabled:bg-slate-400 disabled:cursor-not-allowed text-white font-black text-xs tracking-widest uppercase py-4 rounded-xl shadow-md transition-all duration-300 flex items-center justify-center gap-2 cursor-pointer"
                   >
                     {isSubmitting ? (
                       <>
@@ -301,7 +301,7 @@ export default function ContactUs() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-1">
                   <a 
                     href={`tel:${node.phone.replace(/[^0-9+]/g, "")}`}
-                    className="flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-[#122540] hover:bg-slate-800 text-white font-mono text-[11px] font-bold transition-all shadow-sm cursor-pointer"
+                    className="flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-[#2764B0] hover:bg-slate-800 text-white font-mono text-[11px] font-bold transition-all shadow-sm cursor-pointer"
                   >
                     <Phone className="w-3.5 h-3.5 text-sky-400" />
                     <span>{node.phone}</span>
@@ -319,7 +319,7 @@ export default function ContactUs() {
             ))}
 
             {/* Primary contact line */}
-            <div className="bg-[#122540] rounded-3xl p-5 text-white shadow-lg shadow-slate-200/60 space-y-3">
+            <div className="bg-[#2764B0] rounded-3xl p-5 text-white shadow-lg shadow-slate-200/60 space-y-3">
               <div className="flex items-center gap-2">
                 <span className="p-1 bg-white/10 text-sky-400 rounded-lg shrink-0">
                   <Phone className="w-4 h-4" />

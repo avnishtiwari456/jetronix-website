@@ -104,8 +104,6 @@ export default function App() {
             >
               <Hero 
                 onNavigateToProduct={handleNavigateToProduct}
-                onExploreProducts={() => handleNavigate("products")}
-                onOpenCalculator={() => handleNavigate("calculator")}
               />
               <HomeOverview 
                 onNavigate={handleNavigate}

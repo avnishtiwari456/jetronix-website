@@ -495,7 +495,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
 
       {/* SECTION 2: Joint Venture Overview (Partners) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12" id="jv-overview">
-        <div className="bg-gradient-to-br from-[#122540] to-slate-900 rounded-3xl p-8 sm:p-14 text-white relative overflow-hidden shadow-2xl border border-blue-900/30">
+        <div className="bg-gradient-to-br from-[#2764B0] to-[#1B4F8F] rounded-3xl p-8 sm:p-14 text-white relative overflow-hidden shadow-2xl border border-blue-900/30">
           
           {/* Cyber accents & layout grids */}
           <div className="absolute inset-0 tech-grid opacity-10 pointer-events-none" />
@@ -615,7 +615,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                   onClick={() => setSelectedTech(isSelected ? null : tech.name)}
                   className={`w-24 h-24 sm:w-28 sm:h-28 rounded-full border flex items-center justify-center cursor-pointer transition-all duration-300 relative ${
                     isSelected 
-                      ? "bg-[#122540] border-[#2564AF] shadow-2xl shadow-blue-900/30 ring-4 ring-[#2564AF]/20" 
+                      ? "bg-[#2764B0] border-[#2564AF] shadow-2xl shadow-blue-900/30 ring-4 ring-[#2564AF]/20" 
                       : "bg-white border-slate-200/80 hover:border-[#2564AF] hover:shadow-xl shadow-md shadow-slate-100"
                   }`}
                   id={`tech-btn-${idx}`}
@@ -750,7 +750,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                   {isActive && (
                     <motion.div
                       layoutId="activeBlogPill"
-                      className="absolute inset-0 bg-[#122540] rounded-xl -z-10 shadow-md shadow-slate-900/10"
+                      className="absolute inset-0 bg-[#2764B0] rounded-xl -z-10 shadow-md shadow-slate-900/10"
                       transition={{ type: "spring", stiffness: 380, damping: 32 }}
                     />
                   )}
@@ -885,7 +885,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 10 }}
               transition={{ duration: 0.3 }}
-              className="mt-14 bg-gradient-to-br from-[#122540] to-slate-900 border border-blue-900/30 rounded-3xl p-6 sm:p-10 text-white relative overflow-hidden shadow-2xl"
+              className="mt-14 bg-gradient-to-br from-[#2764B0] to-[#1B4F8F] border border-blue-900/30 rounded-3xl p-6 sm:p-10 text-white relative overflow-hidden shadow-2xl"
               id="industry-report-panel"
             >
               <div className="absolute inset-0 tech-grid opacity-5 pointer-events-none" />
@@ -1032,14 +1032,14 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
 
             <button
               onClick={() => setIsCorporateReadMore(!isCorporateReadMore)}
-              className="bg-white border-2 border-[#122540] text-[#122540] hover:bg-[#122540] hover:text-white px-8 py-3 rounded-xl font-black text-[10px] uppercase mt-8 transition-all tracking-widest cursor-pointer hover:shadow-lg hover:shadow-slate-200 self-start"
+              className="bg-white border-2 border-[#122540] text-[#122540] hover:bg-[#2764B0] hover:text-white px-8 py-3 rounded-xl font-black text-[10px] uppercase mt-8 transition-all tracking-widest cursor-pointer hover:shadow-lg hover:shadow-slate-200 self-start"
             >
               {isCorporateReadMore ? "Read Less" : "Read More"}
             </button>
           </div>
 
           {/* Right panel: Live Technical Metrics Blueprint card (extremely unique layout) */}
-          <div className="lg:col-span-5 bg-gradient-to-br from-[#122540] to-slate-900 text-white rounded-3xl p-6 sm:p-8 relative overflow-hidden shadow-xl border border-blue-900/40 flex flex-col justify-between">
+          <div className="lg:col-span-5 bg-gradient-to-br from-[#2764B0] to-[#1B4F8F] text-white rounded-3xl p-6 sm:p-8 relative overflow-hidden shadow-xl border border-blue-900/40 flex flex-col justify-between">
             {/* Tech grid backgrounds */}
             <div className="absolute inset-0 tech-grid opacity-10 pointer-events-none" />
             <div className="absolute -bottom-24 -right-24 w-60 h-60 bg-[#2564AF]/20 rounded-full blur-3xl pointer-events-none" />
@@ -1112,7 +1112,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
 
       {/* SECTION 7: Get In Touch (Asymmetric Quick Hotline & Callback Dashboard) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4" id="get-in-touch-section">
-        <div className="bg-gradient-to-br from-slate-950 via-[#122540] to-slate-950 text-white rounded-3xl p-6 sm:p-12 relative overflow-hidden shadow-2xl border border-blue-900/30">
+        <div className="bg-gradient-to-br from-[#1B4F8F] via-[#2764B0] to-[#1B4F8F] text-white rounded-3xl p-6 sm:p-12 relative overflow-hidden shadow-2xl border border-blue-900/30">
           
           <div className="absolute inset-0 tech-grid opacity-10 pointer-events-none" />
           <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-[#2564AF]/10 rounded-full blur-3xl pointer-events-none" />
@@ -1157,7 +1157,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                 <div className="flex flex-wrap gap-2">
                   <a 
                     href="tel:+919522299975"
-                    className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-[#122540] hover:bg-slate-800 text-white font-mono text-[10px] font-bold transition-all shadow-sm border border-blue-900/30 cursor-pointer"
+                    className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-[#2764B0] hover:bg-slate-800 text-white font-mono text-[10px] font-bold transition-all shadow-sm border border-blue-900/30 cursor-pointer"
                   >
                     <span>📞 +91 95222 99975</span>
                   </a>
@@ -1179,7 +1179,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                 <div className="flex flex-wrap gap-2">
                   <a 
                     href="tel:+919828106099"
-                    className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-[#122540] hover:bg-slate-800 text-white font-mono text-[10px] font-bold transition-all shadow-sm border border-blue-900/30 cursor-pointer"
+                    className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-[#2764B0] hover:bg-slate-800 text-white font-mono text-[10px] font-bold transition-all shadow-sm border border-blue-900/30 cursor-pointer"
                   >
                     <span>📞 +91 98281 06099</span>
                   </a>

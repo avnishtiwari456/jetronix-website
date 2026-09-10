@@ -1,13 +1,11 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import {
-  ChevronLeft, ChevronRight, Sparkles, Check, Zap
+  ChevronLeft, ChevronRight, Sparkles, Check
 } from "lucide-react";
 
 interface HeroProps {
   onNavigateToProduct: (productId?: string, category?: string) => void;
-  onExploreProducts: () => void;
-  onOpenCalculator: () => void;
 }
 
 const slideBackgrounds = [
@@ -92,7 +90,7 @@ const slideTitles = [
   }
 ];
 
-export default function Hero({ onExploreProducts, onOpenCalculator, onNavigateToProduct }: HeroProps) {
+export default function Hero({ onNavigateToProduct }: HeroProps) {
   const [activeSlide, setActiveSlide] = useState<number>(0);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
 
@@ -176,16 +174,6 @@ export default function Hero({ onExploreProducts, onOpenCalculator, onNavigateTo
           {/* Left Column: Title, Subtitle, Description, Checklist & Action Buttons */}
           <div className="lg:col-span-7 space-y-5 text-left flex flex-col justify-center">
             
-            {/* Top Category Badge & Counter */}
-            <div className="flex items-center gap-2">
-              <span className="text-[10px] font-mono font-extrabold uppercase tracking-widest px-3.5 py-1 rounded-full inline-flex items-center gap-2 bg-blue-950/80 border border-blue-500/40 text-sky-400 shadow-md backdrop-blur-md">
-                <span className="w-2 h-2 rounded-full bg-sky-400 animate-pulse" />
-                <span>{currentSlideInfo.badge}</span>
-                <span className="text-white/40">|</span>
-                <span>{currentSlideInfo.category}</span>
-              </span>
-            </div>
-
             {/* Dynamic Title and Description */}
             <div className="space-y-3">
                 <motion.div
@@ -201,12 +189,12 @@ export default function Hero({ onExploreProducts, onOpenCalculator, onNavigateTo
                   </h1>
                   
                   {/* Subtitle */}
-                  <h3 className="text-xs sm:text-sm md:text-base font-extrabold text-sky-400 tracking-wide font-sans mt-2.5 drop-shadow">
+                  <h3 className="text-xs sm:text-sm md:text-base font-extrabold text-white tracking-wide font-sans mt-2.5 drop-shadow">
                     {currentSlideInfo.subtitle}
                   </h3>
                   
                   {/* Description */}
-                  <p className="text-slate-200 text-xs sm:text-sm leading-relaxed font-sans font-normal mt-3 max-w-xl drop-shadow-sm">
+                  <p className="text-white text-xs sm:text-sm leading-relaxed font-sans font-normal mt-3 max-w-xl drop-shadow-sm">
                     {currentSlideInfo.desc}
                   </p>
                 </motion.div>
@@ -214,37 +202,18 @@ export default function Hero({ onExploreProducts, onOpenCalculator, onNavigateTo
 
             {/* Feature Spec Highlights */}
             <div className="py-2.5 border-y border-white/10 grid grid-cols-1 sm:grid-cols-2 gap-2.5 max-w-xl text-left">
-              <div className="flex items-center gap-2 text-xs text-slate-100 font-medium">
+              <div className="flex items-center gap-2 text-xs text-white font-medium">
                 <span className="w-4 h-4 rounded-full bg-blue-600/30 border border-blue-400/50 flex items-center justify-center shrink-0">
-                  <Check className="w-2.5 h-2.5 text-sky-300" />
+                  <Check className="w-2.5 h-2.5 text-white" />
                 </span>
                 <span>{currentSlideInfo.spec1}</span>
               </div>
-              <div className="flex items-center gap-2 text-xs text-slate-100 font-medium">
+              <div className="flex items-center gap-2 text-xs text-white font-medium">
                 <span className="w-4 h-4 rounded-full bg-blue-600/30 border border-blue-400/50 flex items-center justify-center shrink-0">
-                  <Check className="w-2.5 h-2.5 text-sky-300" />
+                  <Check className="w-2.5 h-2.5 text-white" />
                 </span>
                 <span>{currentSlideInfo.spec2}</span>
               </div>
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
-              <button
-                onClick={onExploreProducts}
-                className="inline-flex items-center justify-center gap-2 bg-[#2564AF] hover:bg-blue-600 text-white font-black px-7 py-3 rounded-xl shadow-xl transition-all duration-200 cursor-pointer text-xs uppercase tracking-wider border border-blue-400/30 hover:shadow-blue-500/25 active:scale-98"
-              >
-                <span>Explore All Products</span>
-                <ChevronRight className="w-4 h-4" />
-              </button>
-              
-              <button
-                onClick={onOpenCalculator}
-                className="inline-flex items-center justify-center gap-2 bg-slate-900/80 hover:bg-slate-900 border border-white/20 hover:border-white/40 text-white font-bold px-6 py-3 rounded-xl transition-all duration-200 cursor-pointer text-xs uppercase tracking-wider backdrop-blur-md active:scale-98"
-              >
-                <Zap className="w-3.5 h-3.5 text-amber-400" />
-                <span>Calculate B2B ROI</span>
-              </button>
             </div>
 
           </div>
@@ -290,9 +259,6 @@ export default function Hero({ onExploreProducts, onOpenCalculator, onNavigateTo
               {/* Keeps the caption readable over both the white-out shots and the in-plant one */}
               <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-950/95 via-slate-950/70 to-transparent pointer-events-none" />
 
-              <div className="absolute top-4 right-4 bg-blue-600/90 border border-blue-400/60 text-white font-mono text-[8px] font-bold px-2 py-1 rounded-md uppercase tracking-wider shadow-lg">
-                {currentSlideInfo.badge}
-              </div>
 
               <div className="absolute inset-x-0 bottom-0 p-4 text-left">
                 <span className="text-sky-400 font-mono text-[9px] font-bold uppercase tracking-widest block">

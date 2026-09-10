@@ -44,19 +44,19 @@ export default function AboutUs({ onNavigate }: AboutUsProps) {
     <div className="min-h-screen bg-[#f8fafc] text-slate-900 pb-20" id="about-us-page">
 
       {/* Banner Header Section */}
-      <div className="relative bg-gradient-to-br from-[#0c1a30] via-[#122540] to-[#1c3960] text-white py-16 px-4 overflow-hidden border-b border-blue-950">
+      <div className="relative bg-gradient-to-br from-[#2764B0] via-[#2764B0] to-[#3D82D6] text-white py-16 px-4 overflow-hidden border-b border-white/20">
         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0a_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0a_1px,transparent_1px)] bg-[size:32px_32px] opacity-35" />
         <div className="absolute -bottom-12 right-12 w-80 h-80 bg-blue-500/15 rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -top-12 left-12 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
         <div className="max-w-5xl mx-auto text-center relative z-10 space-y-3.5">
-          <span className="inline-flex items-center gap-2 bg-[#2564AF]/20 border border-[#2564AF]/40 text-sky-300 px-4 py-1.5 rounded-full text-[10px] font-sans font-bold uppercase tracking-widest">
+          <span className="inline-flex items-center gap-2 bg-white/15 border border-white/30 text-white px-4 py-1.5 rounded-full text-[10px] font-sans font-bold uppercase tracking-widest">
             Jetronix Technology India LLP
           </span>
           <h1 className="text-3xl md:text-5xl font-sans font-black tracking-tight leading-none text-white">
             About Us
           </h1>
-          <p className="text-xs md:text-sm text-slate-300 max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-xs md:text-sm text-white/90 max-w-2xl mx-auto font-light leading-relaxed">
             Your Trusted Partner in Industrial Coding &amp; Marking Solutions.
           </p>
         </div>
@@ -150,7 +150,7 @@ export default function AboutUs({ onNavigate }: AboutUsProps) {
               </div>
             ))}
 
-            <div className="bg-gradient-to-br from-[#122540] to-slate-900 rounded-2xl p-6 text-white border border-blue-900/30 shadow-xl">
+            <div className="bg-gradient-to-br from-[#2764B0] to-[#1B4F8F] rounded-2xl p-6 text-white border border-blue-900/30 shadow-xl">
               <div className="flex items-center gap-2 mb-3.5">
                 <ShieldCheck className="w-5 h-5 text-sky-400" />
                 <h3 className="text-sm font-black uppercase tracking-wide">Our Commitment</h3>

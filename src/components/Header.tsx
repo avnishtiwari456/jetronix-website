@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import Logo from "./Logo";
 import { 
-  Menu, X, Phone, Layers, Calculator, ShieldCheck, MessageSquare, 
+  Menu, X, Layers, Calculator, ShieldCheck, MessageSquare, 
   Briefcase, Compass, Clock, MapPin, Activity, HelpCircle, FileText,
   ChevronDown, Check, Sliders, Play, Award, Zap,
   GlassWater, UtensilsCrossed, Dna, Cigarette, Factory, Sparkles, Printer, Cpu, RefreshCw,
   Settings, ChevronRight
 } from "lucide-react";
 
-import { products as catalogue, categories as catalogueCategories, jointVentures } from "../data";
+import { products as catalogue, categories as catalogueCategories } from "../data";
 import { ProductCategory } from "../types";
 
 interface HeaderProps {
@@ -86,21 +86,8 @@ const getCategoryIcon = (iconName: string) => {
 export default function Header({ currentPage, onNavigate, onNavigateToProduct, activeQuoteRef }: HeaderProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const [tickerIndex, setTickerIndex] = useState(0);
   const [hoveredCategory, setHoveredCategory] = useState<string>(productCategories[0].id);
 
-  const tickerMessages = [
-    "Authorized Distributor of Jetronix & BestCode Systems",
-    "Indo-German Joint Venture Logistics & Spare Support Node",
-    "SLA Active: 2-Hour इंदौर (Indore) | 4-Hour जयपुर (Jaipur)"
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setTickerIndex((prev) => (prev + 1) % tickerMessages.length);
-    }, 5000);
-    return () => clearInterval(interval);
-  }, []);
 
   // Jump to the catalogue with a specific product (or category) already selected.
   const handleProductNavClick = (productId?: string, category?: string) => {
@@ -156,62 +143,6 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
   return (
     <div className="w-full flex flex-col relative z-50 bg-white" id="global-header-wrapper">
       
-      {/* 1. Slim Top Bar (Micro-Header) for Distributor Authority & SLA Status */}
-      <div className="w-full bg-[#12223c] text-white py-1.5 text-[10px] md:text-xs font-sans tracking-wider font-medium border-b border-blue-950/30">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col xl:flex-row items-center justify-between gap-2 h-auto xl:h-9">
-          
-          {/* Active Live Ticker */}
-          <div className="flex items-center gap-2 overflow-hidden flex-1 min-w-0">
-            <span className="flex h-2 w-2 relative shrink-0">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-400" />
-            </span>
-            
-            <div className="hidden sm:flex items-center gap-1.5 bg-blue-950/50 text-sky-400 px-1.5 py-0.5 rounded text-[8px] font-semibold tracking-widest uppercase shrink-0 border border-blue-800/20">
-              <span>LIVE DESK</span>
-            </div>
-
-            {/* Ticker Animation */}
-            <div className="h-5 flex items-center relative overflow-hidden flex-1 min-w-0">
-                <motion.span
-                  key={tickerIndex}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -8 }}
-                  transition={{ duration: 0.2, ease: "easeInOut" }}
-                  className="text-[9px] md:text-[10px] uppercase font-bold text-slate-200 tracking-wider truncate"
-                >
-                  {tickerMessages[tickerIndex]}
-                </motion.span>
-            </div>
-          </div>
-
-          {/* Contact and SLA Details — one desk number per regional hub */}
-          <div className="flex items-center gap-3 md:gap-4 shrink-0 text-[10px] md:text-xs font-semibold text-slate-300">
-            {jointVentures.map((hub, idx) => (
-              <React.Fragment key={hub.city}>
-                {idx > 0 && <span className="text-slate-600 hidden sm:inline">|</span>}
-                <a
-                  href={`tel:${hub.phone.replace(/[^0-9+]/g, "")}`}
-                  className="hover:text-sky-400 transition-colors flex items-center gap-1"
-                  title={`${hub.name} — ${hub.city}`}
-                >
-                  <Phone className="w-3 h-3 text-sky-400 shrink-0" />
-                  <span className="hidden sm:inline">{hub.city}:</span>
-                  <span>{hub.phone}</span>
-                </a>
-              </React.Fragment>
-            ))}
-            <span className="text-slate-600">|</span>
-            <a href="https://wa.me/919828106099" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors flex items-center gap-1">
-              <MessageSquare className="w-3 h-3 text-emerald-400" />
-              <span>WhatsApp</span>
-            </a>
-          </div>
-
-        </div>
-      </div>
-
       {/* 2. Main High-Fidelity Header - Modern, Clean & Beautiful (MB Industrial Concept) */}
       <header className="relative z-40 bg-white border-b border-slate-100 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.03)]" id="header-container">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -387,7 +318,7 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
                         </div>
 
                         {/* Dropdown Footer Area */}
-                        <div className="bg-[#12223c] p-3 rounded-xl mt-4 flex items-center justify-between text-white shadow-sm border border-blue-950/20">
+                        <div className="bg-[#2764B0] p-3 rounded-xl mt-4 flex items-center justify-between text-white shadow-sm border border-blue-950/20">
                           <div className="flex items-center gap-2">
                             <span className="flex h-1.5 w-1.5 relative shrink-0">
                               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-sky-400 opacity-75" />
