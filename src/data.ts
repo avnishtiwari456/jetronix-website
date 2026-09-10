@@ -10,7 +10,9 @@ export const categories: CategoryMeta[] = [
   { id: "laser", label: "Laser Marking Machines", shortLabel: "Laser Marking",
     description: "Permanent inkless marking with zero consumables." },
   { id: "tto", label: "TTO Printers", shortLabel: "TTO",
-    description: "Thermal transfer overprinters for film, labels and flexible packaging." }
+    description: "Thermal transfer overprinters for film, labels and flexible packaging." },
+  { id: "conveyor", label: "Coding Conveyors", shortLabel: "Conveyors",
+    description: "Stainless conveyor lines that carry the product past the coder." }
 ];
 
 type Row = [string, string];
@@ -211,6 +213,18 @@ export const products: Product[] = [
     ["Substrates", "Film, plastic, glass, leather and other materials"],
     ["Installation", "Conveyor line or punch packing machine"],
     ["Startup", "One-button, auto-jump to running mode"]
+  ]),
+
+  make("jcv200", "Jetronix Coding Conveyor", "conveyor", "Stainless Coding Conveyor",
+    "Carries the product past the printhead at a steady speed, with a collection tray at the end.",
+    "conveyor", [
+    ["Frame", "Stainless steel, welded"],
+    ["Belt", "Food-grade conveyor belt"],
+    ["Printhead Mount", "Adjustable rail, height and side to side"],
+    ["Guide Rails", "Adjustable product guides on both sides"],
+    ["Discharge", "Stainless collection tray at the outfeed"],
+    ["Legs", "Adjustable levelling feet"],
+    ["Pairs With", "CIJ, TIJ and laser coders"]
   ]),
 
   /* ═══════════  DISTRIBUTED RANGE (manufacturer datasheets)  ═══════════ */

@@ -39,7 +39,8 @@ const CATEGORY_ICONS: Record<ProductCategory, string> = {
   tij: "Zap",
   handheld: "Sliders",
   laser: "Sparkles",
-  tto: "Printer"
+  tto: "Printer",
+  conveyor: "Layers"
 };
 
 const CATEGORY_BADGES: Record<ProductCategory, string> = {
@@ -47,7 +48,8 @@ const CATEGORY_BADGES: Record<ProductCategory, string> = {
   tij: "TIJ",
   handheld: "HANDHELD",
   laser: "LASER",
-  tto: "TTO"
+  tto: "TTO",
+  conveyor: "CONVEYOR"
 };
 
 // Derived from the catalogue so every menu entry links to a product that actually exists.
