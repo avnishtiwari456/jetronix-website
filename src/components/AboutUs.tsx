@@ -17,20 +17,6 @@ const credentials = [
   { icon: Wrench, value: "8", label: "Regional service hubs" },
 ];
 
-const capabilities = [
-  {
-    title: "Printing Systems",
-    body: "CIJ, TIJ, TTO and Laser printing systems, together with packaging-related solutions for a wide range of industrial applications.",
-  },
-  {
-    title: "Spares & Consumables",
-    body: "Comprehensive spares and consumables held for the full range, so a running line is never waiting on a part.",
-  },
-  {
-    title: "Service & Technical Support",
-    body: "Genuine technical support from a highly experienced and dedicated technical team, backed by our industry expertise.",
-  },
-];
 
 const commitments = [
   "High-quality products",
@@ -136,19 +122,19 @@ export default function AboutUs({ onNavigate }: AboutUsProps) {
 
           {/* What we deliver */}
           <div className="lg:col-span-5 space-y-4">
-            {capabilities.map((cap) => (
-              <div
-                key={cap.title}
-                className="bg-white rounded-2xl border border-slate-200/90 p-5 md:p-6 shadow-md shadow-slate-200/40"
-              >
-                <h3 className="text-sm font-black uppercase tracking-wide text-[#122540] mb-2">
-                  {cap.title}
-                </h3>
-                <p className="text-slate-600 text-xs md:text-sm leading-relaxed font-light">
-                  {cap.body}
-                </p>
-              </div>
-            ))}
+            {/* The machines at work. The clip is portrait, so the frame is too. */}
+            <div className="bg-white rounded-2xl border border-slate-200/90 p-3 shadow-md shadow-slate-200/40">
+              <video
+                src="/media/jetronix-in-action.mp4"
+                className="w-full mx-auto max-w-[320px] aspect-[9/16] object-cover rounded-xl bg-slate-900"
+                controls
+                autoPlay
+                muted
+                loop
+                playsInline
+                preload="metadata"
+              />
+            </div>
 
             <div className="bg-gradient-to-br from-[#2764B0] to-[#1B4F8F] rounded-2xl p-6 text-white border border-blue-900/30 shadow-xl">
               <div className="flex items-center gap-2 mb-3.5">
