@@ -146,7 +146,7 @@ export default function AiAdvisor() {
               <div className="text-xs text-blue-900 leading-relaxed font-sans">
                 <span className="font-bold">Need immediate engineering validation?</span>
                 <span className="block mt-1 font-light text-slate-600">
-                  Our Indian JV support nodes in <strong>Indore</strong> (Runicha) and <strong>Jaipur</strong> (Best Code) are staffed by physical fluidic calibration engineers. Scroll down to request a commercial quote.
+                  Our support nodes in <strong>Indore</strong> and <strong>Jaipur</strong> are staffed by physical fluidic calibration engineers. Scroll down to request a commercial quote.
                 </span>
               </div>
             </div>

@@ -301,8 +301,8 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
     {
       id: "b3",
       category: "News",
-      title: "Runicha and Best Code hold joint engineering summit in Jaipur",
-      desc: "Announcing key engineering milestones under our joint venture with Runicha Enterprises. Central India and Rajasthan workshops merge capacities to guarantee a 4-hour field response SLA.",
+      title: "Jetronix opens expanded engineering capacity in Jaipur",
+      desc: "Our Indore and Jaipur workshops have merged capacities to guarantee faster turnaround on calibration, spares and on-site service across the region.",
       img: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=80",
       date: "April 10, 2026"
     },
@@ -493,7 +493,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
         </div>
       </section>
 
-      {/* SECTION 2: Joint Venture Overview (Partners) */}
+      {/* SECTION 2: Company Overview */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12" id="jv-overview">
         <div className="bg-gradient-to-br from-[#2764B0] to-[#1B4F8F] rounded-3xl p-8 sm:p-14 text-white relative overflow-hidden shadow-2xl border border-blue-900/30">
           
@@ -507,7 +507,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
             {/* Left Info Column */}
             <div className="lg:col-span-7 space-y-6">
               <span className="text-[#3b82f6] font-mono text-[10px] font-extrabold uppercase tracking-widest bg-slate-950/60 border border-blue-500/20 px-4 py-2 rounded-full inline-flex items-center gap-2">
-                <Sparkles className="w-4 h-4 animate-pulse text-sky-400" /> INDO-GERMAN JOINT VENTURE ALLIANCE
+                <Sparkles className="w-4 h-4 animate-pulse text-sky-400" /> INDUSTRIAL CODING & MARKING
               </span>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-sans font-black tracking-tight leading-none text-white">
                 Jetronix <br />
@@ -516,7 +516,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                 </span>
               </h2>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed font-light">
-                Jetronix is built on a rock-solid partnership between <strong>Runicha Enterprises</strong> (Central India's leading coding specialist based in Indore) and <strong>Best Code Technology India</strong> (North India's premier high-accuracy fluidics team based in Jaipur). Together, we deliver robust Continuous Inkjet hardware integrated with world-class ink chemistries and unmatched local service networks.
+                Jetronix Technology India LLP supplies and supports industrial coding and marking across India, backed by 12+ years in the sector and more than 850 customers. CIJ, TIJ, TTO and laser systems, the spares and consumables that keep them running, and an experienced technical team behind all of it.
               </p>
 
               {/* Service Commitments Grid */}
@@ -549,7 +549,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                 </div>
                 <div>
                   <span className="text-[9px] text-[#3b82f6] font-mono uppercase font-bold tracking-widest block">Indore Node Workshop</span>
-                  <span className="font-extrabold text-sm block mt-1 text-slate-100">Runicha Enterprises, MP</span>
+                  <span className="font-extrabold text-sm block mt-1 text-slate-100">Indore, Madhya Pradesh</span>
                   <span className="text-xs text-slate-400 leading-relaxed block mt-1 font-light">Specialized ink blending lab & hydraulic calibration rigs.</span>
                 </div>
               </div>
@@ -561,7 +561,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                 </div>
                 <div>
                   <span className="text-[9px] text-sky-400 font-mono uppercase font-bold tracking-widest block">Jaipur Node Workshop</span>
-                  <span className="font-extrabold text-sm block mt-1 text-slate-100">Best Code Technology, Rajasthan</span>
+                  <span className="font-extrabold text-sm block mt-1 text-slate-100">Jaipur, Rajasthan</span>
                   <span className="text-xs text-slate-400 leading-relaxed block mt-1 font-light">Advanced controller testing & automated conduit assembly.</span>
                 </div>
               </div>
@@ -958,7 +958,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
               </div>
 
               <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-light">
-                Jetronix Technology India LLP is an industrial coding and marking specialist, built on the joint venture of Runicha Enterprises (Indore) and Best Code Technology India (Jaipur). Specialising in digital printing and traceability solutions (such as industrial coders) for sectors as diverse as food, beverage, life sciences, packaging, cleaning, personal care, building and construction.
+                Jetronix Technology India LLP is an industrial coding and marking specialist. Specialising in digital printing and traceability solutions (such as industrial coders) for sectors as diverse as food, beverage, life sciences, packaging, cleaning, personal care, building and construction.
               </p>
 
               {/* Sub features list */}
@@ -1016,7 +1016,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                       <div className="space-y-2">
                         <span className="font-extrabold text-[#122540] uppercase block tracking-wider font-mono text-[9px] text-[#2564AF]">Dual-Workshop Support Grid</span>
                         <p className="leading-relaxed">
-                          With our dual workshops located strategically in <strong>Indore (Runicha Enterprises)</strong> and <strong>Jaipur (Best Code Technology)</strong>, we provide end-to-end local hardware and chemical fluid servicing. Our engineers undergo comprehensive certifications directly from original German guidelines to assemble, test, and troubleshoot continuous inkjet (CIJ), thermal transfer overprinters (TTO), and high-velocity CO2 laser cabinets.
+                          With our dual workshops located strategically in <strong>Indore</strong> and <strong>Jaipur</strong>, we provide end-to-end local hardware and chemical fluid servicing. Our engineers undergo comprehensive certifications directly from original German guidelines to assemble, test, and troubleshoot continuous inkjet (CIJ), thermal transfer overprinters (TTO), and high-velocity CO2 laser cabinets.
                         </p>
                       </div>
                       <div className="space-y-2">
@@ -1047,7 +1047,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
 
             <div className="relative z-10 space-y-6">
               <div className="flex items-center justify-between border-b border-blue-950 pb-4">
-                <span className="text-sky-400 font-mono text-[9px] font-black uppercase tracking-widest block">JOINT VENTURE PERFORMANCE</span>
+                <span className="text-sky-400 font-mono text-[9px] font-black uppercase tracking-widest block">Company Performance</span>
                 <span className="bg-[#2564AF]/20 text-sky-300 border border-blue-500/30 font-mono text-[9px] font-bold px-2 py-0.5 rounded uppercase">Verified</span>
               </div>
 
@@ -1151,7 +1151,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
               {/* Node 1: Indore */}
               <div className="space-y-2">
                 <div className="flex justify-between items-center text-xs">
-                  <span className="font-extrabold text-slate-300 uppercase tracking-wide">Central Hub — Runicha Enterprises (Indore)</span>
+                  <span className="font-extrabold text-slate-300 uppercase tracking-wide">Central Hub — Indore</span>
                   <span className="text-[10px] text-slate-500 font-mono font-bold select-none">MP Hub</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -1173,7 +1173,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
               {/* Node 2: Jaipur */}
               <div className="space-y-2 border-t border-slate-900 pt-3">
                 <div className="flex justify-between items-center text-xs">
-                  <span className="font-extrabold text-slate-300 uppercase tracking-wide">North Hub — Best Code Technology (Jaipur)</span>
+                  <span className="font-extrabold text-slate-300 uppercase tracking-wide">North Hub — Jaipur</span>
                   <span className="text-[10px] text-slate-500 font-mono font-bold select-none">Raj Hub</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -1231,7 +1231,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                   You are attempting to access high-density technical specifications, chemical MSDS sheets, or regulatory guidance paperwork regarding <strong>"{activeArticleModal}"</strong>.
                 </p>
                 <p>
-                  To adhere to Indo-German joint-venture protocols and maintain corporate data security, these files require active clearance validation.
+                  To maintain corporate data security, these files require active clearance validation.
                 </p>
                 <p className="bg-blue-50 border border-blue-200/50 p-3 rounded-xl text-[11px] text-[#2564AF] font-semibold flex items-start gap-2 leading-normal">
                   <span className="shrink-0 mt-0.5">ℹ️</span>

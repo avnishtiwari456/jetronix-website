@@ -40,7 +40,7 @@ export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps)
             </div>
             
             <p className="text-xs text-slate-400 leading-relaxed font-sans font-light max-w-sm">
-              Jetronix India is an elite industrial joint venture of <strong>Runicha Enterprises (Indore)</strong> and <strong>Best Code Technology India (Jaipur)</strong>. We specialize in supply-chain Continuous Inkjet (CIJ) printing, advanced solvent vapor condensation reclaimers, and high-performance pigmented coding inks for heavy manufacturing environments.
+              Jetronix Technology India LLP specialises in supply-chain Continuous Inkjet (CIJ) printing, advanced solvent vapor condensation reclaimers, and high-performance pigmented coding inks for heavy manufacturing environments.
             </p>
 
             {/* Premium Social Connections */}
@@ -144,7 +144,7 @@ export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps)
                   className="text-slate-400 hover:text-white transition-all text-left flex items-center gap-1.5 group cursor-pointer"
                 >
                   <ChevronRight className="w-3.5 h-3.5 text-[#2564AF] group-hover:translate-x-0.5 transition-transform" />
-                  <span>Indo-German JV Compliance</span>
+                  <span>Quality &amp; Compliance</span>
                 </button>
               </li>
               <li>
@@ -175,7 +175,7 @@ export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps)
               <div className="flex items-start gap-2.5 text-xs">
                 <Globe className="w-4 h-4 text-sky-400 shrink-0 mt-0.5" />
                 <div>
-                  <span className="font-bold text-slate-200 block">Indo-German</span>
+                  <span className="font-bold text-slate-200 block">International Standards</span>
                   <span className="text-[10px] text-slate-400 font-light block leading-relaxed">Calibrated for international manufacturing tolerances</span>
                 </div>
               </div>
@@ -184,7 +184,7 @@ export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps)
 
         </div>
 
-        {/* MID FOOTER: Support Hub Contact Details (Runicha & BestCode Grid Cards) */}
+        {/* MID FOOTER: Support Hub Contact Details (city hubs) */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 py-10 border-b border-slate-900">
           
           {/* Card 1: Indore Node */}
@@ -192,7 +192,7 @@ export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps)
             <div className="space-y-1.5">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#2564AF]" />
-                <span className="font-extrabold text-slate-200 text-xs tracking-wide uppercase">Runicha Enterprises (Central Node Hub)</span>
+                <span className="font-extrabold text-slate-200 text-xs tracking-wide uppercase">Indore — Central Node Hub</span>
               </div>
               <span className="text-[10px] text-slate-400 block leading-relaxed font-sans font-light flex items-start gap-1">
                 <MapPin className="w-3.5 h-3.5 text-slate-500 shrink-0 mt-0.5" />
@@ -213,7 +213,7 @@ export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps)
             <div className="space-y-1.5">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-[#2564AF]" />
-                <span className="font-extrabold text-slate-200 text-xs tracking-wide uppercase">Best Code Technology (North Node Hub)</span>
+                <span className="font-extrabold text-slate-200 text-xs tracking-wide uppercase">Jaipur — North Node Hub</span>
               </div>
               <span className="text-[10px] text-slate-400 block leading-relaxed font-sans font-light flex items-start gap-1">
                 <MapPin className="w-3.5 h-3.5 text-slate-500 shrink-0 mt-0.5" />
@@ -234,9 +234,9 @@ export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps)
         {/* BOTTOM SUB-FOOTER: Copyrights, GSTIN registries & Partnership acknowledgements */}
         <div className="pt-8 flex flex-col md:flex-row justify-between items-center text-[10px] text-slate-500 font-mono gap-4">
           <div className="space-y-1 text-center md:text-left">
-            <span>&copy; {new Date().getFullYear()} JETRONIX INDIA JOINT VENTURE. All rights reserved.</span>
+            <span>&copy; {new Date().getFullYear()} JETRONIX TECHNOLOGY INDIA LLP. All rights reserved.</span>
             <p className="text-[9px] text-slate-600 font-light block leading-normal max-w-2xl">
-              Authorized joint venture collaboration of Runicha Enterprises (Indore) and Best Code Technology India (Jaipur). All industrial trademarks, hardware licenses, and registered brand names are properties of their respective owners.
+              All industrial trademarks, hardware licenses, and registered brand names are properties of their respective owners.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-5 items-center sm:items-end md:items-center text-[9px] sm:text-[10px]">

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import { jointVentures, products, categories, channelPartners } from "../data";
+import { products, categories, channelPartners } from "../data";
 import { Phone, Mail, MapPin, ClipboardList, Send, FileText, CheckCircle2, ShieldCheck, Truck, Users, AlertTriangle, MapPinned } from "lucide-react";
 
 interface JointVentureProps {
@@ -93,7 +93,7 @@ export default function JointVenture({ prefilledSampleDetails, quoteTarget, onQu
       setSubmitResult({
         success: true,
         inquiryRef: ref,
-        message: "Your quotation request has been safely captured by our Indian joint-venture network. A localized engineer from either Indore (Runicha) or Jaipur (Best Code) will contact your plant shortly to coordinate print testing."
+        message: "Your quotation request has been safely captured by our support network. A localized engineer from either Indore (Runicha) or Jaipur (Best Code) will contact your plant shortly to coordinate print testing."
       });
       if (onQuoteSubmitted) {
         onQuoteSubmitted(ref);
@@ -113,84 +113,11 @@ export default function JointVenture({ prefilledSampleDetails, quoteTarget, onQu
             <Users className="w-4 h-4 text-blue-600" /> SUPPORT NETWORK
           </span>
           <h2 className="text-3xl sm:text-4xl font-display font-extrabold text-slate-900 mt-4 leading-tight">
-            Joint Venture & Support Hubs
+            Support &amp; Service Network
           </h2>
           <p className="text-slate-600 mt-3 text-base font-light leading-relaxed">
-            Jetronix is a powerful joint venture bringing together two of India's premier industrial packaging and marking suppliers. This ensures lightning-fast support dispatch and transparent, GST-compliant local billing.
+            Jetronix Technology India LLP supports its machines through regional partners across India, so support dispatch is fast and billing is local and GST-compliant.
           </p>
-        </div>
-
-        {/* Firm Profile Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16" id="jv-firm-cards">
-          {jointVentures.map((firm) => (
-            <div
-              key={firm.name}
-              id={`firm-card-${firm.city.toLowerCase()}`}
-              className="bg-white rounded-3xl p-6 sm:p-8 border border-slate-200 shadow-xl shadow-slate-100/30 relative overflow-hidden flex flex-col justify-between"
-            >
-              {/* Card visual accent */}
-              <div className="absolute top-0 left-0 w-2 h-full bg-blue-600" />
-
-              <div className="space-y-6">
-                <div>
-                  <span className="text-blue-600 text-[9px] font-bold uppercase tracking-widest block font-mono">
-                    Localized JV Partner Node
-                  </span>
-                  <h3 className="text-xl font-display font-extrabold text-slate-900 mt-1">
-                    {firm.name}
-                  </h3>
-                </div>
-
-                <div className="space-y-4 text-sm text-slate-600 font-sans" id={`firm-details-${firm.city.toLowerCase()}`}>
-                  
-                  <div className="flex gap-3">
-                    <MapPin className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                    <div>
-                      <span className="font-bold text-slate-800 block text-xs uppercase tracking-wider font-mono text-[10px]">Physical Address / Hub</span>
-                      <span className="text-xs text-slate-500 block mt-1 leading-relaxed">{firm.address}</span>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <Users className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                    <div>
-                      <span className="font-bold text-slate-800 block text-xs uppercase tracking-wider font-mono text-[10px]">Direct point of contact</span>
-                      <span className="text-xs text-slate-500 block mt-1 font-semibold">{firm.contactPerson}</span>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <Phone className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                    <div>
-                      <span className="font-bold text-slate-800 block text-xs uppercase tracking-wider font-mono text-[10px]">Phone support line</span>
-                      <a href={`tel:${firm.phone}`} className="text-xs text-blue-600 font-bold block mt-1 hover:underline font-mono">
-                        {firm.phone}
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex gap-3">
-                    <Mail className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
-                    <div>
-                      <span className="font-bold text-slate-800 block text-xs uppercase tracking-wider font-mono text-[10px]">Support email</span>
-                      <a href={`mailto:${firm.email}`} className="text-xs text-blue-600 font-bold block mt-1 hover:underline break-all font-mono">
-                        {firm.email}
-                      </a>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-
-              {/* Tax Details Grid Badge */}
-              <div className="mt-8 pt-4 border-t border-slate-200 flex items-center justify-between text-xs font-mono text-slate-400">
-                <span>GSTIN ID REGISTERED:</span>
-                <span className="font-bold text-slate-700 bg-slate-50 border border-slate-200 rounded px-2.5 py-1">
-                  {firm.gstNo}
-                </span>
-              </div>
-            </div>
-          ))}
         </div>
 
         {/* Channel Partner Network */}
@@ -322,7 +249,7 @@ export default function JointVenture({ prefilledSampleDetails, quoteTarget, onQu
                           type="text"
                           value={companyName}
                           onChange={(e) => setCompanyName(e.target.value)}
-                          placeholder="e.g. Runicha Enterprises"
+                          placeholder="e.g. ABC Industries Pvt Ltd"
                           className="w-full bg-white border border-slate-200 rounded-xl p-3 text-xs focus:outline-none focus:ring-2 focus:ring-blue-500/15 focus:border-blue-500 text-slate-800"
                         />
                       </div>

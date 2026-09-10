@@ -25,7 +25,7 @@ export default function ContactUs() {
 
   const nodes = [
     {
-      name: "Runicha Enterprises",
+      name: "Jetronix Indore",
       role: "Central India Regional Hub",
       city: "Indore",
       address: "Jagdish Niwas Shubham Place, Scheme No 54, Indore, Madhya Pradesh - 452010",
@@ -33,7 +33,7 @@ export default function ContactUs() {
       email: "indore.support@jetronixindia.com",
     },
     {
-      name: "Best Code Technology",
+      name: "Jetronix Jaipur",
       role: "North India Regional Hub",
       city: "Jaipur",
       address: "Tirupati Vihar-A, Macheda, Jaipur, Rajasthan - 302013",
@@ -217,8 +217,8 @@ export default function ContactUs() {
                       onChange={(e) => setFormData({...formData, location: e.target.value})}
                       className="w-full text-xs font-extrabold border border-slate-200 rounded-xl p-3 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#2564AF] transition-all"
                     >
-                      <option value="Indore Node (Central Hub)">Indore Hub — Runicha Enterprises</option>
-                      <option value="Jaipur Node (North Hub)">Jaipur Hub — Best Code Technology</option>
+                      <option value="Indore Node (Central Hub)">Indore Hub</option>
+                      <option value="Jaipur Node (North Hub)">Jaipur Hub</option>
                     </select>
                   </div>
 
