@@ -119,7 +119,7 @@ export default function Hero({ onNavigateToProduct }: HeroProps) {
   return (
     <section 
       id="hero-slider" 
-      className="w-full relative bg-slate-950 text-white overflow-hidden flex flex-col justify-between py-10 md:py-14 min-h-[640px] lg:min-h-[720px] select-none"
+      className="w-full relative bg-sky-600 text-white overflow-hidden flex flex-col justify-between py-10 md:py-14 min-h-[640px] lg:min-h-[720px] select-none"
     >
       {/* Dynamic Full-Bleed Slide Background Image */}
       <div className="absolute inset-0 overflow-hidden z-0 pointer-events-none">
@@ -134,8 +134,8 @@ export default function Hero({ onNavigateToProduct }: HeroProps) {
           />
 
         {/* High-Legibility Dark Scrim Overlay (Ensures text stands out while full background image stays vivid) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/90 via-slate-950/75 to-slate-950/40 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-slate-950/60 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-r from-sky-700/90 via-sky-600/75 to-sky-500/40 z-10" />
+        <div className="absolute inset-0 bg-gradient-to-t from-sky-700 via-sky-600/20 to-sky-600/60 z-10" />
       </div>
 
       {/* Subtle Tech Pattern Overlay */}
@@ -147,7 +147,7 @@ export default function Hero({ onNavigateToProduct }: HeroProps) {
           prevSlide();
           setIsPlaying(false);
         }}
-        className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 bg-slate-950/60 hover:bg-[#2564AF] border border-white/20 hover:border-blue-400 p-3 md:p-4 rounded-full text-white transition-all duration-200 cursor-pointer z-30 shadow-2xl backdrop-blur-md hover:scale-105 active:scale-95"
+        className="absolute left-2 md:left-6 top-1/2 -translate-y-1/2 bg-sky-700/60 hover:bg-[#2564AF] border border-white/20 hover:border-blue-400 p-3 md:p-4 rounded-full text-white transition-all duration-200 cursor-pointer z-30 shadow-2xl backdrop-blur-md hover:scale-105 active:scale-95"
         id="hero-arrow-prev"
         aria-label="Previous Slide"
       >
@@ -160,7 +160,7 @@ export default function Hero({ onNavigateToProduct }: HeroProps) {
           nextSlide();
           setIsPlaying(false);
         }}
-        className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 bg-slate-950/60 hover:bg-[#2564AF] border border-white/20 hover:border-blue-400 p-3 md:p-4 rounded-full text-white transition-all duration-200 cursor-pointer z-30 shadow-2xl backdrop-blur-md hover:scale-105 active:scale-95"
+        className="absolute right-2 md:right-6 top-1/2 -translate-y-1/2 bg-sky-700/60 hover:bg-[#2564AF] border border-white/20 hover:border-blue-400 p-3 md:p-4 rounded-full text-white transition-all duration-200 cursor-pointer z-30 shadow-2xl backdrop-blur-md hover:scale-105 active:scale-95"
         id="hero-arrow-next"
         aria-label="Next Slide"
       >
@@ -257,11 +257,11 @@ export default function Hero({ onNavigateToProduct }: HeroProps) {
               </motion.div>
 
               {/* Keeps the caption readable over both the white-out shots and the in-plant one */}
-              <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-slate-950/95 via-slate-950/70 to-transparent pointer-events-none" />
+              <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-sky-900/95 via-sky-800/80 to-transparent pointer-events-none" />
 
 
               <div className="absolute inset-x-0 bottom-0 p-4 text-left">
-                <span className="text-sky-400 font-mono text-[9px] font-bold uppercase tracking-widest block">
+                <span className="text-white/90 font-mono text-[9px] font-bold uppercase tracking-widest block">
                   {productShot.productType}
                 </span>
                 <h4 className="text-white text-base sm:text-lg font-black tracking-tight leading-tight uppercase">
@@ -278,7 +278,7 @@ export default function Hero({ onNavigateToProduct }: HeroProps) {
 
       {/* Bottom Category Tab Navigator Bar */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20 pt-4">
-        <div className="grid grid-cols-4 gap-2 bg-slate-950/70 p-2 rounded-2xl border border-white/10 backdrop-blur-md shadow-2xl">
+        <div className="grid grid-cols-4 gap-2 bg-sky-700/70 p-2 rounded-2xl border border-white/10 backdrop-blur-md shadow-2xl">
           {slideTitles.map((slide, idx) => {
             const isActive = activeSlide === idx;
             return (
