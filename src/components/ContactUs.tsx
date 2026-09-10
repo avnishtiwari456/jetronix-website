@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import WhatsAppIcon from "./WhatsAppIcon";
-import { channelPartners } from "../data";
+import { channelPartners, companyAddress } from "../data";
 import {
   MapPin, Send, Loader2,
   Check, AlertTriangle, Users, MapPinned
@@ -319,6 +319,11 @@ export default function ContactUs() {
                 </span>
                 <span className="font-bold text-xs uppercase tracking-wider text-slate-200">Contact Us</span>
               </div>
+
+              <p className="flex items-start gap-2 text-[11px] leading-relaxed text-white/90">
+                <MapPin className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                <span className="select-all">{companyAddress}</span>
+              </p>
               <a
                 href="https://wa.me/919828106099"
                 target="_blank"

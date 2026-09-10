@@ -287,7 +287,11 @@ export const matchmakerQuestions = [
 /** Regional channel partners, as supplied by the company. */
 export const channelPartners: ChannelPartner[] = [
   { name: "Jetronix Technology India LLP", region: "Delhi & UP", phone: "7726806099" },
-  { name: "Runicha Enterprises", region: "Central India" },
+  { name: "Runicha Enterprises", region: "Central India", phone: "9522299975" },
   { name: "Sky Tronics Corp", region: "Rajasthan & Gujarat", phone: "9828106099" },
   { name: "Jet Printing", region: "Himachal & Uttarakhand", phone: "8949210310" }
 ];
+
+/** Registered office, as supplied by the company. */
+export const companyAddress =
+  "G24-26, Ground Floor, Arg North Avenue, Road No. 9, VKI Area, Jaipur - 302013";

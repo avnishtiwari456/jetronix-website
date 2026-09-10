@@ -1,8 +1,9 @@
 import React from "react";
 import Logo from "./Logo";
+import { companyAddress } from "../data";
 import { 
   CheckCircle2, 
-  ChevronRight, Facebook, Twitter, Linkedin, Instagram, Youtube, Globe
+  ChevronRight, MapPin, Facebook, Twitter, Linkedin, Instagram, Youtube, Globe
 } from "lucide-react";
 
 interface FooterProps {
@@ -30,17 +31,22 @@ export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps)
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* MAIN FOUR-COLUMN FOOTER GRID */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 pb-12 border-b border-slate-900">
+        {/* MAIN THREE-COLUMN FOOTER GRID */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-8 pb-12 border-b border-slate-900">
           
-          {/* Column 1: Brand & Socials (col-span-4) */}
-          <div className="lg:col-span-4 space-y-6">
+          {/* Column 1: Brand & Socials */}
+          <div className="space-y-6">
             <div className="flex items-center justify-start gap-2.5">
               <Logo isDarkBackground={true} className="h-10 w-auto" />
             </div>
             
             <p className="text-xs text-slate-400 leading-relaxed font-sans font-light max-w-sm">
               Jetronix Technology India LLP specialises in supply-chain Continuous Inkjet (CIJ) printing, advanced solvent vapor condensation reclaimers, and high-performance pigmented coding inks for heavy manufacturing environments.
+            </p>
+
+            <p className="flex items-start gap-2 text-xs text-slate-400 leading-relaxed font-light max-w-sm">
+              <MapPin className="w-4 h-4 text-[#2564AF] shrink-0 mt-0.5" />
+              <span>{companyAddress}</span>
             </p>
 
             {/* Premium Social Connections */}
@@ -67,8 +73,8 @@ export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps)
 
           </div>
 
-          {/* Column 2: Industrial Systems (col-span-3) */}
-          <div className="lg:col-span-4 space-y-4">
+          {/* Column 2: Industrial Systems */}
+          <div className="space-y-4">
             <h4 className="font-sans font-black text-xs text-white uppercase tracking-widest font-mono border-b border-slate-900 pb-2.5">
               Industrial Products
             </h4>
@@ -88,8 +94,8 @@ export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps)
           </div>
 
 
-          {/* Column 4: Quality & Quick Actions (col-span-2) */}
-          <div className="lg:col-span-4 space-y-4">
+          {/* Column 4: Quality & Quick Actions */}
+          <div className="space-y-4">
             <h4 className="font-sans font-black text-xs text-white uppercase tracking-widest font-mono border-b border-slate-900 pb-2.5">
               Standards
             </h4>
