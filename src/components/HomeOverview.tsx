@@ -105,23 +105,6 @@ const featuredProducts = [
     badge: "Zero Consumables"
   },
   {
-    id: "tt750",
-    categoryId: "tto",
-    name: "Linx TT 750",
-    category: "Thermal Transfer (TTO)",
-    type: "Flexible Packaging Overprinter",
-    desc: "Thermal transfer overprinting on film, labels and gloss card without compressed air. Supplied, installed and serviced across India by Jetronix.",
-    image: "/products/tto-linx.jpg",
-    imageWebp: "/products/tto-linx.webp",
-    specs: {
-      speed: "No compressed air",
-      resolution: "Electronic pressure control",
-      ink: "Wax/Resin thermal ribbons",
-      substrates: "Film, Labels, Gloss Card"
-    },
-    badge: "Linx Distributed"
-  },
-  {
     id: "jcv200",
     categoryId: "conveyor",
     name: "Jetronix Coding Conveyor",
@@ -287,7 +270,9 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
             <div className="bg-white p-1 rounded-2xl border border-slate-200 shadow-sm flex flex-wrap gap-1 text-xs font-bold justify-center" id="product-pills-bar">
               {[
                 { label: "All Products", filter: "All" },
-                ...categories.map((c) => ({ label: c.shortLabel, filter: c.id })),
+                ...categories
+                  .filter((c) => featuredProducts.some((p) => p.categoryId === c.id))
+                  .map((c) => ({ label: c.shortLabel, filter: c.id })),
               ].map((pill) => {
                 const isActive = activeProductFilter === pill.filter;
                 return (
