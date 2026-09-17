@@ -322,15 +322,15 @@ export const customers: { name: string; logo?: string }[] = [
   { name: "ITC Ltd", logo: "itc.png" },
   { name: "Shyam Dhani Industries Ltd" },
   { name: "Patanjali", logo: "patanjali.svg" },
-  { name: "Cipla" },
+  { name: "Cipla", logo: "cipla.svg" },
   { name: "Glenmark", logo: "glenmark.png" },
-  { name: "Rubicon Pharma" },
-  { name: "H&H" },
+  { name: "Rubicon Pharma", logo: "rubicon-pharma.png" },
+  { name: "H&H", logo: "hh.jpg" },
   { name: "Omsons Marketing" },
-  { name: "KRM Aqua Blues" },
+  { name: "KRM Aqua Blues", logo: "krm-aqua-blues.jpg" },
   { name: "Bisleri International", logo: "bisleri.png" },
   { name: "Rail Neer" },
   { name: "Mehta Cosmetics" },
   { name: "Parivar Healthcare Pvt Ltd" },
-  { name: "Oswal Soap" }
+  { name: "Oswal Soap", logo: "oswal-soap.png" }
 ];
