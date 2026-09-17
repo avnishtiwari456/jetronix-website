@@ -313,21 +313,24 @@ export const companyPhone = "7726806099";
 export const companyAddress =
   "G24-26, Ground Floor, Arg North Avenue, Road No. 9, VKI Area, Jaipur - 302013";
 
-/** Customers, as supplied by the company. */
-export const customers = [
-  "Emami Agrotech",
-  "ITC Ltd",
-  "Shyam Dhani Industries Ltd",
-  "Patanjali",
-  "Cipla",
-  "Glenmark",
-  "Rubicon Pharma",
-  "H&H",
-  "Omsons Marketing",
-  "KRM Aqua Blues",
-  "Bisleri International",
-  "Rail Neer",
-  "Mehta Cosmetics",
-  "Parivar Healthcare Pvt Ltd",
-  "Oswal Soap"
+/**
+ * Customers, as supplied by the company. Drop a logo file into
+ * public/clients and name it here; until then the strip shows the name.
+ */
+export const customers: { name: string; logo?: string }[] = [
+  { name: "Emami Agrotech" },
+  { name: "ITC Ltd" },
+  { name: "Shyam Dhani Industries Ltd" },
+  { name: "Patanjali" },
+  { name: "Cipla" },
+  { name: "Glenmark" },
+  { name: "Rubicon Pharma" },
+  { name: "H&H" },
+  { name: "Omsons Marketing" },
+  { name: "KRM Aqua Blues" },
+  { name: "Bisleri International" },
+  { name: "Rail Neer" },
+  { name: "Mehta Cosmetics" },
+  { name: "Parivar Healthcare Pvt Ltd" },
+  { name: "Oswal Soap" }
 ];

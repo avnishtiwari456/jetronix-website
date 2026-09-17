@@ -433,12 +433,24 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
           <div className="flex w-max marquee-track">
             {[0, 1].map((pass) => (
               <div key={pass} className="flex shrink-0" aria-hidden={pass === 1}>
-                {customers.map((name) => (
+                {customers.map((client) => (
                   <span
-                    key={`${pass}-${name}`}
-                    className="shrink-0 mx-3 px-6 py-3 rounded-2xl bg-white border border-slate-200 shadow-sm text-sm font-black uppercase tracking-wide text-[#122540] whitespace-nowrap"
+                    key={`${pass}-${client.name}`}
+                    title={client.name}
+                    className="shrink-0 mx-3 px-6 h-16 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-center"
                   >
-                    {name}
+                    {client.logo ? (
+                      <img
+                        src={`/clients/${client.logo}`}
+                        alt={client.name}
+                        loading="lazy"
+                        className="h-8 w-auto max-w-[140px] object-contain"
+                      />
+                    ) : (
+                      <span className="text-sm font-black uppercase tracking-wide text-[#122540] whitespace-nowrap">
+                        {client.name}
+                      </span>
+                    )}
                   </span>
                 ))}
               </div>
