@@ -312,3 +312,22 @@ export const companyPhone = "7726806099";
 /** Registered office, as supplied by the company. */
 export const companyAddress =
   "G24-26, Ground Floor, Arg North Avenue, Road No. 9, VKI Area, Jaipur - 302013";
+
+/** Customers, as supplied by the company. */
+export const customers = [
+  "Emami Agrotech",
+  "ITC Ltd",
+  "Shyam Dhani Industries Ltd",
+  "Patanjali",
+  "Cipla",
+  "Glenmark",
+  "Rubicon Pharma",
+  "H&H",
+  "Omsons Marketing",
+  "KRM Aqua Blues",
+  "Bisleri International",
+  "Rail Neer",
+  "Mehta Cosmetics",
+  "Parivar Healthcare Pvt Ltd",
+  "Oswal Soap"
+];

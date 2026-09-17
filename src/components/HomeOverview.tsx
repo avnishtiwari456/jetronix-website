@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import WhatsAppIcon from "./WhatsAppIcon";
-import { categories } from "../data";
+import { categories, customers } from "../data";
 import { 
   Award, ShieldCheck, Zap, ArrowRight, Building, Clock, 
   RefreshCw, FileText, Settings, Sparkles, Cpu, 
@@ -424,6 +424,41 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
             })()}
           </div>
 
+        </div>
+      </section>
+
+      {/* Customer strip: one line, sliding, the list repeated so it never gaps */}
+      <section className="py-12 px-4 md:px-8 overflow-hidden" id="home-customers">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-8">
+            <span className="text-[#2564AF] text-[10px] font-bold uppercase tracking-widest bg-blue-50 border border-blue-200/50 px-3.5 py-1.5 rounded-full">
+              Trusted By
+            </span>
+            <h3 className="text-2xl md:text-3xl font-black text-[#122540] uppercase tracking-tight mt-3">
+              Our Customers
+            </h3>
+          </div>
+        </div>
+
+        {/* Fades at either end so names slide in and out rather than cutting off */}
+        <div className="relative">
+          <div className="absolute left-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-r from-[#f8fafc] to-transparent pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-16 z-10 bg-gradient-to-l from-[#f8fafc] to-transparent pointer-events-none" />
+
+          <div className="flex w-max marquee-track">
+            {[0, 1].map((pass) => (
+              <div key={pass} className="flex shrink-0" aria-hidden={pass === 1}>
+                {customers.map((name) => (
+                  <span
+                    key={`${pass}-${name}`}
+                    className="shrink-0 mx-3 px-6 py-3 rounded-2xl bg-white border border-slate-200 shadow-sm text-sm font-black uppercase tracking-wide text-[#122540] whitespace-nowrap"
+                  >
+                    {name}
+                  </span>
+                ))}
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
