@@ -444,7 +444,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                         src={`/clients/${client.logo}`}
                         alt={client.name}
                         loading="lazy"
-                        className="h-8 w-auto max-w-[140px] object-contain"
+                        className="h-11 w-auto max-w-[150px] object-contain"
                       />
                     ) : (
                       <span className="text-sm font-black uppercase tracking-wide text-[#122540] whitespace-nowrap">

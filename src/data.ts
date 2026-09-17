@@ -320,17 +320,17 @@ export const companyAddress =
 export const customers: { name: string; logo?: string }[] = [
   { name: "Emami Agrotech", logo: "emami-agrotech.png" },
   { name: "ITC Ltd", logo: "itc.png" },
-  { name: "Shyam Dhani Industries Ltd" },
+  { name: "Shyam Dhani Industries Ltd", logo: "shyam-dhani.jpg" },
   { name: "Patanjali", logo: "patanjali.svg" },
   { name: "Cipla", logo: "cipla.svg" },
   { name: "Glenmark", logo: "glenmark.png" },
   { name: "Rubicon Pharma", logo: "rubicon-pharma.png" },
   { name: "H&H", logo: "hh.jpg" },
-  { name: "Omsons Marketing" },
+  { name: "Omsons Marketing", logo: "omsons.jpg" },
   { name: "KRM Aqua Blues", logo: "krm-aqua-blues.jpg" },
   { name: "Bisleri International", logo: "bisleri.png" },
-  { name: "Rail Neer" },
-  { name: "Mehta Cosmetics" },
-  { name: "Parivar Healthcare Pvt Ltd" },
+  { name: "Rail Neer", logo: "rail-neer.jpg" },
+  { name: "Mehta Cosmetics", logo: "mehta-cosmetics.jpg" },
+  { name: "Parivar Healthcare Pvt Ltd", logo: "parivar-healthcare.jpg" },
   { name: "Oswal Soap", logo: "oswal-soap.png" }
 ];
