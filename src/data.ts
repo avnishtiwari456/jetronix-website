@@ -318,17 +318,17 @@ export const companyAddress =
  * public/clients and name it here; until then the strip shows the name.
  */
 export const customers: { name: string; logo?: string }[] = [
-  { name: "Emami Agrotech" },
-  { name: "ITC Ltd" },
+  { name: "Emami Agrotech", logo: "emami-agrotech.png" },
+  { name: "ITC Ltd", logo: "itc.png" },
   { name: "Shyam Dhani Industries Ltd" },
-  { name: "Patanjali" },
+  { name: "Patanjali", logo: "patanjali.svg" },
   { name: "Cipla" },
-  { name: "Glenmark" },
+  { name: "Glenmark", logo: "glenmark.png" },
   { name: "Rubicon Pharma" },
   { name: "H&H" },
   { name: "Omsons Marketing" },
   { name: "KRM Aqua Blues" },
-  { name: "Bisleri International" },
+  { name: "Bisleri International", logo: "bisleri.png" },
   { name: "Rail Neer" },
   { name: "Mehta Cosmetics" },
   { name: "Parivar Healthcare Pvt Ltd" },
