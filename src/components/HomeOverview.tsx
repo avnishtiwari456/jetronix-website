@@ -148,6 +148,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
     { 
       name: "Food", 
       icon: UtensilsCrossed,
+      image: "/industries/food.jpg",
       color: "from-amber-500/10 to-orange-500/5 text-amber-600 border-amber-100 hover:border-amber-300 hover:shadow-amber-500/10",
       activeBg: "bg-amber-50/70 border-amber-500 text-amber-700 shadow-amber-500/10",
       accentColor: "#d97706",
@@ -158,6 +159,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
     { 
       name: "Life Sciences", 
       icon: Dna,
+      image: "/industries/life-sciences.jpg",
       color: "from-emerald-500/10 to-teal-500/5 text-emerald-600 border-emerald-100 hover:border-emerald-300 hover:shadow-emerald-500/10",
       activeBg: "bg-emerald-50/70 border-emerald-500 text-emerald-700 shadow-emerald-500/10",
       accentColor: "#059669",
@@ -168,6 +170,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
     { 
       name: "Tobacco", 
       icon: Cigarette,
+      image: "/industries/tobacco.jpg",
       color: "from-red-500/10 to-rose-500/5 text-rose-600 border-rose-100 hover:border-rose-300 hover:shadow-rose-500/10",
       activeBg: "bg-rose-50/70 border-rose-500 text-rose-700 shadow-rose-500/10",
       accentColor: "#e11d48",
@@ -178,6 +181,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
     { 
       name: "Industrial", 
       icon: Factory,
+      image: "/industries/industrial.jpg",
       color: "from-blue-600/10 to-indigo-600/5 text-blue-600 border-blue-100 hover:border-blue-300 hover:shadow-blue-500/10",
       activeBg: "bg-blue-50/70 border-blue-600 text-blue-700 shadow-blue-600/10",
       accentColor: "#2563eb",
@@ -188,6 +192,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
     { 
       name: "Beauty & Grooming", 
       icon: Scissors,
+      image: "/industries/beauty.jpg",
       color: "from-purple-500/10 to-violet-500/5 text-purple-600 border-purple-100 hover:border-purple-300 hover:shadow-purple-500/10",
       activeBg: "bg-purple-50/70 border-purple-500 text-purple-700 shadow-purple-500/10",
       accentColor: "#9333ea",
