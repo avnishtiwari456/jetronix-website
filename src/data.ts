@@ -33,12 +33,40 @@ export const products: Product[] = [
   make("s200", "Jetronix S200", "cij", "Continuous Inkjet Printer (CIJ)",
     "High-speed continuous inkjet for non-contact coding on fast production lines.",
     "si220", [
-    ["Technology", "Continuous Inkjet (CIJ)"],
-    ["Lines of Print", "Up to 5 lines"],
-    ["Print Content", "Text, batch codes, dates, logos, barcodes"],
-    ["Substrates", "Plastic, metal, glass, paper, film"],
+    ["Technology", "Continuous Inkjet (CIJ), small character"],
+    ["Nozzle Specifications", "40, 50, 60, 75 and 85 micron"],
+    ["Printing Height", "2 - 20 mm"],
+    ["Printing Distance", "3 - 30 mm"],
+    ["Printing Lines", "1 - 5 lines"],
+    ["Printing Speed", "Up to 768 m/min"],
+    ["Counters", "More than 20 independent counters"],
+    ["Fonts", "5x6L, 7x6L, 7x10L, 9x8L, 9x11L, 11x11L/B, 16x16L/B, 24x24L/B and 32x32L/B"],
+    ["Print Content", "Text, time, date and Julian year, shift, serial number, dynamic barcode and QR code, dynamic serial data and dynamic database; further content can be added as required"],
+    ["Ink Colours", "Black, red, blue, green, white and invisible"],
+    ["Ink Types", "High adhesion, migration resistant, permeable, food grade and oil resistant"],
+    ["Printing Material", "Carton, plastic, metal, building material, pipe, stone, cable, glass, electronic components, auto parts, industrial packaging, medical, food and garment"],
     ["Marking", "Non-contact - safe on curved and uneven surfaces"],
-    ["Maintenance", "Smart auto-cleaning"]
+    ["Operating System", "Embedded Linux secure operating system"],
+    ["Display", "10.1-inch colour industrial touch screen"],
+    ["Communication Interface", "Network port, USB and RS232"],
+    ["External Interface", "Optical sensor, encoder, reverse and upside-down control, signal light alarm output, serial number output control, external print information selection"],
+    ["Protection Level", "IP55"],
+    ["Power Supply", "110 - 240 V AC input"],
+    ["Rated Power", "150 W"],
+    ["Memory", "256 MB"],
+    ["Machine Material", "304 stainless steel"],
+    ["Machine Size", "447 x 242 x 650 mm (length x width x height)"],
+    ["Print Head Conduit", "3 m or 6 m"],
+    ["Working Environment", "0 - 45 C, humidity 30 - 70% RH"],
+    ["Net Weight", "30 kg"],
+    ["Main Hardware", "TI AM3358 industrial-grade CPU with Xilinx Spartan-6 industrial-grade FPGA"],
+    ["Certification", "RoHS, CE and BIS"],
+    ["Languages", "More than 40 languages including English, Chinese, Arabic, Danish, German, Russian, French, Spanish and Korean"]
+  ], [
+    "The S200 Plus is a small-character continuous inkjet printer built for production lines that run all day. The print head is an independent structure and the chassis is 304 stainless steel, so it keeps working in the heat, dust and washdown of a real plant rather than only on a clean bench.",
+    "The nozzle valve seals directly on the nozzle hole, which is what stops ink leaking during stop-start running, and a double-head pump keeps the ink system stable over long shifts. The white-ink machine adds a double mixing system so the pigment does not settle out between runs.",
+    "It prints one to five lines at a character height of 2 to 20 mm, from 3 to 30 mm away from the product, at line speeds up to 768 m/min. Dates, Julian dates, shift codes, serial numbers, barcodes, QR codes and database-driven data all print directly, and more than twenty independent counters run at once.",
+    "A 10.1-inch industrial touch screen runs an embedded Linux system on a TI AM3358 processor with a Xilinx FPGA. Network, USB and RS232 are standard, along with optical sensor, encoder, reverse and upside-down printing, alarm output and serial number output. The cabinet is rated IP55 and certified to RoHS, CE and BIS."
   ]),
 
   make("jx350", "Jetronix JX350", "cij", "Continuous Inkjet Printer (CIJ)",
@@ -50,8 +78,35 @@ export const products: Product[] = [
     ["Font Height", "5 to 31 drops"],
     ["Nozzle Size", "36 micron"],
     ["Line Speed", "Past 10 metres per second"],
+    ["Printing Height", "2 - 20 mm"],
+    ["Printing Distance", "3 - 30 mm"],
+    ["Counters", "More than 20 independent counters"],
+    ["Print Content", "Text, time, date and Julian year, shift, serial number, dynamic barcode and QR code, dynamic serial data and dynamic database"],
+    ["Ink Colours", "Black, red, blue, green, white and invisible"],
+    ["Ink Types", "High adhesion, migration resistant, permeable, food grade and oil resistant"],
     ["Marking", "Non-contact - safe on delicate, curved or uneven surfaces"],
-    ["Substrates", "Plastic, metal, glass, paper, film"]
+    ["Substrates", "Plastic, metal, glass, paper, film"],
+    ["Operating System", "Embedded Linux secure operating system"],
+    ["Display", "10.1-inch colour industrial touch screen"],
+    ["Communication Interface", "Network port, USB and RS232"],
+    ["External Interface", "Optical sensor, encoder, reverse and upside-down control, signal light alarm output, serial number output control, external print information selection"],
+    ["Protection Level", "IP55"],
+    ["Power Supply", "110 - 240 V AC input"],
+    ["Rated Power", "150 W"],
+    ["Memory", "256 MB"],
+    ["Machine Material", "304 stainless steel"],
+    ["Machine Size", "447 x 242 x 650 mm (length x width x height)"],
+    ["Print Head Conduit", "3 m or 6 m"],
+    ["Working Environment", "0 - 45 C, humidity 30 - 70% RH"],
+    ["Net Weight", "30 kg"],
+    ["Main Hardware", "TI AM3358 industrial-grade CPU with Xilinx Spartan-6 industrial-grade FPGA"],
+    ["Certification", "RoHS, CE and BIS"],
+    ["Languages", "More than 40 languages including English, Chinese, Arabic, Danish, German, Russian, French, Spanish and Korean"]
+  ], [
+    "The JX350 is the high-speed machine in the continuous inkjet range, laying five lines of text, barcodes, logos and serial numbers onto product moving past at more than 10 metres per second. A 36 micron nozzle keeps the character crisp at that speed, with a character height from 1.5 to 12 mm.",
+    "Printing is non-contact, so curved, delicate and uneven surfaces take a code as cleanly as flat board, and the head can sit anywhere from 3 to 30 mm off the product.",
+    "Dates, Julian dates, shift codes, serial numbers, barcodes, QR codes and database-driven data print directly, with more than twenty independent counters running at once. Inks run from food grade through to high-adhesion and migration-resistant grades, in black, red, blue, green, white and invisible.",
+    "The cabinet is 304 stainless steel rated IP55, with a 10.1-inch industrial touch screen on an embedded Linux system. Network, USB and RS232 are standard, alongside optical sensor, encoder, reverse and upside-down printing, alarm output and serial number output."
   ]),
 
   make("jt120", "Jetronix JT120", "tij", "Thermal Inkjet Printer (TIJ)",
@@ -286,92 +341,33 @@ export const products: Product[] = [
     ["Startup", "One-button, auto-jump to running mode"]
   ]),
 
-  make("jcv200", "Jetronix Coding Conveyor", "conveyor", "Stainless Coding Conveyor",
-    "Carries the product past the printhead at a steady speed, with a collection tray at the end.",
+  make("jcv200", "Jetronix Coding Conveyor", "conveyor", "MS / SS Coding Conveyor",
+    "Carries the product past the printhead at a set speed, in 450 mm and 750 mm frame widths.",
     "conveyor", [
-    ["Frame", "Stainless steel, welded"],
-    ["Belt", "Food-grade conveyor belt"],
-    ["Printhead Mount", "Adjustable rail, height and side to side"],
-    ["Guide Rails", "Adjustable product guides on both sides"],
-    ["Discharge", "Stainless collection tray at the outfeed"],
-    ["Legs", "Adjustable levelling feet"],
-    ["Pairs With", "CIJ, TIJ and laser coders"]
-  ]),
-
-  /* ───────  ACV CONVEYORS (standard MS / SS build sheets)  ─────── */
-
-  make("acv450", "Jetronix ACV 450", "conveyor", "Standard Coding Conveyor",
-    "450 mm frame on a 300 mm belt, for pouches, bottles and small cartons.",
-    "conveyor", [
-    ["Conveyor Size", "Width 450 mm x Length 1200 mm x Height 750 mm"],
-    ["Belt Size", "Width 300 mm x Length 2400 mm x Thickness 2 mm"],
-    ["Belt", "PVC black belt"],
-    ["Motor", "Abron 0.25 HP"],
-    ["Gearbox", "Abron 0.5 HP"],
+    ["Frame Material", "Mild steel 2 mm, powder coated; stainless steel on request"],
+    ["Conveyor Size", "Width 450 or 750 mm x Length 1200 mm x Height 750 mm; 7 ft length on the carton drop build"],
+    ["Belt Size", "Width 300 or 600 mm x Length 2400 mm x Thickness 2 mm"],
+    ["Belt", "PVC black belt; imported Korean belt on the 7 ft build"],
+    ["Motor", "Abron 0.25 HP; 0.5 HP single phase on the 7 ft build"],
+    ["Gearbox", "Abron 0.25 or 0.5 HP"],
     ["Drive", "Crompton / Delta 0.5 HP"],
     ["Speed Control", "AC variable speed"],
     ["Speed Range", "5 to 30 metres per minute"],
-    ["Control Panel", "With panel support"],
+    ["Throughput", "Up to 100 pieces per minute on the carton drop build"],
+    ["Control Panel", "Panel support for the drive, supplied with complete fitting"],
     ["Belt Adjustment", "Adjustable from both sides"],
     ["Height Adjustment", "Plus or minus 50 mm"],
-    ["Guides", "One side fixed guide"],
+    ["Guides", "One side fixed guide as standard; both sides fixed on the carton drop build"],
+    ["Carton Drop Option", "Automatic carton drop for cartons 50 mm to 355 mm, with fanner attachment for product tension"],
     ["Construction", "Modular design with bolted construction"],
-    ["Material", "Mild steel 2 mm, powder coated; stainless steel on request"]
-  ], [
-    "The ACV 450 is the compact end of the conveyor range: a 450 mm frame carrying a 300 mm belt, sized for pouches, bottles, small cartons and anything else that does not need a wide bed.",
-    "A 0.25 HP Abron motor drives through a 0.5 HP gearbox, and a Crompton or Delta variable-speed drive sets the belt anywhere between 5 and 30 metres per minute, so the line can be matched to the coder rather than the other way round. The drive panel is supplied fitted.",
-    "The belt adjusts from both sides and the whole frame lifts or drops by 50 mm, which is what puts the print at the right height under a CIJ, TIJ or laser head. A fixed guide on one side keeps the product tracking straight past the printhead.",
-    "Construction is modular and bolted rather than welded, so sections can be changed or extended later. The standard build is 2 mm mild steel, powder coated; stainless steel is available where the line calls for a washdown finish."
-  ]),
-
-  make("acv750", "Jetronix ACV 750", "conveyor", "Standard Coding Conveyor",
-    "750 mm frame on a 600 mm belt, for cartons and wider packs.",
-    "conveyor", [
-    ["Conveyor Size", "Width 750 mm x Length 1200 mm x Height 750 mm"],
-    ["Belt Size", "Width 600 mm x Length 2400 mm x Thickness 2 mm"],
-    ["Belt", "PVC black belt"],
-    ["Motor", "Abron 0.25 HP"],
-    ["Gearbox", "Abron 0.25 HP"],
-    ["Drive", "Crompton / Delta 0.5 HP"],
-    ["Speed Range", "5 to 30 metres per minute"],
-    ["Control Panel", "With panel support"],
-    ["Belt Adjustment", "Adjustable from both sides"],
-    ["Height Adjustment", "Plus or minus 50 mm"],
-    ["Guides", "One side fixed guide"],
-    ["Construction", "Modular design with bolted construction"],
-    ["Material", "Whole machine in mild steel; stainless steel on request"]
-  ], [
-    "The ACV 750 runs the same frame height and length as the ACV 450 but widens the bed to 750 mm with a 600 mm belt, which is the size most shipper cartons and wider packs need.",
-    "Drive is a 0.25 HP Abron motor and matching 0.25 HP gearbox through a Crompton or Delta 0.5 HP drive, giving the same 5 to 30 metres per minute working range. The panel comes supported and fitted.",
-    "Belt tracking adjusts from either side, frame height moves 50 mm up or down to set the throw distance under the printhead, and a fixed guide on one side squares the product up before it reaches the code position.",
-    "The machine is built in mild steel throughout on a bolted modular frame, with a stainless build available on request."
-  ]),
-
-  make("acv750cd", "Jetronix ACV 750 CD", "conveyor", "Automatic Carton Drop Conveyor",
-    "Seven-foot carton drop line running 100 pieces a minute with a fanner attachment.",
-    "conveyor", [
-    ["Conveyor Size", "Width 750 mm x Length 7 ft x Height 750 mm"],
-    ["Belt Size", "Width 600 mm x Length 4 ft x Thickness 2 mm"],
-    ["Belt", "PVC black imported belt, Korea"],
-    ["Motor", "Abron 0.5 HP, single phase"],
-    ["Gearbox", "Abron 0.5 HP, single phase"],
-    ["Drive", "Crompton / Delta 0.5 HP, single phase"],
-    ["Speed Control", "AC variable speed"],
-    ["Throughput", "100 pieces per minute"],
-    ["Speed Range", "5 to 30 metres per minute"],
-    ["Control Panel", "Panel support for the drive, with complete fitting"],
-    ["Feed Type", "Automatic carton drop conveyor"],
-    ["Carton Size", "Minimum 50 mm to maximum 355 mm"],
-    ["Belt Adjustment", "Adjustable belt"],
-    ["Guides", "Fixed guides on both sides"],
-    ["Attachment", "Fanner attachment for product tension"],
     ["Load", "0.5 kW"],
-    ["Material", "Whole conveyor in mild steel; stainless steel on request"]
+    ["Pairs With", "CIJ, TIJ and laser coders"]
   ], [
-    "The ACV 750 CD is the production version of the range: a seven-foot line built to take cartons automatically rather than have an operator place them. Cartons drop into the feed and the conveyor carries them under the coder at up to 100 pieces a minute.",
-    "It handles cartons from 50 mm up to 355 mm, and a fanner attachment holds tension on the stack so the pieces separate cleanly and arrive one at a time instead of overlapping under the printhead.",
-    "Drive is a single-phase 0.5 HP Abron motor and gearbox through a Crompton or Delta 0.5 HP drive, variable between 5 and 30 metres per minute, drawing 0.5 kW. The drive panel arrives supported and completely fitted.",
-    "Guides are fixed on both sides to hold the carton square through the code position, the imported Korean PVC belt adjusts for tracking, and the frame is mild steel throughout, with stainless available on request."
+    "The coding conveyor carries the product past the printhead at a steady, set speed, which is what a CIJ, TIJ or laser coder needs to lay a clean code. It is built in two standard frame widths: 450 mm on a 300 mm belt for pouches, bottles and small cartons, and 750 mm on a 600 mm belt for shippers and wider packs.",
+    "A 0.25 HP Abron motor drives through the gearbox, and a Crompton or Delta variable-speed drive sets the belt anywhere between 5 and 30 metres per minute, so the line is matched to the coder rather than the other way round. The drive panel is supplied supported and fitted.",
+    "The belt adjusts for tracking from both sides and the frame height moves 50 mm up or down, which is what sets the throw distance under the printhead. A fixed guide holds the product square as it passes the code position.",
+    "A seven-foot automatic carton drop build is available for production runs: cartons feed themselves rather than being placed by an operator, it takes carton sizes from 50 mm to 355 mm at up to 100 pieces a minute, and a fanner attachment holds tension on the stack so pieces arrive singly instead of overlapping. It runs a 0.5 HP single-phase drive train on an imported Korean belt, with fixed guides on both sides.",
+    "Construction throughout is modular and bolted rather than welded, so sections can be changed or extended later. The standard build is 2 mm mild steel, powder coated, with stainless steel available where the line calls for a washdown finish."
   ]),
 
   /* ═══════════  DISTRIBUTED RANGE (manufacturer datasheets)  ═══════════ */
