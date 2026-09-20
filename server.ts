@@ -259,6 +259,120 @@ app.post("/api/advisor", async (req: Request, res: Response) => {
   }
 });
 
+/**
+ * Industry news for the Knowledge Hub.
+ *
+ * Headlines come from Packaging South Asia's RSS feed, which covers the
+ * Indian packaging trade the company sells into. Only the headline, excerpt
+ * and date are shown, each linking back to the publisher's own page.
+ * The feed is fetched at most once every few hours and the last good copy is
+ * kept, so a slow or unreachable feed never holds up the page.
+ */
+const NEWS_FEED_URL = "https://packagingsouthasia.com/feed/";
+const NEWS_TTL_MS = 3 * 60 * 60 * 1000;
+const NEWS_COUNT = 6;
+
+type NewsItem = {
+  id: string;
+  category: string;
+  title: string;
+  desc: string;
+  date: string;
+  url: string;
+  source: string;
+};
+
+let newsCache: { items: NewsItem[]; fetchedAt: number } | null = null;
+let newsInFlight: Promise<NewsItem[]> | null = null;
+
+function decodeEntities(text: string) {
+  return text
+    .replace(/<!\[CDATA\[|\]\]>/g, "")
+    .replace(/<[^>]+>/g, " ")
+    .replace(/&#(\d+);/g, (_, code) => String.fromCharCode(Number(code)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, code) => String.fromCharCode(parseInt(code, 16)))
+    .replace(/&nbsp;/g, " ")
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&(?:#039|apos|rsquo|lsquo);/g, "'")
+    .replace(/&(?:ldquo|rdquo);/g, '"')
+    .replace(/&(?:ndash|mdash);/g, "-")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function parseNewsFeed(xml: string): NewsItem[] {
+  const items: NewsItem[] = [];
+  for (const block of xml.split("<item>").slice(1)) {
+    const pick = (tag: string) => {
+      const match = block.match(new RegExp(`<${tag}[^>]*>([\\s\\S]*?)</${tag}>`));
+      return match ? decodeEntities(match[1]) : "";
+    };
+    const title = pick("title");
+    const link = (block.match(/<link[^>]*>([\s\S]*?)<\/link>/) || [])[1]?.trim() ?? "";
+    if (!title || !link) continue;
+
+    const published = new Date(pick("pubDate"));
+    const desc = pick("description");
+    items.push({
+      id: link,
+      category: pick("category") || "Industry News",
+      title,
+      desc: desc.length > 190 ? desc.slice(0, 187).trimEnd() + "..." : desc,
+      date: Number.isNaN(published.getTime())
+        ? ""
+        : published.toLocaleDateString("en-IN", { day: "numeric", month: "short", year: "numeric" }),
+      url: link,
+      source: "Packaging South Asia",
+    });
+    if (items.length >= NEWS_COUNT) break;
+  }
+  return items;
+}
+
+async function loadNews(): Promise<NewsItem[]> {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 8000);
+  try {
+    const response = await fetch(NEWS_FEED_URL, {
+      signal: controller.signal,
+      headers: { "User-Agent": "JetronixWebsite/1.0 (+https://jetronix.in)" },
+    });
+    if (!response.ok) throw new Error(`feed responded ${response.status}`);
+    const items = parseNewsFeed(await response.text());
+    if (!items.length) throw new Error("feed had no usable items");
+    return items;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+app.get("/api/news", async (_req: Request, res: Response) => {
+  const fresh = newsCache && Date.now() - newsCache.fetchedAt < NEWS_TTL_MS;
+  if (fresh) {
+    return res.json({ items: newsCache!.items, updatedAt: newsCache!.fetchedAt });
+  }
+
+  try {
+    // One fetch at a time: concurrent visitors share the same request.
+    newsInFlight = newsInFlight ?? loadNews();
+    const items = await newsInFlight;
+    newsCache = { items, fetchedAt: Date.now() };
+    return res.json({ items, updatedAt: newsCache.fetchedAt });
+  } catch (error) {
+    console.error("News feed unavailable:", error);
+    // Serving yesterday's headlines beats serving none.
+    if (newsCache) {
+      return res.json({ items: newsCache.items, updatedAt: newsCache.fetchedAt, stale: true });
+    }
+    return res.status(503).json({ items: [], error: "News feed unavailable." });
+  } finally {
+    newsInFlight = null;
+  }
+});
+
 // B2B quote inquiries
 app.post("/api/quote", async (req: Request, res: Response) => {
   const { customerName, companyName, email, phone, selectedProduct, industry, message } = req.body;
@@ -287,7 +401,7 @@ app.post("/api/quote", async (req: Request, res: Response) => {
   return res.json({
     success: true,
     inquiryRef,
-    message: "Thank you for your interest! Your quote request has been logged. Our engineers from Indore/Jaipur will contact you within 2 business hours.",
+    message: "Thank you for your interest! Your quote request has been logged. Our engineers will contact you within 2 business hours.",
   });
 });
 

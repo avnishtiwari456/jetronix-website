@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { motion } from "motion/react";
 import { categories, customers } from "../data";
 import { 
@@ -131,6 +131,24 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
   const [isCorporateReadMore, setIsCorporateReadMore] = useState<boolean>(false);
   const [activeArticleModal, setActiveArticleModal] = useState<string | null>(null);
 
+  // Industry headlines, fetched once per visit. The written pieces below stand
+  // in until they arrive, and stay if the feed cannot be reached.
+  type LivePost = { id: string; category: string; title: string; desc: string; date: string; url: string; source: string };
+  const [liveNews, setLiveNews] = useState<LivePost[]>([]);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetch("/api/news")
+      .then((response) => (response.ok ? response.json() : null))
+      .then((data) => {
+        if (!cancelled && data?.items?.length) setLiveNews(data.items);
+      })
+      .catch(() => {
+        /* The written pieces are already on screen. */
+      });
+    return () => { cancelled = true; };
+  }, []);
+
 
   // Redesigned Industries with specialized icons and visual colors
   const industries = [
@@ -243,12 +261,27 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
       desc: "New guidelines published for manufacturing hubs to adopt active solvent recycling, reducing organic VOC emissions on high-speed continuous beverage lines.",
       img: "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=600&q=80",
       date: "February 15, 2026"
+    },
+    {
+      id: "b6",
+      category: "Blog",
+      title: "Choosing between CIJ, TIJ and laser for a new packaging line",
+      desc: "Substrate, line speed and code content decide the technology long before budget does. A side-by-side look at where each one earns its place.",
+      img: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&w=600&q=80",
+      date: "January 22, 2026"
     }
   ];
 
-  const filteredPosts = activeBlogTab === "All" 
-    ? blogPosts 
-    : blogPosts.filter(post => post.category === activeBlogTab);
+  // Live headlines replace the written pieces once the feed answers.
+  const posts = liveNews.length ? liveNews : blogPosts;
+
+  // Tabs follow whatever is on screen, since the feed uses its own categories.
+  const blogTabs = ["All", ...Array.from(new Set(posts.map((post) => post.category)))];
+  const activeTab = blogTabs.includes(activeBlogTab) ? activeBlogTab : "All";
+
+  const filteredPosts = activeTab === "All"
+    ? posts
+    : posts.filter(post => post.category === activeTab);
 
   return (
     <div className="space-y-24 pb-24 bg-[#f8fafc]" id="home-overview-container">
@@ -510,8 +543,8 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
           
           {/* Custom Category pills bar with animated background sliding */}
           <div className="bg-slate-100 p-1 rounded-2xl border border-slate-200/70 flex flex-wrap gap-1 text-xs font-bold justify-center" id="blog-pills-bar">
-            {["All", "News", "Blog", "Case Studies"].map((tab) => {
-              const isActive = activeBlogTab === tab;
+            {blogTabs.map((tab) => {
+              const isActive = activeTab === tab;
               return (
                 <button
                   key={tab}
@@ -542,27 +575,29 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
               className="bg-white border border-slate-200/90 rounded-3xl overflow-hidden hover:shadow-2xl hover:border-slate-300 transition-all duration-300 flex flex-col justify-between group"
             >
               <div>
-                {/* Floating tags & Zoomable Cover image */}
-                <div className="relative h-56 bg-slate-100 overflow-hidden">
-                  <img 
-                    src={post.img} 
-                    alt={post.title} 
-                    className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-700 ease-out"
-                    referrerPolicy="no-referrer"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent pointer-events-none" />
-                  
-                  {/* Styled Badge */}
-                  <span className={`absolute top-4 left-4 text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg shadow-md border ${
-                    post.category === "News" 
-                      ? "bg-emerald-50 text-emerald-700 border-emerald-200" 
-                      : post.category === "Blog" 
-                      ? "bg-indigo-50 text-indigo-700 border-indigo-200" 
-                      : "bg-amber-50 text-amber-700 border-amber-200"
-                  }`}>
-                    {post.category}
-                  </span>
-                </div>
+                {/* A cover image for the written pieces; the feed carries none,
+                    so those headlines get a plain banner instead. */}
+                {post.img ? (
+                  <div className="relative h-56 bg-slate-100 overflow-hidden">
+                    <img
+                      src={post.img}
+                      alt={post.title}
+                      className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-700 ease-out"
+                      referrerPolicy="no-referrer"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-slate-950/10 to-transparent pointer-events-none" />
+                    <span className="absolute top-4 left-4 text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg shadow-md border bg-white/95 text-[#2564AF] border-blue-200">
+                      {post.category}
+                    </span>
+                  </div>
+                ) : (
+                  <div className="relative h-20 bg-gradient-to-br from-[#2764B0] to-[#1B4F8F] flex items-end px-6 pb-4">
+                    <div className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff0f_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0f_1px,transparent_1px)] bg-[size:22px_22px] pointer-events-none" />
+                    <span className="relative text-[9px] font-black uppercase tracking-widest px-3 py-1.5 rounded-lg bg-white/15 border border-white/25 text-white">
+                      {post.category}
+                    </span>
+                  </div>
+                )}
 
                 <div className="p-6 space-y-3.5">
                   <span className="text-[9px] text-[#2564AF] font-mono uppercase font-black tracking-widest flex items-center gap-1">
@@ -577,16 +612,30 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                 </div>
               </div>
 
-              {/* Verified Badge Footer */}
-              <div className="px-6 py-4 border-t border-slate-50 bg-slate-50/50 mt-4 flex justify-between items-center text-xs">
-                <span className="text-[9px] text-slate-400 uppercase font-mono tracking-widest font-bold">✓ Verified</span>
-                <button 
-                  onClick={() => setActiveArticleModal(post.title)}
-                  className="text-[#2564AF] font-black hover:underline cursor-pointer flex items-center gap-1 uppercase tracking-widest font-mono text-[9px]"
-                >
-                  <span>Read Article</span>
-                  <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
-                </button>
+              {/* Where it came from, and where to read the rest */}
+              <div className="px-6 py-4 border-t border-slate-50 bg-slate-50/50 mt-4 flex justify-between items-center gap-3 text-xs">
+                <span className="text-[9px] text-slate-400 uppercase font-mono font-bold truncate min-w-0">
+                  {post.source ? `via ${post.source}` : "✓ Verified"}
+                </span>
+                {post.url ? (
+                  <a
+                    href={post.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#2564AF] font-black hover:underline cursor-pointer flex items-center gap-1 uppercase tracking-widest font-mono text-[9px] shrink-0"
+                  >
+                    <span>Read Article</span>
+                    <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                  </a>
+                ) : (
+                  <button
+                    onClick={() => setActiveArticleModal(post.title)}
+                    className="text-[#2564AF] font-black hover:underline cursor-pointer flex items-center gap-1 uppercase tracking-widest font-mono text-[9px] shrink-0"
+                  >
+                    <span>Read Article</span>
+                    <ArrowRight className="w-3 h-3 transition-transform group-hover:translate-x-1" />
+                  </button>
+                )}
               </div>
             </div>
           ))}
