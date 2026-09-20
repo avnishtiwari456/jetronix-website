@@ -107,6 +107,22 @@ export default function ProductDetail({ product, onRequestQuote, onNavigateToPro
             </div>
           </div>
 
+          {/* The manufacturer's own write-up, where there is one. */}
+          {product.description && product.description.length > 0 && (
+            <div className="mt-8 pt-6 border-t border-slate-200" id={`product-overview-${product.id}`}>
+              <h2 className="font-display font-bold text-sm uppercase tracking-wider text-slate-900 mb-4">
+                Product Overview
+              </h2>
+              <div className="space-y-3.5 max-w-3xl">
+                {product.description.map((para, idx) => (
+                  <p key={idx} className="text-slate-600 text-sm leading-relaxed font-light">
+                    {para}
+                  </p>
+                ))}
+              </div>
+            </div>
+          )}
+
           <div className="mt-8 pt-6 border-t border-slate-200">
             <h2 className="font-display font-bold text-sm uppercase tracking-wider text-slate-900 mb-4">
               Product Specifications

@@ -27,6 +27,8 @@ export interface Product {
   category: ProductCategory;
   /** Photo basename in /public/products (without extension). Omit if no photo exists. */
   image?: string;
+  /** Prose from the manufacturer's literature, one string per paragraph. */
+  description?: string[];
   /** The manufacturer's specification table, reproduced as published. */
   specs: SpecRow[];
 }
