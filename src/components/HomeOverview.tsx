@@ -137,6 +137,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
     { 
       name: "Beverage", 
       icon: GlassWater,
+      image: "/industries/beverage.jpg",
       color: "from-sky-500/10 to-blue-500/5 text-sky-600 border-sky-100 hover:border-sky-300 hover:shadow-sky-500/10",
       activeBg: "bg-sky-50/70 border-sky-500 text-sky-700 shadow-sky-500/10",
       accentColor: "#0284c7",
@@ -616,7 +617,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
               >
                 <button
                   onClick={() => setSelectedIndustry(isSelected ? null : ind.name)}
-                  className={`w-24 h-24 sm:w-28 sm:h-28 rounded-3xl border flex items-center justify-center cursor-pointer transition-all duration-300 relative bg-gradient-to-br ${
+                  className={`w-24 h-24 sm:w-28 sm:h-28 rounded-3xl border flex items-center justify-center cursor-pointer transition-all duration-300 relative overflow-hidden bg-gradient-to-br ${
                     isSelected 
                       ? ind.activeBg + " border-2 scale-105 shadow-xl shadow-slate-200" 
                       : ind.color + " bg-white hover:scale-105 hover:shadow-xl shadow-md shadow-slate-100"
@@ -624,12 +625,20 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                   id={`industry-btn-${idx}`}
                 >
                   {/* Orbit active outline */}
-                  <div className={`absolute inset-2 rounded-2xl border border-dashed transition-all opacity-40 ${
+                  <div className={`absolute inset-2 rounded-2xl border border-dashed transition-all opacity-40 z-20 pointer-events-none ${
                     isSelected ? "border-current animate-spin" : "border-slate-100 group-hover:border-current"
                   }`} style={{ animationDuration: "35s" }} />
 
-                  {/* Clean lucide industrial icon */}
-                  <IconComp className="w-8 h-8 relative z-10 transition-transform group-hover:scale-110 duration-300" />
+                  {ind.image ? (
+                    <img
+                      src={ind.image}
+                      alt={ind.name}
+                      loading="lazy"
+                      className="absolute inset-0 w-full h-full object-cover rounded-3xl transition-transform group-hover:scale-105 duration-300"
+                    />
+                  ) : (
+                    <IconComp className="w-8 h-8 relative z-10 transition-transform group-hover:scale-110 duration-300" />
+                  )}
                 </button>
                 
                 <button
