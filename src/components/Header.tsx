@@ -323,7 +323,7 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
                               <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-sky-400" />
                             </span>
                             <span className="text-[8px] md:text-[9px] text-slate-300 font-medium font-sans uppercase tracking-wider">
-                              SLA Support Desk: <b className="text-white">+91 7726806099</b>
+                              Support Desk: <b className="text-white">+91 7726806099</b>
                             </span>
                           </div>
                           <button
@@ -375,7 +375,7 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
 
             </nav>
 
-            {/* Right Side: SLA Alert Banner & Premium Get In Touch Pill Button */}
+            {/* Right Side: support number and the Get In Touch button */}
             <div className="hidden lg:flex items-center gap-4">
               
               {/* Submitted Inquiry Alert */}
@@ -437,7 +437,7 @@ export default function Header({ currentPage, onNavigate, onNavigateToProduct, a
                 </div>
 
                 <div className="pt-3 border-t border-slate-100 flex flex-col gap-2">
-                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">SLA Support Desk</div>
+                  <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Support Desk</div>
                   <a
                     href={`https://wa.me/91${companyPhone}`}
                     target="_blank"

@@ -108,14 +108,14 @@ const featuredProducts = [
     categoryId: "conveyor",
     name: "Jetronix Coding Conveyor",
     category: "Coding Conveyors",
-    type: "Stainless Line Conveyor",
-    desc: "Carries the product past the printhead at a steady speed. Adjustable head mount and side guides, with a stainless collection tray at the outfeed.",
+    type: "MS / SS Coding Conveyor",
+    desc: "Carries the product past the printhead at a set speed. Built in 450 mm and 750 mm frame widths, with a variable-speed drive and adjustable belt and height.",
     image: "/products/conveyor.jpg",
     imageWebp: "/products/conveyor.webp",
     specs: {
-      speed: "Steady line feed",
-      resolution: "Adjustable head mount",
-      ink: "None - carries the coder",
+      speed: "5 to 30 m/min, variable",
+      resolution: "Height adjustable +/- 50 mm",
+      ink: "PVC black belt, 2 mm",
       substrates: "Cartons, Pouches, Bottles, Packs"
     },
     badge: "Line Ready"
@@ -217,8 +217,8 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
     {
       id: "b3",
       category: "News",
-      title: "Jetronix opens expanded engineering capacity in Jaipur",
-      desc: "Our Indore and Jaipur workshops have merged capacities to guarantee faster turnaround on calibration, spares and on-site service across the region.",
+      title: "Jetronix expands its engineering and calibration capacity",
+      desc: "Added bench capacity for calibration, spares and on-site service, so machines go back to the line faster after a service call.",
       img: "https://images.unsplash.com/photo-1528605248644-14dd04022da1?auto=format&fit=crop&w=600&q=80",
       date: "April 10, 2026"
     },
@@ -226,7 +226,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
       id: "b4",
       category: "Case Studies",
       title: "Pharma Giant slashes downtime by 40% using automated TIJ Cartridge Systems",
-      desc: "A major pharmaceutical bottling line in Indore Manesar successfully deployed 12 thermal inkjet heads with vision inspect cameras to guarantee zero misprints on blister paths.",
+      desc: "A major pharmaceutical bottling line deployed twelve thermal inkjet heads with vision inspection cameras to guarantee zero misprints on blister paths.",
       img: "https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=600&q=80",
       date: "March 29, 2026"
     },
@@ -338,7 +338,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                       </div>
                     )}
                     {/* Keeps the white-out product shots readable behind the overlaid label */}
-                    <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-black/85 via-black/45 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-black/90 via-black/70 to-transparent" />
                     
                     {/* Top Right: Distinct Badge */}
                     <div className="absolute top-4 right-4 bg-blue-600/90 border border-blue-400 text-white font-mono text-[8px] font-bold px-2 py-1 rounded-md uppercase tracking-wider">
@@ -347,7 +347,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
 
                     {/* Bottom Left Overlay info */}
                     <div className="absolute bottom-4 left-4 text-left">
-                      <span className="text-sky-400 font-mono text-[9px] font-bold uppercase tracking-widest">{prod.category}</span>
+                      <span className="text-sky-300 font-mono text-[9px] font-bold uppercase tracking-widest">{prod.category}</span>
                       <h4 className="text-white text-lg font-black tracking-tight leading-tight uppercase">{prod.name}</h4>
                     </div>
                   </div>
@@ -398,7 +398,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                         }}
                         className="bg-[#2564AF] hover:bg-blue-700 text-white text-[10px] font-extrabold uppercase py-3 rounded-xl transition-all cursor-pointer text-center"
                       >
-                        SLA Quote Desk
+                        Get a Quote
                       </button>
                     </div>
 
@@ -467,9 +467,9 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
           <div className="absolute -bottom-48 -right-48 w-96 h-96 bg-[#2564AF]/20 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute top-10 left-10 w-72 h-72 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 max-w-3xl">
+          <div className="relative z-10 max-w-3xl mx-auto text-center">
             
-            {/* Left Info Column */}
+            {/* Company statement */}
             <div className="space-y-6">
               <span className="text-[#3b82f6] font-mono text-[10px] font-extrabold uppercase tracking-widest bg-slate-950/60 border border-blue-500/20 px-4 py-2 rounded-full inline-flex items-center gap-2">
                 <Sparkles className="w-4 h-4 animate-pulse text-sky-400" /> INDUSTRIAL CODING & MARKING
@@ -498,7 +498,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
               Jetronix Editorial
             </span>
             <h3 className="text-2xl sm:text-3xl font-black text-[#122540] uppercase tracking-tight mt-3">
-              B2B Knowledge Hub
+              Knowledge Hub
             </h3>
           </div>
           
@@ -573,7 +573,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
 
               {/* Verified Badge Footer */}
               <div className="px-6 py-4 border-t border-slate-50 bg-slate-50/50 mt-4 flex justify-between items-center text-xs">
-                <span className="text-[9px] text-slate-400 uppercase font-mono tracking-widest font-bold">✓ B2B Verified</span>
+                <span className="text-[9px] text-slate-400 uppercase font-mono tracking-widest font-bold">✓ Verified</span>
                 <button 
                   onClick={() => setActiveArticleModal(post.title)}
                   className="text-[#2564AF] font-black hover:underline cursor-pointer flex items-center gap-1 uppercase tracking-widest font-mono text-[9px]"
@@ -783,7 +783,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                       <div className="space-y-2">
                         <span className="font-extrabold text-[#122540] uppercase block tracking-wider font-mono text-[9px] text-[#2564AF]">Dual-Workshop Support Grid</span>
                         <p className="leading-relaxed">
-                          With our dual workshops located strategically in <strong>Indore</strong> and <strong>Jaipur</strong>, we provide end-to-end local hardware and chemical fluid servicing. Our engineers undergo comprehensive certifications directly from original German guidelines to assemble, test, and troubleshoot continuous inkjet (CIJ), thermal transfer overprinters (TTO), and high-velocity CO2 laser cabinets.
+                          We provide end-to-end hardware and fluid servicing across India. Our engineers undergo comprehensive certifications directly from original German guidelines to assemble, test, and troubleshoot continuous inkjet (CIJ), thermal transfer overprinters (TTO), and high-velocity CO2 laser cabinets.
                         </p>
                       </div>
                       <div className="space-y-2">
@@ -879,9 +879,9 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
           <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-[#2564AF]/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -top-32 -left-32 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="relative z-10 max-w-2xl">
+          <div className="relative z-10 max-w-2xl mx-auto text-center">
             
-            {/* Left Info Panel */}
+            {/* Callback invitation */}
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 bg-[#2564AF]/20 border border-blue-500/30 text-sky-400 px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase">
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-ping inline-block" /> Live Callback Desk
@@ -889,7 +889,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
               <h3 className="text-2xl sm:text-3xl lg:text-4xl font-sans font-black tracking-tight leading-none text-white uppercase">
                 Need More <br className="hidden sm:inline" />Information?
               </h3>
-              <p className="text-xs sm:text-sm text-slate-300 max-w-md leading-relaxed font-light">
+              <p className="text-xs sm:text-sm text-slate-300 max-w-md mx-auto leading-relaxed font-light">
                 Contact us about our industrial printing, coding and marking solutions. Our technical team responds to callback requests in under 4 hours.
               </p>
               
@@ -943,7 +943,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                 </p>
                 <p className="bg-blue-50 border border-blue-200/50 p-3 rounded-xl text-[11px] text-[#2564AF] font-semibold flex items-start gap-2 leading-normal">
                   <span className="shrink-0 mt-0.5">ℹ️</span>
-                  <span>Please submit a formal request via our <strong>Partners Quote & SLA Support Sheet</strong>. Our coordinators in either Indore or Jaipur will dispatch the requested PDF dossiers immediately.</span>
+                  <span>Please submit a formal request via our <strong>Quote & Support Sheet</strong> and our coordinators will dispatch the requested PDF dossiers immediately.</span>
                 </p>
               </div>
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import WhatsAppIcon from "./WhatsAppIcon";
-import { products, categories, channelPartners } from "../data";
+import { products, categories, channelPartners, companyPhone } from "../data";
 import { Phone, Mail, MapPin, ClipboardList, Send, FileText, CheckCircle2, ShieldCheck, Truck, Users, AlertTriangle, MapPinned } from "lucide-react";
 
 interface JointVentureProps {
@@ -62,7 +62,7 @@ export default function JointVenture({ prefilledSampleDetails, quoteTarget, onQu
     e.preventDefault();
     setFormError("");
     
-    if (!customerName || !companyName || !email || !phone) {
+    if (!customerName.trim() || !companyName.trim() || !email.trim() || !phone.trim()) {
       setFormError("All required fields (*) must be completed before submitting commercial sheet.");
       return;
     }
@@ -89,16 +89,9 @@ export default function JointVenture({ prefilledSampleDetails, quoteTarget, onQu
       }
     } catch (error) {
       console.error("Quote submission error:", error);
-      // Simulate fallback response if backend isn't ready, so B2B UX doesn't freeze
-      const ref = "JT-B2B-" + Math.floor(Math.random() * 90000 + 10000);
-      setSubmitResult({
-        success: true,
-        inquiryRef: ref,
-        message: "Your quotation request has been safely captured by our support network. A localized engineer from either Indore (Runicha) or Jaipur (Best Code) will contact your plant shortly to coordinate print testing."
-      });
-      if (onQuoteSubmitted) {
-        onQuoteSubmitted(ref);
-      }
+      setFormError(
+        `We could not reach our server, so this request has not been sent. Please try again, or message us on WhatsApp at +91 ${companyPhone}.`
+      );
     } finally {
       setIsSubmitting(false);
     }
@@ -117,7 +110,7 @@ export default function JointVenture({ prefilledSampleDetails, quoteTarget, onQu
             Support &amp; Service Network
           </h2>
           <p className="text-slate-600 mt-3 text-base font-light leading-relaxed">
-            Jetronix Technology India LLP supports its machines through regional partners across India, so support dispatch is fast and billing is local and GST-compliant.
+            Jetronix Technology India LLP supports its machines through regional partners across India, so support reaches your plant from close by.
           </p>
         </div>
 
@@ -184,13 +177,13 @@ export default function JointVenture({ prefilledSampleDetails, quoteTarget, onQu
           </div>
         </div>
 
-        {/* SLA & Logistics Commitments Row */}
+        {/* Service and logistics commitments */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16" id="logistics-row">
           <div className="bg-white p-6 rounded-2xl border border-slate-200 text-center shadow-sm">
             <CheckCircle2 className="w-8 h-8 text-blue-500 mx-auto mb-3" />
-            <h4 className="font-display font-bold text-slate-900 text-xs uppercase tracking-wider">4-Hour Site Callback SLA</h4>
+            <h4 className="font-display font-bold text-slate-900 text-xs uppercase tracking-wider">4-Hour Site Callback</h4>
             <p className="text-slate-500 text-xs mt-2 leading-relaxed font-sans font-light">
-              Submit your inquiry and our support engineers in Indore or Jaipur will contact your supervisor within 4 hours to troubleshoot parameters.
+              Submit your inquiry and our support engineers will contact you within 4 hours to troubleshoot parameters.
             </p>
           </div>
           <div className="bg-white p-6 rounded-2xl border border-slate-200 text-center shadow-sm">
@@ -209,7 +202,7 @@ export default function JointVenture({ prefilledSampleDetails, quoteTarget, onQu
           </div>
         </div>
 
-        {/* B2B Quote Submission Section */}
+        {/* Quote request */}
         <div id="quote-form-anchor" className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-10 shadow-xl shadow-slate-100/30">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
             
@@ -217,10 +210,10 @@ export default function JointVenture({ prefilledSampleDetails, quoteTarget, onQu
             <div className="lg:col-span-5 space-y-6 lg:pr-4">
               <div className="flex items-center gap-2.5 text-blue-600">
                 <ClipboardList className="w-6 h-6 text-blue-600" />
-                <h3 className="font-display font-extrabold text-xl text-slate-900">B2B Commercial Quotation</h3>
+                <h3 className="font-display font-extrabold text-xl text-slate-900">Request a Quotation</h3>
               </div>
               <p className="text-slate-600 text-sm leading-relaxed font-light">
-                Submit our secure B2B pricing sheet. Your parameters are instantly routed to our Indore or Jaipur hubs depending on geographical coordinates to secure rapid SLA dispatch and freight rates.
+                Send us your requirement and our technical team will come back with pricing, the right machine for the job and dispatch timelines.
               </p>
 
               <div className="space-y-4 pt-4 text-xs font-bold text-slate-700" id="form-perks-list">
@@ -388,7 +381,7 @@ export default function JointVenture({ prefilledSampleDetails, quoteTarget, onQu
                     <CheckCircle2 className="w-16 h-16 text-blue-500 mx-auto animate-bounce" />
                     
                     <h3 className="font-display font-extrabold text-xl text-slate-900">
-                      B2B Quotation Logged!
+                      Quotation Request Logged!
                     </h3>
 
                     {submitResult.inquiryRef && (

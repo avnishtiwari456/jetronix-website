@@ -270,7 +270,7 @@ export default function Hero({ onNavigateToProduct }: HeroProps) {
 
       {/* Bottom Category Tab Navigator Bar */}
       <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 z-20 pt-4">
-        <div className="grid grid-cols-4 gap-2 bg-sky-700/70 p-2 rounded-2xl border border-white/10 backdrop-blur-md shadow-2xl">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-sky-700/70 p-2 rounded-2xl border border-white/10 backdrop-blur-md shadow-2xl">
           {slideTitles.map((slide, idx) => {
             const isActive = activeSlide === idx;
             return (
@@ -293,7 +293,7 @@ export default function Hero({ onNavigateToProduct }: HeroProps) {
                   {isActive && <Sparkles className="w-3 h-3 text-sky-300 animate-pulse hidden sm:block" />}
                 </div>
 
-                <div className="text-[9px] md:text-[11px] font-extrabold uppercase tracking-wide mt-1 leading-tight break-words">
+                <div className="text-[9px] md:text-[11px] font-extrabold uppercase tracking-wide mt-1 leading-tight">
                   {slide.category.split(" ")[0]} {slide.category.split(" ")[1] || ""}
                 </div>
 

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import WhatsAppIcon from "./WhatsAppIcon";
-import { channelPartners, companyAddress, socialLinks } from "../data";
+import { channelPartners, companyAddress, companyPhone, socialLinks } from "../data";
 import {
   MapPin, Send, Loader2,
   Check, AlertTriangle, Users, MapPinned,
@@ -13,7 +13,7 @@ const EMPTY_FORM = {
   company: "",
   email: "",
   phone: "",
-  location: "Indore Node (Central Hub)",
+  location: "",
   message: "",
 };
 
@@ -116,7 +116,7 @@ export default function ContactUs() {
                   <div className="space-y-2">
                     <h2 className="text-xl md:text-2xl font-black text-[#122540] tracking-tight">INQUIRY SENT SUCCESSFULLY</h2>
                     <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
-                      Thank you for contacting us, <strong className="text-slate-800">{formData.name}</strong>. A technical representative from our <strong className="text-slate-800">{formData.location}</strong> team will review your message shortly.
+                      Thank you for contacting us, <strong className="text-slate-800">{formData.name}</strong>. A technical representative will review your message and get back to you shortly.
                     </p>
                   </div>
 
@@ -127,7 +127,7 @@ export default function ContactUs() {
                     </div>
                     <p><span className="text-slate-500">TICKET REF:</span> <span className="font-extrabold text-white">{ticketRef}</span></p>
                     <p><span className="text-slate-500">COMPANY:</span> <span className="text-white">{formData.company}</span></p>
-                    <p><span className="text-slate-500">LOCATION:</span> <span className="text-white">{formData.location}</span></p>
+                    <p><span className="text-slate-500">REGION:</span> <span className="text-white">{formData.location || "Not specified"}</span></p>
                   </div>
 
                   <button
@@ -184,7 +184,7 @@ export default function ContactUs() {
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({...formData, phone: e.target.value})}
-                        placeholder="e.g. +91 98281 06099"
+                        placeholder="e.g. +91 98765 43210"
                         className="w-full text-xs font-mono font-bold border border-slate-200 rounded-xl p-3 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#2564AF] transition-all"
                       />
                     </div>
@@ -202,16 +202,19 @@ export default function ContactUs() {
                     </div>
                   </div>
 
-                  {/* Target Node Destination */}
+                  {/* Region, so the enquiry reaches the right channel partner */}
                   <div className="space-y-1.5">
-                    <label className="text-[10px] font-black uppercase tracking-wider text-slate-400 block">Select Nearest Hub/Office</label>
+                    <label className="text-[10px] font-black uppercase tracking-wider text-slate-400 block">Your Region (Optional)</label>
                     <select 
                       value={formData.location}
                       onChange={(e) => setFormData({...formData, location: e.target.value})}
                       className="w-full text-xs font-extrabold border border-slate-200 rounded-xl p-3 bg-slate-50/50 focus:bg-white focus:outline-none focus:ring-1 focus:ring-[#2564AF] transition-all"
                     >
-                      <option value="Indore Node (Central Hub)">Indore Hub</option>
-                      <option value="Jaipur Node (North Hub)">Jaipur Hub</option>
+                      <option value="">Select your region</option>
+                      {channelPartners.map((partner) => (
+                        <option key={partner.region} value={partner.region}>{partner.region}</option>
+                      ))}
+                      <option value="Rest of India">Rest of India</option>
                     </select>
                   </div>
 
@@ -219,7 +222,7 @@ export default function ContactUs() {
                   <div className="space-y-1.5">
                     <label className="text-[10px] font-black uppercase tracking-wider text-slate-400 block">Your Message / Query Details</label>
                     <textarea 
-                      rows={5}
+                      rows={9}
                       value={formData.message}
                       onChange={(e) => setFormData({...formData, message: e.target.value})}
                       placeholder="Type details about ink supply requirements, printer models, spare parts, or any query here..."
@@ -335,13 +338,13 @@ export default function ContactUs() {
                 <span className="select-all">{companyAddress}</span>
               </p>
               <a
-                href="https://wa.me/919828106099"
+                href={`https://wa.me/91${companyPhone}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 p-3 rounded-2xl bg-[#2564AF] hover:bg-blue-600 text-white font-mono text-sm font-black tracking-wider transition-all cursor-pointer"
               >
                 <WhatsAppIcon className="w-4 h-4" />
-                <span>+91 98281 06099</span>
+                <span>+91 {companyPhone.slice(0,5)} {companyPhone.slice(5)}</span>
               </a>
             </div>
 
@@ -357,7 +360,7 @@ export default function ContactUs() {
                 Connect with our product specialist immediately on WhatsApp for instant spare quote and catalog dispatch.
               </p>
               <a 
-                href="https://wa.me/919828106099"
+                href={`https://wa.me/91${companyPhone}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-2.5 rounded-xl text-xs font-mono font-bold transition-all shadow-sm cursor-pointer"
