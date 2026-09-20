@@ -314,6 +314,40 @@ export const companyAddress =
   "G24-26, Ground Floor, Arg North Avenue, Road No. 9, VKI Area, Jaipur - 302013";
 
 /**
+ * The company's social profiles, as supplied. `icon` names the glyph the
+ * footer draws; "whatsapp" uses the in-house WhatsApp mark.
+ */
+export const socialLinks: { label: string; icon: string; url: string }[] = [
+  {
+    label: "LinkedIn",
+    icon: "linkedin",
+    // Supplied as a LinkedIn settings URL, which only opens for the account
+    // owner. Swap in the public company page URL once it exists.
+    url: "https://www.linkedin.com/public-profile/settings/"
+  },
+  {
+    label: "WhatsApp Channel",
+    icon: "whatsapp",
+    url: "https://whatsapp.com/channel/0029VbDfETRHAdNTchYWZY1z"
+  },
+  {
+    label: "Instagram",
+    icon: "instagram",
+    url: "https://www.instagram.com/jetronix_printech_india_llp"
+  },
+  {
+    label: "Facebook",
+    icon: "facebook",
+    url: "https://www.facebook.com/share/1DyPQRoMqR/"
+  },
+  {
+    label: "YouTube",
+    icon: "youtube",
+    url: "https://youtube.com/@jetronix_printech_india_llp"
+  }
+];
+
+/**
  * Customers, as supplied by the company. Drop a logo file into
  * public/clients and name it here; until then the strip shows the name.
  */

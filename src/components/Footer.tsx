@@ -1,9 +1,10 @@
 import React from "react";
 import Logo from "./Logo";
-import { companyAddress } from "../data";
+import WhatsAppIcon from "./WhatsAppIcon";
+import { companyAddress, socialLinks } from "../data";
 import { 
   CheckCircle2, 
-  ChevronRight, MapPin, Facebook, Twitter, Linkedin, Instagram, Youtube, Globe
+  ChevronRight, MapPin, Facebook, Linkedin, Instagram, Youtube, Globe
 } from "lucide-react";
 
 interface FooterProps {
@@ -20,6 +21,15 @@ const footerProductLinks: { label: string; productId?: string; category?: string
   { label: "JLC30 / JLC60 CO2 Lasers", category: "laser" },
   { label: "TTO Overprinters", category: "tto" }
 ];
+
+/** Maps a social entry's `icon` name to the glyph that draws it. */
+const socialIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  linkedin: Linkedin,
+  whatsapp: WhatsAppIcon,
+  instagram: Instagram,
+  facebook: Facebook,
+  youtube: Youtube
+};
 
 export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps) {
   return (
@@ -52,22 +62,23 @@ export default function Footer({ onNavigate, onNavigateToProduct }: FooterProps)
             {/* Premium Social Connections */}
             <div className="space-y-2.5 pt-1">
               <div className="text-[10px] font-mono tracking-widest text-slate-500 font-bold uppercase">Connect With Us</div>
-              <div className="flex items-center gap-2">
-                <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-[#091220] hover:bg-[#2564AF] text-slate-400 hover:text-white rounded-xl border border-slate-800/60 hover:border-[#2564AF] transition-all duration-200" title="LinkedIn">
-                  <Linkedin className="w-4 h-4" />
-                </a>
-                <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-[#091220] hover:bg-[#2564AF] text-slate-400 hover:text-white rounded-xl border border-slate-800/60 hover:border-[#2564AF] transition-all duration-200" title="Facebook">
-                  <Facebook className="w-4 h-4" />
-                </a>
-                <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-[#091220] hover:bg-[#2564AF] text-slate-400 hover:text-white rounded-xl border border-slate-800/60 hover:border-[#2564AF] transition-all duration-200" title="Twitter">
-                  <Twitter className="w-4 h-4" />
-                </a>
-                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-[#091220] hover:bg-[#2564AF] text-slate-400 hover:text-white rounded-xl border border-slate-800/60 hover:border-[#2564AF] transition-all duration-200" title="Instagram">
-                  <Instagram className="w-4 h-4" />
-                </a>
-                <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="p-2.5 bg-[#091220] hover:bg-[#2564AF] text-slate-400 hover:text-white rounded-xl border border-slate-800/60 hover:border-[#2564AF] transition-all duration-200" title="YouTube">
-                  <Youtube className="w-4 h-4" />
-                </a>
+              <div className="flex flex-wrap items-center gap-2">
+                {socialLinks.map((social) => {
+                  const Icon = socialIcons[social.icon] ?? Globe;
+                  return (
+                    <a
+                      key={social.label}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={social.label}
+                      aria-label={social.label}
+                      className="p-2.5 bg-[#091220] hover:bg-[#2564AF] text-slate-400 hover:text-white rounded-xl border border-slate-800/60 hover:border-[#2564AF] transition-all duration-200"
+                    >
+                      <Icon className="w-4 h-4" />
+                    </a>
+                  );
+                })}
               </div>
             </div>
 

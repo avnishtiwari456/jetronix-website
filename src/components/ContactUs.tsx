@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
 import WhatsAppIcon from "./WhatsAppIcon";
-import { channelPartners, companyAddress } from "../data";
+import { channelPartners, companyAddress, socialLinks } from "../data";
 import {
   MapPin, Send, Loader2,
-  Check, AlertTriangle, Users, MapPinned
+  Check, AlertTriangle, Users, MapPinned,
+  Share2, Globe, Linkedin, Instagram, Facebook, Youtube
 } from "lucide-react";
 
 const EMPTY_FORM = {
@@ -14,6 +15,15 @@ const EMPTY_FORM = {
   phone: "",
   location: "Indore Node (Central Hub)",
   message: "",
+};
+
+/** Same mapping the footer uses, so both rows stay in step with the data. */
+const contactSocialIcons: Record<string, React.ComponentType<{ className?: string }>> = {
+  linkedin: Linkedin,
+  whatsapp: WhatsAppIcon,
+  instagram: Instagram,
+  facebook: Facebook,
+  youtube: Youtube
 };
 
 export default function ContactUs() {
@@ -355,6 +365,34 @@ export default function ContactUs() {
                 <span>Chat with Specialist</span>
                 <WhatsAppIcon className="w-3.5 h-3.5" />
               </a>
+            </div>
+
+            {/* Social profiles */}
+            <div className="bg-white border border-slate-200 rounded-3xl p-5 space-y-3.5">
+              <div className="flex items-center gap-2">
+                <span className="p-1 bg-blue-50 text-[#2564AF] rounded-lg shrink-0">
+                  <Share2 className="w-4 h-4" />
+                </span>
+                <span className="font-bold text-xs text-[#122540] uppercase tracking-wider">Follow Us</span>
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                {socialLinks.map((social) => {
+                  const Icon = contactSocialIcons[social.icon] ?? Globe;
+                  return (
+                    <a
+                      key={social.label}
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title={social.label}
+                      aria-label={social.label}
+                      className="p-2.5 bg-slate-50 hover:bg-[#2564AF] text-slate-500 hover:text-white rounded-xl border border-slate-200 hover:border-[#2564AF] transition-all duration-200"
+                    >
+                      <Icon className="w-4 h-4" />
+                    </a>
+                  );
+                })}
+              </div>
             </div>
 
           </div>
