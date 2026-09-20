@@ -12,7 +12,7 @@ export const categories: CategoryMeta[] = [
   { id: "tto", label: "TTO Printers", shortLabel: "TTO",
     description: "Thermal transfer overprinters for film, labels and flexible packaging." },
   { id: "conveyor", label: "Coding Conveyors", shortLabel: "Conveyors",
-    description: "Stainless conveyor lines that carry the product past the coder." }
+    description: "MS and SS belt conveyors that carry the product past the coder at a set speed." }
 ];
 
 type Row = [string, string];
@@ -296,6 +296,82 @@ export const products: Product[] = [
     ["Discharge", "Stainless collection tray at the outfeed"],
     ["Legs", "Adjustable levelling feet"],
     ["Pairs With", "CIJ, TIJ and laser coders"]
+  ]),
+
+  /* ───────  ACV CONVEYORS (standard MS / SS build sheets)  ─────── */
+
+  make("acv450", "Jetronix ACV 450", "conveyor", "Standard Coding Conveyor",
+    "450 mm frame on a 300 mm belt, for pouches, bottles and small cartons.",
+    "conveyor", [
+    ["Conveyor Size", "Width 450 mm x Length 1200 mm x Height 750 mm"],
+    ["Belt Size", "Width 300 mm x Length 2400 mm x Thickness 2 mm"],
+    ["Belt", "PVC black belt"],
+    ["Motor", "Abron 0.25 HP"],
+    ["Gearbox", "Abron 0.5 HP"],
+    ["Drive", "Crompton / Delta 0.5 HP"],
+    ["Speed Control", "AC variable speed"],
+    ["Speed Range", "5 to 30 metres per minute"],
+    ["Control Panel", "With panel support"],
+    ["Belt Adjustment", "Adjustable from both sides"],
+    ["Height Adjustment", "Plus or minus 50 mm"],
+    ["Guides", "One side fixed guide"],
+    ["Construction", "Modular design with bolted construction"],
+    ["Material", "Mild steel 2 mm, powder coated; stainless steel on request"]
+  ], [
+    "The ACV 450 is the compact end of the conveyor range: a 450 mm frame carrying a 300 mm belt, sized for pouches, bottles, small cartons and anything else that does not need a wide bed.",
+    "A 0.25 HP Abron motor drives through a 0.5 HP gearbox, and a Crompton or Delta variable-speed drive sets the belt anywhere between 5 and 30 metres per minute, so the line can be matched to the coder rather than the other way round. The drive panel is supplied fitted.",
+    "The belt adjusts from both sides and the whole frame lifts or drops by 50 mm, which is what puts the print at the right height under a CIJ, TIJ or laser head. A fixed guide on one side keeps the product tracking straight past the printhead.",
+    "Construction is modular and bolted rather than welded, so sections can be changed or extended later. The standard build is 2 mm mild steel, powder coated; stainless steel is available where the line calls for a washdown finish."
+  ]),
+
+  make("acv750", "Jetronix ACV 750", "conveyor", "Standard Coding Conveyor",
+    "750 mm frame on a 600 mm belt, for cartons and wider packs.",
+    "conveyor", [
+    ["Conveyor Size", "Width 750 mm x Length 1200 mm x Height 750 mm"],
+    ["Belt Size", "Width 600 mm x Length 2400 mm x Thickness 2 mm"],
+    ["Belt", "PVC black belt"],
+    ["Motor", "Abron 0.25 HP"],
+    ["Gearbox", "Abron 0.25 HP"],
+    ["Drive", "Crompton / Delta 0.5 HP"],
+    ["Speed Range", "5 to 30 metres per minute"],
+    ["Control Panel", "With panel support"],
+    ["Belt Adjustment", "Adjustable from both sides"],
+    ["Height Adjustment", "Plus or minus 50 mm"],
+    ["Guides", "One side fixed guide"],
+    ["Construction", "Modular design with bolted construction"],
+    ["Material", "Whole machine in mild steel; stainless steel on request"]
+  ], [
+    "The ACV 750 runs the same frame height and length as the ACV 450 but widens the bed to 750 mm with a 600 mm belt, which is the size most shipper cartons and wider packs need.",
+    "Drive is a 0.25 HP Abron motor and matching 0.25 HP gearbox through a Crompton or Delta 0.5 HP drive, giving the same 5 to 30 metres per minute working range. The panel comes supported and fitted.",
+    "Belt tracking adjusts from either side, frame height moves 50 mm up or down to set the throw distance under the printhead, and a fixed guide on one side squares the product up before it reaches the code position.",
+    "The machine is built in mild steel throughout on a bolted modular frame, with a stainless build available on request."
+  ]),
+
+  make("acv750cd", "Jetronix ACV 750 CD", "conveyor", "Automatic Carton Drop Conveyor",
+    "Seven-foot carton drop line running 100 pieces a minute with a fanner attachment.",
+    "conveyor", [
+    ["Conveyor Size", "Width 750 mm x Length 7 ft x Height 750 mm"],
+    ["Belt Size", "Width 600 mm x Length 4 ft x Thickness 2 mm"],
+    ["Belt", "PVC black imported belt, Korea"],
+    ["Motor", "Abron 0.5 HP, single phase"],
+    ["Gearbox", "Abron 0.5 HP, single phase"],
+    ["Drive", "Crompton / Delta 0.5 HP, single phase"],
+    ["Speed Control", "AC variable speed"],
+    ["Throughput", "100 pieces per minute"],
+    ["Speed Range", "5 to 30 metres per minute"],
+    ["Control Panel", "Panel support for the drive, with complete fitting"],
+    ["Feed Type", "Automatic carton drop conveyor"],
+    ["Carton Size", "Minimum 50 mm to maximum 355 mm"],
+    ["Belt Adjustment", "Adjustable belt"],
+    ["Guides", "Fixed guides on both sides"],
+    ["Attachment", "Fanner attachment for product tension"],
+    ["Load", "0.5 kW"],
+    ["Material", "Whole conveyor in mild steel; stainless steel on request"]
+  ], [
+    "The ACV 750 CD is the production version of the range: a seven-foot line built to take cartons automatically rather than have an operator place them. Cartons drop into the feed and the conveyor carries them under the coder at up to 100 pieces a minute.",
+    "It handles cartons from 50 mm up to 355 mm, and a fanner attachment holds tension on the stack so the pieces separate cleanly and arrive one at a time instead of overlapping under the printhead.",
+    "Drive is a single-phase 0.5 HP Abron motor and gearbox through a Crompton or Delta 0.5 HP drive, variable between 5 and 30 metres per minute, drawing 0.5 kW. The drive panel arrives supported and completely fitted.",
+    "Guides are fixed on both sides to hold the carton square through the code position, the imported Korean PVC belt adjusts for tracking, and the frame is mild steel throughout, with stainless available on request."
   ]),
 
   /* ═══════════  DISTRIBUTED RANGE (manufacturer datasheets)  ═══════════ */
