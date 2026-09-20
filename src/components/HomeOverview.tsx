@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { motion } from "motion/react";
-import WhatsAppIcon from "./WhatsAppIcon";
 import { categories, customers } from "../data";
 import { 
-  Award, ShieldCheck, Zap, ArrowRight, Building, Clock, 
+  Award, ShieldCheck, Zap, ArrowRight, Clock, 
   RefreshCw, FileText, Settings, Sparkles, Cpu, 
   Layers, CheckCircle, Flame, Minimize, Maximize, Printer, Sliders,
   HelpCircle as QuestionIcon, Plus, Eye, AlertCircle, Phone, Mail, MapPin,
@@ -468,10 +467,10 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
           <div className="absolute -bottom-48 -right-48 w-96 h-96 bg-[#2564AF]/20 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute top-10 left-10 w-72 h-72 bg-sky-500/10 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center relative z-10">
+          <div className="relative z-10 max-w-3xl">
             
             {/* Left Info Column */}
-            <div className="lg:col-span-7 space-y-6">
+            <div className="space-y-6">
               <span className="text-[#3b82f6] font-mono text-[10px] font-extrabold uppercase tracking-widest bg-slate-950/60 border border-blue-500/20 px-4 py-2 rounded-full inline-flex items-center gap-2">
                 <Sparkles className="w-4 h-4 animate-pulse text-sky-400" /> INDUSTRIAL CODING & MARKING
               </span>
@@ -487,34 +486,6 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
 
             </div>
 
-            {/* Right node statistics/visual cards */}
-            <div className="lg:col-span-5 space-y-4">
-              
-              {/* Indore Node Card */}
-              <div className="bg-slate-950/80 border border-blue-900/20 p-6 rounded-2xl flex items-start gap-4 hover:border-blue-500/20 transition-all group">
-                <div className="w-12 h-12 rounded-xl bg-blue-600/10 border border-blue-500/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-all">
-                  <Building className="w-6 h-6 text-blue-400" />
-                </div>
-                <div>
-                  <span className="text-[9px] text-[#3b82f6] font-mono uppercase font-bold tracking-widest block">Indore Node Workshop</span>
-                  <span className="font-extrabold text-sm block mt-1 text-slate-100">Indore, Madhya Pradesh</span>
-                  <span className="text-xs text-slate-400 leading-relaxed block mt-1 font-light">Specialized ink blending lab & hydraulic calibration rigs.</span>
-                </div>
-              </div>
-
-              {/* Jaipur Node Card */}
-              <div className="bg-slate-950/80 border border-blue-900/20 p-6 rounded-2xl flex items-start gap-4 hover:border-blue-500/20 transition-all group">
-                <div className="w-12 h-12 rounded-xl bg-sky-600/10 border border-sky-500/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-all">
-                  <Building className="w-6 h-6 text-sky-400" />
-                </div>
-                <div>
-                  <span className="text-[9px] text-sky-400 font-mono uppercase font-bold tracking-widest block">Jaipur Node Workshop</span>
-                  <span className="font-extrabold text-sm block mt-1 text-slate-100">Jaipur, Rajasthan</span>
-                  <span className="text-xs text-slate-400 leading-relaxed block mt-1 font-light">Advanced controller testing & automated conduit assembly.</span>
-                </div>
-              </div>
-
-            </div>
           </div>
         </div>
       </section>
@@ -908,10 +879,10 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
           <div className="absolute -bottom-32 -right-32 w-80 h-80 bg-[#2564AF]/10 rounded-full blur-3xl pointer-events-none" />
           <div className="absolute -top-32 -left-32 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl pointer-events-none" />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+          <div className="relative z-10 max-w-2xl">
             
             {/* Left Info Panel */}
-            <div className="lg:col-span-6 space-y-4">
+            <div className="space-y-4">
               <div className="inline-flex items-center gap-2 bg-[#2564AF]/20 border border-blue-500/30 text-sky-400 px-3 py-1 rounded-full text-[10px] font-mono font-bold tracking-widest uppercase">
                 <span className="w-2 h-2 rounded-full bg-blue-400 animate-ping inline-block" /> Live Callback Desk
               </div>
@@ -919,7 +890,7 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
                 Need More <br className="hidden sm:inline" />Information?
               </h3>
               <p className="text-xs sm:text-sm text-slate-300 max-w-md leading-relaxed font-light">
-                Contact us about our innovative and award-winning printing and marking solutions. Our regional engineers in Indore and Jaipur respond to callback sheets in under 4 hours.
+                Contact us about our industrial printing, coding and marking solutions. Our technical team responds to callback requests in under 4 hours.
               </p>
               
               <div className="pt-2">
@@ -932,66 +903,6 @@ export default function HomeOverview({ onNavigate, onNavigateToProduct, onExplor
               </div>
             </div>
 
-            {/* Right Hotlines Console */}
-            <div className="lg:col-span-6 bg-slate-950/60 border border-slate-800/80 p-5 sm:p-6 rounded-2xl space-y-4 shadow-xl">
-              <span className="text-[9px] text-sky-400 font-mono uppercase font-black tracking-widest block border-b border-slate-800 pb-2">
-                ⚡ Regional Direct Transmission Nodes
-              </span>
-
-              {/* Node 1: Indore */}
-              <div className="space-y-2">
-                <div className="flex justify-between items-center text-xs">
-                  <span className="font-extrabold text-slate-300 uppercase tracking-wide">Central Hub — Indore</span>
-                  <span className="text-[10px] text-slate-500 font-mono font-bold select-none">MP Hub</span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <a 
-                    href="https://wa.me/919522299975"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-[#2764B0] hover:bg-slate-800 text-white font-mono text-[10px] font-bold transition-all shadow-sm border border-blue-900/30 cursor-pointer"
-                  >
-                    <WhatsAppIcon className="w-3.5 h-3.5" />
-                    <span>+91 95222 99975</span>
-                  </a>
-                  <a 
-                    href="mailto:indore.support@jetronixindia.com"
-                    className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-slate-900 hover:bg-slate-850 text-slate-300 font-mono text-[10px] font-bold transition-all shadow-sm border border-slate-800 cursor-pointer"
-                  >
-                    <span>✉️ Email support</span>
-                  </a>
-                </div>
-              </div>
-
-              {/* Node 2: Jaipur */}
-              <div className="space-y-2 border-t border-slate-900 pt-3">
-                <div className="flex justify-between items-center text-xs">
-                  <span className="font-extrabold text-slate-300 uppercase tracking-wide">North Hub — Jaipur</span>
-                  <span className="text-[10px] text-slate-500 font-mono font-bold select-none">Raj Hub</span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  <a 
-                    href="https://wa.me/919828106099"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-[#2764B0] hover:bg-slate-800 text-white font-mono text-[10px] font-bold transition-all shadow-sm border border-blue-900/30 cursor-pointer"
-                  >
-                    <WhatsAppIcon className="w-3.5 h-3.5" />
-                    <span>+91 98281 06099</span>
-                  </a>
-                  <a 
-                    href="https://wa.me/919828106099"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 min-w-[140px] flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-mono text-[10px] font-bold transition-all shadow-sm cursor-pointer"
-                  >
-                    <WhatsAppIcon className="w-3.5 h-3.5" />
-                    <span>WhatsApp Live Desk</span>
-                  </a>
-                </div>
-              </div>
-
-            </div>
 
           </div>
 
