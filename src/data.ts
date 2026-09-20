@@ -59,21 +59,11 @@ export const products: Product[] = [
     "tij-inline", [
     ["Print Heads", "Single head"],
     ["Print Height", "12.7 mm"],
-    ["Print Technology", "Thermal Inkjet (TIJ 2.5)"],
-    ["Cartridge", "Convertible - takes both 12.7 mm and 25.4 mm cartridges by changing the print head plate"],
-    ["Print Resolution", "Up to 600 x 600 dpi, with 300 dpi selectable for higher speed"],
-    ["Print Speed", "Up to 100 - 110 m/min depending on resolution and settings"],
-    ["Display", "7\" colour capacitive touch screen, over 20 operating languages"],
-    ["Printable Content", "Text, numbers, date and time, expiry dates, batch numbers, shift codes, logos, counters, barcodes, QR codes, GS1 codes and variable database data"],
-    ["Ink Types", "Water-based, solvent-based for non-porous surfaces such as plastic, metal and glass, and UV inks"],
-    ["Substrates", "Paper, carton board, corrugated boxes, plastic pouches, films, glass and metal"],
-    ["Connectivity", "USB port, photoelectric sensor interface and encoder interface for conveyor synchronisation"],
-    ["Build", "Aluminium alloy and stainless steel body, approximately 3.1 kg"],
-    ["Power Supply", "AC 110 - 220 V, 50/60 Hz"]
-  ], [
-    "The Jetronix JT120 runs a single print head off one controller for a 12.7 mm coding height. It mounts above the line and prints as the product passes, so nothing touches the pack and curved, uneven or delicate surfaces mark as cleanly as flat board.",
-    "The same machine takes both the 12.7 mm and the 25.4 mm cartridge - changing the print head plate is all that is needed - so the coding height can grow with the job instead of requiring a second printer. Resolution runs to 600 x 600 dpi for codes that have to scan, and drops to 300 dpi when the line speed matters more than the detail.",
-    "Dates, batch numbers, shift codes, counters, logos, barcodes, QR and GS1 codes all print directly, and variable data can be driven from a database. Water-based, solvent and UV inks cover porous cartons through to glass, metal and film. A photoelectric sensor triggers the print and an encoder input keeps the code in register when the conveyor changes speed."
+    ["Print Technology", "HP TIJ 2.5"],
+    ["Print Resolution", "Up to 600 x 600 DPI"],
+    ["Print Speed", "Up to 120 metres per minute"],
+    ["Ink Types", "Water-based, solvent and UV-curable options"],
+    ["Interfaces", "Touchscreen, USB, RS485 / Ethernet"]
   ]),
 
   make("jt240", "Jetronix JT240", "tij", "Thermal Inkjet Printer (TIJ)",
@@ -81,21 +71,11 @@ export const products: Product[] = [
     "tij-inline", [
     ["Print Heads", "Double head"],
     ["Print Height", "25 mm"],
-    ["Print Technology", "Thermal Inkjet (TIJ 2.5)"],
-    ["Cartridge", "Convertible - takes both 12.7 mm and 25.4 mm cartridges by changing the print head plate"],
-    ["Print Resolution", "Up to 600 x 600 dpi, with 300 dpi selectable for higher speed"],
-    ["Print Speed", "Up to 100 - 110 m/min depending on resolution and settings"],
-    ["Display", "7\" colour capacitive touch screen, over 20 operating languages"],
-    ["Printable Content", "Text, numbers, date and time, expiry dates, batch numbers, shift codes, logos, counters, barcodes, QR codes, GS1 codes and variable database data"],
-    ["Ink Types", "Water-based, solvent-based for non-porous surfaces such as plastic, metal and glass, and UV inks"],
-    ["Substrates", "Paper, carton board, corrugated boxes, plastic pouches, films, glass and metal"],
-    ["Connectivity", "USB port, photoelectric sensor interface and encoder interface for conveyor synchronisation"],
-    ["Build", "Aluminium alloy and stainless steel body, approximately 3.1 kg"],
-    ["Power Supply", "AC 110 - 220 V, 50/60 Hz"]
-  ], [
-    "The Jetronix JT240 runs two print heads off one controller for a 25 mm coding height. It mounts above the line and prints as the product passes, so nothing touches the pack and curved, uneven or delicate surfaces mark as cleanly as flat board.",
-    "The same machine takes both the 12.7 mm and the 25.4 mm cartridge - changing the print head plate is all that is needed - so the coding height can grow with the job instead of requiring a second printer. Resolution runs to 600 x 600 dpi for codes that have to scan, and drops to 300 dpi when the line speed matters more than the detail.",
-    "Dates, batch numbers, shift codes, counters, logos, barcodes, QR and GS1 codes all print directly, and variable data can be driven from a database. Water-based, solvent and UV inks cover porous cartons through to glass, metal and film. A photoelectric sensor triggers the print and an encoder input keeps the code in register when the conveyor changes speed."
+    ["Print Technology", "HP TIJ 2.5"],
+    ["Print Resolution", "Up to 600 x 600 DPI"],
+    ["Print Speed", "Up to 120 metres per minute"],
+    ["Ink Types", "Water-based, solvent and UV-curable options"],
+    ["Interfaces", "Touchscreen, USB, RS485 / Ethernet"]
   ]),
 
   make("jt360", "Jetronix JT360", "tij", "Thermal Inkjet Printer (TIJ)",
@@ -103,21 +83,11 @@ export const products: Product[] = [
     "tij-inline", [
     ["Print Heads", "Three head"],
     ["Print Height", "36 mm"],
-    ["Print Technology", "Thermal Inkjet (TIJ 2.5)"],
-    ["Cartridge", "Convertible - takes both 12.7 mm and 25.4 mm cartridges by changing the print head plate"],
-    ["Print Resolution", "Up to 600 x 600 dpi, with 300 dpi selectable for higher speed"],
-    ["Print Speed", "Up to 100 - 110 m/min depending on resolution and settings"],
-    ["Display", "7\" colour capacitive touch screen, over 20 operating languages"],
-    ["Printable Content", "Text, numbers, date and time, expiry dates, batch numbers, shift codes, logos, counters, barcodes, QR codes, GS1 codes and variable database data"],
-    ["Ink Types", "Water-based, solvent-based for non-porous surfaces such as plastic, metal and glass, and UV inks"],
-    ["Substrates", "Paper, carton board, corrugated boxes, plastic pouches, films, glass and metal"],
-    ["Connectivity", "USB port, photoelectric sensor interface and encoder interface for conveyor synchronisation"],
-    ["Build", "Aluminium alloy and stainless steel body, approximately 3.1 kg"],
-    ["Power Supply", "AC 110 - 220 V, 50/60 Hz"]
-  ], [
-    "The Jetronix JT360 runs three print heads off one controller for a 36 mm coding height. It mounts above the line and prints as the product passes, so nothing touches the pack and curved, uneven or delicate surfaces mark as cleanly as flat board.",
-    "The same machine takes both the 12.7 mm and the 25.4 mm cartridge - changing the print head plate is all that is needed - so the coding height can grow with the job instead of requiring a second printer. Resolution runs to 600 x 600 dpi for codes that have to scan, and drops to 300 dpi when the line speed matters more than the detail.",
-    "Dates, batch numbers, shift codes, counters, logos, barcodes, QR and GS1 codes all print directly, and variable data can be driven from a database. Water-based, solvent and UV inks cover porous cartons through to glass, metal and film. A photoelectric sensor triggers the print and an encoder input keeps the code in register when the conveyor changes speed."
+    ["Print Technology", "HP TIJ 2.5"],
+    ["Print Resolution", "Up to 600 x 600 DPI"],
+    ["Print Speed", "Up to 120 metres per minute"],
+    ["Ink Types", "Water-based, solvent and UV-curable options"],
+    ["Interfaces", "Touchscreen, USB, RS485 / Ethernet"]
   ]),
 
   make("jt480", "Jetronix JT480", "tij", "Thermal Inkjet Printer (TIJ)",
@@ -125,21 +95,11 @@ export const products: Product[] = [
     "tij-kit", [
     ["Print Heads", "Four head"],
     ["Print Height", "48 mm"],
-    ["Print Technology", "Thermal Inkjet (TIJ 2.5)"],
-    ["Cartridge", "Convertible - takes both 12.7 mm and 25.4 mm cartridges by changing the print head plate"],
-    ["Print Resolution", "Up to 600 x 600 dpi, with 300 dpi selectable for higher speed"],
-    ["Print Speed", "Up to 100 - 110 m/min depending on resolution and settings"],
-    ["Display", "7\" colour capacitive touch screen, over 20 operating languages"],
-    ["Printable Content", "Text, numbers, date and time, expiry dates, batch numbers, shift codes, logos, counters, barcodes, QR codes, GS1 codes and variable database data"],
-    ["Ink Types", "Water-based, solvent-based for non-porous surfaces such as plastic, metal and glass, and UV inks"],
-    ["Substrates", "Paper, carton board, corrugated boxes, plastic pouches, films, glass and metal"],
-    ["Connectivity", "USB port, photoelectric sensor interface and encoder interface for conveyor synchronisation"],
-    ["Build", "Aluminium alloy and stainless steel body, approximately 3.1 kg"],
-    ["Power Supply", "AC 110 - 220 V, 50/60 Hz"]
-  ], [
-    "The Jetronix JT480 runs four print heads off one controller for a 48 mm coding height. It mounts above the line and prints as the product passes, so nothing touches the pack and curved, uneven or delicate surfaces mark as cleanly as flat board.",
-    "The same machine takes both the 12.7 mm and the 25.4 mm cartridge - changing the print head plate is all that is needed - so the coding height can grow with the job instead of requiring a second printer. Resolution runs to 600 x 600 dpi for codes that have to scan, and drops to 300 dpi when the line speed matters more than the detail.",
-    "Dates, batch numbers, shift codes, counters, logos, barcodes, QR and GS1 codes all print directly, and variable data can be driven from a database. Water-based, solvent and UV inks cover porous cartons through to glass, metal and film. A photoelectric sensor triggers the print and an encoder input keeps the code in register when the conveyor changes speed."
+    ["Print Technology", "HP TIJ 2.5"],
+    ["Print Resolution", "Up to 600 x 600 DPI"],
+    ["Print Speed", "Up to 120 metres per minute"],
+    ["Ink Types", "Water-based, solvent and UV-curable options"],
+    ["Interfaces", "Touchscreen, USB, RS485 / Ethernet"]
   ]),
 
   make("jt600", "Jetronix JT600", "tij", "Thermal Inkjet Printer (TIJ)",
@@ -147,21 +107,11 @@ export const products: Product[] = [
     "tij-kit", [
     ["Print Heads", "Five head"],
     ["Print Height", "60 mm"],
-    ["Print Technology", "Thermal Inkjet (TIJ 2.5)"],
-    ["Cartridge", "Convertible - takes both 12.7 mm and 25.4 mm cartridges by changing the print head plate"],
-    ["Print Resolution", "Up to 600 x 600 dpi, with 300 dpi selectable for higher speed"],
-    ["Print Speed", "Up to 100 - 110 m/min depending on resolution and settings"],
-    ["Display", "7\" colour capacitive touch screen, over 20 operating languages"],
-    ["Printable Content", "Text, numbers, date and time, expiry dates, batch numbers, shift codes, logos, counters, barcodes, QR codes, GS1 codes and variable database data"],
-    ["Ink Types", "Water-based, solvent-based for non-porous surfaces such as plastic, metal and glass, and UV inks"],
-    ["Substrates", "Paper, carton board, corrugated boxes, plastic pouches, films, glass and metal"],
-    ["Connectivity", "USB port, photoelectric sensor interface and encoder interface for conveyor synchronisation"],
-    ["Build", "Aluminium alloy and stainless steel body, approximately 3.1 kg"],
-    ["Power Supply", "AC 110 - 220 V, 50/60 Hz"]
-  ], [
-    "The Jetronix JT600 runs five print heads off one controller for a 60 mm coding height. It mounts above the line and prints as the product passes, so nothing touches the pack and curved, uneven or delicate surfaces mark as cleanly as flat board.",
-    "The same machine takes both the 12.7 mm and the 25.4 mm cartridge - changing the print head plate is all that is needed - so the coding height can grow with the job instead of requiring a second printer. Resolution runs to 600 x 600 dpi for codes that have to scan, and drops to 300 dpi when the line speed matters more than the detail.",
-    "Dates, batch numbers, shift codes, counters, logos, barcodes, QR and GS1 codes all print directly, and variable data can be driven from a database. Water-based, solvent and UV inks cover porous cartons through to glass, metal and film. A photoelectric sensor triggers the print and an encoder input keeps the code in register when the conveyor changes speed."
+    ["Print Technology", "HP TIJ 2.5"],
+    ["Print Resolution", "Up to 600 x 600 DPI"],
+    ["Print Speed", "Up to 120 metres per minute"],
+    ["Ink Types", "Water-based, solvent and UV-curable options"],
+    ["Interfaces", "Touchscreen, USB, RS485 / Ethernet"]
   ]),
 
   make("jt720", "Jetronix JT720", "tij", "Thermal Inkjet Printer (TIJ)",
@@ -169,21 +119,11 @@ export const products: Product[] = [
     "tij-kit", [
     ["Print Heads", "Six head"],
     ["Print Height", "72 mm"],
-    ["Print Technology", "Thermal Inkjet (TIJ 2.5)"],
-    ["Cartridge", "Convertible - takes both 12.7 mm and 25.4 mm cartridges by changing the print head plate"],
-    ["Print Resolution", "Up to 600 x 600 dpi, with 300 dpi selectable for higher speed"],
-    ["Print Speed", "Up to 100 - 110 m/min depending on resolution and settings"],
-    ["Display", "7\" colour capacitive touch screen, over 20 operating languages"],
-    ["Printable Content", "Text, numbers, date and time, expiry dates, batch numbers, shift codes, logos, counters, barcodes, QR codes, GS1 codes and variable database data"],
-    ["Ink Types", "Water-based, solvent-based for non-porous surfaces such as plastic, metal and glass, and UV inks"],
-    ["Substrates", "Paper, carton board, corrugated boxes, plastic pouches, films, glass and metal"],
-    ["Connectivity", "USB port, photoelectric sensor interface and encoder interface for conveyor synchronisation"],
-    ["Build", "Aluminium alloy and stainless steel body, approximately 3.1 kg"],
-    ["Power Supply", "AC 110 - 220 V, 50/60 Hz"]
-  ], [
-    "The Jetronix JT720 runs six print heads off one controller for a 72 mm coding height. It mounts above the line and prints as the product passes, so nothing touches the pack and curved, uneven or delicate surfaces mark as cleanly as flat board.",
-    "The same machine takes both the 12.7 mm and the 25.4 mm cartridge - changing the print head plate is all that is needed - so the coding height can grow with the job instead of requiring a second printer. Resolution runs to 600 x 600 dpi for codes that have to scan, and drops to 300 dpi when the line speed matters more than the detail.",
-    "Dates, batch numbers, shift codes, counters, logos, barcodes, QR and GS1 codes all print directly, and variable data can be driven from a database. Water-based, solvent and UV inks cover porous cartons through to glass, metal and film. A photoelectric sensor triggers the print and an encoder input keeps the code in register when the conveyor changes speed."
+    ["Print Technology", "HP TIJ 2.5"],
+    ["Print Resolution", "Up to 600 x 600 DPI"],
+    ["Print Speed", "Up to 120 metres per minute"],
+    ["Ink Types", "Water-based, solvent and UV-curable options"],
+    ["Interfaces", "Touchscreen, USB, RS485 / Ethernet"]
   ]),
 
   /* ───────  TIJ CONTROLLERS (specs from the manufacturer datasheets)  ─────── */
