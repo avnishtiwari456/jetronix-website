@@ -1,142 +1,95 @@
-# Deploying the Jetronix site
+# Deploying to jetronix.in (aaPanel + PM2)
 
-The app is a single Node process: Express serves the built React client and the three API
-routes. Any host that runs Node 20+ works. Instructions below are for **Render** (free
-tier); Railway and Fly.io follow the same shape.
+This package is already built. Nothing is compiled on the server, so a small
+instance is enough and the deploy takes under a minute.
 
-The repo already contains everything needed:
+What is inside:
 
-| File            | Purpose                                                        |
-| --------------- | -------------------------------------------------------------- |
-| `render.yaml`   | Render Blueprint — provisions the service automatically         |
-| `Dockerfile`    | Portable image for Railway / Fly.io / Cloud Run / Docker hosts   |
-| `.dockerignore` | Keeps `node_modules`, `dist`, `.env` and `data/` out of images  |
+| Path                | What it is                                      |
+| ------------------- | ----------------------------------------------- |
+| `dist/`             | the built site and the bundled server           |
+| `dist/server.cjs`   | the Express server PM2 runs                     |
+| `package.json`      | the dependency list and the `start` script      |
+| `package-lock.json` | exact versions, so the server installs the same |
+| `.env.example`      | the settings the server reads                   |
 
----
+## 1. Find the project folder
 
-## 1. Push the code to GitHub
+In aaPanel: **Website → Node.js Project**, look at the **Document Root** column
+for the `jetronix_in` row. It is usually `/www/wwwroot/jetronix.in`. Use whatever
+that column shows; the commands below assume that path.
 
-The repo is already initialised and committed locally. Create an **empty** repository on
-GitHub (no README, no .gitignore — this repo has both), then:
+## 2. Upload
 
-```bash
-git remote add origin https://github.com/<your-username>/<your-repo>.git
-git branch -M main
-git push -u origin main
-```
+In aaPanel: **Files**, open the project folder, **Upload** this zip, then right
+click it and choose **Unzip** into the same folder.
 
-## 2. Create the Render service
+Say **yes** when it asks to overwrite. `dist/` is replaced completely, which is
+what you want.
 
-> **Pick Blueprint or Web Service — not Static Site.** This app runs an Express server
-> for the `/api/*` routes, so a Static Site cannot host it. Choosing Static Site fails
-> with `Publish directory jetronix-website does not exist!`, because static sites only
-> serve pre-built files and never run `npm start`.
+> Do not delete `.env` or `node_modules` if they are already there.
 
-1. Sign in at <https://render.com> and connect the GitHub account.
-2. **New → Blueprint**, pick the repository.
-3. Render reads `render.yaml` and fills in build/start commands itself. Click **Apply**.
+## 3. Install dependencies
 
-If the Blueprint option is unavailable, create a **Web Service** manually instead:
+Only needed the first time, and any later time the dependency list changes.
 
-| Field         | Value                      |
-| ------------- | -------------------------- |
-| Language      | Node                       |
-| Branch        | `main`                     |
-| Build Command | `npm ci && npm run build`  |
-| Start Command | `npm start`                |
-| Instance Type | Free                       |
-
-and add the environment variable `NODE_ENV=production`.
-
-First build takes roughly 3–5 minutes. The live URL looks like
-`https://jetronix-website.onrender.com`.
-
-## 3. Enable email notifications
-
-Contact and quote submissions are emailed to **support@jetronixindia.com**. Until SMTP is
-configured the site still works and still records every enquiry to
-`data/inquiries.jsonl` — it just does not send mail, and logs a warning on startup.
-
-Set these in the Render dashboard (**Environment** tab), or in `.env` on your own server:
-
-| Variable    | Value                                                          |
-| ----------- | -------------------------------------------------------------- |
-| `SMTP_HOST` | Your provider's outgoing server, e.g. `smtp.zoho.in`             |
-| `SMTP_PORT` | `587` for STARTTLS (usual), `465` for SSL                        |
-| `SMTP_USER` | The full mailbox address, e.g. `support@jetronixindia.com`       |
-| `SMTP_PASS` | The mailbox password, or an app-specific password                |
-| `MAIL_TO`   | Optional. Defaults to `support@jetronixindia.com`                |
-| `MAIL_FROM` | Optional. Defaults to `"Jetronix Website" <SMTP_USER>`           |
-
-Where to get the values:
-
-- **Google Workspace** — `smtp.gmail.com`, port `587`. You must create an
-  [App Password](https://myaccount.google.com/apppasswords); the normal account password
-  will be rejected.
-- **Zoho Mail** — `smtp.zoho.in`, port `587`. Generate an app password if 2FA is on.
-- **Your domain's own hosting (cPanel/Hostinger/GoDaddy)** — the mail settings page lists
-  the outgoing server name; the password is the mailbox password.
-
-Most providers refuse to send when `MAIL_FROM` is not the authenticated mailbox, so leave
-`MAIL_FROM` unset unless you know the provider allows it.
-
-**If sending fails with a certificate error**, some budget hosts serve an expired or
-mismatched certificate on their mail server. As a last resort set
-`SMTP_TLS_REJECT_UNAUTHORIZED=false`. This stops the server verifying the mail host's
-identity, so prefer fixing the certificate or switching provider.
-
-Each email arrives with the customer's address in **Reply-To**, so replying from the
-inbox goes straight back to them.
-
-## 4. Optional — enable the AI Advisor
-
-Without a key the site works fully except the Advisor page, which returns a 503.
-
-1. Get a key at <https://aistudio.google.com/apikey>.
-2. Render dashboard → your service → **Environment** → set `GEMINI_API_KEY`.
-3. Save; Render redeploys automatically.
-
-> The model id in `server.ts` (`gemini-3.5-flash`) has not been verified against Google's
-> current model list. If the Advisor returns a 404 or 400 after adding the key, that line
-> is the thing to change.
-
----
-
-## Things to know before showing a client
-
-**Free tier sleeps.** After ~15 minutes of no traffic the service spins down, and the next
-visitor waits roughly 50 seconds for a cold start. Open the URL yourself a minute before a
-demo, or move to a paid instance ($7/mo) to remove the delay.
-
-**Enquiries do not survive a redeploy.** `data/inquiries.jsonl` sits on the container
-filesystem, which is wiped on every deploy and restart. Fine for a demo; before real
-customers use the forms, do one of:
-
-- attach a Render Disk mounted at `/app/data` (paid), or
-- send submissions to email/Slack/a database instead of a file
-  (`recordInquiry()` in `server.ts` is the single place to change).
-
-**No email notifications.** Nobody is alerted when a form is submitted. Read the file, or
-wire up SMTP.
-
-**`data/` and `.env` are gitignored** — customer personal data and the API key stay out of
-the repository. Set secrets through the host's environment settings, never in the code.
-
----
-
-## Alternative hosts
-
-**Railway** — New Project → Deploy from GitHub repo. It detects the `Dockerfile`. Set
-`NODE_ENV=production` and, if wanted, `GEMINI_API_KEY`.
-
-**Fly.io** — `fly launch` picks up the `Dockerfile`; set secrets with
-`fly secrets set GEMINI_API_KEY=...`.
-
-**Any Docker host:**
+Open **Terminal** in aaPanel and run:
 
 ```bash
-docker build -t jetronix .
-docker run -p 3000:3000 -e NODE_ENV=production -v jetronix-data:/app/data jetronix
+cd /www/wwwroot/jetronix.in
+npm ci --omit=dev
 ```
 
-The server binds to `process.env.PORT` when the platform provides one, otherwise 3000.
+If `npm ci` complains that the lock file is out of sync, use `npm install --omit=dev` instead.
+
+## 4. Settings
+
+The server reads its settings from a `.env` file next to `package.json`.
+If one already exists, leave it alone. If not:
+
+```bash
+cd /www/wwwroot/jetronix.in
+cp .env.example .env
+nano .env
+```
+
+Fill in the SMTP details so the contact and quote forms send email. Without
+them the site still works and every enquiry is written to
+`data/inquiries.jsonl`, but no email goes out.
+
+`PORT` must match the port the aaPanel project was created with.
+
+## 5. Restart
+
+In aaPanel: **Website → Node.js Project → jetronix_in → Modify**, then **Restart**.
+
+Or from the terminal:
+
+```bash
+pm2 restart jetronix_in && pm2 logs jetronix_in --lines 30
+```
+
+The log should end with `Jetronix server running in production mode on port …`.
+
+## 6. Check it worked
+
+```bash
+curl -s -o /dev/null -w "%{http_code}\n" http://127.0.0.1:3000/
+curl -s http://127.0.0.1:3000/api/news | head -c 200
+```
+
+The first should print `200`. The second should print a JSON list of packaging
+industry headlines — that confirms the server can reach the outside world, which
+the Knowledge Hub section needs.
+
+Then open https://jetronix.in in a browser and hard refresh (Ctrl+F5).
+
+## If the site does not come up
+
+```bash
+pm2 logs jetronix_in --lines 50     # what the server said
+pm2 list                            # is it running or restarting in a loop
+node -v                             # must be 20 or newer
+```
+
+A blank page with the old content is almost always browser cache — hard refresh.
